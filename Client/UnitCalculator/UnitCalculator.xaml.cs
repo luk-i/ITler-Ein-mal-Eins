@@ -19,14 +19,18 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
     /// </summary>
     public partial class UnitCalculator : Window
     {
-        public UnitCalculator()
+        // Variables
+        Window origin;
+
+        public UnitCalculator(Window _origin)
         {
+            origin = _origin;
             InitializeComponent();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-
+            origin.Show();
         }
     }
 }
