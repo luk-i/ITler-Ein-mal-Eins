@@ -11,7 +11,7 @@
             <ColumnDefinition Width="19*"/>
             <ColumnDefinition Width="376*"/>
         </Grid.ColumnDefinitions>
-        <ToolBarTray Height="26" Margin="5,-36,3,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FF1B4576">
+        <ToolBarTray Height="26" Margin="5,-36,263,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FF1B4576">
             <ToolBar x:Name="toolBar" Height="26" VerticalAlignment="Top" Margin="0,0,-233,-13" HorizontalAlignment="Left" Width="233">
                 <Menu x:Name="menu" Height="26" VerticalAlignment="Top" Width="65" Margin="0,0,0,-5" Background="#FFB03030"/>
             </ToolBar>

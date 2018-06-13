@@ -21,16 +21,20 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
     {
         // Variables
         Window origin;
+        TextBox lastActive;
 
         public UnitCalculator(Window _origin)
         {
             origin = _origin;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
+            origin.Left = this.Left;
+            origin.Top = this.Top;
         }
     }
 }

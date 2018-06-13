@@ -23,9 +23,8 @@ namespace ITler_Ein_mal_Eins
     {
         public Main()
         {
-
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-
 
         }
 
