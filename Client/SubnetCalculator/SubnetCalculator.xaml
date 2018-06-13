@@ -11,13 +11,13 @@
             <TabItem Header="IPv4" Margin="0,0,-25,0">
                 <Grid x:Name="MainGrid_SubnetCalc" Background="#FFE5E5E5">
                     <Grid x:Name="Adress_Grid" HorizontalAlignment="Left" Height="110" Margin="10,10,0,0" VerticalAlignment="Top" Width="279">
-                        <Frame x:Name="Ip_Frame" Content="Ip-Adresse" HorizontalAlignment="Left" Height="58" Margin="10,10,0,0" VerticalAlignment="Top" Width="110"/>
+                        <Frame x:Name="Ip_Frame" Content="Ip-Adresse" HorizontalAlignment="Left" Height="18" Margin="10,10,0,0" VerticalAlignment="Top" Width="107"/>
                         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="19" Margin="10,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35"/>
                         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="19" Margin="50,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35"/>
                         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="19" Margin="90,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35"/>
                         <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="19" Margin="130,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35"/>
                         <Label x:Name="tb_1_DecimalData" Content="tb1" HorizontalAlignment="Left" Height="26" Margin="10,57,0,0" VerticalAlignment="Top" Width="90"/>
-                        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="19" Margin="170,33,0,0" VerticalAlignment="Top" Width="61"/>
+                        <Button x:Name="button_Submit" Content="Einfügen" HorizontalAlignment="Left" Height="19" Margin="170,33,0,0" VerticalAlignment="Top" Width="61" Click="button_Submit_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
