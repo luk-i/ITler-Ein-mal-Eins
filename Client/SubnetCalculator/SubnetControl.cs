@@ -13,14 +13,24 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
         #region Is IPv4 Digit
         private bool isIpV4Digit(System.Windows.Controls.TextBox box, int blockSize)
         {
-            
+            int tmp = 0;
+            // TryParse: Versucht, string in int zu wandeln und gibt aus, ob dies geklappt hat
+            if(int.TryParse(box.Text, out tmp)){
+                if (tmp < 0 || tmp > ((2 ^ blockSize) - 1))
+                {
+                    return false;
+                }
+            }
             return false;
         }
 
         private bool isIpV4Digit(int number, int blockSize)
         {
-
-            return false;
+            if(number < 0 || number > ((2 ^ blockSize) - 1))
+            {
+                return false;
+            }
+            return true;
         }
 
         #endregion
