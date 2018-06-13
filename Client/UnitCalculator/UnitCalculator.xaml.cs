@@ -30,11 +30,17 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
             InitializeComponent();
         }
 
+
+        #region Events
+
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
             origin.Left = this.Left;
             origin.Top = this.Top;
         }
+
+        #endregion
+
     }
 }

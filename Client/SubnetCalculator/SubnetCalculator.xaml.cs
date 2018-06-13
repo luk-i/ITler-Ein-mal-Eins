@@ -22,8 +22,24 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
 
         public SubnetCalculator(Window _origin)
         {
-            _origin = _origin;
+            origin = _origin;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
+
+
+        #region Events
+        /*
+         * Button - Events
+         */
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            origin.Show();
+            origin.Left = this.Left;
+            origin.Top = this.Top;
+        }
+
+        #endregion
+
     }
 }
