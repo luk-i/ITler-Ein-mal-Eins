@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ITler_Ein_mal_Eins
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für Main.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Main : Window
     {
-        public MainWindow()
+        public Main()
         {
 
             InitializeComponent();
