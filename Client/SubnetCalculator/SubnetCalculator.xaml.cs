@@ -19,14 +19,15 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
     {
         //Variables
         Window origin;
+        SubnetControl control;
 
         public SubnetCalculator(Window _origin)
         {
             origin = _origin;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            control = new SubnetControl();
             InitializeComponent();
         }
-
 
         #region Events
         /*
