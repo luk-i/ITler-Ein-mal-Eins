@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace ITler_Ein_mal_Eins
 {
     /// <summary>
@@ -30,7 +31,8 @@ namespace ITler_Ein_mal_Eins
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            UnitCalculator.UnitCalculator calculator = new UnitCalculator.UnitCalculator();
+            calculator.Show();
         }
     }
 }

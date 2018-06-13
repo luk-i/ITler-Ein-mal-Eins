@@ -23,5 +23,10 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
         {
             InitializeComponent();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+        }
     }
 }
