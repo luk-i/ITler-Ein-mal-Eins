@@ -23,17 +23,22 @@ namespace ITler_Ein_mal_Eins
     {
         public Main()
         {
-
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Calculator_button_Click(object sender, RoutedEventArgs e)
         {
             UnitCalculator.UnitCalculator calculator = new UnitCalculator.UnitCalculator(this);
             this.Hide();
             calculator.Show();
+        }
+
+
+        private void Exit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }
