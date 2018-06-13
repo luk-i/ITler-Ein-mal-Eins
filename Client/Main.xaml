@@ -16,6 +16,7 @@
                 <Menu x:Name="menu" Height="26" VerticalAlignment="Top" Width="65" Margin="0,0,0,-5" Background="#FFB03030"/>
             </ToolBar>
         </ToolBarTray>
+        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="79,94,0,0" VerticalAlignment="Top" Width="169" Click="button_Click"/>
     </Grid>
 </Window>
 
