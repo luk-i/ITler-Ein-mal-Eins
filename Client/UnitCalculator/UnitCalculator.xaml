@@ -10,11 +10,58 @@
         <TabControl Margin="0,0,0,0">
             <TabItem Header="Bits - Bytes">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <StackPanel Margin="270,0,270,4.5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand">
-                        <Button Content="Button" Width="80"/>
-                        <Button Content="Button" Width="80"/>
-                        <Button Content="Button" Width="80"/>
+                    <StackPanel Margin="0,0,0,2.5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
+                        <StackPanel.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </StackPanel.RenderTransform>
+                        <Button Content="Berechnen" Width="80" HorizontalAlignment="Center"/>
+                        <Button Content="Zurücksetzen" Width="80" HorizontalAlignment="Center"/>
+                        <Button Content="Beenden" Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
+                    <Grid Margin="2.5,2.5,2.5,25">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Bit" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"/>
+                        <Label Content="Kilobit" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"/>
+                        <Label Content="Megabit" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0"/>
+                        <Label Content="Gigabit" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0"/>
+                        <Label Content="Terabit" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="0"/>
+                        <Label Content="Byte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1"/>
+                        <Label Content="Kilobyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
+                        <Label Content="Megabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1"/>
+                        <Label Content="Gigabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1"/>
+                        <Label Content="Terabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1"/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" MinWidth="20"/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox Margin="10,0,10,10" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                    </Grid>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Zahlensysteme">
@@ -27,5 +74,5 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        </Grid>
+    </Grid>
 </Window>
