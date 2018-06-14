@@ -60,7 +60,6 @@
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="IPCalculator\IpControl.cs" />
-    <Compile Include="Models\IntegerTextbox.cs" />
     <Compile Include="UnitCalculator\UnitCalculator.xaml.cs">
       <DependentUpon>UnitCalculator.xaml</DependentUpon>
     </Compile>
@@ -116,6 +115,8 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
