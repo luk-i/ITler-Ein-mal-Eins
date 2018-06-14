@@ -56,10 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SubnetCalculator\SubnetCalculator.xaml.cs">
+    <Compile Include="IPCalculator\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SubnetCalculator\SubnetControl.cs" />
+    <Compile Include="IPCalculator\IpControl.cs" />
     <Compile Include="UnitCalculator\UnitCalculator.xaml.cs">
       <DependentUpon>UnitCalculator.xaml</DependentUpon>
     </Compile>
@@ -76,7 +76,7 @@
       <DependentUpon>Main.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SubnetCalculator\SubnetCalculator.xaml">
+    <Page Include="IPCalculator\SubnetCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

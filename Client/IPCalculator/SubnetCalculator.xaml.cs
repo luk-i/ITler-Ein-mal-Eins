@@ -19,19 +19,19 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
     {
         //Variables
         Window origin;
-        SubnetControl control;
+        IpControl control;
 
         public SubnetCalculator(Window _origin)
         {
             origin = _origin;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            control = new SubnetControl();
+            control = new IpControl();
             InitializeComponent();
         }
 
         private void IPv4_calculateBits()
         {
-            bool tmp = control.isIpV4Digit(Ip4_textBox1, 8, false);
+            bool tmp = control.isIpV4Digit(Ip4_textBox1, false);
             // Test, obs geht
             if (tmp)
 
