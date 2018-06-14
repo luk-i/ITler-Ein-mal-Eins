@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITler_Ein_mal_Eins.UnitCalculator"
         mc:Ignorable="d"
-        Title="Einheiten Rechner" Height="450" Width="800" Closed="Window_Closed">
+        Title="Einheiten Rechner" Height="450" MinHeight="370"  Width="800" MinWidth="285" Closed="Window_Closed">
     <Grid>
         <TabControl Margin="0,0,0,0">
             <TabItem Header="Bits - Bytes">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <StackPanel Margin="0,0,0,2.5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
+                    <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
                         <StackPanel.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -23,7 +23,7 @@
                         <Button Content="Zurücksetzen" Width="80" HorizontalAlignment="Center"/>
                         <Button Content="Beenden" Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <Grid Margin="2.5,2.5,2.5,25">
+                    <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" MinHeight="30" />
@@ -50,16 +50,16 @@
                         <Label Content="Megabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1"/>
                         <Label Content="Gigabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1"/>
                         <Label Content="Terabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1"/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" MinWidth="20"/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text=""/>
-                        <TextBox Margin="10,0,10,10" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_bit" Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_kilobit" Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_megabit" Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_gigabit" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_terabit" Margin="10,0,10,5" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_byte" Margin="10,0,10,5" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text=""/>
+                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text=""/>
                     </Grid>
 
                 </Grid>
