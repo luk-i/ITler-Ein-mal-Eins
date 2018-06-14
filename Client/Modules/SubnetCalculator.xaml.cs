@@ -12,20 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ITler_Ein_mal_Eins.SubnetCalculator
+namespace ITler_Ein_mal_Eins.Modules
 {
 
     public partial class SubnetCalculator : Window
     {
         //Variables
         Window origin;
-        IpControl control;
+        Control.IpControl control;
 
         public SubnetCalculator(Window _origin)
         {
             origin = _origin;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            control = new IpControl();
+            control = new Control.IpControl();
             InitializeComponent();
         }
 

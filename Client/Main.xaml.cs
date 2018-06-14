@@ -43,7 +43,7 @@ namespace ITler_Ein_mal_Eins
         }
         private void SubnetCalculator_Button_Click(object sender, RoutedEventArgs e)
         {
-            SubnetCalculator.SubnetCalculator sCalculator = new SubnetCalculator.SubnetCalculator(this);
+            Modules.SubnetCalculator sCalculator = new Modules.SubnetCalculator(this);
             this.Hide();
             sCalculator.Show();
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITler_Ein_mal_Eins.SubnetCalculator
+namespace ITler_Ein_mal_Eins.Control
 {
     class IpControl
     {
