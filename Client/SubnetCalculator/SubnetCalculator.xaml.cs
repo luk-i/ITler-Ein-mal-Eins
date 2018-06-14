@@ -31,7 +31,7 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
 
         private void IPv4_calculateBits()
         {
-            bool tmp = control.isIpV4Digit(textBox1, 8);
+            bool tmp = control.isIpV4Digit(Ip4_textBox1, 8);
             // Test, obs geht
             if (tmp)
             {
