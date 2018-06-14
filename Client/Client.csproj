@@ -60,6 +60,7 @@
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="IPCalculator\IpControl.cs" />
+    <Compile Include="Models\IntegerTextbox.cs" />
     <Compile Include="UnitCalculator\UnitCalculator.xaml.cs">
       <DependentUpon>UnitCalculator.xaml</DependentUpon>
     </Compile>
