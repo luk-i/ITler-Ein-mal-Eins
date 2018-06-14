@@ -67,11 +67,13 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
                     {
                         if(third == 255)
                         {
-
+                            return true;
                         }
                         else
                         {
-
+                            if (forth == 0)
+                                return true;
+                            return false;
                         }
                     }
                     else
@@ -87,6 +89,10 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
                         return true;
                     return false;
                 }
+            }
+            else
+            {
+                return false;
             }
         }
 
