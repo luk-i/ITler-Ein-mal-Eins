@@ -31,6 +31,7 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
 
         private void IPv4_calculateBits()
         {
+            testFields();
             bool tmp = control.isIpV4Digit(Ip4_textBox1, true);
             // Test, obs geht
             if (tmp)
@@ -41,6 +42,20 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
             {
                 tb_1_DecimalData.Content = "Not Allowed";
             }
+        }
+
+        private bool testFields()
+        {
+            if(control.isIpV4Digit(Ip4_textBox1, false) && control.isIpV4Digit(Ip4_textBox2, false) &&
+                control.isIpV4Digit(Ip4_textBox3, false) && control.isIpV4Digit(Ip4_textBox4, false))
+            {
+
+            }
+            else
+            {
+                // Label rot färben
+            }
+            return false;
         }
 
         #region Events

@@ -56,6 +56,51 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
         #endregion
 
         #region isLegitIpV4SubnetMask - Funktionen
+        public bool isLegitIpV4SubnetMask(System.Windows.Controls.TextBox first_txt, System.Windows.Controls.TextBox second_txt,
+            System.Windows.Controls.TextBox third_txt, System.Windows.Controls.TextBox forth_txt)
+        {
+            if (isIpV4Digit(first_txt, true) && isIpV4Digit(second_txt, true) &&
+                isIpV4Digit(third_txt, true) && isIpV4Digit(forth_txt, true))
+            {
+                byte first = byte.Parse(first_txt.Text);
+                byte second = byte.Parse(second_txt.Text);
+                byte third = byte.Parse(third_txt.Text);
+                byte forth = byte.Parse(forth_txt.Text);
+                if (first == 255)
+                {
+                    if (second == 255)
+                    {
+                        if (third == 255)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            if (forth == 0)
+                                return true;
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        if (third == 0 && forth == 0)
+                            return true;
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (second == 0 && third == 0 && forth == 0)
+                        return true;
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool isLegitIpV4SubnetMask(int first, int second, int third, int forth)
         {
             if(isIpV4Digit(first, true) && isIpV4Digit(second, true) &&
