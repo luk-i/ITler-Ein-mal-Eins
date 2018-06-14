@@ -30,11 +30,25 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
             InitializeComponent();
         }
 
+
+        #region Events
+        /*
+         * Button - Events
+         * 
+         * IN EVENTS WIRD NIX PROGRAMMIERT!!! DAS IST SCHNELLER WIEDER WEG
+         * ALS EINEM LIEB IST,
+         * 
+         * nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
+         * "Enter" und "Verlassen" aufgerufen wird
+         */
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
             origin.Left = this.Left;
             origin.Top = this.Top;
         }
+
+        #endregion
+
     }
 }

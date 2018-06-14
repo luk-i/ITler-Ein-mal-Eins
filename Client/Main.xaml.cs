@@ -28,17 +28,31 @@ namespace ITler_Ein_mal_Eins
 
         }
 
+
+        #region Events
+        // Mit #region kann man im Editor einzelne Codebereiche Auf und Zuklappen...
+
+        /*
+         * Button - Events
+         */
         private void Calculator_button_Click(object sender, RoutedEventArgs e)
         {
             UnitCalculator.UnitCalculator calculator = new UnitCalculator.UnitCalculator(this);
             this.Hide();
             calculator.Show();
         }
-
+        private void SubnetCalculator_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SubnetCalculator.SubnetCalculator sCalculator = new SubnetCalculator.SubnetCalculator(this);
+            this.Hide();
+            sCalculator.Show();
+        }
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
+        #endregion
+
     }
 }

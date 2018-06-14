@@ -19,11 +19,54 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
     {
         //Variables
         Window origin;
+        SubnetControl control;
 
         public SubnetCalculator(Window _origin)
         {
-            _origin = _origin;
+            origin = _origin;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            control = new SubnetControl();
             InitializeComponent();
         }
+
+        private void IPv4_calculateBits()
+        {
+            bool tmp = control.isIpV4Digit(Ip4_textBox1, 8, false);
+            // Test, obs geht
+            if (tmp)
+
+            {
+                tb_1_DecimalData.Content = "Is Allowed";
+            }
+            else
+            {
+                tb_1_DecimalData.Content = "Not Allowed";
+            }
+        }
+
+        #region Events
+        /*
+         * Button - Events
+         * 
+         * IN EVENTS WIRD NIX PROGRAMMIERT!!! DAS IST SCHNELLER WIEDER WEG
+         * ALS EINEM LIEB IST,
+         * 
+         * nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
+         * "Enter" und "Verlassen" aufgerufen wird
+         */
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            origin.Show();
+            origin.Left = this.Left;
+            origin.Top = this.Top;
+        }
+
+        private void button_Submit_Click(object sender, RoutedEventArgs e)
+        {
+            IPv4_calculateBits();
+        }
+
+        #endregion
+
     }
 }

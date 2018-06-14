@@ -59,6 +59,7 @@
     <Compile Include="SubnetCalculator\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SubnetCalculator\SubnetControl.cs" />
     <Compile Include="UnitCalculator\UnitCalculator.xaml.cs">
       <DependentUpon>UnitCalculator.xaml</DependentUpon>
     </Compile>

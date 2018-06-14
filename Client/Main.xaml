@@ -11,12 +11,12 @@
             <ColumnDefinition Width="60"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Calculator_button" Content="Umrechner" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="23,100,0,0" VerticalAlignment="Top" Width="169" Click="button_Click"/>
+        <Button x:Name="Calculator_button" Content="Umrechner" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="23,100,0,0" VerticalAlignment="Top" Width="169" Click="Calculator_button_Click"/>
         <Menu x:Name="menu" Height="33" Margin="0" VerticalAlignment="Top" Background="#FF878787" HorizontalAlignment="Left" Width="303" Grid.ColumnSpan="2">
             <Button x:Name="Exit_Button" Height="30" Width="60" Content="Exit" Click="Exit_Button_Click"/>
             <Button Height="30" Width="60"/>
         </Menu>
-        <Button x:Name="button_SubnetCalculator" Content="Subnet Berechner" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="228,100,0,0" VerticalAlignment="Top" Width="169" Click="button_Click"/>
+        <Button x:Name="button_SubnetCalculator" Content="Subnet Berechner" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="228,100,0,0" VerticalAlignment="Top" Width="169" Click="SubnetCalculator_Button_Click"/>
     </Grid>
 </Window>
 

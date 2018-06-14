@@ -19,6 +19,10 @@
             </TabItem>
             <TabItem Header="Zahlensysteme">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="380*"/>
+                    </Grid.ColumnDefinitions>
 
                 </Grid>
             </TabItem>
