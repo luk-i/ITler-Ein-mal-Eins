@@ -19,22 +19,22 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
     {
         //Variables
         Window origin;
-        SubnetControl control;
+        IpControl control;
 
         public SubnetCalculator(Window _origin)
         {
             origin = _origin;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            control = new SubnetControl();
+            control = new IpControl();
             InitializeComponent();
         }
 
         private void IPv4_calculateBits()
         {
-            bool tmp = control.isIpV4Digit(Ip4_textBox1, 8, false);
+            testFields();
+            bool tmp = control.isIpV4Digit(Ip4_textBox1, true);
             // Test, obs geht
             if (tmp)
-
             {
                 tb_1_DecimalData.Content = "Is Allowed";
             }
@@ -42,6 +42,20 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
             {
                 tb_1_DecimalData.Content = "Not Allowed";
             }
+        }
+
+        private bool testFields()
+        {
+            if(control.isIpV4Digit(Ip4_textBox1, false) && control.isIpV4Digit(Ip4_textBox2, false) &&
+                control.isIpV4Digit(Ip4_textBox3, false) && control.isIpV4Digit(Ip4_textBox4, false))
+            {
+
+            }
+            else
+            {
+                // Label rot färben
+            }
+            return false;
         }
 
         #region Events
