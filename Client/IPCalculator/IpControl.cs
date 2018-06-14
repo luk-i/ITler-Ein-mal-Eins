@@ -22,7 +22,14 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
             // TryParse: Versucht, string in int zu wandeln und gibt aus, ob dies geklappt hat
             if(byte.TryParse(box.Text, out tmp))
             {
-                return isLegitSubnet(tmp);
+                if (isSubnet)
+                {
+                    return isLegitSubnetDigit(tmp);
+                }
+                else
+                {
+                    return true;
+                }         
             }
             else
             {
@@ -36,12 +43,56 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
             {
                 return false;
             }
-            return true;
+            if (isSubnet)
+            {
+                return isLegitSubnetDigit((byte)number);
+            }
+            else
+            {
+                return true;
+            }
         }
 
         #endregion
 
-        private bool isLegitSubnet(byte digit)
+        #region isLegitIpV4SubnetMask - Funktionen
+        public bool isLegitIpV4SubnetMask(int first, int second, int third, int forth)
+        {
+            if(isIpV4Digit(first, true) && isIpV4Digit(second, true) &&
+                isIpV4Digit(third, true) && isIpV4Digit(forth, true))
+            {
+                if(first == 255)
+                {
+                    if(second == 255)
+                    {
+                        if(third == 255)
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        if (third == 0 && forth == 0)
+                            return true;
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (second == 0 && third == 0 && forth == 0)
+                        return true;
+                    return false;
+                }
+            }
+        }
+
+        #endregion
+
+        private bool isLegitSubnetDigit(byte digit)
         {
             byte[] subnetDigits = new byte[8] { 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
                 , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
@@ -55,8 +106,6 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
             }
             return false;
         }
-
-       
 
         #endregion
 
