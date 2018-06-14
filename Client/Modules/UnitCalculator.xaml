@@ -8,23 +8,10 @@
         Title="Einheiten Rechner" Height="450" MinHeight="370"  Width="800" MinWidth="285" Closed="Window_Closed">
     <Grid>
         <TabControl Margin="0,0,0,0">
-            
-<!--#region bits-bites-->
+
+            <!--#region bits-bites-->
             <TabItem Header="Bits - Bytes">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
-                        <StackPanel.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </StackPanel.RenderTransform>
-                        <Button Content="Berechnen" Width="80" HorizontalAlignment="Center"/>
-                        <Button Content="Zurücksetzen" Width="80" HorizontalAlignment="Center"/>
-                        <Button Content="Beenden" Width="80" HorizontalAlignment="Center"/>
-                    </StackPanel>
                     <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -53,32 +40,42 @@
                         <Label Content="Gigabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1"/>
                         <Label Content="Terabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1"/>
                         <TextBox x:Name="txbox_bit" Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_kilobit" Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" />
-                        <TextBox x:Name="txbox_megabit" Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_gigabit" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_terabit" Margin="10,0,10,5" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_byte" Margin="10,0,10,5" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="txbox_kilobit" Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" />
+                        <TextBox x:Name="txbox_megabit" Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_gigabit" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_terabit" Margin="10,0,10,5" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_byte" Margin="10,0,10,5" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
                     </Grid>
+                    <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
+                        <StackPanel.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </StackPanel.RenderTransform>
+                        <Button x:Name="btn_calculate" Content="Berechnen" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_reset" Content="Zurücksetzen" Click="Btn_Reset_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
-<!--#endregion-->   
- 
-<!--#region zahlensysteme-->            
+            <!--#endregion-->
+
+            <!--#region zahlensysteme-->
             <TabItem Header="Zahlensysteme">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="380*"/>
-                    </Grid.ColumnDefinitions>
+
 
                 </Grid>
             </TabItem>
-<!--#endregion-->           
-            
+            <!--#endregion-->
+
         </TabControl>
     </Grid>
 </Window>

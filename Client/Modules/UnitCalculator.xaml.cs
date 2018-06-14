@@ -32,15 +32,8 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
 
 
         #region Events
-        /*
-         * Button - Events
-         * 
-         * IN EVENTS WIRD NIX PROGRAMMIERT!!! DAS IST SCHNELLER WIEDER WEG
-         * ALS EINEM LIEB IST,
-         * 
-         * nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
-         * "Enter" und "Verlassen" aufgerufen wird
-         */
+
+        //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
@@ -48,9 +41,16 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
             origin.Top = this.Top;
         }
 
+        //Modul über eigenen Button schließen
+        private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
-
+        //Alle Werte löschen
+        private void Btn_Reset_Click(object sender, RoutedEventArgs e)
+        {
+                    
+        }
         #endregion
+
 
     }
 }
