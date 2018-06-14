@@ -23,6 +23,5 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
-    </Grid>
+        </Grid>
 </Window>
