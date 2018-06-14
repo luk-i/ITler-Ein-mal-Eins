@@ -22,7 +22,7 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
             // TryParse: Versucht, string in int zu wandeln und gibt aus, ob dies geklappt hat
             if(byte.TryParse(box.Text, out tmp))
             {
-                return true;
+                return isLegitSubnet(tmp);
             }
             else
             {
@@ -41,9 +41,18 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
 
         #endregion
 
-        private bool isLegitSubnet()
+        private bool isLegitSubnet(byte digit)
         {
-
+            byte[] subnetDigits = new byte[8] { 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
+                , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
+                (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
+            for(int i = 0; i < subnetDigits.Length; i++)
+            {
+                if(digit == subnetDigits[i])
+                {
+                    return true;
+                }
+            }
             return false;
         }
 

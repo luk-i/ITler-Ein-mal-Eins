@@ -31,10 +31,9 @@ namespace ITler_Ein_mal_Eins.SubnetCalculator
 
         private void IPv4_calculateBits()
         {
-            bool tmp = control.isIpV4Digit(Ip4_textBox1, false);
+            bool tmp = control.isIpV4Digit(Ip4_textBox1, true);
             // Test, obs geht
             if (tmp)
-
             {
                 tb_1_DecimalData.Content = "Is Allowed";
             }
