@@ -30,12 +30,20 @@ namespace ITler_Ein_mal_Eins.Modules
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             ipControl = new Control.IpCalculator();
             InitializeComponent();
+            InitializeEvents();
+        }
+
+        private void InitializeEvents()
+        {
             Ip4_textBox1.TextChanged += Ip4_textBox_TextChanged;
             Ip4_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Ip4_textBox3.TextChanged += Ip4_textBox_TextChanged;
             Ip4_textBox4.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox1.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
         }
-
 
 
         private void IPv4_calculateBits()
