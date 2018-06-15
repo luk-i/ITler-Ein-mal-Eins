@@ -30,6 +30,19 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
             InitializeComponent();
         }
 
+        private void Clear_Txbox_UnitC()
+        {
+            txbox_bit.Clear();
+            txbox_kilobit.Clear();
+            txbox_megabit.Clear();
+            txbox_gigabit.Clear();
+            txbox_terabit.Clear();
+            txbox_byte.Clear();
+            txbox_kilobyte.Clear();
+            txbox_megabyte.Clear();
+            txbox_gigabyte.Clear();
+            txbox_terabyte.Clear();
+        }
 
         #region Events
 
@@ -47,7 +60,7 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
         //Alle Werte löschen
         private void Btn_Reset_Click(object sender, RoutedEventArgs e)
         {
-                    
+            Clear_Txbox_UnitC();        
         }
         #endregion
 
