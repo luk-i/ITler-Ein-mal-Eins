@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ITler_Ein_mal_Eins.Control
 {
-    class IpControl
+    class IpCalculator
     {
-        public IpControl()
+        public IpCalculator()
         {
 
         }
@@ -56,8 +57,8 @@ namespace ITler_Ein_mal_Eins.Control
         #endregion
 
         #region isLegitIpV4SubnetMask - Funktionen
-        public bool isLegitIpV4SubnetMask(System.Windows.Controls.TextBox first_txt, System.Windows.Controls.TextBox second_txt,
-            System.Windows.Controls.TextBox third_txt, System.Windows.Controls.TextBox forth_txt)
+        public bool isLegitIpV4SubnetMask(TextBox first_txt, TextBox second_txt,
+            TextBox third_txt, TextBox forth_txt)
         {
             if (isIpV4Digit(first_txt, true) && isIpV4Digit(second_txt, true) &&
                 isIpV4Digit(third_txt, true) && isIpV4Digit(forth_txt, true))

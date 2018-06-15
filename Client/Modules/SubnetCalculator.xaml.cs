@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ITler_Ein_mal_Eins.Control;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -19,20 +20,28 @@ namespace ITler_Ein_mal_Eins.Modules
     {
         //Variables
         Window origin;
-        Control.IpControl control;
+        IpCalculator ipControl;
+        Control.Control control;
 
-        public SubnetCalculator(Window _origin)
+        public SubnetCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
+            control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            control = new Control.IpControl();
+            ipControl = new Control.IpCalculator();
             InitializeComponent();
+            Ip4_textBox1.TextChanged += Ip4_textBox_TextChanged;
+            Ip4_textBox2.TextChanged += Ip4_textBox_TextChanged;
+            Ip4_textBox3.TextChanged += Ip4_textBox_TextChanged;
+            Ip4_textBox4.TextChanged += Ip4_textBox_TextChanged;
         }
+
+
 
         private void IPv4_calculateBits()
         {
             testFields();
-            bool tmp = control.isIpV4Digit(Ip4_textBox1, true);
+            bool tmp = ipControl.isIpV4Digit(Ip4_textBox1, true);
             // Test, obs geht
             if (tmp)
             {
@@ -46,14 +55,14 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private bool testFields()
         {
-            if(control.isIpV4Digit(Ip4_textBox1, false) && control.isIpV4Digit(Ip4_textBox2, false) &&
-                control.isIpV4Digit(Ip4_textBox3, false) && control.isIpV4Digit(Ip4_textBox4, false))
+            if(ipControl.isIpV4Digit(Ip4_textBox1, false) && ipControl.isIpV4Digit(Ip4_textBox2, false) &&
+                ipControl.isIpV4Digit(Ip4_textBox3, false) && ipControl.isIpV4Digit(Ip4_textBox4, false))
             {
 
             }
             else
             {
-                // Label rot färben
+                // Label Fehlermeldung ausgeben
             }
             return false;
         }
@@ -78,6 +87,11 @@ namespace ITler_Ein_mal_Eins.Modules
         private void button_Submit_Click(object sender, RoutedEventArgs e)
         {
             IPv4_calculateBits();
+        }
+
+        private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            control.checkTextboxIfNumeric((TextBox)e.Source);
         }
 
         #endregion
