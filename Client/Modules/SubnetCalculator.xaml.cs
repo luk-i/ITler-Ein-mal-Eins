@@ -62,7 +62,7 @@ namespace ITler_Ein_mal_Eins.Modules
             }
             else
             {
-                // Label rot färben
+                // Label Fehlermeldung ausgeben
             }
             return false;
         }
@@ -88,11 +88,10 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             IPv4_calculateBits();
         }
+
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             control.checkTextboxIfNumeric((TextBox)e.Source);
-            int t = 0;
-            //control.checkTextboxIfNumeric
         }
 
         #endregion
