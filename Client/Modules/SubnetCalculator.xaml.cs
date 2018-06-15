@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ITler_Ein_mal_Eins.Control;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -19,11 +20,13 @@ namespace ITler_Ein_mal_Eins.Modules
     {
         //Variables
         Window origin;
-        Control.IpCalculator ipControl;
+        IpCalculator ipControl;
+        Control.Control control;
 
-        public SubnetCalculator(Window _origin)
+        public SubnetCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
+            control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             ipControl = new Control.IpCalculator();
             InitializeComponent();
@@ -87,8 +90,8 @@ namespace ITler_Ein_mal_Eins.Modules
         }
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
-            throw new NotImplementedException();
+            int t = 0;
+            //control.checkTextboxIfNumeric
         }
 
         #endregion

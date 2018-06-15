@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace ITler_Ein_mal_Eins.Control
 {
-    class Control
+    public class Control
     {
         public Control()
         {
@@ -17,14 +17,18 @@ namespace ITler_Ein_mal_Eins.Control
         public void checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
         {
             int tmp;
-            if(int.TryParse(box.Text, out tmp){
+            if(int.TryParse(box.Text, out tmp)){
                 var converter = new BrushConverter();
-                var brush = (Brush)converter.ConvertFromString("#FFFFFF90");
+                var brush = (Brush)converter.ConvertFromString("#FFFFFFFF");
                 box.Background = brush;
+                //#FFFF0000 red
+                //#FFFFFFFF white
             }
             else
             {
-
+                var converter = new BrushConverter();
+                var brush = (Brush)converter.ConvertFromString("#FFFF0000");
+                box.Background = brush;
             }
         }
 

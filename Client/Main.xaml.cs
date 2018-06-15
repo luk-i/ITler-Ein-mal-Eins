@@ -21,8 +21,10 @@ namespace ITler_Ein_mal_Eins
     /// </summary>
     public partial class Main : Window
     {
+        Control.Control control;
         public Main()
         {
+            control = new Control.Control();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
 
@@ -43,7 +45,7 @@ namespace ITler_Ein_mal_Eins
         }
         private void SubnetCalculator_Button_Click(object sender, RoutedEventArgs e)
         {
-            Modules.SubnetCalculator sCalculator = new Modules.SubnetCalculator(this);
+            Modules.SubnetCalculator sCalculator = new Modules.SubnetCalculator(this, control);
             this.Hide();
             sCalculator.Show();
         }
