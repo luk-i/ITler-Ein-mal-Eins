@@ -39,7 +39,7 @@ namespace ITler_Ein_mal_Eins
          */
         private void Calculator_button_Click(object sender, RoutedEventArgs e)
         {
-            UnitCalculator.UnitCalculator calculator = new UnitCalculator.UnitCalculator(this);
+            Modules.UnitCalculator calculator = new Modules.UnitCalculator(this, control);
             this.Hide();
             calculator.Show();
         }

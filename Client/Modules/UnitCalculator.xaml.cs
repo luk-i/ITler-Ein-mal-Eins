@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ITler_Ein_mal_Eins.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,25 +13,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ITler_Ein_mal_Eins.UnitCalculator
+namespace ITler_Ein_mal_Eins.Modules
 {
-    /// <summary>
-    /// Interaktionslogik für UnitCalculator.xaml
-    /// </summary>
+
     public partial class UnitCalculator : Window
     {
-        // Variables
+        //Variables
         Window origin;
+        Control.Control control;
         TextBox lastActive;
 
-        public UnitCalculator(Window _origin)
+        public UnitCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
+            control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            InitializeEvents();
         }
 
-        private void Clear_Txbox_UnitC()
+            private void Clear_Txbox_UnitC()
         {
             txbox_bit.Clear();
             txbox_kilobit.Clear();
@@ -45,6 +47,20 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
         }
 
         #region Events
+
+        private void InitializeEvents()
+        {
+            txbox_bit.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_byte.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_kilobit.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_kilobyte.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_megabit.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_megabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_gigabit.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_gigabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_terabit.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_terabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
+        }
 
         //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben
         private void Window_Closed(object sender, EventArgs e)
@@ -61,6 +77,12 @@ namespace ITler_Ein_mal_Eins.UnitCalculator
         private void Btn_Reset_Click(object sender, RoutedEventArgs e)
         {
             Clear_Txbox_UnitC();        
+        }
+
+        //Ist die Eingabe numerisch?       
+        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            control.checkTextboxIfNumeric((TextBox)e.Source);
         }
         #endregion
 
