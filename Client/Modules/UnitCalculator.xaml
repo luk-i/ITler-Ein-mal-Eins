@@ -45,10 +45,10 @@
                         <TextBox x:Name="txbox_gigabit" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
                         <TextBox x:Name="txbox_terabit" Margin="10,0,10,5" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
                         <TextBox x:Name="txbox_byte" Margin="10,0,10,5" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
-                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
-                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
-                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
-                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
                     </Grid>
                     <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
                         <StackPanel.RenderTransform>
@@ -59,7 +59,7 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </StackPanel.RenderTransform>
-                        <Button x:Name="btn_calculate" Content="Berechnen" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_calculate" Content="Berechnen" Click="Btn_Calculate_Click" Width="80" HorizontalAlignment="Center"/>
                         <Button x:Name="btn_reset" Content="Zurücksetzen" Click="Btn_Reset_Click" Width="80" HorizontalAlignment="Center"/>
                         <Button x:Name="btn_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
