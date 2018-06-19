@@ -22,7 +22,7 @@ namespace ITler_Ein_mal_Eins.Modules
         //Attributes
         Window origin;
         Control.Control control;
-        TextBox lastActive;
+        TextBox txbox_active;
         Control.UnitCalculatorControl unitCalculatorControl;
 
         public UnitCalculator(Window _origin, Control.Control _control)
@@ -67,7 +67,8 @@ namespace ITler_Ein_mal_Eins.Modules
             if (txbox_gigabyte.Text != "") { i++; }
             if (txbox_terabyte.Text != "") { i++; }
             //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
-            if (i == 1 && control.checkTextboxIfNumeric(lastActive) == true)
+            txbox_active = Active_TextBox();
+            if (i == 1 && control.checkTextboxIfNumeric(txbox_active) == true)
             {
                 letUsStart = true;
             }
@@ -98,17 +99,6 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_gigabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
             txbox_terabit.TextChanged += Txbox_UnitCalculator_TextChanged;
             txbox_terabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
-            //Abfrage des letzten aktiven Fokus
-            txbox_bit.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_byte.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_kilobit.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_kilobyte.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_megabit.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_megabyte.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_gigabit.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_gigabyte.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_terabit.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
-            txbox_terabyte.LostFocus += new RoutedEventHandler(Txbox_LostFocus);
         }
 
         //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben
@@ -119,14 +109,20 @@ namespace ITler_Ein_mal_Eins.Modules
             origin.Top = this.Top;
         }
 
-        //Fokus der letzten aktiven, veränderten TextBox einfangen
-        private void Txbox_LostFocus(object sender, EventArgs e)
+        //Welche Box wurde gefüllt und wird übergeben?
+        private TextBox Active_TextBox()
         {
-            TextBox tmp = sender as TextBox;
-            if (tmp.Text != "")
-            {
-                lastActive = tmp;
-            }
+            if (txbox_bit.Text != "") { txbox_active = txbox_bit; }
+            if (txbox_kilobit.Text != "") { txbox_active = txbox_kilobit; }
+            if (txbox_megabit.Text != "") { txbox_active = txbox_megabit; }
+            if (txbox_gigabit.Text != "") { txbox_active = txbox_gigabit; }
+            if (txbox_terabit.Text != "") { txbox_active = txbox_terabit; }
+            if (txbox_byte.Text != "")     { txbox_active = txbox_byte; }
+            if (txbox_kilobyte.Text != "") { txbox_active = txbox_kilobyte; }
+            if (txbox_megabyte.Text != "") { txbox_active = txbox_megabyte; }
+            if (txbox_gigabyte.Text != "") { txbox_active = txbox_gigabyte; }
+            if (txbox_terabyte.Text != "") { txbox_active = txbox_terabyte; }
+            return txbox_active;
         }
 
 
@@ -145,7 +141,8 @@ namespace ITler_Ein_mal_Eins.Modules
             if (CanWeStart() == true)
             {
                 unitCalculatorControl = new UnitCalculatorControl();
-                if (unitCalculatorControl.calculateBits(lastActive) == false)
+                txbox_active = Active_TextBox();
+                if (unitCalculatorControl.calculateBits(txbox_active) == false)
                 {
                     System.Windows.Forms.MessageBox.Show("Da ging irgendwas, irgendwo schrecklich schief! Das tut und leid :(");
                 }
