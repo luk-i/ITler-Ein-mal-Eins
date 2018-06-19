@@ -35,6 +35,7 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         #region Methods
+        //Textboxen zurücksetzen
         private void Clear_Txbox_UnitC()
         {
             txbox_bit.Clear();
@@ -47,6 +48,38 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_megabyte.Clear();
             txbox_gigabyte.Clear();
             txbox_terabyte.Clear();
+        }
+
+        //Abfragen, ob die Eingaben korrekt sind.
+        private bool CanWeStart()
+        {
+            bool letUsStart = false;
+            int i = 0;
+            //Wenn Textbox ausgefüllt, dann erhöhe i
+            if (txbox_bit.Text != "") { i++; }
+            if (txbox_kilobit.Text != "") { i++; }
+            if (txbox_megabit.Text != "") { i++; }
+            if (txbox_gigabit.Text != "") { i++; }
+            if (txbox_terabit.Text != "") { i++; }
+            if (txbox_byte.Text != "") { i++; }
+            if (txbox_kilobyte.Text != "") { i++; }
+            if (txbox_megabyte.Text != "") { i++; }
+            if (txbox_gigabyte.Text != "") { i++; }
+            if (txbox_terabyte.Text != "") { i++; }
+            //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
+            if (i == 1 && control.checkTextboxIfNumeric(lastActive) == true)
+            {
+                letUsStart = true;
+            }
+            else
+            {
+                //Fehlermeldung und zurücksetzen
+                System.Windows.Forms.MessageBox.Show("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur numerische Werte einzutragen.");
+                Clear_Txbox_UnitC();
+            }
+    
+
+            return letUsStart;
         }
         #endregion
 
@@ -86,10 +119,14 @@ namespace ITler_Ein_mal_Eins.Modules
             origin.Top = this.Top;
         }
 
-        //Fokus der letzten aktiven TextBox einfangen
+        //Fokus der letzten aktiven, veränderten TextBox einfangen
         private void Txbox_LostFocus(object sender, EventArgs e)
         {
-            lastActive = sender as TextBox;
+            TextBox tmp = sender as TextBox;
+            if (tmp.Text != "")
+            {
+                lastActive = tmp;
+            }
         }
 
 
@@ -105,12 +142,14 @@ namespace ITler_Ein_mal_Eins.Modules
         //Werte berechen
         private void Btn_Calculate_Click(object sender, RoutedEventArgs e)
         {
-            unitCalculatorControl = new UnitCalculatorControl();
-            if (unitCalculatorControl.calculateBits(lastActive.Text,lastActive.Name) == false)
+            if (CanWeStart() == true)
             {
-                System.Windows.Forms.MessageBox.Show("Da ging irgendwas, irgendwo schrecklich schief! Das tut und leid :(");
+                unitCalculatorControl = new UnitCalculatorControl();
+                if (unitCalculatorControl.calculateBits(lastActive) == false)
+                {
+                    System.Windows.Forms.MessageBox.Show("Da ging irgendwas, irgendwo schrecklich schief! Das tut und leid :(");
+                }
             }
-           
         }
 
         //Ist die Eingabe numerisch?       

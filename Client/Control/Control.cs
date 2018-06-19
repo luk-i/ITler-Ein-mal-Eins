@@ -14,7 +14,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         }
 
-        public void checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
+        public bool checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
         {
             int i = 0;
             foreach (char x in box.Text)
@@ -29,13 +29,14 @@ namespace ITler_Ein_mal_Eins.Control
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFFFFFF"); //#FFFFFFFF white
                 box.Background = brush;
-                
+                return true;
             }
             else
             {
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFF0000"); //#FFFF0000 red
                 box.Background = brush;
+                return false;
             }
         }
 // Hier gab es Probleme mit dem Parsen! So ab zehn bis fünzehn Stellen war Schluss und es wurde false zurückgeliefert, trotz int64!

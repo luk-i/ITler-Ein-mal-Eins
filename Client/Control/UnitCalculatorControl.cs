@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ITler_Ein_mal_Eins.Control
 {
     class UnitCalculatorControl
     {
         //Grundgerüst für das Aufrufen der Funktion zum Rechnen von Bits zu Bytes
-        public bool calculateBits(string value, string name)
+        public bool calculateBits(TextBox txbox_eingabe)
         {
             bool noError = true;
             try
