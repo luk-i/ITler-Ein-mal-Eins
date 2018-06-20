@@ -144,7 +144,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 txbox_active = Active_TextBox();
                 if (unitCalculatorControl.calculateBits(txbox_active) == false)
                 {
-                    System.Windows.Forms.MessageBox.Show("Da ging irgendwas, irgendwo schrecklich schief! Das tut und leid :(");
+                    System.Windows.Forms.MessageBox.Show("Leider kann der Rechner aktuell keine so großen Zahlen verarbeiten.");
                 }
             }
         }
