@@ -82,6 +82,28 @@ namespace ITler_Ein_mal_Eins.Modules
 
             return letUsStart;
         }
+
+        public void DisplayUnitCalculator_BitsBytes()
+        {
+
+        }
+
+        public void Event_Btn_Click_Calculate ()
+        {
+            if (CanWeStart() == true)
+            {
+                unitCalculatorControl = new UnitCalculatorControl();
+                txbox_active = Active_TextBox();
+                if (unitCalculatorControl.CalculateBits(txbox_active).noError == false)
+                {
+                    System.Windows.Forms.MessageBox.Show("Leider kann der Rechner aktuell keine so großen Zahlen verarbeiten.");
+                }
+                else if (unitCalculatorControl.CalculateBits(txbox_active).noError == true)
+                {
+                    DisplayUnitCalculator_BitsBytes();
+                }
+            }
+        }
         #endregion
 
         #region Events
@@ -125,35 +147,18 @@ namespace ITler_Ein_mal_Eins.Modules
             return txbox_active;
         }
 
-
         //Modul über eigenen Button schließen
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
         //Alle Werte löschen
-        private void Btn_Reset_Click(object sender, RoutedEventArgs e)
-        {
-            Clear_Txbox_UnitC();        
-        }
+        private void Btn_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC();
 
         //Werte berechen
-        private void Btn_Calculate_Click(object sender, RoutedEventArgs e)
-        {
-            if (CanWeStart() == true)
-            {
-                unitCalculatorControl = new UnitCalculatorControl();
-                txbox_active = Active_TextBox();
-                if (unitCalculatorControl.calculateBits(txbox_active) == false)
-                {
-                    System.Windows.Forms.MessageBox.Show("Leider kann der Rechner aktuell keine so großen Zahlen verarbeiten.");
-                }
-            }
-        }
-
+        private void Btn_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
+       
         //Ist die Eingabe numerisch?       
-        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            control.checkTextboxIfNumeric((TextBox)e.Source);
-        }
+        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e) => control.checkTextboxIfNumeric((TextBox)e.Source);
+
         #endregion
 
 

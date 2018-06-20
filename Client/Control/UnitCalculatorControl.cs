@@ -13,45 +13,47 @@ namespace ITler_Ein_mal_Eins.Control
         //Struktur zum Speichern der Werte, bevor Ausgabe in anderer Klasse erfolgt
         public struct BitByteStrings
         {
-            public string bi, kBi, mBi, gBi, tBi, by, kBy, mBy, gBy, tBy;
+            public string _bit, kiloBit, megaBit, gigaBit, teraBit, _byte, kiloByte, megaByte, gigaByte, teraByte;
             public bool noError;
             public BitByteStrings(string bis, string kBis, string mBis, string gBis, string tBis, string bys, string kBys, string mBys, string gBys, string tBys, bool noErrors)
             {
-                bi = bis;
-                kBi = kBis;
-                mBi = mBis;
-                gBi = gBis;
-                tBi = tBis;
-                by = bys;
-                kBy = kBys;
-                mBy = mBys;
-                gBy = gBys;
-                tBy = tBys;
+                _bit = bis;
+                kiloBit = kBis;
+                megaBit = mBis;
+                gigaBit = gBis;
+                teraBit = tBis;
+                _byte = bys;
+                kiloByte = kBys;
+                megaByte = mBys;
+                gigaByte = gBys;
+                teraByte = tBys;
                 noError = noErrors;
             }
         }
-        
+
+        BitByteStrings result;
+
         //Grundgerüst für das Aufrufen der Funktion zum Rechnen von Bits zu Bytes
-        public bool calculateBits(TextBox txbox_eingabe)
+        public BitByteStrings CalculateBits(TextBox txbox_eingabe)
         {
-            bool noError = true;
+            result.noError = true;
             try
             {
-                Double tmp = calculateAnythingToBits(txbox_eingabe);
-                
+                Double eingabeInBit = CalculateAnythingToBits(txbox_eingabe);
+                FillResults(eingabeInBit);              
             }
             catch
             {
                 //Hier sollten wir besser nicht landen!
                 //Falls doch wird ein Popup in der Klasse UnitCalculator.xaml.cs generiert,
                 //aus welcher diese Funktion aufgerufen wurde. (whs. Eingabe zu groß)
-                noError = false;
+                result.noError = false;
             }
-            return noError;
+            return result;
         }
 
 
-        private Double calculateAnythingToBits(TextBox txbox_eingabe)
+        private Double CalculateAnythingToBits(TextBox txbox_eingabe)
         {
             //Initiales Umrechnen des erhaltenen Wertes in Bits               
             Double eingabe = Convert.ToDouble(txbox_eingabe.Text);
@@ -62,34 +64,50 @@ namespace ITler_Ein_mal_Eins.Control
                     ausgabe = eingabe;//Wert bereits in Einheit Bits
                     break;
                 case "txbox_kilobit":
-                    ausgabe = eingabe * 10000;
+                    ausgabe = eingabe * 1024;
                     break;
                 case "txbox_megabit":
-                    ausgabe = eingabe * 10000000;
+                    ausgabe = eingabe * 1024 * 1024;
                     break;
                 case "txbox_gigabit":
-                    ausgabe = eingabe * 10000000000;
+                    ausgabe = eingabe * 1024 * 1024 * 1024;
                     break;
                 case "txbox_terabit":
-                    ausgabe = eingabe * 10000000000000;
+                    ausgabe = eingabe * 1024 * 1024 * 1024 * 1024;
                     break;
                 case "txbox_byte":
                     ausgabe = eingabe * 8;
                     break;
                 case "txbox_kilobyte":
-                    ausgabe = eingabe * 8 * 10000;
+                    ausgabe = eingabe * 8 * 1024;
                     break;
                 case "txbox_megabyte":
-                    ausgabe = eingabe * 8 * 10000000;
+                    ausgabe = eingabe * 8 * 1024 * 1024;
                     break;
                 case "txbox_gigabyte":
-                    ausgabe = eingabe * 8 * 10000000000;
+                    ausgabe = eingabe * 8 * 1024 * 1024 * 1024;
                     break;
                 case "txbox_terabyte":
-                    ausgabe = eingabe * 8 * 10000000000000;
+                    ausgabe = eingabe * 8 * 1024 * 1024 * 1024 * 1024;
                     break;
             }
-            return ausgabe;
+            return ausgabe;            
+        }
+
+        private void FillResults(Double eingabeInBit)
+        {
+            UInt64 b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
+            UInt64 k = 1024;    // sowie vor einem Überlauf des Standard schützen
+            result._bit     =    eingabeInBit.ToString();
+            result.kiloBit  =   (eingabeInBit /  k).ToString();
+            result.megaBit  =   (eingabeInBit / (k * k)).ToString();
+            result.gigaBit  =   (eingabeInBit / (k * k * k)).ToString();
+            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString();       
+            result._byte    =   (eingabeInBit /  b).ToString();
+            result.kiloByte =   (eingabeInBit / (b * k)).ToString();
+            result.megaByte =   (eingabeInBit / (b * k * k)).ToString();
+            result.gigaByte =   (eingabeInBit / (b * k * k * k)).ToString();           
+            result.teraByte =   (eingabeInBit / (b * k * k * k * k)).ToString();  
         }
     }
 }
