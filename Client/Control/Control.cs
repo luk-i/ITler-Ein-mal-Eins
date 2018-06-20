@@ -13,17 +13,29 @@ namespace ITler_Ein_mal_Eins.Control
         {
 
         }
-
-        public bool checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
+        // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
+        // Wenn nicht, wird das Feld rot gefärbt und false zurückgegeben
+        public bool checkTextboxIfNumeric(System.Windows.Controls.TextBox box, int mode)
         {
+            //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
+            //Modus 2: Gleitkommazahlen inklusive Vorzeichen erlaubt
             int i = 0;
             foreach (char x in box.Text)
             {
-                if (!Char.IsDigit(x))
+                switch (mode)
                 {
-                    i++;
+                    case 1:
+                        if (!Char.IsDigit(x)) { i++; }
+                        break;
+                    case 2:
+                        //Under construction!
+                            
+                        break;
+                      
                 }
+
             }
+
             if (i == 0)
             {
                 var converter = new BrushConverter();
@@ -41,7 +53,8 @@ namespace ITler_Ein_mal_Eins.Control
         }
 // Hier gab es Probleme mit dem Parsen! So ab zehn bis fünzehn Stellen war Schluss und es wurde false zurückgeliefert, trotz int64!
 // Darum obige Version, ich lass es aber hier auskommentiert stehen, bis ich das mit dir besprochen habe.
-/*        public void checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
+
+        /*        public void checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
         {
             Int64 tmp;
             if(Int64.TryParse(box.Text, out tmp) || String.IsNullOrEmpty(box.Text)){

@@ -68,7 +68,8 @@ namespace ITler_Ein_mal_Eins.Modules
             if (txbox_terabyte.Text != "") { i++; }
             //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
             txbox_active = Active_TextBox();
-            if (i == 1 && control.checkTextboxIfNumeric(txbox_active) == true)
+            int mode = 2; //Modus für Gleitkommazahlen mit Vorzeichen
+            if (i == 1 && control.checkTextboxIfNumeric(txbox_active, mode) == true)
             {
                 letUsStart = true;
             }
@@ -155,10 +156,14 @@ namespace ITler_Ein_mal_Eins.Modules
 
         //Werte berechen
         private void Btn_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
-       
-        //Ist die Eingabe numerisch?       
-        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e) => control.checkTextboxIfNumeric((TextBox)e.Source);
 
+        //Ist die Eingabe numerisch?
+
+        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int mode = 2;
+            control.checkTextboxIfNumeric((TextBox)e.Source, mode);
+        }
         #endregion
 
 
