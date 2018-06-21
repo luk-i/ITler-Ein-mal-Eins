@@ -15,28 +15,57 @@ namespace ITler_Ein_mal_Eins.Control
         }
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
         // Wenn nicht, wird das Feld rot gefärbt und false zurückgegeben
-        public bool checkTextboxIfNumeric(System.Windows.Controls.TextBox box, int mode)
+        public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box, int mode)
         {
             //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
             //Modus 2: Gleitkommazahlen inklusive Vorzeichen erlaubt
-            int i = 0;
+            int noDigit = 0;
+            int comma = 0;
+            int place = 0;
+            int signed = 0;
             foreach (char x in box.Text)
             {
                 switch (mode)
                 {
                     case 1:
-                        if (!Char.IsDigit(x)) { i++; }
+                        if (!Char.IsDigit(x))
+                        {
+                            noDigit++;
+                        }
                         break;
-                    case 2:
-                        //Under construction!
-                            
-                        break;
-                      
+                    case 2:                        
+                        if (!Char.IsDigit(x))
+                        {
+                            if (x == ',' || x == '.')
+                            {
+                                comma++;
+                                if ((comma > 1 || place == 0)||(signed == 1 && place == 1))
+                                {
+                                    noDigit++;
+                                }
+                            }
+                            else if (x == '-' || x == '+')
+                            {                                
+                                if (place > 0)
+                                {
+                                    noDigit++;                                   
+                                }
+                                else
+                                {
+                                    signed = 1;
+                                }
+                            }
+                            else
+                            {
+                                noDigit++;
+                            }
+                        }
+                        place++;
+                        break;                        
                 }
-
             }
 
-            if (i == 0)
+            if (noDigit == 0)
             {
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFFFFFF"); //#FFFFFFFF white

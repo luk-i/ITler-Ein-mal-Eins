@@ -100,7 +100,7 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             int mode = 1; //Modus 1 frägt ab, ob es sich um eine legitime Ganzzahl handelt
-            control.checkTextboxIfNumeric((TextBox)e.Source, mode);
+            control.CheckTextboxIfNumeric((TextBox)e.Source, mode);
         }
 
         #endregion

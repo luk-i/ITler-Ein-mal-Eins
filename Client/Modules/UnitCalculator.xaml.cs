@@ -69,7 +69,7 @@ namespace ITler_Ein_mal_Eins.Modules
             //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
             txbox_active = Active_TextBox();
             int mode = 2; //Modus für Gleitkommazahlen mit Vorzeichen
-            if (i == 1 && control.checkTextboxIfNumeric(txbox_active, mode) == true)
+            if (i == 1 && control.CheckTextboxIfNumeric(txbox_active, mode) == true)
             {
                 letUsStart = true;
             }
@@ -162,7 +162,7 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)
         {
             int mode = 2;
-            control.checkTextboxIfNumeric((TextBox)e.Source, mode);
+            control.CheckTextboxIfNumeric((TextBox)e.Source, mode);
         }
         #endregion
 
