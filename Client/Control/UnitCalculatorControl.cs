@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,16 +99,17 @@ namespace ITler_Ein_mal_Eins.Control
         {
             UInt64 b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
             UInt64 k = 1024;    // sowie vor einem Überlauf des Standard schützen
-            result._bit     =    eingabeInBit.ToString();
-            result.kiloBit  =   (eingabeInBit /  k).ToString();
-            result.megaBit  =   (eingabeInBit / (k * k)).ToString();
-            result.gigaBit  =   (eingabeInBit / (k * k * k)).ToString();
-            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString();       
-            result._byte    =   (eingabeInBit /  b).ToString();
-            result.kiloByte =   (eingabeInBit / (b * k)).ToString();
-            result.megaByte =   (eingabeInBit / (b * k * k)).ToString();
-            result.gigaByte =   (eingabeInBit / (b * k * k * k)).ToString();           
-            result.teraByte =   (eingabeInBit / (b * k * k * k * k)).ToString();  
+            CultureInfo ci  =   new CultureInfo("de-DE");
+            result._bit     =   (eingabeInBit.ToString("N", ci));
+            result.kiloBit  =   (eingabeInBit /  k).ToString("N", ci);
+            result.megaBit  =   (eingabeInBit / (k * k)).ToString("N", ci);
+            result.gigaBit  =   (eingabeInBit / (k * k * k)).ToString("N", ci);
+            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString("N", ci);       
+            result._byte    =   (eingabeInBit /  b).ToString("N", ci);
+            result.kiloByte =   (eingabeInBit / (b * k)).ToString("N", ci);
+            result.megaByte =   (eingabeInBit / (b * k * k)).ToString("N", ci);
+            result.gigaByte =   (eingabeInBit / (b * k * k * k)).ToString("N", ci);           
+            result.teraByte =   (eingabeInBit / (b * k * k * k * k)).ToString("N", ci);  
         }
     }
 }

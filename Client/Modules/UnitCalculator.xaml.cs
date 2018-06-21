@@ -24,6 +24,8 @@ namespace ITler_Ein_mal_Eins.Modules
         Control.Control control;
         TextBox txbox_active;
         Control.UnitCalculatorControl unitCalculatorControl;
+        //Struct
+        UnitCalculatorControl.BitByteStrings results;
 
         public UnitCalculator(Window _origin, Control.Control _control)
         {
@@ -48,6 +50,16 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_megabyte.Clear();
             txbox_gigabyte.Clear();
             txbox_terabyte.Clear();
+            txbox_bit.IsReadOnly = false;
+            txbox_kilobit.IsReadOnly = false;
+            txbox_megabit.IsReadOnly = false;
+            txbox_gigabit.IsReadOnly = false;
+            txbox_terabit.IsReadOnly = false;
+            txbox_byte.IsReadOnly = false;
+            txbox_kilobyte.IsReadOnly = false;
+            txbox_megabyte.IsReadOnly = false;
+            txbox_gigabyte.IsReadOnly = false;
+            txbox_terabyte.IsReadOnly = false;
         }
 
         //Abfragen, ob die Eingaben korrekt sind.
@@ -77,7 +89,6 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 //Fehlermeldung und zurücksetzen
                 System.Windows.Forms.MessageBox.Show("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur numerische Werte einzutragen.");
-                Clear_Txbox_UnitC();
             }
     
 
@@ -86,7 +97,38 @@ namespace ITler_Ein_mal_Eins.Modules
 
         public void DisplayUnitCalculator_BitsBytes()
         {
-
+            txbox_bit.Text = results._bit;
+            txbox_bit.IsReadOnly = true;
+            txbox_kilobit.Text = results.kiloBit;
+            txbox_kilobit.IsReadOnly = true;
+            txbox_megabit.Text = results.megaBit;
+            txbox_megabit.IsReadOnly = true;
+            txbox_gigabit.Text = results.gigaBit;
+            txbox_gigabit.IsReadOnly = true;
+            txbox_terabit.Text = results.teraBit;
+            txbox_terabit.IsReadOnly = true;
+            txbox_byte.Text = results._byte;
+            txbox_byte.IsReadOnly = true;
+            txbox_kilobyte.Text = results.kiloByte;
+            txbox_kilobyte.IsReadOnly = true;
+            txbox_megabyte.Text = results.megaByte;
+            txbox_megabyte.IsReadOnly = true;
+            txbox_gigabyte.Text = results.gigaByte;
+            txbox_gigabyte.IsReadOnly = true;
+            txbox_terabyte.Text = results.teraByte;
+            txbox_terabyte.IsReadOnly = true;
+            var converter = new BrushConverter();
+            var brush = (Brush)converter.ConvertFromString("#00000000");
+            txbox_bit.Background = brush;
+            txbox_kilobit.Background = brush;
+            txbox_megabit.Background = brush;
+            txbox_gigabit.Background = brush;
+            txbox_terabit.Background = brush;
+            txbox_byte.Background = brush;
+            txbox_kilobyte.Background = brush;
+            txbox_megabyte.Background = brush;
+            txbox_gigabyte.Background = brush;
+            txbox_terabyte.Background = brush;
         }
 
         public void Event_Btn_Click_Calculate ()
@@ -95,11 +137,12 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 unitCalculatorControl = new UnitCalculatorControl();
                 txbox_active = Active_TextBox();
-                if (unitCalculatorControl.CalculateBits(txbox_active).noError == false)
+                results = unitCalculatorControl.CalculateBits(txbox_active);
+                if (results.noError == false)
                 {
                     System.Windows.Forms.MessageBox.Show("Leider kann der Rechner aktuell keine so großen Zahlen verarbeiten.");
                 }
-                else if (unitCalculatorControl.CalculateBits(txbox_active).noError == true)
+                else 
                 {
                     DisplayUnitCalculator_BitsBytes();
                 }
@@ -135,12 +178,12 @@ namespace ITler_Ein_mal_Eins.Modules
         //Welche Box wurde gefüllt und wird übergeben?
         private TextBox Active_TextBox()
         {
-            if (txbox_bit.Text != "") { txbox_active = txbox_bit; }
-            if (txbox_kilobit.Text != "") { txbox_active = txbox_kilobit; }
-            if (txbox_megabit.Text != "") { txbox_active = txbox_megabit; }
-            if (txbox_gigabit.Text != "") { txbox_active = txbox_gigabit; }
-            if (txbox_terabit.Text != "") { txbox_active = txbox_terabit; }
-            if (txbox_byte.Text != "")     { txbox_active = txbox_byte; }
+            if (txbox_bit.Text      != "") { txbox_active = txbox_bit; }
+            if (txbox_kilobit.Text  != "") { txbox_active = txbox_kilobit; }
+            if (txbox_megabit.Text  != "") { txbox_active = txbox_megabit; }
+            if (txbox_gigabit.Text  != "") { txbox_active = txbox_gigabit; }
+            if (txbox_terabit.Text  != "") { txbox_active = txbox_terabit; }
+            if (txbox_byte.Text     != "") { txbox_active = txbox_byte; }
             if (txbox_kilobyte.Text != "") { txbox_active = txbox_kilobyte; }
             if (txbox_megabyte.Text != "") { txbox_active = txbox_megabyte; }
             if (txbox_gigabyte.Text != "") { txbox_active = txbox_gigabyte; }
@@ -158,14 +201,13 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Btn_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
 
         //Ist die Eingabe numerisch?
-
         private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int mode = 2;
-            control.CheckTextboxIfNumeric((TextBox)e.Source, mode);
+            {
+                int mode = 2;
+                control.CheckTextboxIfNumeric((TextBox)e.Source, mode);
+            }
         }
         #endregion
-
-
     }
 }

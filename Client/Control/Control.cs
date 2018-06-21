@@ -55,7 +55,7 @@ namespace ITler_Ein_mal_Eins.Control
                                     signed = 1;
                                 }
                             }
-                            else
+                            else 
                             {
                                 noDigit++;
                             }
