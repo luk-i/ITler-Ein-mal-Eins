@@ -100,6 +100,8 @@ namespace ITler_Ein_mal_Eins.Control
             UInt64 b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
             UInt64 k = 1024;    // sowie vor einem Überlauf des Standard schützen
             CultureInfo ci  =   new CultureInfo("de-DE");
+            ci.NumberFormat.NumberDecimalDigits = 15;
+            ci.NumberFormat.NumberGroupSeparator = "";
             result._bit     =   (eingabeInBit.ToString("N", ci));
             result.kiloBit  =   (eingabeInBit /  k).ToString("N", ci);
             result.megaBit  =   (eingabeInBit / (k * k)).ToString("N", ci);
