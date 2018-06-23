@@ -13,13 +13,14 @@ namespace ITler_Ein_mal_Eins.Control
         {
 
         }
+ 
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
         // Wenn nicht, wird das Feld rot gefärbt und false zurückgegeben
         public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box, int mode)
         {
-            //Modus 1: Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
+            //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
             //Modus 2: Gleitkommazahlen inklusive Vorzeichen erlaubt
-            //Modus 3: Nur vorzeichenlose Ganzzahlen erlaubt
+            //Modus 3: IP-Segmente - Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
             int noDigit = 0;
             int comma = 0;
             int place = 0;
@@ -33,16 +34,6 @@ namespace ITler_Ein_mal_Eins.Control
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
-                        }
-                        else
-                        {
-                            if (Int32.TryParse(box.Text, out ipRange))
-                            {
-                                if (ipRange < 0 || ipRange > 255)
-                                {
-                                    noDigit++;
-                                }
-                            }                           
                         }
                         break;
                     case 2:                        
@@ -78,6 +69,16 @@ namespace ITler_Ein_mal_Eins.Control
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
+                        }
+                        else
+                        {
+                            if (Int32.TryParse(box.Text, out ipRange))
+                            {
+                                if (ipRange < 0 || ipRange > 255)
+                                {
+                                    noDigit++;
+                                }
+                            }
                         }
                         break;
                 }
