@@ -17,8 +17,9 @@ namespace ITler_Ein_mal_Eins.Control
         // Wenn nicht, wird das Feld rot gefärbt und false zurückgegeben
         public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box, int mode)
         {
-            //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
+            //Modus 1: Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
             //Modus 2: Gleitkommazahlen inklusive Vorzeichen erlaubt
+            //Modus 3: Nur vorzeichenlose Ganzzahlen erlaubt
             int noDigit = 0;
             int comma = 0;
             int place = 0;
@@ -28,9 +29,20 @@ namespace ITler_Ein_mal_Eins.Control
                 switch (mode)
                 {
                     case 1:
+                        int ipRange = 0;
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
+                        }
+                        else
+                        {
+                            if (Int32.TryParse(box.Text, out ipRange))
+                            {
+                                if (ipRange < 0 || ipRange > 255)
+                                {
+                                    noDigit++;
+                                }
+                            }                           
                         }
                         break;
                     case 2:                        
@@ -61,7 +73,13 @@ namespace ITler_Ein_mal_Eins.Control
                             }
                         }
                         place++;
-                        break;                        
+                        break;
+                    case 3:
+                        if (!Char.IsDigit(x))
+                        {
+                            noDigit++;
+                        }
+                        break;
                 }
             }
 
