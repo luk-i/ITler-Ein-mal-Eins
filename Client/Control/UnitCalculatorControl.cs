@@ -40,7 +40,7 @@ namespace ITler_Ein_mal_Eins.Control
             result.noError = true;
             try
             {
-                Double eingabeInBit = CalculateAnythingToBits(txbox_eingabe);
+                BigFloat eingabeInBit = CalculateAnythingToBits(txbox_eingabe);
                 FillResults(eingabeInBit);              
             }
             catch
@@ -54,11 +54,11 @@ namespace ITler_Ein_mal_Eins.Control
         }
 
 
-        private Double CalculateAnythingToBits(TextBox txbox_eingabe)
+        private BigFloat CalculateAnythingToBits(TextBox txbox_eingabe)
         {
             //Initiales Umrechnen des erhaltenen Wertes in Bits               
-            Double eingabe = Convert.ToDouble(txbox_eingabe.Text);
-            Double ausgabe = 0;
+            BigFloat eingabe = new BigFloat(txbox_eingabe.Text);
+            BigFloat ausgabe = 0;
             switch (txbox_eingabe.Name)
             {
                 case "txbox_bit":
@@ -95,23 +95,20 @@ namespace ITler_Ein_mal_Eins.Control
             return ausgabe;            
         }
 
-        private void FillResults(Double eingabeInBit)
+        private void FillResults(BigFloat eingabeInBit)
         {
             UInt64 b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
             UInt64 k = 1024;    // sowie vor einem Überlauf des Standard schützen
-            CultureInfo ci  =   new CultureInfo("de-DE");
-            ci.NumberFormat.NumberDecimalDigits = 15;
-            ci.NumberFormat.NumberGroupSeparator = "";
-            result._bit     =   (eingabeInBit.ToString("N", ci));
-            result.kiloBit  =   (eingabeInBit /  k).ToString("N", ci);
-            result.megaBit  =   (eingabeInBit / (k * k)).ToString("N", ci);
-            result.gigaBit  =   (eingabeInBit / (k * k * k)).ToString("N", ci);
-            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString("N", ci);       
-            result._byte    =   (eingabeInBit /  b).ToString("N", ci);
-            result.kiloByte =   (eingabeInBit / (b * k)).ToString("N", ci);
-            result.megaByte =   (eingabeInBit / (b * k * k)).ToString("N", ci);
-            result.gigaByte =   (eingabeInBit / (b * k * k * k)).ToString("N", ci);           
-            result.teraByte =   (eingabeInBit / (b * k * k * k * k)).ToString("N", ci);  
+            result._bit     =   (eingabeInBit.ToString());
+            result.kiloBit  =   (eingabeInBit /  k).ToString();
+            result.megaBit  =   (eingabeInBit / (k * k)).ToString();
+            result.gigaBit  =   (eingabeInBit / (k * k * k)).ToString();
+            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString();       
+            result._byte    =   (eingabeInBit /  b).ToString();
+            result.kiloByte =   (eingabeInBit / (b * k)).ToString();
+            result.megaByte =   (eingabeInBit / (b * k * k)).ToString();
+            result.gigaByte =   (eingabeInBit / (b * k * k * k)).ToString();           
+            result.teraByte =   (eingabeInBit / (b * k * k * k * k)).ToString();  
         }
     }
 }
