@@ -58,50 +58,31 @@ namespace ITler_Ein_mal_Eins.Control
         private BigFloat CalculateAnythingToBits(TextBox txbox_eingabe)
         {
             //Initiales Umrechnen des erhaltenen Wertes in Bits               
-            BigFloat eingabe = new BigFloat(txbox_eingabe.Text);
+            BigFloat eingabe = BigFloat.Parse(txbox_eingabe.Text);
             BigFloat ausgabe = 0;
             BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
             BigFloat k = 1024;    // sowie vor einem Überlauf des Standard schützen
             switch (txbox_eingabe.Name)
             {
-                case "txbox_bit":
-                    ausgabe = eingabe;//Wert bereits in Einheit Bits
-                    break;
-                case "txbox_kilobit":
-                    ausgabe = eingabe * k;
-                    break;
-                case "txbox_megabit":
-                    ausgabe = eingabe * k * k;
-                    break;
-                case "txbox_gigabit":
-                    ausgabe = eingabe * k * k * k;
-                    break;
-                case "txbox_terabit":
-                    ausgabe = eingabe * k * k * k * k;
-                    break;
-                case "txbox_byte":
-                    ausgabe = eingabe * b;
-                    break;
-                case "txbox_kilobyte":
-                    ausgabe = eingabe * b * k;
-                    break;
-                case "txbox_megabyte":
-                    ausgabe = eingabe * b * k * k;
-                    break;
-                case "txbox_gigabyte":
-                    ausgabe = eingabe * b * k * k * k;
-                    break;
-                case "txbox_terabyte":
-                    ausgabe = eingabe * b * k * k * k * k;
-                    break;
+                case "txbox_bit":       ausgabe = eingabe;                      break; //Wert bereits in Einheit Bits
+                case "txbox_kilobit":   ausgabe = eingabe * k;                  break;
+                case "txbox_megabit":   ausgabe = eingabe * k * k;              break;
+                case "txbox_gigabit":   ausgabe = eingabe * k * k * k;          break;
+                case "txbox_terabit":   ausgabe = eingabe * k * k * k * k;      break;
+
+                case "txbox_byte":      ausgabe = eingabe * b;                  break;
+                case "txbox_kilobyte":  ausgabe = eingabe * b * k;              break;
+                case "txbox_megabyte":  ausgabe = eingabe * b * k * k;          break;
+                case "txbox_gigabyte":  ausgabe = eingabe * b * k * k * k;      break;
+                case "txbox_terabyte":  ausgabe = eingabe * b * k * k * k * k;  break;
             }
             return ausgabe;            
         }
 
         private void FillResults(BigFloat eingabeInBit)
         {
-            BigFloat b      = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
-            BigFloat k      = 1024;    // sowie vor einem Überlauf des Standard schützen
+            BigFloat b      =   8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
+            BigFloat k      =   1024;    // sowie vor einem Überlauf des Standard schützen
             result._bit     =   (eingabeInBit.ToString());
             result.kiloBit  =   (eingabeInBit /  k).ToString();
             result.megaBit  =   (eingabeInBit / (k * k)).ToString();

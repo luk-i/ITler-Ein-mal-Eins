@@ -80,15 +80,18 @@ namespace ITler_Ein_mal_Eins.Modules
             if (txbox_terabyte.Text != "") { i++; }
             //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
             txbox_active = Active_TextBox();
-            int mode = 2; //Modus für Gleitkommazahlen mit Vorzeichen
-            if (i == 1 && control.CheckTextboxIfNumeric(txbox_active, mode) == true)
+            if (i == 1 && control.CheckTextboxIfNumeric(txbox_active) == true)
             {
                 letUsStart = true;
             }
             else
             {
                 //Fehlermeldung und zurücksetzen
-                System.Windows.Forms.MessageBox.Show("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur numerische Werte einzutragen. Seperatoren zwischen den Vorstellen werden nicht akzeptiert.");
+                System.Windows.Forms.MessageBox.Show
+                ("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur positive numerische Werte einzutragen. " + Environment.NewLine +
+                 "Benutzen Sie bitte einen Punkt '.' Als Dezimaltrennzeichen " + Environment.NewLine +
+                 "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine  +Environment.NewLine +
+                 "Beispiel: 42.481516");
             }   
             return letUsStart;
         }
@@ -199,13 +202,8 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Btn_Bits_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
 
         //Ist die Eingabe numerisch?
-        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            {
-                int mode = 2;
-                control.CheckTextboxIfNumeric((TextBox)e.Source, mode);
-            }
-        }
+        private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e) => control.CheckTextboxIfNumeric((TextBox)e.Source);
+ 
         #endregion
     }
 }

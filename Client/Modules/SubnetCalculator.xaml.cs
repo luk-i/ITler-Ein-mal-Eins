@@ -99,8 +99,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int mode = 3; //Modus 1 frägt ab, ob es sich um eine legitime, positive Ganzzahl innerhalb 0-255 handelt
-            control.CheckTextboxIfNumeric((TextBox)e.Source, mode);
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
 
         #endregion

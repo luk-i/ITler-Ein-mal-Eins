@@ -16,7 +16,7 @@ namespace ITler_Ein_mal_Eins.Control
  
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
         // Wenn nicht, wird das Feld rot gefärbt und false zurückgegeben
-        public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box, int mode)
+        public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box)
         {
             //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
             //Modus 2: Gleitkommazahlen inklusive Vorzeichen erlaubt
@@ -27,36 +27,26 @@ namespace ITler_Ein_mal_Eins.Control
             int signed = 0;
             foreach (char x in box.Text)
             {
-                switch (mode)
+                switch (box.Tag)
                 {
-                    case 1:
+                    case "1":
                         int ipRange = 0;
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
                         }
                         break;
-                    case 2:                        
+                    case "2":                        
                         if (!Char.IsDigit(x))
                         {
-                            if (x == ',' || x == '.')
+                            if (x == '.')
                             {
                                 comma++;
                                 if ((comma > 1 || place == 0)||(signed == 1 && place == 1))
                                 {
                                     noDigit++;
                                 }
-                            }
-                            else if (x == '-' || x == '+')
-                            {                                
-                                if (place > 0)
-                                {
-                                    noDigit++;                                   
-                                }
-                                else
-                                {
-                                    signed = 1;
-                                }
+
                             }
                             else 
                             {
@@ -65,7 +55,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case 3:
+                    case "3":
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
