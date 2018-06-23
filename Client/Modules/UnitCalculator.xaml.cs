@@ -38,7 +38,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Methods
         //Textboxen zurücksetzen
-        private void Clear_Txbox_UnitC()
+        private void Clear_Txbox_UnitC_Bits()
         {
             txbox_bit.Clear();
             txbox_kilobit.Clear();
@@ -115,8 +115,8 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_gigabyte.IsReadOnly   = true;
             txbox_terabyte.Text         = results.teraByte;
             txbox_terabyte.IsReadOnly   = true;
-            var converter = new BrushConverter();
-            var brush     = (Brush)converter.ConvertFromString("#00000000");
+            var converter               = new BrushConverter();
+            var brush                   = (Brush)converter.ConvertFromString("#00000000");
             txbox_bit.Background        = brush;
             txbox_kilobit.Background    = brush;
             txbox_megabit.Background    = brush;
@@ -193,10 +193,10 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
         //Alle Werte löschen
-        private void Btn_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC();
+        private void Btn_Bits_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC_Bits();
 
         //Werte berechen
-        private void Btn_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
+        private void Btn_Bits_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
 
         //Ist die Eingabe numerisch?
         private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e)

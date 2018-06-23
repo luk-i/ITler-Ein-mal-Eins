@@ -59,9 +59,9 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </StackPanel.RenderTransform>
-                        <Button x:Name="btn_calculate" Content="Berechnen" Click="Btn_Calculate_Click" Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_reset" Content="Zurücksetzen" Click="Btn_Reset_Click" Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_bits_calculate" Content="Berechnen" Click="Btn_Bits_Calculate_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_bits_reset" Content="Zurücksetzen" Click="Btn_Bits_Reset_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_bits_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -70,7 +70,42 @@
             <!--#region zahlensysteme-->
             <TabItem Header="Zahlensysteme">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-
+                    <Grid Margin="2.5,2.5,2.5,27.5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Binär" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"/>
+                        <Label Content="Oktal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"/>
+                        <Label Content="Dezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0"/>
+                        <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0"/>
+                        <TextBox x:Name="txbox_binaer" Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="txbox_oktal" Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" />
+                        <TextBox x:Name="txbox_dezimal" Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_hexadezimal" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5"/>
+                    </Grid>
+                    <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
+                        <StackPanel.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </StackPanel.RenderTransform>
+                        <Button x:Name="btn_systems_calculate" Content="Berechnen" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_reset" Content="Zurücksetzen"  Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
+                    </StackPanel>
 
                 </Grid>
             </TabItem>
