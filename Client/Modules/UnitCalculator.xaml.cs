@@ -29,7 +29,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         public UnitCalculator(Window _origin, Control.Control _control)
         {
-            origin = _origin;
+            origin  = _origin;
             control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
@@ -50,16 +50,16 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_megabyte.Clear();
             txbox_gigabyte.Clear();
             txbox_terabyte.Clear();
-            txbox_bit.IsReadOnly = false;
-            txbox_kilobit.IsReadOnly = false;
-            txbox_megabit.IsReadOnly = false;
-            txbox_gigabit.IsReadOnly = false;
-            txbox_terabit.IsReadOnly = false;
-            txbox_byte.IsReadOnly = false;
-            txbox_kilobyte.IsReadOnly = false;
-            txbox_megabyte.IsReadOnly = false;
-            txbox_gigabyte.IsReadOnly = false;
-            txbox_terabyte.IsReadOnly = false;
+            txbox_bit.IsReadOnly        = false;
+            txbox_kilobit.IsReadOnly    = false;
+            txbox_megabit.IsReadOnly    = false;
+            txbox_gigabit.IsReadOnly    = false;
+            txbox_terabit.IsReadOnly    = false;
+            txbox_byte.IsReadOnly       = false;
+            txbox_kilobyte.IsReadOnly   = false;
+            txbox_megabyte.IsReadOnly   = false;
+            txbox_gigabyte.IsReadOnly   = false;
+            txbox_terabyte.IsReadOnly   = false;
         }
 
         //Abfragen, ob die Eingaben korrekt sind.
@@ -68,12 +68,12 @@ namespace ITler_Ein_mal_Eins.Modules
             bool letUsStart = false;
             int i = 0;
             //Wenn Textbox ausgefüllt, dann erhöhe i
-            if (txbox_bit.Text != "") { i++; }
-            if (txbox_kilobit.Text != "") { i++; }
-            if (txbox_megabit.Text != "") { i++; }
-            if (txbox_gigabit.Text != "") { i++; }
-            if (txbox_terabit.Text != "") { i++; }
-            if (txbox_byte.Text != "") { i++; }
+            if (txbox_bit.Text      != "") { i++; }
+            if (txbox_kilobit.Text  != "") { i++; }
+            if (txbox_megabit.Text  != "") { i++; }
+            if (txbox_gigabit.Text  != "") { i++; }
+            if (txbox_terabit.Text  != "") { i++; }
+            if (txbox_byte.Text     != "") { i++; }
             if (txbox_kilobyte.Text != "") { i++; }
             if (txbox_megabyte.Text != "") { i++; }
             if (txbox_gigabyte.Text != "") { i++; }
@@ -88,47 +88,45 @@ namespace ITler_Ein_mal_Eins.Modules
             else
             {
                 //Fehlermeldung und zurücksetzen
-                System.Windows.Forms.MessageBox.Show("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur numerische Werte einzutragen.");
-            }
-    
-
+                System.Windows.Forms.MessageBox.Show("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur numerische Werte einzutragen. Seperatoren zwischen den Vorstellen werden nicht akzeptiert.");
+            }   
             return letUsStart;
         }
 
         public void DisplayUnitCalculator_BitsBytes()
         {
-            txbox_bit.Text = results._bit;
-            txbox_bit.IsReadOnly = true;
-            txbox_kilobit.Text = results.kiloBit;
-            txbox_kilobit.IsReadOnly = true;
-            txbox_megabit.Text = results.megaBit;
-            txbox_megabit.IsReadOnly = true;
-            txbox_gigabit.Text = results.gigaBit;
-            txbox_gigabit.IsReadOnly = true;
-            txbox_terabit.Text = results.teraBit;
-            txbox_terabit.IsReadOnly = true;
-            txbox_byte.Text = results._byte;
-            txbox_byte.IsReadOnly = true;
-            txbox_kilobyte.Text = results.kiloByte;
-            txbox_kilobyte.IsReadOnly = true;
-            txbox_megabyte.Text = results.megaByte;
-            txbox_megabyte.IsReadOnly = true;
-            txbox_gigabyte.Text = results.gigaByte;
-            txbox_gigabyte.IsReadOnly = true;
-            txbox_terabyte.Text = results.teraByte;
-            txbox_terabyte.IsReadOnly = true;
+            txbox_bit.Text              = results._bit;
+            txbox_bit.IsReadOnly        = true;
+            txbox_kilobit.Text          = results.kiloBit;
+            txbox_kilobit.IsReadOnly    = true;
+            txbox_megabit.Text          = results.megaBit;
+            txbox_megabit.IsReadOnly    = true;
+            txbox_gigabit.Text          = results.gigaBit;
+            txbox_gigabit.IsReadOnly    = true;
+            txbox_terabit.Text          = results.teraBit;
+            txbox_terabit.IsReadOnly    = true;
+            txbox_byte.Text             = results._byte;
+            txbox_byte.IsReadOnly       = true;
+            txbox_kilobyte.Text         = results.kiloByte;
+            txbox_kilobyte.IsReadOnly   = true;
+            txbox_megabyte.Text         = results.megaByte;
+            txbox_megabyte.IsReadOnly   = true;
+            txbox_gigabyte.Text         = results.gigaByte;
+            txbox_gigabyte.IsReadOnly   = true;
+            txbox_terabyte.Text         = results.teraByte;
+            txbox_terabyte.IsReadOnly   = true;
             var converter = new BrushConverter();
-            var brush = (Brush)converter.ConvertFromString("#00000000");
-            txbox_bit.Background = brush;
-            txbox_kilobit.Background = brush;
-            txbox_megabit.Background = brush;
-            txbox_gigabit.Background = brush;
-            txbox_terabit.Background = brush;
-            txbox_byte.Background = brush;
-            txbox_kilobyte.Background = brush;
-            txbox_megabyte.Background = brush;
-            txbox_gigabyte.Background = brush;
-            txbox_terabyte.Background = brush;
+            var brush     = (Brush)converter.ConvertFromString("#00000000");
+            txbox_bit.Background        = brush;
+            txbox_kilobit.Background    = brush;
+            txbox_megabit.Background    = brush;
+            txbox_gigabit.Background    = brush;
+            txbox_terabit.Background    = brush;
+            txbox_byte.Background       = brush;
+            txbox_kilobyte.Background   = brush;
+            txbox_megabyte.Background   = brush;
+            txbox_gigabyte.Background   = brush;
+            txbox_terabyte.Background   = brush;
         }
 
         public void Event_Btn_Click_Calculate ()
@@ -140,7 +138,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 results = unitCalculatorControl.CalculateBits(txbox_active);
                 if (results.noError == false)
                 {
-                    System.Windows.Forms.MessageBox.Show("Leider kann der Rechner aktuell keine so großen Zahlen verarbeiten.");
+                    System.Windows.Forms.MessageBox.Show("Something, somewhere went terribly wrong :(");
                 }
                 else 
                 {
@@ -155,16 +153,16 @@ namespace ITler_Ein_mal_Eins.Modules
         private void InitializeEvents()
         {
             //Abfrage Textbox geändert für die Färbung bei Falshceingabe
-            txbox_bit.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_byte.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_kilobit.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_kilobyte.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_megabit.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_megabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_gigabit.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_gigabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_terabit.TextChanged += Txbox_UnitCalculator_TextChanged;
-            txbox_terabyte.TextChanged += Txbox_UnitCalculator_TextChanged;
+            txbox_bit.TextChanged       += Txbox_UnitCalculator_TextChanged;
+            txbox_byte.TextChanged      += Txbox_UnitCalculator_TextChanged;
+            txbox_kilobit.TextChanged   += Txbox_UnitCalculator_TextChanged;
+            txbox_kilobyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
+            txbox_megabit.TextChanged   += Txbox_UnitCalculator_TextChanged;
+            txbox_megabyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
+            txbox_gigabit.TextChanged   += Txbox_UnitCalculator_TextChanged;
+            txbox_gigabyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
+            txbox_terabit.TextChanged   += Txbox_UnitCalculator_TextChanged;
+            txbox_terabyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
         }
 
         //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben
@@ -172,7 +170,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             origin.Show();
             origin.Left = this.Left;
-            origin.Top = this.Top;
+            origin.Top  = this.Top;
         }
 
         //Welche Box wurde gefüllt und wird übergeben?

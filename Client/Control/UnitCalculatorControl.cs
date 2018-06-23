@@ -9,6 +9,7 @@ using ITler_Ein_mal_Eins.Modules;
 
 namespace ITler_Ein_mal_Eins.Control
 {
+    #region Bits zu Bytes
     class UnitCalculatorControl
     {
         //Struktur zum Speichern der Werte, bevor Ausgabe in anderer Klasse erfolgt
@@ -18,20 +19,20 @@ namespace ITler_Ein_mal_Eins.Control
             public bool noError;
             public BitByteStrings(string bis, string kBis, string mBis, string gBis, string tBis, string bys, string kBys, string mBys, string gBys, string tBys, bool noErrors)
             {
-                _bit = bis;
-                kiloBit = kBis;
-                megaBit = mBis;
-                gigaBit = gBis;
-                teraBit = tBis;
-                _byte = bys;
-                kiloByte = kBys;
-                megaByte = mBys;
-                gigaByte = gBys;
-                teraByte = tBys;
-                noError = noErrors;
+                _bit        = bis;
+                kiloBit     = kBis;
+                megaBit     = mBis;
+                gigaBit     = gBis;
+                teraBit     = tBis;
+                _byte       = bys;
+                kiloByte    = kBys;
+                megaByte    = mBys;
+                gigaByte    = gBys;
+                teraByte    = tBys;
+                noError     = noErrors;
             }
         }
-
+        //Instanz der Struktur erstellen
         BitByteStrings result;
 
         //Grundgerüst für das Aufrufen der Funktion zum Rechnen von Bits zu Bytes
@@ -59,37 +60,39 @@ namespace ITler_Ein_mal_Eins.Control
             //Initiales Umrechnen des erhaltenen Wertes in Bits               
             BigFloat eingabe = new BigFloat(txbox_eingabe.Text);
             BigFloat ausgabe = 0;
+            BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
+            BigFloat k = 1024;    // sowie vor einem Überlauf des Standard schützen
             switch (txbox_eingabe.Name)
             {
                 case "txbox_bit":
                     ausgabe = eingabe;//Wert bereits in Einheit Bits
                     break;
                 case "txbox_kilobit":
-                    ausgabe = eingabe * 1024;
+                    ausgabe = eingabe * k;
                     break;
                 case "txbox_megabit":
-                    ausgabe = eingabe * 1024 * 1024;
+                    ausgabe = eingabe * k * k;
                     break;
                 case "txbox_gigabit":
-                    ausgabe = eingabe * 1024 * 1024 * 1024;
+                    ausgabe = eingabe * k * k * k;
                     break;
                 case "txbox_terabit":
-                    ausgabe = eingabe * 1024 * 1024 * 1024 * 1024;
+                    ausgabe = eingabe * k * k * k * k;
                     break;
                 case "txbox_byte":
-                    ausgabe = eingabe * 8;
+                    ausgabe = eingabe * b;
                     break;
                 case "txbox_kilobyte":
-                    ausgabe = eingabe * 8 * 1024;
+                    ausgabe = eingabe * b * k;
                     break;
                 case "txbox_megabyte":
-                    ausgabe = eingabe * 8 * 1024 * 1024;
+                    ausgabe = eingabe * b * k * k;
                     break;
                 case "txbox_gigabyte":
-                    ausgabe = eingabe * 8 * 1024 * 1024 * 1024;
+                    ausgabe = eingabe * b * k * k * k;
                     break;
                 case "txbox_terabyte":
-                    ausgabe = eingabe * 8 * 1024 * 1024 * 1024 * 1024;
+                    ausgabe = eingabe * b * k * k * k * k;
                     break;
             }
             return ausgabe;            
@@ -97,8 +100,8 @@ namespace ITler_Ein_mal_Eins.Control
 
         private void FillResults(BigFloat eingabeInBit)
         {
-            UInt64 b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
-            UInt64 k = 1024;    // sowie vor einem Überlauf des Standard schützen
+            BigFloat b      = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
+            BigFloat k      = 1024;    // sowie vor einem Überlauf des Standard schützen
             result._bit     =   (eingabeInBit.ToString());
             result.kiloBit  =   (eingabeInBit /  k).ToString();
             result.megaBit  =   (eingabeInBit / (k * k)).ToString();
@@ -111,5 +114,10 @@ namespace ITler_Ein_mal_Eins.Control
             result.teraByte =   (eingabeInBit / (b * k * k * k * k)).ToString();  
         }
     }
+    #endregion
+
+    #region Einheitenrechner
+
+    #endregion
 }
 
