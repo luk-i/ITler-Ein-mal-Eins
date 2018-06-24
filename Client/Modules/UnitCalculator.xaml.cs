@@ -88,8 +88,8 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 //Fehlermeldung und zurücksetzen
                 System.Windows.Forms.MessageBox.Show
-                ("Bitte füllen Sie nur ein einzelnes Feld aus und achten Sie darauf, nur positive numerische Werte einzutragen. " + Environment.NewLine +
-                 "Benutzen Sie bitte einen Punkt '.' Als Dezimaltrennzeichen " + Environment.NewLine +
+                ("Bitte füllen Sie ein einzelnes Feld aus und achten Sie darauf, nur positive, numerische Werte einzutragen. " + Environment.NewLine +
+                 "Benutzen Sie bitte einen Punkt '.' Als Dezimaltrennzeichen. " + Environment.NewLine +
                  "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine  +Environment.NewLine +
                  "Beispiel: 42.481516");
             }   
@@ -156,16 +156,20 @@ namespace ITler_Ein_mal_Eins.Modules
         private void InitializeEvents()
         {
             //Abfrage Textbox geändert für die Färbung bei Falshceingabe
-            txbox_bit.TextChanged       += Txbox_UnitCalculator_TextChanged;
-            txbox_byte.TextChanged      += Txbox_UnitCalculator_TextChanged;
-            txbox_kilobit.TextChanged   += Txbox_UnitCalculator_TextChanged;
-            txbox_kilobyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
-            txbox_megabit.TextChanged   += Txbox_UnitCalculator_TextChanged;
-            txbox_megabyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
-            txbox_gigabit.TextChanged   += Txbox_UnitCalculator_TextChanged;
-            txbox_gigabyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
-            txbox_terabit.TextChanged   += Txbox_UnitCalculator_TextChanged;
-            txbox_terabyte.TextChanged  += Txbox_UnitCalculator_TextChanged;
+            txbox_bit.TextChanged           += Txbox_UnitCalculator_TextChanged;
+            txbox_byte.TextChanged          += Txbox_UnitCalculator_TextChanged;
+            txbox_kilobit.TextChanged       += Txbox_UnitCalculator_TextChanged;
+            txbox_kilobyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
+            txbox_megabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
+            txbox_megabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
+            txbox_gigabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
+            txbox_gigabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
+            txbox_terabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
+            txbox_terabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
+            txbox_binaer.TextChanged        += Txbox_UnitCalculator_TextChanged;
+            txbox_oktal.TextChanged         += Txbox_UnitCalculator_TextChanged;
+            txbox_dezimal.TextChanged       += Txbox_UnitCalculator_TextChanged;
+            txbox_hexadezimal.TextChanged   += Txbox_UnitCalculator_TextChanged;
         }
 
         //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben

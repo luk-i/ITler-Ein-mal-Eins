@@ -93,7 +93,7 @@
                         <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0"/>
                         <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0"/>
                         
-                        <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Tag=""/>
+                        <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Tag="4"/>
                         <TextBox x:Name="txbox_oktal"       Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Tag=""/>
                         <TextBox x:Name="txbox_dezimal"     Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Tag=""/>
                         <TextBox x:Name="txbox_hexadezimal" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Tag=""/>

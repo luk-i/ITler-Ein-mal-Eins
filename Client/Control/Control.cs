@@ -19,8 +19,9 @@ namespace ITler_Ein_mal_Eins.Control
         public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box)
         {
             //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
-            //Modus 2: Gleitkommazahlen inklusive Vorzeichen erlaubt
+            //Modus 2: Gleitkommazahlen exklusive Vorzeichen erlaubt
             //Modus 3: IP-Segmente - Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
+            //Modus 4: Binär inklusive Komma ohne Vorzeichen
             int noDigit = 0;
             int comma = 0;
             int place = 0;
@@ -46,7 +47,6 @@ namespace ITler_Ein_mal_Eins.Control
                                 {
                                     noDigit++;
                                 }
-
                             }
                             else 
                             {
@@ -70,6 +70,24 @@ namespace ITler_Ein_mal_Eins.Control
                                 }
                             }
                         }
+                        break;
+                    case "4":
+                        if (!Char.IsDigit(x))
+                        {
+                            if (x == '.')
+                            {
+                                comma++;
+                                if ((comma > 1 || place == 0) || (signed == 1 && place == 1))
+                                {
+                                    noDigit++;
+                                }
+                            }
+                        }
+                        if (x != '0' && x != '1' && x != '.')
+                        {
+                            noDigit++;
+                        }
+                        place++;
                         break;
                 }
             }
