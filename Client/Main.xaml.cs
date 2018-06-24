@@ -27,7 +27,6 @@ namespace ITler_Ein_mal_Eins
             control = new Control.Control();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-
         }
 
 

@@ -87,7 +87,8 @@ namespace ITler_Ein_mal_Eins.Control
             result.kiloBit  =   (eingabeInBit /  k).ToString();
             result.megaBit  =   (eingabeInBit / (k * k)).ToString();
             result.gigaBit  =   (eingabeInBit / (k * k * k)).ToString();
-            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString();       
+            result.teraBit  =   (eingabeInBit / (k * k * k * k)).ToString();
+
             result._byte    =   (eingabeInBit /  b).ToString();
             result.kiloByte =   (eingabeInBit / (b * k)).ToString();
             result.megaByte =   (eingabeInBit / (b * k * k)).ToString();

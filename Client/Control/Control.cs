@@ -22,6 +22,8 @@ namespace ITler_Ein_mal_Eins.Control
             //Modus 2: Gleitkommazahlen exklusive Vorzeichen erlaubt
             //Modus 3: IP-Segmente - Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
             //Modus 4: Binär inklusive Komma ohne Vorzeichen
+            //Modus 5: Oktal inklusive Komma ohne Vorzeichen
+            //Modus 6: Dezimal inklusive Komma ohne Vorzeichen
             int noDigit = 0;
             int comma = 0;
             int place = 0;
@@ -86,6 +88,64 @@ namespace ITler_Ein_mal_Eins.Control
                         if (x != '0' && x != '1' && x != '.')
                         {
                             noDigit++;
+                        }
+                        place++;
+                        break;
+                    case "5":
+                        if (!Char.IsDigit(x))
+                        {
+                            if (x == '.')
+                            {
+                                comma++;
+                                if ((comma > 1 || place == 0) || (signed == 1 && place == 1))
+                                {
+                                    noDigit++;
+                                }
+                            }
+                            else
+                            {
+                                noDigit++;
+                            }
+                        }
+                        if (x == '8' || x == '9')
+                        {
+                            noDigit++;
+                        }
+                        place++;
+                        break;
+                    case "6":
+                        if (!Char.IsDigit(x))
+                        {
+                            if (x == '.')
+                            {
+                                comma++;
+                                if ((comma > 1 || place == 0) || (signed == 1 && place == 1))
+                                {
+                                    noDigit++;
+                                }
+                            }
+                            else
+                            {
+                                noDigit++;
+                            }
+                        }
+                        place++;
+                        break;
+                    case "7":
+                        if (!Char.IsDigit(x))
+                        {
+                            if (x == '.')
+                            {
+                                comma++;
+                                if ((comma > 1 || place == 0) || (signed == 1 && place == 1))
+                                {
+                                    noDigit++;
+                                }
+                            }
+                            else if (x != 'A' && x != 'B' && x != 'C' && x != 'D' && x != 'E' && x != 'F' && x != 'a' && x != 'b' && x != 'c' && x != 'd' && x != 'e' && x != 'f')
+                            {
+                                noDigit++;
+                            }
                         }
                         place++;
                         break;
