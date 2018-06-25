@@ -29,7 +29,9 @@ namespace ITler_Ein_mal_Eins.Control
             BYTE,
             BINARYFLOAT,
             OKTAL,
-            DECIMAL
+            DECIMAL,
+            HEX,
+            SUBNETMASK
         };
 
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
@@ -45,14 +47,14 @@ namespace ITler_Ein_mal_Eins.Control
             {
                 switch (box.Tag)
                 {
-                    case "1":
+                    case digitTag.UNSIGNEDINTEGER:
                         int ipRange = 0;
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
                         }
                         break;
-                    case "2":                        
+                    case digitTag.UNSIGNEDFLOAT:                        
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -70,23 +72,17 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "3":
+                    case digitTag.BYTE:
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
                         }
                         else
                         {
-                            if (Int32.TryParse(box.Text, out ipRange))
-                            {
-                                if (ipRange < 0 || ipRange > 255)
-                                {
-                                    noDigit++;
-                                }
-                            }
+                            IpCalculator.isIpV4Digit(box, false);
                         }
                         break;
-                    case "4":
+                    case digitTag.BINARYFLOAT:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -104,7 +100,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "5":
+                    case digitTag.OKTAL:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -126,7 +122,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "6":
+                    case digitTag.DECIMAL:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -144,7 +140,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "7":
+                    case digitTag.HEX:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -161,6 +157,16 @@ namespace ITler_Ein_mal_Eins.Control
                             }
                         }
                         place++;
+                        break;
+                    case digitTag.SUBNETMASK:
+                        if (!Char.IsDigit(x))
+                        {
+                            noDigit++;
+                        }
+                        else
+                        {
+                            IpCalculator.isIpV4Digit(box, true);
+                        }
                         break;
                 }
             }

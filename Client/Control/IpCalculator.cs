@@ -17,7 +17,7 @@ namespace ITler_Ein_mal_Eins.Control
         #region IPv4 Digit Kontrolle
 
         #region IsIPv4Digit - Funktionen
-        public bool isIpV4Digit(System.Windows.Controls.TextBox box, bool isSubnet)
+        public static bool isIpV4Digit(System.Windows.Controls.TextBox box, bool isSubnet)
         {
             byte tmp = 0;
             // TryParse: Versucht, string in int zu wandeln und gibt aus, ob dies geklappt hat
@@ -38,7 +38,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public bool isIpV4Digit(int number, bool isSubnet)
+        public static bool isIpV4Digit(int number, bool isSubnet)
         {
             if(number < 0 || number > (int)((Math.Pow(2, 8) - 1)))
             {
@@ -57,7 +57,7 @@ namespace ITler_Ein_mal_Eins.Control
         #endregion
 
         #region isLegitIpV4SubnetMask - Funktionen
-        public bool isLegitIpV4SubnetMask(TextBox first_txt, TextBox second_txt,
+        public static bool isLegitIpV4SubnetMask(TextBox first_txt, TextBox second_txt,
             TextBox third_txt, TextBox forth_txt)
         {
             if (isIpV4Digit(first_txt, true) && isIpV4Digit(second_txt, true) &&
@@ -102,7 +102,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public bool isLegitIpV4SubnetMask(int first, int second, int third, int forth)
+        public static bool isLegitIpV4SubnetMask(int first, int second, int third, int forth)
         {
             if(isIpV4Digit(first, true) && isIpV4Digit(second, true) &&
                 isIpV4Digit(third, true) && isIpV4Digit(forth, true))
@@ -144,7 +144,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
-        private bool isLegitSubnetDigit(byte digit)
+        private static bool isLegitSubnetDigit(byte digit)
         {
             byte[] subnetDigits = new byte[8] { 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
                 , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
