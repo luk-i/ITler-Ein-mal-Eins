@@ -146,7 +146,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         private static bool isLegitSubnetDigit(byte digit)
         {
-            byte[] subnetDigits = new byte[8] { 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
+            byte[] subnetDigits = new byte[9] {0, 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
                 , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
                 (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
             for(int i = 0; i < subnetDigits.Length; i++)

@@ -79,7 +79,8 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         else
                         {
-                            IpCalculator.isIpV4Digit(box, false);
+                            if (!IpCalculator.isIpV4Digit(box, false))
+                                noDigit++;
                         }
                         break;
                     case digitTag.BINARYFLOAT:
@@ -165,7 +166,8 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         else
                         {
-                            IpCalculator.isIpV4Digit(box, true);
+                            if (!IpCalculator.isIpV4Digit(box, true))
+                                noDigit++;
                         }
                         break;
                 }
