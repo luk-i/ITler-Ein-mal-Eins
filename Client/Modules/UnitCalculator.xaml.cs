@@ -25,7 +25,8 @@ namespace ITler_Ein_mal_Eins.Modules
         TextBox txbox_active;
         Control.UnitCalculatorControl unitCalculatorControl;
         //Struct
-        UnitCalculatorControl.BitByteStrings results;
+        UnitCalculatorControl.BitByteStrings bitByteStrings;
+        UnitCalculatorControl.Systems systems;
 
         public UnitCalculator(Window _origin, Control.Control _control)
         {
@@ -37,7 +38,7 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         #region Methods Bits
-        //Textboxen zurücksetzen
+        //Textboxen zurücksetzen Bits
         private void Clear_Txbox_UnitC_Bits()
         {
             txbox_bit.Clear();
@@ -98,25 +99,25 @@ namespace ITler_Ein_mal_Eins.Modules
 
         public void DisplayUnitCalculator_BitsBytes()
         {
-            txbox_bit.Text              = results._bit;
+            txbox_bit.Text              = bitByteStrings._bit;
             txbox_bit.IsReadOnly        = true;
-            txbox_kilobit.Text          = results.kiloBit;
+            txbox_kilobit.Text          = bitByteStrings.kiloBit;
             txbox_kilobit.IsReadOnly    = true;
-            txbox_megabit.Text          = results.megaBit;
+            txbox_megabit.Text          = bitByteStrings.megaBit;
             txbox_megabit.IsReadOnly    = true;
-            txbox_gigabit.Text          = results.gigaBit;
+            txbox_gigabit.Text          = bitByteStrings.gigaBit;
             txbox_gigabit.IsReadOnly    = true;
-            txbox_terabit.Text          = results.teraBit;
+            txbox_terabit.Text          = bitByteStrings.teraBit;
             txbox_terabit.IsReadOnly    = true;
-            txbox_byte.Text             = results._byte;
+            txbox_byte.Text             = bitByteStrings._byte;
             txbox_byte.IsReadOnly       = true;
-            txbox_kilobyte.Text         = results.kiloByte;
+            txbox_kilobyte.Text         = bitByteStrings.kiloByte;
             txbox_kilobyte.IsReadOnly   = true;
-            txbox_megabyte.Text         = results.megaByte;
+            txbox_megabyte.Text         = bitByteStrings.megaByte;
             txbox_megabyte.IsReadOnly   = true;
-            txbox_gigabyte.Text         = results.gigaByte;
+            txbox_gigabyte.Text         = bitByteStrings.gigaByte;
             txbox_gigabyte.IsReadOnly   = true;
-            txbox_terabyte.Text         = results.teraByte;
+            txbox_terabyte.Text         = bitByteStrings.teraByte;
             txbox_terabyte.IsReadOnly   = true;
             var converter               = new BrushConverter();
             var brush                   = (Brush)converter.ConvertFromString("#00000000");
@@ -132,14 +133,14 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_terabyte.Background   = brush;
         }
 
-        public void Event_Btn_Click_Calculate ()
+        public void Event_Btn_Click_Calculate_Bits ()
         {
             if (CanWeStart_bits() == true)
             {
                 unitCalculatorControl = new UnitCalculatorControl();
                 txbox_active = Active_TextBox();
-                results = unitCalculatorControl.CalculateBits(txbox_active);
-                if (results.noError == false)
+                bitByteStrings = unitCalculatorControl.CalculateBits(txbox_active);
+                if (bitByteStrings.noError == false)
                 {
                     System.Windows.Forms.MessageBox.Show("Something, somewhere went terribly wrong :(");
                 }
@@ -152,6 +153,86 @@ namespace ITler_Ein_mal_Eins.Modules
         #endregion
 
         #region Methods Systems
+
+        //Textboxen zurücksetzen Bits
+        private void Clear_Txbox_UnitC_Systems()
+        {
+            txbox_binaer.Clear();
+            txbox_oktal.Clear();
+            txbox_dezimal.Clear();
+            txbox_hexadezimal.Clear();
+            
+            txbox_binaer.IsReadOnly = false;
+            txbox_oktal.IsReadOnly = false;
+            txbox_dezimal.IsReadOnly = false;
+            txbox_hexadezimal.IsReadOnly = false;
+        }
+
+        public void Event_Btn_Click_Calculate_Systems()
+        {
+            if (CanWeStart_Systems() == true)
+            {
+                unitCalculatorControl = new UnitCalculatorControl();
+                txbox_active = Active_TextBox();
+                systems = unitCalculatorControl.CalculateSystems(txbox_active);
+                if (systems.noError == false)
+                {
+                    System.Windows.Forms.MessageBox.Show("Something, somewhere went terribly wrong :(");
+                }
+                else
+                {
+                    DisplayUnitCalculator_Systems();
+                }
+            }
+        }
+
+        //Abfragen, ob die Eingaben korrekt sind.
+        private bool CanWeStart_Systems()
+        {
+            bool letUsStart = false;
+            int i = 0;
+            //Wenn Textbox ausgefüllt, dann erhöhe i
+            if (txbox_binaer.Text != "") { i++; }
+            if (txbox_oktal.Text != "") { i++; }
+            if (txbox_dezimal.Text != "") { i++; }
+            if (txbox_hexadezimal.Text != "") { i++; }
+
+            //Es darf nur genau eine Box ausgefüllt sein und es muss ein erlaubter Wert sein
+            txbox_active = Active_TextBox();
+            if (i == 1 && control.CheckTextboxIfNumeric(txbox_active) == true)
+            {
+                letUsStart = true;
+            }
+            else
+            {
+                //Fehlermeldung und zurücksetzen
+                System.Windows.Forms.MessageBox.Show
+                ("Bitte füllen Sie ein einzelnes Feld aus und achten Sie darauf, nur positive Werte innerhalb des gewählten Zahlensystems einzutragen. " + Environment.NewLine +
+                 "Benutzen Sie bitte einen Punkt '.' Als Dezimaltrennzeichen. " + Environment.NewLine +
+                 "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine + Environment.NewLine +
+                 "Beispiel: 123.AFFE (Bei Hexadezimal)");
+            }
+            return letUsStart;
+        }
+
+        public void DisplayUnitCalculator_Systems()
+        {
+            txbox_binaer.Text               = systems.binaer;
+            txbox_binaer.IsReadOnly         = true;
+            txbox_oktal.Text                = systems.oktal;
+            txbox_oktal.IsReadOnly          = true;
+            txbox_dezimal.Text              = systems.dezimal;
+            txbox_dezimal.IsReadOnly        = true;
+            txbox_hexadezimal.Text          = systems.hexadezimal;
+            txbox_hexadezimal.IsReadOnly    = true;
+           
+            var converter = new BrushConverter();
+            var brush = (Brush)converter.ConvertFromString("#00000000");
+            txbox_binaer.Background = brush;
+            txbox_oktal.Background = brush;
+            txbox_dezimal.Background = brush;
+            txbox_hexadezimal.Background = brush;
+        }
 
         #endregion
 
@@ -187,27 +268,38 @@ namespace ITler_Ein_mal_Eins.Modules
         //Welche Box wurde gefüllt und wird übergeben?
         private TextBox Active_TextBox()
         {
-            if (txbox_bit.Text      != "") { txbox_active = txbox_bit; }
-            if (txbox_kilobit.Text  != "") { txbox_active = txbox_kilobit; }
-            if (txbox_megabit.Text  != "") { txbox_active = txbox_megabit; }
-            if (txbox_gigabit.Text  != "") { txbox_active = txbox_gigabit; }
-            if (txbox_terabit.Text  != "") { txbox_active = txbox_terabit; }
-            if (txbox_byte.Text     != "") { txbox_active = txbox_byte; }
-            if (txbox_kilobyte.Text != "") { txbox_active = txbox_kilobyte; }
-            if (txbox_megabyte.Text != "") { txbox_active = txbox_megabyte; }
-            if (txbox_gigabyte.Text != "") { txbox_active = txbox_gigabyte; }
-            if (txbox_terabyte.Text != "") { txbox_active = txbox_terabyte; }
+            if (txbox_bit.Text          != "") { txbox_active = txbox_bit; }
+            if (txbox_kilobit.Text      != "") { txbox_active = txbox_kilobit; }
+            if (txbox_megabit.Text      != "") { txbox_active = txbox_megabit; }
+            if (txbox_gigabit.Text      != "") { txbox_active = txbox_gigabit; }
+            if (txbox_terabit.Text      != "") { txbox_active = txbox_terabit; }
+            if (txbox_byte.Text         != "") { txbox_active = txbox_byte; }
+            if (txbox_kilobyte.Text     != "") { txbox_active = txbox_kilobyte; }
+            if (txbox_megabyte.Text     != "") { txbox_active = txbox_megabyte; }
+            if (txbox_gigabyte.Text     != "") { txbox_active = txbox_gigabyte; }
+            if (txbox_terabyte.Text     != "") { txbox_active = txbox_terabyte; }
+            if (txbox_binaer.Text       != "") { txbox_active = txbox_binaer; }
+            if (txbox_oktal.Text        != "") { txbox_active = txbox_oktal; }
+            if (txbox_dezimal.Text      != "") { txbox_active = txbox_dezimal; }
+            if (txbox_hexadezimal.Text  != "") { txbox_active = txbox_hexadezimal; }
+
             return txbox_active;
         }
 
         //Modul über eigenen Button schließen
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
-        //Alle Werte löschen
+        //Alle Werte löschen Bits
         private void Btn_Bits_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC_Bits();
 
-        //Werte berechen
-        private void Btn_Bits_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate();
+        //Alle Werte löschen Systeme
+        private void Btn_Systems_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC_Systems();
+
+        //Werte berechen Bits
+        private void Btn_Bits_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate_Bits();
+
+        //Werte berechen Zahlensysteme
+        private void Btn_Systems_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate_Systems();
 
         //Ist die Eingabe numerisch?
         private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e) => control.CheckTextboxIfNumeric((TextBox)e.Source);
