@@ -22,7 +22,7 @@
                         <TextBox x:Name="Subnet_textBox3" HorizontalAlignment="Left" Height="22" Margin="90,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35" Tag="3"/>
                         <TextBox x:Name="Subnet_textBox4" HorizontalAlignment="Left" Height="22" Margin="130,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35" Tag="3"/>
                         <TextBox x:Name="Subnet_textBox_ShortWritten" HorizontalAlignment="Left" Height="22" Margin="192,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="26" Tag="3"/>
-                        <Label x:Name="tb_1_DecimalData" Content="Bitte Werte eintragen" HorizontalAlignment="Left" Height="26" Margin="10,118,0,0" VerticalAlignment="Top" Width="155"/>
+                        <Label x:Name="label_AdressGrid_IsDataCorrect" Content="Bitte Werte eintragen" HorizontalAlignment="Left" Height="40" Margin="10,118,0,0" VerticalAlignment="Top" Width="221"/>
                         <Label x:Name="SubnetMask_Slash" Content="/" HorizontalAlignment="Left" Height="32" Margin="176,88,0,0" VerticalAlignment="Top" Width="16"/>
                         <Button x:Name="button_Submit" Content="Einfügen" HorizontalAlignment="Left" Height="22" Margin="170,37,0,0" VerticalAlignment="Top" Width="61" Click="button_Submit_Click"/>
                     </Grid>

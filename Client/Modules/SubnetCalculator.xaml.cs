@@ -85,15 +85,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
 
             bool tmp = IpCalculator.isIpV4Digit(Ip4_textBox1, true);
-            // Test, obs geht
-            if (tmp)
-            {
-                tb_1_DecimalData.Content = "Is Allowed";
-            }
-            else
-            {
-                tb_1_DecimalData.Content = "Not Allowed";
-            }
+
         }
         private bool testFields()
         {
@@ -101,7 +93,23 @@ namespace ITler_Ein_mal_Eins.Modules
                 IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
             {
                 //Test, ob Subnetzmaske erlaubt ist.
-
+                if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
+                     IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
+                {
+                    if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
+                        Subnet_textBox3, Subnet_textBox4))
+                    {
+                        createErrorLabel(ErrorCode.NOERROR);
+                    }
+                    else
+                    {
+                        createErrorLabel(ErrorCode.WRONGSUBNETCODE);
+                    }
+                }
+                else
+                {
+                    createErrorLabel(ErrorCode.WRONGSUBNETCODE);
+                }
             }
             else
             {
@@ -119,13 +127,13 @@ namespace ITler_Ein_mal_Eins.Modules
             switch (_code)
             {
                 case ErrorCode.NOERROR:
-                   // Errorcodes.SubnetCalculator_NOERROR.
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.NOERROR;
                     break;
                 case ErrorCode.WRONGIPV4:
-
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.IPV4DIGITISNOTVALID;
                     break;
                 case ErrorCode.WRONGSUBNETCODE:
-
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.SUBNETMASKISNOTVALID;
                     break;
             // Endoftheline
             }
