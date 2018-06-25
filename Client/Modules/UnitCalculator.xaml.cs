@@ -64,6 +64,7 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_megabyte.IsReadOnly   = false;
             txbox_gigabyte.IsReadOnly   = false;
             txbox_terabyte.IsReadOnly   = false;
+            btn_bits_calculate.IsEnabled = true;
         }
 
         //Abfragen, ob die Eingaben korrekt sind.
@@ -121,6 +122,8 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_gigabyte.IsReadOnly   = true;
             txbox_terabyte.Text         = bitByteStrings.teraByte;
             txbox_terabyte.IsReadOnly   = true;
+            btn_bits_calculate.IsEnabled = false;
+
             var converter               = new BrushConverter();
             var brush                   = (Brush)converter.ConvertFromString("#00000000");
             txbox_bit.Background        = brush;
@@ -168,6 +171,7 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_oktal.IsReadOnly = false;
             txbox_dezimal.IsReadOnly = false;
             txbox_hexadezimal.IsReadOnly = false;
+            btn_systems_calculate.IsEnabled = true;
         }
 
         public void Event_Btn_Click_Calculate_Systems()
@@ -227,6 +231,7 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_dezimal.IsReadOnly        = true;
             txbox_hexadezimal.Text          = systems.hexadezimal;
             txbox_hexadezimal.IsReadOnly    = true;
+            btn_systems_calculate.IsEnabled = false;
            
             var converter = new BrushConverter();
             var brush = (Brush)converter.ConvertFromString("#00000000");

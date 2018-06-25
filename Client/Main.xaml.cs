@@ -41,12 +41,16 @@ namespace ITler_Ein_mal_Eins
             Modules.UnitCalculator calculator = new Modules.UnitCalculator(this, control);
             this.Hide();
             calculator.Show();
+            calculator.Left = this.Left;
+            calculator.Top = this.Top;
         }
         private void SubnetCalculator_Button_Click(object sender, RoutedEventArgs e)
         {
             Modules.SubnetCalculator sCalculator = new Modules.SubnetCalculator(this, control);
             this.Hide();
             sCalculator.Show();
+            sCalculator.Left = this.Left;
+            sCalculator.Top = this.Top;
         }
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)

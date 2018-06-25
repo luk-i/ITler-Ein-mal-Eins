@@ -23,14 +23,6 @@ namespace ITler_Ein_mal_Eins.Control
             return workString;
         }
 
-        public void WasTheInputSigned (BigFloat input, string funktion)
-        {
-            if (input)
-            {
-
-            }
-        }
-
         #endregion
 
         #region Bits zu Bytes
@@ -65,6 +57,8 @@ namespace ITler_Ein_mal_Eins.Control
             {
                 BigFloat eingabeInBit = CalculateAnythingToBits(txbox_eingabe);
                 FillResults_Bits(eingabeInBit);
+                BigFloat wasInputSigned = BigFloat.Parse(txbox_eingabe.Text);
+                WasTheInputSigned_Bits (wasInputSigned);
             }
             catch
             {
@@ -117,7 +111,24 @@ namespace ITler_Ein_mal_Eins.Control
             bitByteStrings.megaByte = (eingabeInBit / (b * k * k)).ToString();
             bitByteStrings.gigaByte = (eingabeInBit / (b * k * k * k)).ToString();
             bitByteStrings.teraByte = (eingabeInBit / (b * k * k * k * k)).ToString();
-            WasTheInputSigned(eingabeInBit, "Bits");
+            
+        }
+
+        public void WasTheInputSigned_Bits(BigFloat input)
+        {
+            if (input < 0)
+            {
+                bitByteStrings._bit     = "-" + bitByteStrings._bit;
+                bitByteStrings.kiloBit  = "-" + bitByteStrings.kiloBit;
+                bitByteStrings.megaBit  = "-" + bitByteStrings.megaBit;
+                bitByteStrings.gigaBit  = "-" + bitByteStrings.gigaBit;
+                bitByteStrings.teraBit  = "-" + bitByteStrings.teraBit;
+                bitByteStrings._byte    = "-" + bitByteStrings._byte;
+                bitByteStrings.kiloByte = "-" + bitByteStrings.kiloByte;
+                bitByteStrings.megaByte = "-" + bitByteStrings.megaByte;
+                bitByteStrings.gigaByte = "-" + bitByteStrings.gigaByte;
+                bitByteStrings.teraByte = "-" + bitByteStrings.teraByte;
+            }
         }
 
         #endregion
@@ -167,12 +178,21 @@ namespace ITler_Ein_mal_Eins.Control
             string ausgabe = null;
             switch (txbox_eingabe.Name)
             {
-                case "txbox_binaer": ausgabe = eingabe; break; //Wert bereits in Dezimal
-                case "txbox_oktal": ausgabe = eingabe; break; 
-                case "txbox_dezimal": ausgabe = eingabe; break; 
-                case "txbox_hexadezimal": ausgabe = eingabe; break; 
+                case "txbox_binaer": ausgabe = StringUmrechnen(eingabe, 2); break; 
+                case "txbox_oktal": ausgabe = StringUmrechnen(eingabe, 8); ; break; 
+                case "txbox_dezimal": ausgabe = eingabe; break; //Wert bereits in Dezimal
+                case "txbox_hexadezimal": ausgabe = StringUmrechnen(eingabe, 16); ; break; 
             }
             return ausgabe;
+        }
+
+        private string StringUmrechnen (string eingabe, int system)
+        {
+            string ergebnis = null;
+
+
+
+            return ergebnis;
         }
 
         private void FillResults_Decimal(string eingabeInDecimal)
