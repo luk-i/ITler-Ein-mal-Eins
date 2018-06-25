@@ -13,21 +13,34 @@ namespace ITler_Ein_mal_Eins.Control
         {
 
         }
- 
+
+        /*
+         *   Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
+         *   Modus 2: Gleitkommazahlen exklusive Vorzeichen erlaubt
+         *   Modus 3: IP-Segmente - Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
+         *   Modus 4: Binär inklusive Komma ohne Vorzeichen
+         *   Modus 5: Oktal inklusive Komma ohne Vorzeichen
+         *   Modus 6: Dezimal inklusive Komma ohne Vorzeichen
+         */   
+        public enum digitTag
+        {
+            UNSIGNEDINTEGER,
+            UNSIGNEDFLOAT,
+            BYTE,
+            BINARYFLOAT,
+            OKTAL,
+            DECIMAL
+        };
+
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
         // Wenn nicht, wird das Feld rot gefärbt und false zurückgegeben
         public bool CheckTextboxIfNumeric(System.Windows.Controls.TextBox box)
         {
-            //Modus 1: Nur vorzeichenlose Ganzzahlen erlaubt
-            //Modus 2: Gleitkommazahlen exklusive Vorzeichen erlaubt
-            //Modus 3: IP-Segmente - Nur vorzeichenlose Ganzzahlen im Bereich 0-255 erlaubt 
-            //Modus 4: Binär inklusive Komma ohne Vorzeichen
-            //Modus 5: Oktal inklusive Komma ohne Vorzeichen
-            //Modus 6: Dezimal inklusive Komma ohne Vorzeichen
             int noDigit = 0;
             int comma = 0;
             int place = 0;
             int signed = 0;
+
             foreach (char x in box.Text)
             {
                 switch (box.Tag)
