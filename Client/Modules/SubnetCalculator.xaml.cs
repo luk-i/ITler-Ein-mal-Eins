@@ -18,10 +18,23 @@ namespace ITler_Ein_mal_Eins.Modules
 
     public partial class SubnetCalculator : Window
     {
-        //Variables
+        #region Variables
         Window origin;
         IpCalculator ipControl;
         Control.Control control;
+
+        #endregion
+
+        #region Enum
+
+        private enum ErrorCode
+        {
+            NOERROR,
+            WRONGIPV4,
+            WRONGSUBNETCODE
+        }
+
+        #endregion
 
         public SubnetCalculator(Window _origin, Control.Control _control)
         {
@@ -57,10 +70,12 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox1.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
-            Subnet_textBox4.TextChanged += Subnet_textBox4_TextChanged;
+            Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
         }
 
         #endregion
+
+        #region Functions
         /*
          *  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
          */
@@ -80,21 +95,43 @@ namespace ITler_Ein_mal_Eins.Modules
                 tb_1_DecimalData.Content = "Not Allowed";
             }
         }
-
         private bool testFields()
         {
-            if(IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
+            if (IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
                 IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
             {
+                //Test, ob Subnetzmaske erlaubt ist.
 
             }
             else
             {
-                // Label Fehlermeldung ausgeben
-
+                // Ist falsche IPv4 Adresse
+                createErrorLabel(ErrorCode.WRONGIPV4);
             }
             return false;
         }
+
+        /*
+         * Ausgabe der Fehlermeldungen erfolgt über Ressourcen!!!
+         */
+        private void createErrorLabel(ErrorCode _code)
+        {
+            switch (_code)
+            {
+                case ErrorCode.NOERROR:
+                   // Errorcodes.SubnetCalculator_NOERROR.
+                    break;
+                case ErrorCode.WRONGIPV4:
+
+                    break;
+                case ErrorCode.WRONGSUBNETCODE:
+
+                    break;
+            // Endoftheline
+            }
+        }
+
+        #endregion
 
         #region Events
         /*
@@ -119,11 +156,6 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
-        }
-
-        private void Subnet_textBox4_TextChanged(object sender, TextChangedEventArgs e)
         {
             control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
