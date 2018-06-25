@@ -107,9 +107,9 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </StackPanel.RenderTransform>
-                        <Button x:Name="btn_systems_calculate" Content="Berechnen" Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_systems_reset" Content="Zurücksetzen"  Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_systems_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_calculate"  Content="Berechnen"     Click="Btn_Systems_Calculate_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_reset"      Content="Zurücksetzen"  Click="Btn_Systems_Reset_Click"  Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_exit"       Content="Beenden"       Click="Btn_Exit_Click"  Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
 
                 </Grid>
