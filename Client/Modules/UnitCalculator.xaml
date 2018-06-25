@@ -14,7 +14,10 @@
 
             <!--#region bits-bites-->
             <TabItem Header="Bits - Bytes">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                <Grid Margin="0,0,0,0">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+                    </Grid.Background>
                     <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -73,7 +76,10 @@
 
             <!--#region zahlensysteme-->
             <TabItem Header="Zahlensysteme">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
+                <Grid Margin="0,0,0,0">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+                    </Grid.Background>
                     <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />

@@ -95,7 +95,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 System.Windows.Forms.MessageBox.Show
                 ("Bitte füllen Sie ein einzelnes Feld mit einem numerischen Wert. " + Environment.NewLine +
                  "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine  +Environment.NewLine +
-                 "Beispiel: 42.481516");
+                 "Beispiel: -42.481516");
             }   
             return letUsStart;
         }
@@ -125,7 +125,7 @@ namespace ITler_Ein_mal_Eins.Modules
             btn_bits_calculate.IsEnabled = false;
 
             var converter               = new BrushConverter();
-            var brush                   = (Brush)converter.ConvertFromString("#00000000");
+            var brush                   = (Brush)converter.ConvertFromString("#CCCCCCCC");
             txbox_bit.Background        = brush;
             txbox_kilobit.Background    = brush;
             txbox_megabit.Background    = brush;
@@ -234,7 +234,7 @@ namespace ITler_Ein_mal_Eins.Modules
             btn_systems_calculate.IsEnabled = false;
            
             var converter = new BrushConverter();
-            var brush = (Brush)converter.ConvertFromString("#00000000");
+            var brush = (Brush)converter.ConvertFromString("#CCCCCCCC");
             txbox_binaer.Background = brush;
             txbox_oktal.Background = brush;
             txbox_dezimal.Background = brush;
