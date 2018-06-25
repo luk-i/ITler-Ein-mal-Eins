@@ -57,7 +57,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         private BigFloat CalculateAnythingToBits(TextBox txbox_eingabe)
         {
-            //Initiales Umrechnen des erhaltenen Wertes in Bits               
+            //Initiales Umrechnen des erhaltenen Wertes in Bits                         
             BigFloat eingabe = BigFloat.Parse(txbox_eingabe.Text);
             BigFloat ausgabe = 0;
             BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
@@ -123,8 +123,8 @@ namespace ITler_Ein_mal_Eins.Control
             systems.noError = true;
             try
             {
-                BigFloat eingabeInBinary = CalculateAnythingToBinary(txbox_eingabe);
-                FillResults_Binary(eingabeInBinary);
+                string eingabeInBinary = CalculateAnythingToDecimal(txbox_eingabe);
+                FillResults_Decimal(eingabeInBinary);
             }
             catch
             {
@@ -136,35 +136,28 @@ namespace ITler_Ein_mal_Eins.Control
             return systems;
         }
 
-        private BigFloat CalculateAnythingToBinary(TextBox txbox_eingabe)
+        private string CalculateAnythingToDecimal(TextBox txbox_eingabe)
         {
-            //Initiales Umrechnen des erhaltenen Wertes in Bits               
-            BigFloat eingabe = BigFloat.Parse(txbox_eingabe.Text);
-            BigFloat ausgabe = 0;
-            BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
-            BigFloat k = 1024;    // sowie vor einem Überlauf des Standard schützen
+            //Initiales Umrechnen des erhaltenen Wertes in Dezimal              
+            string eingabe = txbox_eingabe.Text;
+            string ausgabe = null;
             switch (txbox_eingabe.Name)
             {
-                case "txbox_bit": ausgabe = eingabe; break; //Wert bereits in Einheit Bits
-                case "txbox_kilobit": ausgabe = eingabe * k; break;
-                case "txbox_megabit": ausgabe = eingabe * k * k; break;
-                case "txbox_gigabit": ausgabe = eingabe * k * k * k; break;
-                case "txbox_terabit": ausgabe = eingabe * k * k * k * k; break;
-
-                case "txbox_byte": ausgabe = eingabe * b; break;
-                case "txbox_kilobyte": ausgabe = eingabe * b * k; break;
-                case "txbox_megabyte": ausgabe = eingabe * b * k * k; break;
-                case "txbox_gigabyte": ausgabe = eingabe * b * k * k * k; break;
-                case "txbox_terabyte": ausgabe = eingabe * b * k * k * k * k; break;
+                case "txbox_binaer": ausgabe = eingabe; break; //Wert bereits in Dezimal
+                case "txbox_oktal": ausgabe = eingabe; break; 
+                case "txbox_dezimal": ausgabe = eingabe; break; 
+                case "txbox_hexadezimal": ausgabe = eingabe; break; 
             }
             return ausgabe;
         }
 
-        private void FillResults_Binary(BigFloat eingabeInBinary)
+        private void FillResults_Decimal(string eingabeInDecimal)
         {
-
+            systems.binaer = (eingabeInDecimal.ToString());
+            systems.oktal = (eingabeInDecimal.ToString());
+            systems.dezimal = (eingabeInDecimal.ToString());
+            systems.hexadezimal = (eingabeInDecimal.ToString());
         }
-
 
         #endregion
     }
