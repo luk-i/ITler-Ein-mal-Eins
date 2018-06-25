@@ -29,7 +29,9 @@ namespace ITler_Ein_mal_Eins.Control
             BYTE,
             BINARYFLOAT,
             OKTAL,
-            DECIMAL
+            DECIMAL,
+            HEX,
+            SUBNETMASK
         };
 
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
@@ -45,14 +47,14 @@ namespace ITler_Ein_mal_Eins.Control
             {
                 switch (box.Tag)
                 {
-                    case "1":
+                    case digitTag.UNSIGNEDINTEGER:
                         int ipRange = 0;
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
                         }
                         break;
-                    case "2":                        
+                    case digitTag.UNSIGNEDFLOAT:                        
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -70,23 +72,17 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "3":
+                    case digitTag.BYTE:
                         if (!Char.IsDigit(x))
                         {
                             noDigit++;
                         }
                         else
                         {
-                            if (Int32.TryParse(box.Text, out ipRange))
-                            {
-                                if (ipRange < 0 || ipRange > 255)
-                                {
-                                    noDigit++;
-                                }
-                            }
+                            IpCalculator.isIpV4Digit(box, false);
                         }
                         break;
-                    case "4":
+                    case digitTag.BINARYFLOAT:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -104,7 +100,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "5":
+                    case digitTag.OKTAL:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -126,7 +122,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "6":
+                    case digitTag.DECIMAL:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -144,7 +140,7 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case "7":
+                    case digitTag.HEX:
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.')
@@ -162,24 +158,40 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
+                    case digitTag.SUBNETMASK:
+                        if (!Char.IsDigit(x))
+                        {
+                            noDigit++;
+                        }
+                        else
+                        {
+                            IpCalculator.isIpV4Digit(box, true);
+                        }
+                        break;
                 }
             }
+            return brushTextBoxByBool(noDigit, box);
 
-            if (noDigit == 0)
+        }
+
+        public bool brushTextBoxByBool(int _noDigit, System.Windows.Controls.TextBox _box)
+        {
+            if (_noDigit == 0)
             {
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFFFFFF"); //#FFFFFFFF white
-                box.Background = brush;
+                _box.Background = brush;
                 return true;
             }
             else
             {
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFF0000"); //#FFFF0000 red
-                box.Background = brush;
+                _box.Background = brush;
                 return false;
             }
         }
+
 // Hier gab es Probleme mit dem Parsen! So ab zehn bis fünzehn Stellen war Schluss und es wurde false zurückgeliefert, trotz int64!
 // Darum obige Version, ich lass es aber hier auskommentiert stehen, bis ich das mit dir besprochen habe.
 

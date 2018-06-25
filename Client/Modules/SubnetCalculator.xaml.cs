@@ -30,7 +30,22 @@ namespace ITler_Ein_mal_Eins.Modules
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             ipControl = new Control.IpCalculator();
             InitializeComponent();
+            InitializeTags();
             InitializeEvents();
+        }
+
+        #region Initialisation
+
+        private void InitializeTags()
+        {
+            Ip4_textBox1.Tag = Control.Control.digitTag.BYTE;
+            Ip4_textBox2.Tag = Control.Control.digitTag.BYTE;
+            Ip4_textBox3.Tag = Control.Control.digitTag.BYTE;
+            Ip4_textBox4.Tag = Control.Control.digitTag.BYTE;
+            Subnet_textBox1.Tag = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox2.Tag = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox3.Tag = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox4.Tag = Control.Control.digitTag.SUBNETMASK;
         }
 
         private void InitializeEvents()
@@ -42,14 +57,19 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox1.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
-            Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox4.TextChanged += Subnet_textBox4_TextChanged;
         }
 
-
+        #endregion
+        /*
+         *  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
+         */
         private void IPv4_calculateBits()
         {
             testFields();
-            bool tmp = ipControl.isIpV4Digit(Ip4_textBox1, true);
+
+
+            bool tmp = IpCalculator.isIpV4Digit(Ip4_textBox1, true);
             // Test, obs geht
             if (tmp)
             {
@@ -63,8 +83,8 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private bool testFields()
         {
-            if(ipControl.isIpV4Digit(Ip4_textBox1, false) && ipControl.isIpV4Digit(Ip4_textBox2, false) &&
-                ipControl.isIpV4Digit(Ip4_textBox3, false) && ipControl.isIpV4Digit(Ip4_textBox4, false))
+            if(IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
+                IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
             {
 
             }
@@ -98,6 +118,11 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
+        }
+
+        private void Subnet_textBox4_TextChanged(object sender, TextChangedEventArgs e)
         {
             control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
