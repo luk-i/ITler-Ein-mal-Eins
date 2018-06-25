@@ -10,7 +10,7 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="399" Margin="0,10,0,0" VerticalAlignment="Top" Width="782">
             <TabItem Header="IPv4" Margin="0,0,-25,0">
                 <Grid x:Name="MainGrid_SubnetCalc" Background="#FFE5E5E5">
-                    <Grid x:Name="Adress_Grid" HorizontalAlignment="Left" Height="176" Margin="10,10,0,0" VerticalAlignment="Top" Width="279">
+                    <Grid x:Name="Adress_Grid" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" VerticalAlignment="Top" Width="279">
                         <Frame x:Name="SubnetMask_Frame" Content="Subnetzmaske" HorizontalAlignment="Left" Height="18" Margin="10,57,0,0" VerticalAlignment="Top" Width="107"/>
                         <Frame x:Name="Ip_Frame" Content="Ip-Adresse" HorizontalAlignment="Left" Height="18" Margin="10,10,0,0" VerticalAlignment="Top" Width="107"/>
                         <TextBox x:Name="Ip4_textBox1" HorizontalAlignment="Left" Height="19" Margin="10,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35" Tag="3"/>
@@ -21,9 +21,13 @@
                         <TextBox x:Name="Subnet_textBox2" HorizontalAlignment="Left" Height="19" Margin="50,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35" Tag="3"/>
                         <TextBox x:Name="Subnet_textBox3" HorizontalAlignment="Left" Height="19" Margin="90,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35" Tag="3"/>
                         <TextBox x:Name="Subnet_textBox4" HorizontalAlignment="Left" Height="19" Margin="130,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="35" Tag="3"/>
-                        <Label x:Name="tb_1_DecimalData" Content="tb1" HorizontalAlignment="Left" Height="22" Margin="10,104,0,0" VerticalAlignment="Top" Width="155" FontSize="10"/>
-                        <Label x:Name="tb_2_DecimalData" Content="tb2" HorizontalAlignment="Left" Height="22" Margin="10,126,0,0" VerticalAlignment="Top" Width="155" FontSize="10"/>
+                        <TextBox x:Name="Subnet_textBox_ShortWritten" HorizontalAlignment="Left" Height="19" Margin="192,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="26" Tag="3"/>
+                        <Label x:Name="tb_1_DecimalData" Content="Bitte Werte eintragen" HorizontalAlignment="Left" Height="22" Margin="10,104,0,0" VerticalAlignment="Top" Width="155" FontSize="10"/>
+                        <Label x:Name="SubnetMask_Slash" Content="/" HorizontalAlignment="Left" Height="32" Margin="176,74,0,0" VerticalAlignment="Top" Width="16"/>
                         <Button x:Name="button_Submit" Content="Einfügen" HorizontalAlignment="Left" Height="19" Margin="170,33,0,0" VerticalAlignment="Top" Width="61" Click="button_Submit_Click"/>
+                    </Grid>
+                    <Grid x:Name="Solution_Grid" HorizontalAlignment="Left" Height="127" Margin="294,11,0,0" VerticalAlignment="Top" Width="249">
+                        <Label x:Name="tb_2_DecimalData" Content="Lösungsgrid" HorizontalAlignment="Left" Height="22" Margin="0,10,0,0" VerticalAlignment="Top" Width="155" FontSize="10"/>
                     </Grid>
                 </Grid>
             </TabItem>
