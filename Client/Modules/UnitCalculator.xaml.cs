@@ -92,8 +92,7 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 //Fehlermeldung und zurücksetzen
                 System.Windows.Forms.MessageBox.Show
-                ("Bitte füllen Sie ein einzelnes Feld aus und achten Sie darauf, nur positive, numerische Werte einzutragen. " + Environment.NewLine +
-                 "Benutzen Sie bitte einen Punkt '.' Als Dezimaltrennzeichen. " + Environment.NewLine +
+                ("Bitte füllen Sie ein einzelnes Feld mit einem numerischen Wert. " + Environment.NewLine +
                  "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine  +Environment.NewLine +
                  "Beispiel: 42.481516");
             }   
@@ -244,20 +243,20 @@ namespace ITler_Ein_mal_Eins.Modules
         //Initialsieren der TextBox Tags. Für die Prüfung, welcher Wert als Eingabe erlaubt wird
         private void InitializeTags()
         {
-            txbox_bit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_kilobit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_megabit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_gigabit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_terabit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_byte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_kilobyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_megabyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_gigabyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
-            txbox_terabyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_bit.Tag       = Control.Control.digitTag.FLOAT;
+            txbox_kilobit.Tag   = Control.Control.digitTag.FLOAT;
+            txbox_megabit.Tag   = Control.Control.digitTag.FLOAT;
+            txbox_gigabit.Tag   = Control.Control.digitTag.FLOAT;
+            txbox_terabit.Tag   = Control.Control.digitTag.FLOAT;
+            txbox_byte.Tag      = Control.Control.digitTag.FLOAT;
+            txbox_kilobyte.Tag  = Control.Control.digitTag.FLOAT;
+            txbox_megabyte.Tag  = Control.Control.digitTag.FLOAT;
+            txbox_gigabyte.Tag  = Control.Control.digitTag.FLOAT;
+            txbox_terabyte.Tag  = Control.Control.digitTag.FLOAT;
 
-            txbox_binaer.Tag = Control.Control.digitTag.BINARYFLOAT;
-            txbox_oktal.Tag = Control.Control.digitTag.OKTAL;
-            txbox_dezimal.Tag = Control.Control.digitTag.DECIMAL;
+            txbox_binaer.Tag    = Control.Control.digitTag.BINARYFLOAT;
+            txbox_oktal.Tag     = Control.Control.digitTag.OKTAL;
+            txbox_dezimal.Tag   = Control.Control.digitTag.DECIMAL;
             txbox_hexadezimal.Tag = Control.Control.digitTag.HEX;
         }
 

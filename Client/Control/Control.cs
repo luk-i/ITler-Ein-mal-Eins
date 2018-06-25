@@ -26,7 +26,7 @@ namespace ITler_Ein_mal_Eins.Control
         public enum digitTag
         {
             UNSIGNEDINTEGER,
-            UNSIGNEDFLOAT,
+            FLOAT,
             BYTE,
             BINARYFLOAT,
             OKTAL,
@@ -55,18 +55,29 @@ namespace ITler_Ein_mal_Eins.Control
                             noDigit++;
                         }
                         break;
-                    case digitTag.UNSIGNEDFLOAT:                        
+                    case digitTag.FLOAT:                        
                         if (!Char.IsDigit(x))
                         {
                             if (x == '.' || x == ',')
                             {
                                 comma++;
-                                if ((comma > 1 || place == 0)||(signed == 1 && place == 1))
+                                if ((comma > 1 || place == 0) || (signed == 1 && place == 1))
                                 {
                                     noDigit++;
                                 }
                             }
-                            else 
+                            else if (x == '-' || x == '+')
+                            {
+                                if (place == 0)
+                                {
+                                    signed = 1;
+                                }
+                                else
+                                {
+                                    noDigit++;
+                                }
+                            }
+                            else
                             {
                                 noDigit++;
                             }

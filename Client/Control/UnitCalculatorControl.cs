@@ -8,10 +8,32 @@ using System.Windows.Controls;
 using ITler_Ein_mal_Eins.Modules;
 
 namespace ITler_Ein_mal_Eins.Control
-{
-    #region Bits zu Bytes
+{      
+
     class UnitCalculatorControl
     {
+        #region Allgemein
+
+        //Umwandeln von Komma in Punkt und Entfernen von Vorzeichen
+        //BigFloat kommt mit Vorzeichen leider nicht richtig klar
+        public string WorkString (string workString)
+        {
+            workString = workString.Replace(',', '.');
+            workString = workString.Trim('-','+');
+            return workString;
+        }
+
+        public void WasTheInputSigned (BigFloat input, string funktion)
+        {
+            if (input)
+            {
+
+            }
+        }
+
+        #endregion
+
+        #region Bits zu Bytes
         //Struktur zum Speichern der Werte des Bit Byte Rechners, bevor Ausgabe in anderer Klasse erfolgt
         public struct BitByteStrings
         {
@@ -58,7 +80,8 @@ namespace ITler_Ein_mal_Eins.Control
         private BigFloat CalculateAnythingToBits(TextBox txbox_eingabe)
         {
             //Initiales Umrechnen des erhaltenen Wertes in Bits                         
-            BigFloat eingabe = BigFloat.Parse(txbox_eingabe.Text);
+            string workString = WorkString (txbox_eingabe.Text);
+            BigFloat eingabe = BigFloat.Parse(workString);
             BigFloat ausgabe = 0;
             BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
             BigFloat k = 1024;    // sowie vor einem Überlauf des Standard schützen
@@ -94,6 +117,7 @@ namespace ITler_Ein_mal_Eins.Control
             bitByteStrings.megaByte = (eingabeInBit / (b * k * k)).ToString();
             bitByteStrings.gigaByte = (eingabeInBit / (b * k * k * k)).ToString();
             bitByteStrings.teraByte = (eingabeInBit / (b * k * k * k * k)).ToString();
+            WasTheInputSigned(eingabeInBit, "Bits");
         }
 
         #endregion
