@@ -36,7 +36,7 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeEvents();
         }
 
-        #region Methods
+        #region Methods Bits
         //Textboxen zurücksetzen
         private void Clear_Txbox_UnitC_Bits()
         {
@@ -63,7 +63,7 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         //Abfragen, ob die Eingaben korrekt sind.
-        private bool CanWeStart()
+        private bool CanWeStart_bits()
         {
             bool letUsStart = false;
             int i = 0;
@@ -134,7 +134,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         public void Event_Btn_Click_Calculate ()
         {
-            if (CanWeStart() == true)
+            if (CanWeStart_bits() == true)
             {
                 unitCalculatorControl = new UnitCalculatorControl();
                 txbox_active = Active_TextBox();
@@ -149,6 +149,10 @@ namespace ITler_Ein_mal_Eins.Modules
                 }
             }
         }
+        #endregion
+
+        #region Methods Systems
+
         #endregion
 
         #region Events
