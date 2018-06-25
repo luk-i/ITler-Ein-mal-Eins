@@ -42,9 +42,8 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox1.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
-            Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox4.TextChanged += Subnet_textBox4_TextChanged;
         }
-
 
         private void IPv4_calculateBits()
         {
@@ -100,6 +99,11 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             control.CheckTextboxIfNumeric((TextBox)e.Source);
+        }
+
+        private void Subnet_textBox4_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

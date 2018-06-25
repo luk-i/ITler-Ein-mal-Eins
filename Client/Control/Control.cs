@@ -164,22 +164,28 @@ namespace ITler_Ein_mal_Eins.Control
                         break;
                 }
             }
+            return brushTextBoxByBool(noDigit, box);
 
-            if (noDigit == 0)
+        }
+
+        public bool brushTextBoxByBool(int _noDigit, System.Windows.Controls.TextBox _box)
+        {
+            if (_noDigit == 0)
             {
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFFFFFF"); //#FFFFFFFF white
-                box.Background = brush;
+                _box.Background = brush;
                 return true;
             }
             else
             {
                 var converter = new BrushConverter();
                 var brush = (Brush)converter.ConvertFromString("#FFFF0000"); //#FFFF0000 red
-                box.Background = brush;
+                _box.Background = brush;
                 return false;
             }
         }
+
 // Hier gab es Probleme mit dem Parsen! So ab zehn bis fünzehn Stellen war Schluss und es wurde false zurückgeliefert, trotz int64!
 // Darum obige Version, ich lass es aber hier auskommentiert stehen, bis ich das mit dir besprochen habe.
 
