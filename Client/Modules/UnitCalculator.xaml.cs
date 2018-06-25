@@ -34,8 +34,11 @@ namespace ITler_Ein_mal_Eins.Modules
             control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            InitializeTags();
             InitializeEvents();
         }
+
+
 
         #region Methods Bits
         //Textboxen zurücksetzen Bits
@@ -236,7 +239,27 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #endregion
 
-        #region Events
+        #region Initialisiation
+
+        //Initialsieren der TextBox Tags. Für die Prüfung, welcher Wert als Eingabe erlaubt wird
+        private void InitializeTags()
+        {
+            txbox_bit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_kilobit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_megabit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_gigabit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_terabit.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_byte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_kilobyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_megabyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_gigabyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+            txbox_terabyte.Tag = Control.Control.digitTag.UNSIGNEDFLOAT;
+
+            txbox_binaer.Tag = Control.Control.digitTag.BINARYFLOAT;
+            txbox_oktal.Tag = Control.Control.digitTag.OKTAL;
+            txbox_dezimal.Tag = Control.Control.digitTag.DECIMAL;
+            txbox_hexadezimal.Tag = Control.Control.digitTag.HEX;
+        }
 
         private void InitializeEvents()
         {
@@ -256,6 +279,10 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_dezimal.TextChanged       += Txbox_UnitCalculator_TextChanged;
             txbox_hexadezimal.TextChanged   += Txbox_UnitCalculator_TextChanged;
         }
+
+        #endregion
+
+        #region Events
 
         //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben
         private void Window_Closed(object sender, EventArgs e)

@@ -21,7 +21,8 @@ namespace ITler_Ein_mal_Eins.Control
          *   Modus 4: Binär inklusive Komma ohne Vorzeichen
          *   Modus 5: Oktal inklusive Komma ohne Vorzeichen
          *   Modus 6: Dezimal inklusive Komma ohne Vorzeichen
-         */   
+         *   Modus 7: Hexadezimal inklusive Komma ohne Vorzeichen
+         */
         public enum digitTag
         {
             UNSIGNEDINTEGER,
@@ -57,7 +58,7 @@ namespace ITler_Ein_mal_Eins.Control
                     case digitTag.UNSIGNEDFLOAT:                        
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '.')
+                            if (x == '.' || x == ',')
                             {
                                 comma++;
                                 if ((comma > 1 || place == 0)||(signed == 1 && place == 1))
@@ -170,7 +171,9 @@ namespace ITler_Ein_mal_Eins.Control
                                 noDigit++;
                         }
                         break;
+
                 }
+                
             }
             return brushTextBoxByBool(noDigit, box);
 
