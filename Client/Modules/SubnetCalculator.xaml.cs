@@ -65,8 +65,10 @@ namespace ITler_Ein_mal_Eins.Modules
          */
         private void IPv4_calculateBits()
         {
-            IsValidInput_IpV4();
-
+            if(IsValidInput_IpV4() && isValidInput_IpV4SubnetMask())
+            {
+                // Befüllen Subnetzmaske und Eventwurf
+            }
 
             bool tmp = IpCalculator.isIpV4Digit(Ip4_textBox1, true);
 
@@ -80,22 +82,45 @@ namespace ITler_Ein_mal_Eins.Modules
             if (IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
                 IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
             {
+                return true;
+            }
+            else
+            {
+                // Ist falsche IPv4 Adresse
+                createErrorLabel(ErrorCodeNo.WRONGIPV4);
+                return false;
+            }
+        }
 
-                // Was Befüllt werden muss
+        private bool isValidInput_IpV4SubnetMask()
+        {
+            switch (getFieldStatus())
+            {
+                case FieldStatus.SHORTFILLED:
 
-                //Test, ob Subnetzmaske erlaubt ist.
-                if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
-                     IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
+                    return true;
+                case FieldStatus.LONGFILLED:
+
+                    return true;
+                case FieldStatus.BOTHFILLED:
+
+                    return false;
+                case FieldStatus.NOFIELDSFILLED:
+
+                    return false;
+                default:
+                    throw new NotImplementedException();
+                
+            }
+
+
+            if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
+                 IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
+            {
+                if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
+                    Subnet_textBox3, Subnet_textBox4))
                 {
-                    if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
-                        Subnet_textBox3, Subnet_textBox4))
-                    {
-                        createErrorLabel(ErrorCodeNo.NOERROR);
-                    }
-                    else
-                    {
-                        createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
-                    }
+                    createErrorLabel(ErrorCodeNo.NOERROR);
                 }
                 else
                 {
@@ -104,8 +129,7 @@ namespace ITler_Ein_mal_Eins.Modules
             }
             else
             {
-                // Ist falsche IPv4 Adresse
-                createErrorLabel(ErrorCodeNo.WRONGIPV4);
+                createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
             }
             return false;
         }
