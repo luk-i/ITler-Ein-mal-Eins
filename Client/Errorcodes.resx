@@ -147,4 +147,7 @@ Bitte wählen Sie den Wertebereich kleiner.</value>
   <data name="UNITC_SYSTEMS_NO_VALID_INPUT" xml:space="preserve">
     <value>Eingabe ungültig</value>
   </data>
+  <data name="UNITC_SYSTEMS_RANGE_EXCEPTION" xml:space="preserve">
+    <value>Wertebereich ungültig</value>
+  </data>
 </root>

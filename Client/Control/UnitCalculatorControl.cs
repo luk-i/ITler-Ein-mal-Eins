@@ -168,8 +168,8 @@ namespace ITler_Ein_mal_Eins.Control
             systems.noError = true;
             try
             {
-                string eingabeInBinary = CalculateAnythingToDecimal(txbox_eingabe);
-                FillResults_Decimal(eingabeInBinary);
+                Int64 inputInDecimal = CalculateAnythingToDecimal(txbox_eingabe);
+                FillResults_Decimal(inputInDecimal);
             }
             catch
             {
@@ -181,36 +181,27 @@ namespace ITler_Ein_mal_Eins.Control
             return systems;
         }
 
-        private string CalculateAnythingToDecimal(TextBox txbox_eingabe)
+        private Int64 CalculateAnythingToDecimal(TextBox txbox_eingabe)
         {
             //Initiales Umrechnen des erhaltenen Wertes in Dezimal              
             string eingabe = txbox_eingabe.Text;
-            string ausgabe = null;
+            Int64 ausgabe = 0;
             switch (txbox_eingabe.Name)
             {
-                case "txbox_binaer": ausgabe = StringUmrechnen(eingabe, 2); break; 
-                case "txbox_oktal": ausgabe = StringUmrechnen(eingabe, 8); ; break; 
-                case "txbox_dezimal": ausgabe = eingabe; break; //Wert bereits in Dezimal
-                case "txbox_hexadezimal": ausgabe = StringUmrechnen(eingabe, 16); ; break; 
+                case "txbox_binaer":        ausgabe = Convert.ToInt64(eingabe, 2);     break; 
+                case "txbox_oktal":         ausgabe = Convert.ToInt64(eingabe, 8);     break; 
+                case "txbox_dezimal":       ausgabe = Convert.ToInt64(eingabe, 10);    break;
+                case "txbox_hexadezimal":   ausgabe = Convert.ToInt64(eingabe, 16);    break; 
             }
             return ausgabe;
         }
 
-        private string StringUmrechnen (string eingabe, int system)
+        private void FillResults_Decimal(Int64 eingabeInDecimal)
         {
-            string ergebnis = null;
-
-
-
-            return ergebnis;
-        }
-
-        private void FillResults_Decimal(string eingabeInDecimal)
-        {
-            systems.binaer = (eingabeInDecimal.ToString());
-            systems.oktal = (eingabeInDecimal.ToString());
-            systems.dezimal = (eingabeInDecimal.ToString());
-            systems.hexadezimal = (eingabeInDecimal.ToString());
+            systems.binaer          = Convert.ToString(eingabeInDecimal, 2);
+            systems.oktal           = Convert.ToString(eingabeInDecimal, 8);
+            systems.dezimal         = Convert.ToString(eingabeInDecimal, 10);
+            systems.hexadezimal     = Convert.ToString(eingabeInDecimal, 16);
         }
 
         #endregion ##########################################################################################################################################################################################

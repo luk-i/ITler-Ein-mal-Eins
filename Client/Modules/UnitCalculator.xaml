@@ -9,10 +9,12 @@
         Height="450" MinHeight="370"  
         Width="800" MinWidth="285" 
         Closed="Window_Closed">
+    
     <Grid>
-        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed"> 
+        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed" SelectionChanged="TabControl_SelectionChanged"> 
 
             <!--#region bits-bites-->
+            
             <TabItem x:Name="tab_bits" Header="Bits - Bytes">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
@@ -66,15 +68,17 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </StackPanel.RenderTransform>
-                        <Button x:Name="btn_bits_calculate" Content="Berechnen" Click="Btn_Bits_Calculate_Click" Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_bits_reset" Content="Zurücksetzen" Click="Btn_Bits_Reset_Click" Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_bits_exit" Content="Beenden" Click="Btn_Exit_Click" Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_bits_calculate" Content="Berechnen"     Click="Btn_Bits_Calculate_Click"    Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_bits_reset"     Content="Zurücksetzen"  Click="Btn_Bits_Reset_Click"        Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_bits_exit"      Content="Beenden"       Click="Btn_Exit_Click"              Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
             <!--#endregion-->
 
             <!--#region zahlensysteme-->
+            
             <TabItem x:Name="tab_systems" Header="Zahlensysteme">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
@@ -113,13 +117,14 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </StackPanel.RenderTransform>
-                        <Button x:Name="btn_systems_calculate"  Content="Berechnen"     Click="Btn_Systems_Calculate_Click" Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_systems_reset"      Content="Zurücksetzen"  Click="Btn_Systems_Reset_Click"  Width="80" HorizontalAlignment="Center"/>
-                        <Button x:Name="btn_systems_exit"       Content="Beenden"       Click="Btn_Exit_Click"  Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_calculate"  Content="Berechnen"     Click="Btn_Systems_Calculate_Click"     Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_reset"      Content="Zurücksetzen"  Click="Btn_Systems_Reset_Click"         Width="80" HorizontalAlignment="Center"/>
+                        <Button x:Name="btn_systems_exit"       Content="Beenden"       Click="Btn_Exit_Click"                  Width="80" HorizontalAlignment="Center"/>
                     </StackPanel>
 
                 </Grid>
             </TabItem>
+            
             <!--#endregion-->
 
         </TabControl>

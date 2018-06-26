@@ -137,5 +137,14 @@ namespace ITler_Ein_mal_Eins {
                 return ResourceManager.GetString("UNITC_SYSTEMS_NO_VALID_INPUT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wertebereich ungültig ähnelt.
+        /// </summary>
+        public static string UNITC_SYSTEMS_RANGE_EXCEPTION {
+            get {
+                return ResourceManager.GetString("UNITC_SYSTEMS_RANGE_EXCEPTION", resourceCulture);
+            }
+        }
     }
 }
