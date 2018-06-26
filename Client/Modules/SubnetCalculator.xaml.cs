@@ -97,41 +97,46 @@ namespace ITler_Ein_mal_Eins.Modules
             switch (getFieldStatus())
             {
                 case FieldStatus.SHORTFILLED:
-
-                    return true;
+                    if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox_ShortWritten))
+                    {
+                        createErrorLabel(ErrorCodeNo.NOERROR);
+                        return true;
+                    }
+                    else
+                    {
+                        createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
+                        return false;
+                    }
                 case FieldStatus.LONGFILLED:
-
-                    return true;
+                    if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
+                         IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
+                    {
+                        if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
+                             Subnet_textBox3, Subnet_textBox4))
+                        {
+                            createErrorLabel(ErrorCodeNo.NOERROR);
+                            return true;
+                        }
+                        else
+                        {
+                            createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
+                        return false;
+                    }
                 case FieldStatus.BOTHFILLED:
-
+                    createErrorLabel(ErrorCodeNo.MULTIPLEFIELDSFILLED);
                     return false;
                 case FieldStatus.NOFIELDSFILLED:
-
+                    createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
                     return false;
                 default:
-                    throw new NotImplementedException();
-                
+                    throw new NotImplementedException();   
             }
-
-
-            if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
-                 IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
-            {
-                if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
-                    Subnet_textBox3, Subnet_textBox4))
-                {
-                    createErrorLabel(ErrorCodeNo.NOERROR);
-                }
-                else
-                {
-                    createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
-                }
-            }
-            else
-            {
-                createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
-            }
-            return false;
         }
 
         private FieldStatus getFieldStatus()

@@ -142,6 +142,25 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
+        public static bool isLegitIpV4SubnetMask(TextBox box)
+        {
+            int shortDigit = 0;
+            if(int.TryParse(box.Text, out shortDigit)) {
+                if (shortDigit >= 1 && shortDigit <= 32) { return true; }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool isLegitIpV4SubnetMask(int shortDigit)
+        {
+            if(shortDigit >= 1 && shortDigit <= 32) { return true; }
+            return false;
+        }
+
         #endregion
 
         private static bool isLegitSubnetDigit(byte digit)
