@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using ITler_Ein_mal_Eins.Modules;
+using ITler_Ein_mal_Eins.Model;
+using System.Net;
 
 namespace ITler_Ein_mal_Eins.Control
 {
@@ -140,6 +143,46 @@ namespace ITler_Ein_mal_Eins.Control
             {
                 return false;
             }
+        }
+
+        public static bool isLegitIpV4SubnetMask(TextBox box)
+        {
+            int shortDigit = 0;
+            if(int.TryParse(box.Text, out shortDigit)) {
+                if (shortDigit >= 1 && shortDigit <= 32) { return true; }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool isLegitIpV4SubnetMask(int shortDigit)
+        {
+            if(shortDigit >= 1 && shortDigit <= 32) { return true; }
+            return false;
+        }
+
+        #endregion
+
+        #region calcEmptySubnetMaskFields
+
+        public static int[] calcEmptySubnetMaskFields(int first, int second, 
+            int third, int forth, int shortField, IpV4_FieldStatus fieldStatus)
+        {
+            switch (fieldStatus)
+            {
+                case IpV4_FieldStatus.SHORTFILLED:
+                    
+                    break;
+                case IpV4_FieldStatus.LONGFILLED:
+
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            return null;
         }
 
         #endregion

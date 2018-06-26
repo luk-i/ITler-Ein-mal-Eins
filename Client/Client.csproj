@@ -37,6 +37,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.IPNetwork, Version=2.1.2.0, Culture=neutral, PublicKeyToken=717343cc2c25edcf, processorArchitecture=MSIL">
+      <HintPath>packages\IPNetwork2.2.1.2\lib\net46\System.Net.IPNetwork.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -63,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Errorcodes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Model\SubnetCalculatorModel.cs" />
     <Compile Include="Modules\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
@@ -115,6 +120,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Config\Client.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -127,7 +133,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="Events\" />
+    <Folder Include="libs\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Modules\binary-code.jpg" />

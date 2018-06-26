@@ -61,11 +61,38 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabe ungültig. ähnelt.
+        /// </summary>
+        public static string ERROR_INVALIDINPUT {
+            get {
+                return ResourceManager.GetString("ERROR_INVALIDINPUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene IPv4 - Adresse ist ungültig. ähnelt.
         /// </summary>
-        public static string IPV4DIGITISNOTVALID {
+        public static string ERROR_IPV4DIGITISNOTVALID {
             get {
-                return ResourceManager.GetString("IPV4DIGITISNOTVALID", resourceCulture);
+                return ResourceManager.GetString("ERROR_IPV4DIGITISNOTVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt. ähnelt.
+        /// </summary>
+        public static string ERROR_MULTIPLEFIELDSFILLED {
+            get {
+                return ResourceManager.GetString("ERROR_MULTIPLEFIELDSFILLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene Subnetzmaske ist ungültig. ähnelt.
+        /// </summary>
+        public static string ERROR_SUBNETMASKISNOTVALID {
+            get {
+                return ResourceManager.GetString("ERROR_SUBNETMASKISNOTVALID", resourceCulture);
             }
         }
         
@@ -75,15 +102,6 @@ namespace ITler_Ein_mal_Eins {
         public static string NOERROR {
             get {
                 return ResourceManager.GetString("NOERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene Subnetzmaske ist ungültig. ähnelt.
-        /// </summary>
-        public static string SUBNETMASKISNOTVALID {
-            get {
-                return ResourceManager.GetString("SUBNETMASKISNOTVALID", resourceCulture);
             }
         }
     }
