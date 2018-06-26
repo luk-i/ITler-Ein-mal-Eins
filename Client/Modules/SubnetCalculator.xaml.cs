@@ -145,9 +145,9 @@ namespace ITler_Ein_mal_Eins.Modules
             bool longFieldFilled = false;
 
             if (Subnet_textBox_ShortWritten.Text != "") { shortFieldFilled = true; }
-            if (Subnet_textBox1.Text != "" &&
-                Subnet_textBox2.Text != "" &&
-                Subnet_textBox3.Text != "" &&
+            if (Subnet_textBox1.Text != "" ||
+                Subnet_textBox2.Text != "" ||
+                Subnet_textBox3.Text != "" ||
                 Subnet_textBox4.Text != "")             { longFieldFilled = true; }
 
             if(shortFieldFilled == true  && longFieldFilled == false) { return FieldStatus.SHORTFILLED; }
