@@ -38,7 +38,7 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeEvents();
         }
 
-        #region Methods Bits
+        #region Methods Bits ################################################################################################################################################################################
         //Textboxen zurücksetzen Bits
         private void Clear_Txbox_UnitC_Bits()
         {
@@ -52,17 +52,17 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_megabyte.Clear();
             txbox_gigabyte.Clear();
             txbox_terabyte.Clear();
-            txbox_bit.IsReadOnly        = false;
-            txbox_kilobit.IsReadOnly    = false;
-            txbox_megabit.IsReadOnly    = false;
-            txbox_gigabit.IsReadOnly    = false;
-            txbox_terabit.IsReadOnly    = false;
-            txbox_byte.IsReadOnly       = false;
-            txbox_kilobyte.IsReadOnly   = false;
-            txbox_megabyte.IsReadOnly   = false;
-            txbox_gigabyte.IsReadOnly   = false;
-            txbox_terabyte.IsReadOnly   = false;
-            btn_bits_calculate.IsEnabled = true;
+            txbox_bit.IsReadOnly            = false;
+            txbox_kilobit.IsReadOnly        = false;
+            txbox_megabit.IsReadOnly        = false;
+            txbox_gigabit.IsReadOnly        = false;
+            txbox_terabit.IsReadOnly        = false;
+            txbox_byte.IsReadOnly           = false;
+            txbox_kilobyte.IsReadOnly       = false;
+            txbox_megabyte.IsReadOnly       = false;
+            txbox_gigabyte.IsReadOnly       = false;
+            txbox_terabyte.IsReadOnly       = false;
+            btn_bits_calculate.IsEnabled    = true;
         }
 
         //Abfragen, ob die Eingaben korrekt sind.
@@ -89,11 +89,9 @@ namespace ITler_Ein_mal_Eins.Modules
             }
             else
             {
-                //Fehlermeldung und zurücksetzen
+                //Fehlermeldung
                 System.Windows.Forms.MessageBox.Show
-                ("Bitte füllen Sie ein einzelnes Feld mit einem numerischen Wert. " + Environment.NewLine +
-                 "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine  +Environment.NewLine +
-                 "Beispiel: -42.481516");
+                (Errorcodes.UNITC_BITS_NO_VALID_INPUT);
             }   
             return letUsStart;
         }
@@ -145,7 +143,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 bitByteStrings = unitCalculatorControl.CalculateBits(txbox_active);
                 if (bitByteStrings.noError == false)
                 {
-                    System.Windows.Forms.MessageBox.Show("Something, somewhere went terribly wrong :(");
+                    System.Windows.Forms.MessageBox.Show(Errorcodes.UNITC_BITS_RANGE_EXCEPTION);
                 }
                 else 
                 {
@@ -153,9 +151,9 @@ namespace ITler_Ein_mal_Eins.Modules
                 }
             }
         }
-        #endregion
+        #endregion ##########################################################################################################################################################################################
 
-        #region Methods Systems
+        #region Methods Systems #############################################################################################################################################################################
 
         //Textboxen zurücksetzen Bits
         private void Clear_Txbox_UnitC_Systems()
@@ -211,10 +209,7 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 //Fehlermeldung und zurücksetzen
                 System.Windows.Forms.MessageBox.Show
-                ("Bitte füllen Sie ein einzelnes Feld aus und achten Sie darauf, nur positive Werte innerhalb des gewählten Zahlensystems einzutragen. " + Environment.NewLine +
-                 "Benutzen Sie bitte einen Punkt '.' Als Dezimaltrennzeichen. " + Environment.NewLine +
-                 "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine + Environment.NewLine +
-                 "Beispiel: 123.AFFE (Bei Hexadezimal)");
+                (Errorcodes.UNITC_SYSTEMS_NO_VALID_INPUT);
             }
             return letUsStart;
         }
@@ -239,9 +234,9 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_hexadezimal.Background = brush;
         }
 
-        #endregion
+        #endregion ##########################################################################################################################################################################################
 
-        #region Initialisiation
+        #region Initialisiation #############################################################################################################################################################################
 
         //Initialsieren der TextBox Tags. Für die Prüfung, welcher Wert als Eingabe erlaubt wird
         private void InitializeTags()
@@ -282,9 +277,9 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_hexadezimal.TextChanged   += Txbox_UnitCalculator_TextChanged;
         }
 
-        #endregion
+        #endregion ##########################################################################################################################################################################################
 
-        #region Events
+        #region Events ######################################################################################################################################################################################
 
         //Beim Schließen die Parameter über die Position zum Öffnen des Hauptfensters übergeben
         private void Window_Closed(object sender, EventArgs e)
@@ -332,7 +327,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         //Ist die Eingabe numerisch?
         private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e) => control.CheckTextboxIfNumeric((TextBox)e.Source);
- 
-        #endregion
+
+        #endregion ##########################################################################################################################################################################################
     }
 }

@@ -12,7 +12,7 @@ namespace ITler_Ein_mal_Eins.Control
 
     class UnitCalculatorControl
     {
-        #region Allgemein
+        #region Allgemein ###################################################################################################################################################################################
 
         //Umwandeln von Komma in Punkt und Entfernen von Vorzeichen
         //BigFloat kommt mit Vorzeichen leider nicht richtig klar
@@ -32,9 +32,9 @@ namespace ITler_Ein_mal_Eins.Control
             return zeroesErased;
         }
 
-        #endregion
+        #endregion ##########################################################################################################################################################################################
 
-        #region Bits zu Bytes
+        #region Bits zu Bytes ###############################################################################################################################################################################
         //Struktur zum Speichern der Werte des Bit Byte Rechners, bevor Ausgabe in anderer Klasse erfolgt
         public struct BitByteStrings
         {
@@ -141,9 +141,9 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        #endregion
+        #endregion ##########################################################################################################################################################################################
 
-        #region Einheitenrechner
+        #region Zahlensysteme-Rechner #######################################################################################################################################################################
 
         //Struktur zum Speichern der Wertedes Zahlensystem Rechners, bevor Ausgabe in anderer Klasse erfolgt
         public struct Systems
@@ -213,7 +213,7 @@ namespace ITler_Ein_mal_Eins.Control
             systems.hexadezimal = (eingabeInDecimal.ToString());
         }
 
-        #endregion
+        #endregion ##########################################################################################################################################################################################
     }
 }
 
