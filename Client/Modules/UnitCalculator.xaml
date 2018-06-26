@@ -9,16 +9,16 @@
         Height="450" MinHeight="370"  
         Width="800" MinWidth="285" 
         Closed="Window_Closed">
-    
+
     <Grid>
-        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed" SelectionChanged="TabControl_SelectionChanged"> 
+        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed" SelectionChanged="TabControl_SelectionChanged">
 
             <!--#region bits-bites-->
-            
+
             <TabItem x:Name="tab_bits" Header="Bits - Bytes">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
-                        <ImageBrush ImageSource="binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+                        <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
                     <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
@@ -74,15 +74,15 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            
+
             <!--#endregion-->
 
             <!--#region zahlensysteme-->
-            
+
             <TabItem x:Name="tab_systems" Header="Zahlensysteme">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
-                        <ImageBrush ImageSource="binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+                        <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
                     <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
@@ -110,12 +110,12 @@
                             </StackPanel.RenderTransform>
                             <Label Content="Datentyp"    HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                             <ComboBox Name="combobox_system" Width="60">
-                                <ComboBoxItem x:Name="comboBox_Int16">                  Int16</ComboBoxItem>
-                                <ComboBoxItem x:Name="comboBox_Int32">                  Int32</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBox_Int16">Int16</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBox_Int32">Int32</ComboBoxItem>
                                 <ComboBoxItem x:Name="comboBox_Int64" IsSelected="True">Int64</ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
-                        
+
                         <Label Content="Binär"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
                         <Label Content="Oktal"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
                         <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
@@ -142,7 +142,36 @@
 
                 </Grid>
             </TabItem>
-            
+
+            <!--#endregion-->
+
+            <!--#region Hilfe!-->
+
+            <TabItem x:Name="tab_help" Header="Eingabehilfe">
+                <Grid Margin="0,0,0,0">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+                    </Grid.Background>
+                    <Grid Margin="2.5,2.5,2.5,2.5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" MinHeight="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Bits - Bytes"  Margin="0,0,0,0" Grid.Column="0" FontWeight="Bold" FontSize="16" Grid.RowSpan="2" HorizontalAlignment="Center" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                        <Label Content="Zahlensysteme" Margin="0,0,0,0" Grid.Column="1" FontWeight="Bold" FontSize="16" Grid.RowSpan="2" HorizontalAlignment="Center" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="help_bits"    HorizontalAlignment="Left" Margin="10,5,10,5" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                        <TextBlock x:Name="help_systems" HorizontalAlignment="Left" Margin="10,5,10,5" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                        <Border BorderBrush="#EE646464" BorderThickness="2" Grid.Column="0" HorizontalAlignment="Right" Margin="0,1,0,1" Width="2" Grid.RowSpan="3"/>
+                        <Border BorderBrush="#EE646464" BorderThickness="2" Grid.Column="1" HorizontalAlignment="Left"  Margin="0,1,0,1" Width="2" Grid.RowSpan="3"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
             <!--#endregion-->
 
         </TabControl>

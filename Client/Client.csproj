@@ -62,6 +62,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Control\UnitCalculatorControl.cs" />
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Errorcodes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,6 +116,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Help.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Help.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Errorcodes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Errorcodes.Designer.cs</LastGenOutput>
@@ -137,7 +146,7 @@
     <Folder Include="libs\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Modules\binary-code.jpg" />
+    <Resource Include="Resources\binary-code.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

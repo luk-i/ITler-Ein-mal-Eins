@@ -35,6 +35,7 @@ namespace ITler_Ein_mal_Eins.Modules
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             InitializeTags();
+            InitializeContent();
             InitializeEvents();
         }
 
@@ -323,6 +324,12 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_oktal.Tag         = Control.Control.digitTag.UNSIGNEDOCTAL;
             txbox_dezimal.Tag       = Control.Control.digitTag.DECIMAL;
             txbox_hexadezimal.Tag   = Control.Control.digitTag.UNSIGNEDHEX;
+        }
+
+        private void InitializeContent()
+        {
+            help_bits.Text      = Help.HELP_UNITC_BITS;
+            help_systems.Text   = Help.HELP_UNITC_SYSTEMS;
         }
 
         private void InitializeEvents()
