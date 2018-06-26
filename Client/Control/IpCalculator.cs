@@ -168,13 +168,19 @@ namespace ITler_Ein_mal_Eins.Control
 
         #region calcEmptySubnetMaskFields
 
+        /*
+         * Funktion Berechnet die noch Fehlenden Felder der Subnetzmaske...
+         * 
+         * VALIDATION VORHER ABGESCHLOSSEN!!!
+         * InterNetwork = IpV4 (Laut Google :D)
+         */ 
         public static int[] calcEmptySubnetMaskFields(int first, int second, 
             int third, int forth, int shortField, IpV4_FieldStatus fieldStatus)
         {
             switch (fieldStatus)
             {
                 case IpV4_FieldStatus.SHORTFILLED:
-                    
+                    IPNetwork.ToNetmask((byte)shortField, System.Net.Sockets.AddressFamily.InterNetwork);
                     break;
                 case IpV4_FieldStatus.LONGFILLED:
 
