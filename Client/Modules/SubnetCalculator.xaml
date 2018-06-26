@@ -27,7 +27,7 @@
                         <Button x:Name="button_Submit" Content="Einfügen" HorizontalAlignment="Left" Height="22" Margin="170,37,0,0" VerticalAlignment="Top" Width="61" Click="button_Submit_Click"/>
                     </Grid>
                     <Grid x:Name="Solution_Grid" HorizontalAlignment="Left" Height="127" Margin="294,11,0,0" VerticalAlignment="Top" Width="249">
-                        <Label x:Name="tb_2_DecimalData" Content="Lösungsgrid" HorizontalAlignment="Left" Height="22" Margin="0,10,0,0" VerticalAlignment="Top" Width="155" FontSize="10"/>
+                        <Label x:Name="tb_2_DecimalData" Content="Lösungsgrid... IP Grid lockt nach validation, subnetgrid wird erst danach freigegeben." HorizontalAlignment="Left" Height="22" Margin="0,10,0,0" VerticalAlignment="Top" Width="155" FontSize="10"/>
                     </Grid>
                 </Grid>
             </TabItem>

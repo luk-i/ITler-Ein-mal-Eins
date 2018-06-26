@@ -31,7 +31,16 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             NOERROR,
             WRONGIPV4,
-            WRONGSUBNETCODE
+            WRONGSUBNETCODE,
+            MULTIPLEFIELDSFILLED
+        }
+
+        private enum FieldStatus
+        {
+            NOFIELDSFILLED,
+            LONGFILLED,
+            SHORTFILLED,
+            BOTHFILLED
         }
 
         #endregion
@@ -71,6 +80,9 @@ namespace ITler_Ein_mal_Eins.Modules
             if (IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
                 IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
             {
+
+                // Was Befüllt werden muss
+
                 //Test, ob Subnetzmaske erlaubt ist.
                 if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
                      IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
@@ -98,12 +110,30 @@ namespace ITler_Ein_mal_Eins.Modules
             return false;
         }
 
+        private FieldStatus getFieldStatus()
+        {
+            bool shortFieldFilled = false;
+            bool longFieldFilled = false;
+
+            if (Subnet_textBox_ShortWritten.Text != "") { shortFieldFilled = true; }
+            if (Subnet_textBox1.Text != "" &&
+                Subnet_textBox2.Text != "" &&
+                Subnet_textBox3.Text != "" &&
+                Subnet_textBox4.Text != "")             { longFieldFilled = true; }
+
+            if(shortFieldFilled == true  && longFieldFilled == false) { return FieldStatus.SHORTFILLED; }
+            if(shortFieldFilled == false && longFieldFilled == true ) { return FieldStatus.LONGFILLED; }
+            if(shortFieldFilled == false && longFieldFilled == false) { return FieldStatus.NOFIELDSFILLED; };
+            return FieldStatus.BOTHFILLED;
+        }
+
         #endregion
 
         #region Manipulation
 
         /*
          * Ausgabe der Fehlermeldungen erfolgt über Ressourcen!!!
+         * Funktion gib je nach Übergebenem Fehlercode eine Message aus.
          */
         private void createErrorLabel(ErrorCodeNo _code)
         {
@@ -119,6 +149,10 @@ namespace ITler_Ein_mal_Eins.Modules
                 case ErrorCodeNo.WRONGSUBNETCODE:
                     label_AdressGrid_IsDataCorrect.Content = Errorcodes.ERROR_INVALIDINPUT;
                     MessageBox.Show(Errorcodes.ERROR_SUBNETMASKISNOTVALID);
+                    break;
+                case ErrorCodeNo.MULTIPLEFIELDSFILLED:
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.ERROR_INVALIDINPUT;
+                    MessageBox.Show(Errorcodes.ERROR_MULTIPLEFIELDSFILLED);                       
                     break;
             // Endoftheline
             }
