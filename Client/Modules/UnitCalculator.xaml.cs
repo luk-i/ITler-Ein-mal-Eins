@@ -83,7 +83,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 }
                 else
                 {
-                    Clear_Txbox_UnitC_Bits();
+                    Clear_Txbox_UnitC_Systems();
                 }
             }
 
@@ -304,10 +304,10 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_gigabyte.Tag = Control.Control.digitTag.SIGNEDFLOAT;
             txbox_terabyte.Tag = Control.Control.digitTag.SIGNEDFLOAT;
 
-            txbox_binaer.Tag = Control.Control.digitTag.BINARY;
-            txbox_oktal.Tag = Control.Control.digitTag.OCTAL;
+            txbox_binaer.Tag = Control.Control.digitTag.UNSIGNEDBINARY;
+            txbox_oktal.Tag = Control.Control.digitTag.UNSIGNEDOCTAL;
             txbox_dezimal.Tag = Control.Control.digitTag.DECIMAL;
-            txbox_hexadezimal.Tag = Control.Control.digitTag.HEX;
+            txbox_hexadezimal.Tag = Control.Control.digitTag.UNSIGNEDHEX;
         }
 
         private void InitializeEvents()

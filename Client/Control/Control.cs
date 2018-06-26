@@ -19,10 +19,10 @@ namespace ITler_Ein_mal_Eins.Control
             UNSIGNEDINTEGER,
             SIGNEDFLOAT,
             BYTE,
-            BINARY,
-            OCTAL,
+            UNSIGNEDBINARY,
+            UNSIGNEDOCTAL,
             DECIMAL,
-            HEX,
+            UNSIGNEDHEX,
             SUBNETMASK
         };
 
@@ -85,18 +85,10 @@ namespace ITler_Ein_mal_Eins.Control
                                 noDigit++;
                         }
                         break;
-                    case digitTag.BINARY:
+                    case digitTag.UNSIGNEDBINARY:
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '-' || x == '+') 
-                            {
-                                if (place != 0)
-                                noDigit++;
-                            }
-                            else
-                            {
-                                noDigit++;
-                            }
+                            noDigit++;
                         }
                         else if (x != '0' && x != '1')
                         {
@@ -104,20 +96,12 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case digitTag.OCTAL:
+                    case digitTag.UNSIGNEDOCTAL:
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '-' || x == '+')
-                            {
-                                if (place != 0)
-                                    noDigit++;
-                            }
-                            else
-                            {
-                                noDigit++;
-                            }
+                            noDigit++;
                         }               
-                        if (x == '8' || x == '9')
+                        else if (x == '8' || x == '9')
                         {
                             noDigit++;
                         }
@@ -138,15 +122,10 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case digitTag.HEX:
+                    case digitTag.UNSIGNEDHEX:
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '-' || x == '+')
-                            {
-                                if (place != 0)
-                                    noDigit++;
-                            }
-                            else if (x != 'A' && x != 'B' && x != 'C' && x != 'D' && x != 'E' && x != 'F' && x != 'a' && x != 'b' && x != 'c' && x != 'd' && x != 'e' && x != 'f')
+                            if (x != 'A' && x != 'B' && x != 'C' && x != 'D' && x != 'E' && x != 'F' && x != 'a' && x != 'b' && x != 'c' && x != 'd' && x != 'e' && x != 'f')
                             {
                                 noDigit++;
                             }
