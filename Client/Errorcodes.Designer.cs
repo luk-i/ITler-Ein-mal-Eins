@@ -79,7 +79,7 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. /n Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt. ähnelt.
         /// </summary>
         public static string ERROR_MULTIPLEFIELDSFILLED {
             get {

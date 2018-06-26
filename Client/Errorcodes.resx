@@ -124,7 +124,7 @@
     <value>Die angegebene IPv4 - Adresse ist ungültig.</value>
   </data>
   <data name="ERROR_MULTIPLEFIELDSFILLED" xml:space="preserve">
-    <value>Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. /n Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt.</value>
+    <value>Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt.</value>
   </data>
   <data name="ERROR_SUBNETMASKISNOTVALID" xml:space="preserve">
     <value>Die angegebene Subnetzmaske ist ungültig.</value>

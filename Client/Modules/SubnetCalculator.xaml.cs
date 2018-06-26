@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ITler_Ein_mal_Eins.Control;
+using ITler_Ein_mal_Eins.Model;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -22,26 +23,6 @@ namespace ITler_Ein_mal_Eins.Modules
         Window origin;
         IpCalculator ipControl;
         Control.Control control;
-
-        #endregion
-
-        #region Enum
-
-        private enum ErrorCodeNo
-        {
-            NOERROR,
-            WRONGIPV4,
-            WRONGSUBNETCODE,
-            MULTIPLEFIELDSFILLED
-        }
-
-        private enum FieldStatus
-        {
-            NOFIELDSFILLED,
-            LONGFILLED,
-            SHORTFILLED,
-            BOTHFILLED
-        }
 
         #endregion
 
@@ -96,7 +77,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             switch (getFieldStatus())
             {
-                case FieldStatus.SHORTFILLED:
+                case IpV4_FieldStatus.SHORTFILLED:
                     if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox_ShortWritten))
                     {
                         createErrorLabel(ErrorCodeNo.NOERROR);
@@ -107,7 +88,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
                         return false;
                     }
-                case FieldStatus.LONGFILLED:
+                case IpV4_FieldStatus.LONGFILLED:
                     if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
                          IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
                     {
@@ -128,10 +109,10 @@ namespace ITler_Ein_mal_Eins.Modules
                         createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
                         return false;
                     }
-                case FieldStatus.BOTHFILLED:
+                case IpV4_FieldStatus.BOTHFILLED:
                     createErrorLabel(ErrorCodeNo.MULTIPLEFIELDSFILLED);
                     return false;
-                case FieldStatus.NOFIELDSFILLED:
+                case IpV4_FieldStatus.NOFIELDSFILLED:
                     createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
                     return false;
                 default:
@@ -139,7 +120,7 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
-        private FieldStatus getFieldStatus()
+        private IpV4_FieldStatus getFieldStatus()
         {
             bool shortFieldFilled = false;
             bool longFieldFilled = false;
@@ -150,10 +131,10 @@ namespace ITler_Ein_mal_Eins.Modules
                 Subnet_textBox3.Text != "" ||
                 Subnet_textBox4.Text != "")             { longFieldFilled = true; }
 
-            if(shortFieldFilled == true  && longFieldFilled == false) { return FieldStatus.SHORTFILLED; }
-            if(shortFieldFilled == false && longFieldFilled == true ) { return FieldStatus.LONGFILLED; }
-            if(shortFieldFilled == false && longFieldFilled == false) { return FieldStatus.NOFIELDSFILLED; };
-            return FieldStatus.BOTHFILLED;
+            if(shortFieldFilled == true  && longFieldFilled == false) { return IpV4_FieldStatus.SHORTFILLED; }
+            if(shortFieldFilled == false && longFieldFilled == true ) { return IpV4_FieldStatus.LONGFILLED; }
+            if(shortFieldFilled == false && longFieldFilled == false) { return IpV4_FieldStatus.NOFIELDSFILLED; };
+            return IpV4_FieldStatus.BOTHFILLED;
         }
 
         #endregion
