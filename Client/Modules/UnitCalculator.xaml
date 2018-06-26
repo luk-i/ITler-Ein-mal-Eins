@@ -10,10 +10,10 @@
         Width="800" MinWidth="285" 
         Closed="Window_Closed">
     <Grid>
-        <TabControl Margin="0,0,0,0">
+        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed"> 
 
             <!--#region bits-bites-->
-            <TabItem Header="Bits - Bytes">
+            <TabItem x:Name="tab_bits" Header="Bits - Bytes">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
                         <ImageBrush ImageSource="binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
@@ -46,16 +46,16 @@
                         <Label Content="Gigabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1" FontWeight="Bold"/>
                         <Label Content="Terabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1" FontWeight="Bold"/>
 
-                        <TextBox x:Name="txbox_bit"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_kilobit"  Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_megabit"  Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_gigabit"  Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_terabit"  Margin="10,0,10,5" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_byte"     Margin="10,0,10,5" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
-                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
+                        <TextBox x:Name="txbox_bit"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_kilobit"  Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_megabit"  Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_gigabit"  Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_terabit"  Margin="10,0,10,5" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_byte"     Margin="10,0,10,5" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_kilobyte" Margin="10,0,10,5" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_megabyte" Margin="10,0,10,5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_gigabyte" Margin="10,0,10,5" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
+                        <TextBox x:Name="txbox_terabyte" Margin="10,0,10,5" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5"/>
                     </Grid>
                     <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
                         <StackPanel.RenderTransform>
@@ -75,7 +75,7 @@
             <!--#endregion-->
 
             <!--#region zahlensysteme-->
-            <TabItem Header="Zahlensysteme">
+            <TabItem x:Name="tab_systems" Header="Zahlensysteme">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
                         <ImageBrush ImageSource="binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
@@ -99,10 +99,10 @@
                         <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
                         <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
 
-                        <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="txbox_oktal"       Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="txbox_dezimal"     Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="txbox_hexadezimal" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_oktal"       Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_dezimal"     Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_hexadezimal" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
                     </Grid>
                     <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
                         <StackPanel.RenderTransform>

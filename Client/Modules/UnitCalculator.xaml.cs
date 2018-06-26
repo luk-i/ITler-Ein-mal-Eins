@@ -38,6 +38,59 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeEvents();
         }
 
+        #region Allgemein ################################################################################################################################################################################### 
+
+        //Welche Box wurde gefüllt und wird übergeben?
+        private TextBox Active_TextBox()
+        {
+            if (txbox_bit.Text != "") { txbox_active = txbox_bit; }
+            if (txbox_kilobit.Text != "") { txbox_active = txbox_kilobit; }
+            if (txbox_megabit.Text != "") { txbox_active = txbox_megabit; }
+            if (txbox_gigabit.Text != "") { txbox_active = txbox_gigabit; }
+            if (txbox_terabit.Text != "") { txbox_active = txbox_terabit; }
+            if (txbox_byte.Text != "") { txbox_active = txbox_byte; }
+            if (txbox_kilobyte.Text != "") { txbox_active = txbox_kilobyte; }
+            if (txbox_megabyte.Text != "") { txbox_active = txbox_megabyte; }
+            if (txbox_gigabyte.Text != "") { txbox_active = txbox_gigabyte; }
+            if (txbox_terabyte.Text != "") { txbox_active = txbox_terabyte; }
+            if (txbox_binaer.Text != "") { txbox_active = txbox_binaer; }
+            if (txbox_oktal.Text != "") { txbox_active = txbox_oktal; }
+            if (txbox_dezimal.Text != "") { txbox_active = txbox_dezimal; }
+            if (txbox_hexadezimal.Text != "") { txbox_active = txbox_hexadezimal; }
+
+            return txbox_active;
+        }
+
+        public void EnterPressPerformed ()
+        {
+            TabItem selectedTab = tabControl_unitCalculator.SelectedItem as TabItem;
+            if (selectedTab.Name == "tab_bits")
+            {
+                if (btn_bits_calculate.IsEnabled == true)
+                {
+                    Event_Btn_Click_Calculate_Bits();
+                }
+                else
+                {
+                    Clear_Txbox_UnitC_Bits();
+                }
+            }
+            else if (selectedTab.Name == "tab_systems")
+            {
+                if (btn_systems_calculate.IsEnabled == true)
+                {
+                    Event_Btn_Click_Calculate_Systems();
+                }
+                else
+                {
+                    Clear_Txbox_UnitC_Bits();
+                }
+            }
+                
+        }
+
+        #endregion ##########################################################################################################################################################################################
+
         #region Methods Bits ################################################################################################################################################################################
         //Textboxen zurücksetzen Bits
         private void Clear_Txbox_UnitC_Bits()
@@ -241,21 +294,21 @@ namespace ITler_Ein_mal_Eins.Modules
         //Initialsieren der TextBox Tags. Für die Prüfung, welcher Wert als Eingabe erlaubt wird
         private void InitializeTags()
         {
-            txbox_bit.Tag       = Control.Control.digitTag.FLOAT;
-            txbox_kilobit.Tag   = Control.Control.digitTag.FLOAT;
-            txbox_megabit.Tag   = Control.Control.digitTag.FLOAT;
-            txbox_gigabit.Tag   = Control.Control.digitTag.FLOAT;
-            txbox_terabit.Tag   = Control.Control.digitTag.FLOAT;
-            txbox_byte.Tag      = Control.Control.digitTag.FLOAT;
-            txbox_kilobyte.Tag  = Control.Control.digitTag.FLOAT;
-            txbox_megabyte.Tag  = Control.Control.digitTag.FLOAT;
-            txbox_gigabyte.Tag  = Control.Control.digitTag.FLOAT;
-            txbox_terabyte.Tag  = Control.Control.digitTag.FLOAT;
+            txbox_bit.Tag           = Control.Control.digitTag.FLOAT;
+            txbox_kilobit.Tag       = Control.Control.digitTag.FLOAT;
+            txbox_megabit.Tag       = Control.Control.digitTag.FLOAT;
+            txbox_gigabit.Tag       = Control.Control.digitTag.FLOAT;
+            txbox_terabit.Tag       = Control.Control.digitTag.FLOAT;
+            txbox_byte.Tag          = Control.Control.digitTag.FLOAT;
+            txbox_kilobyte.Tag      = Control.Control.digitTag.FLOAT;
+            txbox_megabyte.Tag      = Control.Control.digitTag.FLOAT;
+            txbox_gigabyte.Tag      = Control.Control.digitTag.FLOAT;
+            txbox_terabyte.Tag      = Control.Control.digitTag.FLOAT;
 
-            txbox_binaer.Tag    = Control.Control.digitTag.BINARYFLOAT;
-            txbox_oktal.Tag     = Control.Control.digitTag.OKTAL;
-            txbox_dezimal.Tag   = Control.Control.digitTag.DECIMAL;
-            txbox_hexadezimal.Tag = Control.Control.digitTag.HEX;
+            txbox_binaer.Tag        = Control.Control.digitTag.BINARYFLOAT;
+            txbox_oktal.Tag         = Control.Control.digitTag.OKTAL;
+            txbox_dezimal.Tag       = Control.Control.digitTag.DECIMAL;
+            txbox_hexadezimal.Tag   = Control.Control.digitTag.HEX;
         }
 
         private void InitializeEvents()
@@ -271,10 +324,13 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_gigabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
             txbox_terabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
             txbox_terabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
+
             txbox_binaer.TextChanged        += Txbox_UnitCalculator_TextChanged;
             txbox_oktal.TextChanged         += Txbox_UnitCalculator_TextChanged;
             txbox_dezimal.TextChanged       += Txbox_UnitCalculator_TextChanged;
             txbox_hexadezimal.TextChanged   += Txbox_UnitCalculator_TextChanged;
+
+
         }
 
         #endregion ##########################################################################################################################################################################################
@@ -289,41 +345,24 @@ namespace ITler_Ein_mal_Eins.Modules
             origin.Top  = this.Top;
         }
 
-        //Welche Box wurde gefüllt und wird übergeben?
-        private TextBox Active_TextBox()
-        {
-            if (txbox_bit.Text          != "") { txbox_active = txbox_bit; }
-            if (txbox_kilobit.Text      != "") { txbox_active = txbox_kilobit; }
-            if (txbox_megabit.Text      != "") { txbox_active = txbox_megabit; }
-            if (txbox_gigabit.Text      != "") { txbox_active = txbox_gigabit; }
-            if (txbox_terabit.Text      != "") { txbox_active = txbox_terabit; }
-            if (txbox_byte.Text         != "") { txbox_active = txbox_byte; }
-            if (txbox_kilobyte.Text     != "") { txbox_active = txbox_kilobyte; }
-            if (txbox_megabyte.Text     != "") { txbox_active = txbox_megabyte; }
-            if (txbox_gigabyte.Text     != "") { txbox_active = txbox_gigabyte; }
-            if (txbox_terabyte.Text     != "") { txbox_active = txbox_terabyte; }
-            if (txbox_binaer.Text       != "") { txbox_active = txbox_binaer; }
-            if (txbox_oktal.Text        != "") { txbox_active = txbox_oktal; }
-            if (txbox_dezimal.Text      != "") { txbox_active = txbox_dezimal; }
-            if (txbox_hexadezimal.Text  != "") { txbox_active = txbox_hexadezimal; }
-
-            return txbox_active;
-        }
-
         //Modul über eigenen Button schließen
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
         //Alle Werte löschen Bits
         private void Btn_Bits_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC_Bits();
-
         //Alle Werte löschen Systeme
         private void Btn_Systems_Reset_Click(object sender, RoutedEventArgs e) => Clear_Txbox_UnitC_Systems();
 
-        //Werte berechen Bits
-        private void Btn_Bits_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate_Bits();
-
+        //Werte berechen Bits bei Button Klick
+        private void Btn_Bits_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate_Bits();        
         //Werte berechen Zahlensysteme
         private void Btn_Systems_Calculate_Click(object sender, RoutedEventArgs e) => Event_Btn_Click_Calculate_Systems();
+        //Werte berechnen Bits bei Enter gedrückt
+        private void Enterpressed(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+                EnterPressPerformed();
+        }
 
         //Ist die Eingabe numerisch?
         private void Txbox_UnitCalculator_TextChanged(object sender, TextChangedEventArgs e) => control.CheckTextboxIfNumeric((TextBox)e.Source);
