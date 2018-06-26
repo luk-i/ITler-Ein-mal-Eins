@@ -104,5 +104,23 @@ namespace ITler_Ein_mal_Eins {
                 return ResourceManager.GetString("NOERROR", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bitte füllen Sie ein einzelnes Feld mit einem numerischen Wert. &quot; + Environment.NewLine + &quot;Seperatoren zwischen den Vorstellen werden nicht akzeptiert. &quot; + Environment.NewLine + Environment.NewLine + &quot;Beispiel: -42.481516 ähnelt.
+        /// </summary>
+        public static string UNITC_BITS_NO_VALID_INPUT {
+            get {
+                return ResourceManager.GetString("UNITC_BITS_NO_VALID_INPUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Einheiten-Rechner kann den eingegebenen Wertebereich leider nicht verarbeiten. Bitte wählen Sie den Wertebereich kleiner. ähnelt.
+        /// </summary>
+        public static string UNITC_BITS_RANGE_EXCEPTION {
+            get {
+                return ResourceManager.GetString("UNITC_BITS_RANGE_EXCEPTION", resourceCulture);
+            }
+        }
     }
 }

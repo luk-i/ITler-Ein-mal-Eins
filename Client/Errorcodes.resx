@@ -132,4 +132,10 @@
   <data name="NOERROR" xml:space="preserve">
     <value>Alle Eingaben korrekt.</value>
   </data>
+  <data name="UNITC_BITS_NO_VALID_INPUT" xml:space="preserve">
+    <value>Bitte füllen Sie ein einzelnes Feld mit einem numerischen Wert. " + Environment.NewLine + "Seperatoren zwischen den Vorstellen werden nicht akzeptiert. " + Environment.NewLine + Environment.NewLine + "Beispiel: -42.481516</value>
+  </data>
+  <data name="UNITC_BITS_RANGE_EXCEPTION" xml:space="preserve">
+    <value>Der Einheiten-Rechner kann den eingegebenen Wertebereich leider nicht verarbeiten. Bitte wählen Sie den Wertebereich kleiner.</value>
+  </data>
 </root>
