@@ -27,7 +27,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Enum
 
-        private enum ErrorCode
+        private enum ErrorCodeNo
         {
             NOERROR,
             WRONGIPV4,
@@ -46,6 +46,87 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeTags();
             InitializeEvents();
         }
+
+
+        #region Functions
+
+        #region Control
+        /*
+         *  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
+         */
+        private void IPv4_calculateBits()
+        {
+            IsValidInput_IpV4();
+
+
+            bool tmp = IpCalculator.isIpV4Digit(Ip4_textBox1, true);
+
+        }
+
+        #endregion
+
+        #region Validation
+        private bool IsValidInput_IpV4()
+        {
+            if (IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
+                IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
+            {
+                //Test, ob Subnetzmaske erlaubt ist.
+                if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
+                     IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
+                {
+                    if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
+                        Subnet_textBox3, Subnet_textBox4))
+                    {
+                        createErrorLabel(ErrorCodeNo.NOERROR);
+                    }
+                    else
+                    {
+                        createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
+                    }
+                }
+                else
+                {
+                    createErrorLabel(ErrorCodeNo.WRONGSUBNETCODE);
+                }
+            }
+            else
+            {
+                // Ist falsche IPv4 Adresse
+                createErrorLabel(ErrorCodeNo.WRONGIPV4);
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Manipulation
+
+        /*
+         * Ausgabe der Fehlermeldungen erfolgt über Ressourcen!!!
+         */
+        private void createErrorLabel(ErrorCodeNo _code)
+        {
+            switch (_code)
+            {
+                case ErrorCodeNo.NOERROR:
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.NOERROR;
+                    break;
+                case ErrorCodeNo.WRONGIPV4:
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.ERROR_INVALIDINPUT;
+                    MessageBox.Show(Errorcodes.ERROR_IPV4DIGITISNOTVALID);
+                    break;
+                case ErrorCodeNo.WRONGSUBNETCODE:
+                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.ERROR_INVALIDINPUT;
+                    MessageBox.Show(Errorcodes.ERROR_SUBNETMASKISNOTVALID);
+                    break;
+            // Endoftheline
+            }
+        }
+
+        #endregion
+
+        #endregion
 
         #region Initialisation
 
@@ -71,72 +152,6 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
-        }
-
-        #endregion
-
-        #region Functions
-        /*
-         *  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
-         */
-        private void IPv4_calculateBits()
-        {
-            testFields();
-
-
-            bool tmp = IpCalculator.isIpV4Digit(Ip4_textBox1, true);
-
-        }
-        private bool testFields()
-        {
-            if (IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
-                IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
-            {
-                //Test, ob Subnetzmaske erlaubt ist.
-                if (IpCalculator.isIpV4Digit(Subnet_textBox1, true) && IpCalculator.isIpV4Digit(Subnet_textBox2, true) &&
-                     IpCalculator.isIpV4Digit(Subnet_textBox3, true) && IpCalculator.isIpV4Digit(Subnet_textBox4, true))
-                {
-                    if (IpCalculator.isLegitIpV4SubnetMask(Subnet_textBox1, Subnet_textBox2,
-                        Subnet_textBox3, Subnet_textBox4))
-                    {
-                        createErrorLabel(ErrorCode.NOERROR);
-                    }
-                    else
-                    {
-                        createErrorLabel(ErrorCode.WRONGSUBNETCODE);
-                    }
-                }
-                else
-                {
-                    createErrorLabel(ErrorCode.WRONGSUBNETCODE);
-                }
-            }
-            else
-            {
-                // Ist falsche IPv4 Adresse
-                createErrorLabel(ErrorCode.WRONGIPV4);
-            }
-            return false;
-        }
-
-        /*
-         * Ausgabe der Fehlermeldungen erfolgt über Ressourcen!!!
-         */
-        private void createErrorLabel(ErrorCode _code)
-        {
-            switch (_code)
-            {
-                case ErrorCode.NOERROR:
-                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.NOERROR;
-                    break;
-                case ErrorCode.WRONGIPV4:
-                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.IPV4DIGITISNOTVALID;
-                    break;
-                case ErrorCode.WRONGSUBNETCODE:
-                    label_AdressGrid_IsDataCorrect.Content = Errorcodes.SUBNETMASKISNOTVALID;
-                    break;
-            // Endoftheline
-            }
         }
 
         #endregion
