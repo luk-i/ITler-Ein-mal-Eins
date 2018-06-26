@@ -18,9 +18,18 @@ namespace ITler_Ein_mal_Eins.Control
         //BigFloat kommt mit Vorzeichen leider nicht richtig klar
         public string WorkString (string workString)
         {
-            workString = workString.Replace(',', '.');
+            workString = workString.Replace('.', ',');
             workString = workString.Trim('-','+');
             return workString;
+        }
+
+        public string EraseFollowingZeroes (string withFollowingZeroes)
+        {
+            string zeroesErased;
+            char[] charsToTrim = {'0'};
+            zeroesErased = withFollowingZeroes.TrimEnd(charsToTrim);
+            zeroesErased = zeroesErased + '0';
+            return zeroesErased;
         }
 
         #endregion
@@ -55,9 +64,9 @@ namespace ITler_Ein_mal_Eins.Control
             bitByteStrings.noError = true;
             try
             {
-                BigFloat eingabeInBit = CalculateAnythingToBits(txbox_eingabe);
+                decimal eingabeInBit = CalculateAnythingToBits(txbox_eingabe);
                 FillResults_Bits(eingabeInBit);
-                BigFloat wasInputSigned = BigFloat.Parse(txbox_eingabe.Text);
+                decimal wasInputSigned = decimal.Parse(txbox_eingabe.Text);
                 WasTheInputSigned_Bits (wasInputSigned);
             }
             catch
@@ -71,50 +80,51 @@ namespace ITler_Ein_mal_Eins.Control
         }
 
 
-        private BigFloat CalculateAnythingToBits(TextBox txbox_eingabe)
+        private decimal CalculateAnythingToBits(TextBox txbox_eingabe)
         {
             //Initiales Umrechnen des erhaltenen Wertes in Bits                         
             string workString = WorkString (txbox_eingabe.Text);
-            BigFloat eingabe = BigFloat.Parse(workString);
-            BigFloat ausgabe = 0;
-            BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
-            BigFloat k = 1024;    // sowie vor einem Überlauf des Standard schützen
-            switch (txbox_eingabe.Name)
-            {
-                case "txbox_bit": ausgabe = eingabe; break; //Wert bereits in Einheit Bits
-                case "txbox_kilobit": ausgabe = eingabe * k; break;
-                case "txbox_megabit": ausgabe = eingabe * k * k; break;
-                case "txbox_gigabit": ausgabe = eingabe * k * k * k; break;
-                case "txbox_terabit": ausgabe = eingabe * k * k * k * k; break;
+            decimal eingabe = Convert.ToDecimal(workString);
+            decimal ausgabe = 0;
+            decimal b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
+            decimal k = 1024;    // sowie vor einem Überlauf des Standard schützen
+                switch (txbox_eingabe.Name)
+                {
+                    case "txbox_bit": ausgabe = eingabe; break; //Wert bereits in Einheit Bits
+                    case "txbox_kilobit": ausgabe = eingabe * k; break;
+                    case "txbox_megabit": ausgabe = eingabe * k * k; break;
+                    case "txbox_gigabit": ausgabe = eingabe * k * k * k; break;
+                    case "txbox_terabit": ausgabe = eingabe * k * k * k * k; break;
 
-                case "txbox_byte": ausgabe = eingabe * b; break;
-                case "txbox_kilobyte": ausgabe = eingabe * b * k; break;
-                case "txbox_megabyte": ausgabe = eingabe * b * k * k; break;
-                case "txbox_gigabyte": ausgabe = eingabe * b * k * k * k; break;
-                case "txbox_terabyte": ausgabe = eingabe * b * k * k * k * k; break;
-            }
-            return ausgabe;
+                    case "txbox_byte": ausgabe = eingabe * b; break;
+                    case "txbox_kilobyte": ausgabe = eingabe * b * k; break;
+                    case "txbox_megabyte": ausgabe = eingabe * b * k * k; break;
+                    case "txbox_gigabyte": ausgabe = eingabe * b * k * k * k; break;
+                    case "txbox_terabyte": ausgabe = eingabe * b * k * k * k * k; break;
+                }
+                return ausgabe;
         }
 
-        private void FillResults_Bits(BigFloat eingabeInBit)
+        private void FillResults_Bits(decimal eingabeInBit)
         {
-            BigFloat b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
-            BigFloat k = 1024;    // sowie vor einem Überlauf des Standard schützen
-            bitByteStrings._bit = (eingabeInBit.ToString());
-            bitByteStrings.kiloBit = (eingabeInBit / k).ToString();
-            bitByteStrings.megaBit = (eingabeInBit / (k * k)).ToString();
-            bitByteStrings.gigaBit = (eingabeInBit / (k * k * k)).ToString();
-            bitByteStrings.teraBit = (eingabeInBit / (k * k * k * k)).ToString();
+            decimal b = 8;       // Die Variablen sollen die Rechnung übersichtlicher gestalten,
+            decimal k = 1024;    // sowie vor einem Überlauf des Standard schützen
 
-            bitByteStrings._byte = (eingabeInBit / b).ToString();
-            bitByteStrings.kiloByte = (eingabeInBit / (b * k)).ToString();
-            bitByteStrings.megaByte = (eingabeInBit / (b * k * k)).ToString();
-            bitByteStrings.gigaByte = (eingabeInBit / (b * k * k * k)).ToString();
-            bitByteStrings.teraByte = (eingabeInBit / (b * k * k * k * k)).ToString();
+            bitByteStrings._bit     = EraseFollowingZeroes((eingabeInBit.ToString("F99")));
             
+            bitByteStrings.kiloBit  = EraseFollowingZeroes((eingabeInBit / (k)).ToString("F99"));
+            bitByteStrings.megaBit  = EraseFollowingZeroes((eingabeInBit / (k * k)).ToString("F99"));
+            bitByteStrings.gigaBit  = EraseFollowingZeroes((eingabeInBit / (k * k * k)).ToString("F99"));
+            bitByteStrings.teraBit  = EraseFollowingZeroes((eingabeInBit / (k * k * k * k)).ToString("F99"));
+
+            bitByteStrings._byte    = EraseFollowingZeroes((eingabeInBit / (b)).ToString("F99"));
+            bitByteStrings.kiloByte = EraseFollowingZeroes((eingabeInBit / (b * k)).ToString("F99"));
+            bitByteStrings.megaByte = EraseFollowingZeroes((eingabeInBit / (b * k * k)).ToString("F99"));
+            bitByteStrings.gigaByte = EraseFollowingZeroes((eingabeInBit / (b * k * k * k)).ToString("F99"));
+            bitByteStrings.teraByte = EraseFollowingZeroes((eingabeInBit / (b * k * k * k * k)).ToString("F99"));           
         }
 
-        public void WasTheInputSigned_Bits(BigFloat input)
+        public void WasTheInputSigned_Bits(decimal input)
         {
             if (input < 0)
             {

@@ -38,8 +38,6 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeEvents();
         }
 
-
-
         #region Methods Bits
         //Textboxen zurücksetzen Bits
         private void Clear_Txbox_UnitC_Bits()

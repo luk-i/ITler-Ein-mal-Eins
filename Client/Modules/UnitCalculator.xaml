@@ -35,16 +35,16 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Content="Bit"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"/>
-                        <Label Content="Kilobit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0"/>
-                        <Label Content="Megabit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0"/>
-                        <Label Content="Gigabit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0"/>
-                        <Label Content="Terabit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="0"/>
-                        <Label Content="Byte"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1"/>
-                        <Label Content="Kilobyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
-                        <Label Content="Megabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1"/>
-                        <Label Content="Gigabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1"/>
-                        <Label Content="Terabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1"/>
+                        <Label Content="Bit"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
+                        <Label Content="Kilobit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+                        <Label Content="Megabit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" FontWeight="Bold"/>
+                        <Label Content="Gigabit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" FontWeight="Bold"/>
+                        <Label Content="Terabit"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="0" FontWeight="Bold"/>
+                        <Label Content="Byte"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontWeight="Bold"/>
+                        <Label Content="Kilobyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" FontWeight="Bold"/>
+                        <Label Content="Megabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1" FontWeight="Bold"/>
+                        <Label Content="Gigabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1" FontWeight="Bold"/>
+                        <Label Content="Terabyte" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1" FontWeight="Bold"/>
 
                         <TextBox x:Name="txbox_bit"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
                         <TextBox x:Name="txbox_kilobit"  Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" />
@@ -94,10 +94,10 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Binär"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
-                        <Label Content="Oktal"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
-                        <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
-                        <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"/>
+                        <Label Content="Binär"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <Label Content="Oktal"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
 
                         <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="txbox_oktal"       Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>

@@ -57,7 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Control\BigFloat.cs" />
     <Compile Include="Control\UnitCalculatorControl.cs" />
     <Compile Include="Errorcodes.Designer.cs">
       <AutoGen>True</AutoGen>
