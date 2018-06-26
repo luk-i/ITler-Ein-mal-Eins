@@ -86,6 +86,7 @@
                     </Grid.Background>
                     <Grid Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" MinHeight="30"/>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" MinHeight="30" />
                             <RowDefinition Height="Auto" />
@@ -98,15 +99,32 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Binär"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
-                        <Label Content="Oktal"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
-                        <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
-                        <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <StackPanel Margin="0,10,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <Label Content="Datentyp"    HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <ComboBox Name="combobox_system" Width="60">
+                                <ComboBoxItem x:Name="comboBox_Int16">                  Int16</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBox_Int32">                  Int32</ComboBoxItem>
+                                <ComboBoxItem x:Name="comboBox_Int64" IsSelected="True">Int64</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        
+                        <Label Content="Binär"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <Label Content="Oktal"       HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <Label Content="Dezimal"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
+                        <Label Content="Hexadezimal" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" FontWeight="Bold"/>
 
-                        <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="txbox_oktal"       Margin="10,0,10,5" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="txbox_dezimal"     Margin="10,0,10,5" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="txbox_hexadezimal" Margin="10,0,10,5" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_binaer"      Margin="10,0,10,5" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_oktal"       Margin="10,0,10,5" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_dezimal"     Margin="10,0,10,5" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
+                        <TextBox x:Name="txbox_hexadezimal" Margin="10,0,10,5" Grid.Row="8" Grid.Column="0" TextWrapping="Wrap" VerticalContentAlignment="Center" Padding="2.5" Grid.ColumnSpan="3"/>
                     </Grid>
                     <StackPanel Margin="0,0,0,5" Orientation="Horizontal" Height="20" VerticalAlignment="Bottom" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MinWidth="240" HorizontalAlignment="Center" MinHeight="20" Width="240" >
                         <StackPanel.RenderTransform>
