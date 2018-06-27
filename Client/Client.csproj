@@ -160,13 +160,10 @@
     <Resource Include="Resources\binary-code.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\abstract-art.jpg" />
+    <Resource Include="Resources\switch-lan.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\processor.jpeg" />
+    <Resource Include="Resources\abstract-background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
