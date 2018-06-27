@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\PerformanceControl.cs" />
     <Compile Include="Control\UnitCalculatorControl.cs" />
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.resx</DependentUpon>
@@ -163,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\processor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
