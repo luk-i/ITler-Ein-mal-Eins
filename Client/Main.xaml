@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:ITler_Ein_mal_Eins"
         mc:Ignorable="d"
         Title="Hauptmenü" 
-        Height="450"    MinHeight="250"
-        Width="800"     MinWidth="250">
+        Height="450"    MinHeight="350"
+        Width="800"     MinWidth="550">
 
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Resources/abstract-art.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Grid x:Name="MainGrid" Margin="30,30,30,30" >
+        <Grid x:Name="MainGrid" Margin="5,5,5,5" >
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
