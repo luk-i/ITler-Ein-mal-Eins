@@ -76,6 +76,9 @@
       <DependentUpon>Errorcodes.resx</DependentUpon>
     </Compile>
     <Compile Include="Model\SubnetCalculatorModel.cs" />
+    <Compile Include="Modules\Performance.xaml.cs">
+      <DependentUpon>Performance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <DependentUpon>Main.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modules\Performance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\SubnetCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

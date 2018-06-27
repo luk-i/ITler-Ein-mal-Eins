@@ -48,6 +48,14 @@ namespace ITler_Ein_mal_Eins
             sCalculator.Left            = this.Left;
             sCalculator.Top             = this.Top;
         }
+        private void Performance_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Modules.Performance performance = new Modules.Performance(this, control);
+            this.Hide();
+            performance.Show();
+            performance.Left = this.Left;
+            performance.Top = this.Top;
+        }
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
