@@ -23,7 +23,7 @@ namespace ITler_Ein_mal_Eins.Modules
         Window origin;
         Control.Control control;
         TextBox txbox_active;
-        Control.UnitCalculatorControl unitCalculatorControl;
+        UnitCalculatorControl unitCalculatorControl;
         //Struct
         UnitCalculatorControl.BitByteStrings bitByteStrings;
         UnitCalculatorControl.Systems systems;

@@ -13,7 +13,7 @@
     <Grid>
         <Grid Margin="0,0,0,0">
             <Grid.Background>
-                <ImageBrush Stretch="UniformToFill" Opacity="0.3"/>
+                <ImageBrush Stretch="UniformToFill" Opacity="0.3" ImageSource="/ITler-Ein-mal-Eins;component/Resources/processor.jpeg"/>
             </Grid.Background>
             <Grid Margin="2.5,2.5,2.5,27.5">
                 <Grid.RowDefinitions>

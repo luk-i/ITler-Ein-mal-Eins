@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ITler_Ein_mal_Eins.Control;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -19,16 +20,27 @@ namespace ITler_Ein_mal_Eins.Modules
         //Attributes
         Window origin;
         Control.Control control;
-      
+        PerformanceControl performanceControl;
+        PerformanceControl.Struct_performanceCPU struct_performanceCPU;
+
         public Performance(Window _origin, Control.Control _control)
         {
             origin = _origin;
             control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            //InitializeTags();
-            //InitializeContent();
-            //InitializeEvents();
+            //GetPerformanceCPU();
+        }
+
+        public void GetPerformanceCPU()
+        {
+            while (1 == 1)
+            {
+                performanceControl = new PerformanceControl();
+                struct_performanceCPU = performanceControl.PerformanceControl_CPU();
+                float tmp = struct_performanceCPU.cpu_total;
+                System.Threading.Thread.Sleep(1000); // 1 Sekunde warten
+            }
         }
 
         #region Events #################################################################################################################################################
