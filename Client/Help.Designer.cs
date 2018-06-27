@@ -61,7 +61,16 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabehilfe - Wird noch gefüllt. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Erlaubt sind Gleitkommazahlen mit und ohne Vorzeichen. Als Dezimaltrennzeichen kann &apos;.&apos; oder &apos;,&apos; benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
+        ///
+        ///Füllen Sie genau ein Feld aus und drücken Sie &quot;Berechnen&quot;, oder drücken Sie die Enter-Taste.
+        ///
+        ///Für eine erneute Eingabe drücken Sie bitte &quot;Zurücksetzen&quot;, oder erneut die Enter-Taste.
+        ///
+        ///Hinweis: Es handelt sich um Einheiten im Hauptspeicherbereich, der Faktor zwischen den Tausender-Schritten beträgt daher 1024. 
+        ///
+        ///Beispiele:
+        ///-123.4567        /// [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string HELP_UNITC_BITS {
             get {
@@ -70,7 +79,14 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabehilfe - Wird noch gefüllt. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Im kompletten Bereich sind nur Ganzzahlen erlaubt. Vorzeichen sind nur im Feld &quot;Dezimal&quot; erlaubt. 
+        ///
+        ///Erlaubt in &quot;Binär&quot; sind die Zahlen 0 und 1.
+        ///Erlaubt in &quot;Oktal&quot; sind die Zahlen 0 bis 7.
+        ///Erlaubt in &quot;Dezimal&quot; sind die Zahlen 0 bis 9 mit oder ohne Vorzeichen &apos;-&apos;.
+        ///Erlaubt in &quot;Hexadezimal&quot; sind die Zahlen 0 bis 9 und die Zeichen A bis F (Groß- und Kleinschreibung akzeptiert).
+        ///
+        ///Wählen Sie den gewünschten Datentyp aus dem Dropdown-Feld im oberen Bereich. Dies ist notwendig, da negative Zahlen in &quot;Binär&quot;,  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string HELP_UNITC_SYSTEMS {
             get {
