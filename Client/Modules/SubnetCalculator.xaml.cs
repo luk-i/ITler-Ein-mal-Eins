@@ -60,9 +60,9 @@ namespace ITler_Ein_mal_Eins.Modules
                         int c = tmp[2];
                         int d = tmp[3];
                         Subnet_textBox1.Text = a.ToString();
-                        Subnet_textBox1.Text = b.ToString();
-                        Subnet_textBox1.Text = c.ToString();
-                        Subnet_textBox1.Text = d.ToString();
+                        Subnet_textBox2.Text = b.ToString();
+                        Subnet_textBox3.Text = c.ToString();
+                        Subnet_textBox4.Text = d.ToString();
                         break;
                     case IpV4_FieldStatus.LONGFILLED:
 
