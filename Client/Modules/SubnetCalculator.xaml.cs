@@ -65,7 +65,9 @@ namespace ITler_Ein_mal_Eins.Modules
                         Subnet_textBox4.Text = d.ToString();
                         break;
                     case IpV4_FieldStatus.LONGFILLED:
-
+                        tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox1, Subnet_textBox2, Subnet_textBox3, Subnet_textBox4);
+                        int x = tmp[0];
+                        Subnet_textBox_ShortWritten.Text = x.ToString();
                         break;
                     default:
                         throw new NotImplementedException();
