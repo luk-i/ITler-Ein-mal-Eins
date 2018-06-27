@@ -18,7 +18,7 @@
             <TabItem Header="IPv4">
                 <Grid Margin="0,0,0,0">
                     <Grid.Background>
-                        <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/switch-lan.jpg" Stretch="UniformToFill" Opacity="0.3"/>
+                        <ImageBrush Stretch="UniformToFill" Opacity="0.3" ImageSource="/ITler-Ein-mal-Eins;component/Resources/switch-lan.jpg"/>
                     </Grid.Background>
                     <Grid x:Name="MainGrid_SubnetCalc" Margin="2.5,2.5,2.5,27.5">
                         <Grid.ColumnDefinitions>
