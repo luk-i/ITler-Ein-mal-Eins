@@ -64,13 +64,13 @@ namespace ITler_Ein_mal_Eins {
         ///   Sucht eine lokalisierte Zeichenfolge, die Erlaubt sind Gleitkommazahlen mit und ohne Vorzeichen. Als Dezimaltrennzeichen kann &apos;.&apos; oder &apos;,&apos; benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
         ///
         ///Füllen Sie genau ein Feld aus und drücken Sie &quot;Berechnen&quot;, oder drücken Sie die Enter-Taste.
-        ///
         ///Für eine erneute Eingabe drücken Sie bitte &quot;Zurücksetzen&quot;, oder erneut die Enter-Taste.
         ///
         ///Hinweis: Es handelt sich um Einheiten im Hauptspeicherbereich, der Faktor zwischen den Tausender-Schritten beträgt daher 1024. 
         ///
         ///Beispiele:
-        ///-123.4567        /// [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///-123.4567
+        ///+ [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string HELP_UNITC_BITS {
             get {

@@ -121,7 +121,6 @@
     <value>Erlaubt sind Gleitkommazahlen mit und ohne Vorzeichen. Als Dezimaltrennzeichen kann '.' oder ',' benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
 
 Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder drücken Sie die Enter-Taste.
-
 Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder erneut die Enter-Taste.
 
 Hinweis: Es handelt sich um Einheiten im Hauptspeicherbereich, der Faktor zwischen den Tausender-Schritten beträgt daher 1024. 
@@ -143,7 +142,6 @@ Erlaubt in "Hexadezimal" sind die Zahlen 0 bis 9 und die Zeichen A bis F (Groß-
 Wählen Sie den gewünschten Datentyp aus dem Dropdown-Feld im oberen Bereich. Dies ist notwendig, da negative Zahlen in "Binär", "Oktal" und "Hexadezimal" je nach Datentyp unterschiedlich dargestellt werden, da das MSB (most significant bit) immer links steht.
 
 Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder drücken Sie die Enter-Taste.
-
 Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder erneut die Enter-Taste.
 
 Beispiel (von oben nach unten):
