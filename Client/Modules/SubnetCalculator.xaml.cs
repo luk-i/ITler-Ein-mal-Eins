@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ITler_Ein_mal_Eins.Control;
 using ITler_Ein_mal_Eins.Model;
+using System.Net;
+using System.Text;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -46,12 +48,33 @@ namespace ITler_Ein_mal_Eins.Modules
          */
         private void IPv4_calculateBits()
         {
+            byte[] tmp;           
             if(IsValidInput_IpV4() && isValidInput_IpV4SubnetMask())
             {
-                // Befüllen Subnetzmaske und Eventwurf
+                switch (getFieldStatus())
+                {
+                    case IpV4_FieldStatus.SHORTFILLED:
+                        tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox_ShortWritten);
+                        int a = tmp[0];
+                        int b = tmp[1];
+                        int c = tmp[2];
+                        int d = tmp[3];
+                        Subnet_textBox1.Text = a.ToString();
+                        Subnet_textBox1.Text = b.ToString();
+                        Subnet_textBox1.Text = c.ToString();
+                        Subnet_textBox1.Text = d.ToString();
+                        break;
+                    case IpV4_FieldStatus.LONGFILLED:
+
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                // Lock all fields
+                
             }
 
-            bool tmp = IpCalculator.isIpV4Digit(Ip4_textBox1, true);
 
         }
 

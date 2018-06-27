@@ -174,22 +174,32 @@ namespace ITler_Ein_mal_Eins.Control
          * VALIDATION VORHER ABGESCHLOSSEN!!!
          * InterNetwork = IpV4 (Laut Google :D)
          */ 
-        public static int[] calcEmptySubnetMaskFields(int first, int second, 
-            int third, int forth, int shortField, IpV4_FieldStatus fieldStatus)
+        public static byte[] calcEmptySubnetMaskFields(int shortField)
         {
-            switch (fieldStatus)
-            {
-                case IpV4_FieldStatus.SHORTFILLED:
-                    IPNetwork.ToNetmask((byte)shortField, System.Net.Sockets.AddressFamily.InterNetwork);
-                    break;
-                case IpV4_FieldStatus.LONGFILLED:
+            IPAddress address = IPNetwork.ToNetmask((byte)shortField, System.Net.Sockets.AddressFamily.InterNetwork);
+            return address.GetAddressBytes();
+        }
 
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
+        public static byte[] calcEmptySubnetMaskFields(TextBox shortField)
+        {
+            byte tmp;
+            byte.TryParse(shortField.Text, out tmp);
+            IPAddress address = IPNetwork.ToNetmask(tmp, System.Net.Sockets.AddressFamily.InterNetwork);
+            return address.GetAddressBytes();
+        }
+
+        public static byte[] calcEmptySubnetMaskFields(TextBox first, TextBox second, TextBox third, TextBox forth)
+        {
+            throw new NotImplementedException();
             return null;
         }
+
+        public static byte[] calcEmptySubnetMaskFields(int first, int second, int third, int forth)
+        {
+            throw new NotImplementedException();
+            return null;
+        }
+
 
         #endregion
 
@@ -206,6 +216,13 @@ namespace ITler_Ein_mal_Eins.Control
                 }
             }
             return false;
+        }
+
+        public static int tryParseTextboxToInt(TextBox box)
+        {
+            int tmp = 0;
+            int.TryParse(box.Text, out tmp);
+            return tmp;
         }
 
         #endregion
