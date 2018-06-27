@@ -238,8 +238,8 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
-            origin.Left = this.Left;
-            origin.Top = this.Top;
+            origin.Left         = this.Left;
+            origin.Top          = this.Top;
         }
 
         private void button_Submit_Click(object sender, RoutedEventArgs e)

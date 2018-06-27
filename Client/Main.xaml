@@ -9,6 +9,7 @@
         Height="450"    MinHeight="350"
         Width="800"     MinWidth="550">
 
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Resources/abstract-art.jpg" Stretch="UniformToFill"/>
