@@ -23,7 +23,7 @@ namespace ITler_Ein_mal_Eins.Modules
         Window origin;
         Control.Control control;
         TextBox txbox_active;
-        Control.UnitCalculatorControl unitCalculatorControl;
+        UnitCalculatorControl unitCalculatorControl;
         //Struct
         UnitCalculatorControl.BitByteStrings bitByteStrings;
         UnitCalculatorControl.Systems systems;
@@ -32,7 +32,6 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             origin  = _origin;
             control = _control;
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             InitializeTags();
             InitializeContent();
@@ -350,8 +349,6 @@ namespace ITler_Ein_mal_Eins.Modules
             txbox_oktal.TextChanged         += Txbox_UnitCalculator_TextChanged;
             txbox_dezimal.TextChanged       += Txbox_UnitCalculator_TextChanged;
             txbox_hexadezimal.TextChanged   += Txbox_UnitCalculator_TextChanged;
-
-
         }
 
         #endregion ##########################################################################################################################################################################################
@@ -362,8 +359,8 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
-            origin.Left = this.Left;
-            origin.Top  = this.Top;
+            origin.Left         = this.Left;
+            origin.Top          = this.Top;
         }
 
         //Modul über eigenen Button schließen

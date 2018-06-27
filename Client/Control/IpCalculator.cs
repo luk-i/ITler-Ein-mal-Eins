@@ -59,7 +59,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
-        #region isLegitIpV4SubnetMask - Funktionen
+        #region isLegitIpV4SubnetMask
         public static bool isLegitIpV4SubnetMask(TextBox first_txt, TextBox second_txt,
             TextBox third_txt, TextBox forth_txt)
         {
@@ -188,18 +188,33 @@ namespace ITler_Ein_mal_Eins.Control
             return address.GetAddressBytes();
         }
 
-        public static byte[] calcEmptySubnetMaskFields(TextBox first, TextBox second, TextBox third, TextBox forth)
+        public static byte[] calcEmptySubnetMaskFields(TextBox b_first, TextBox b_second, TextBox b_third, TextBox b_forth)
         {
-            throw new NotImplementedException();
-            return null;
+            byte first = 0;
+            byte second = 0;
+            byte third = 0;
+            byte forth = 0;
+            byte.TryParse(b_first.Text, out first);
+            byte.TryParse(b_second.Text, out second);
+            byte.TryParse(b_third.Text, out third);
+            byte.TryParse(b_forth.Text, out forth);
+            byte[] result = new byte[1];
+            byte[] ip = new byte[4] { first, second, third, forth };
+            IPAddress address = new IPAddress(ip);
+            byte tmp = IPNetwork.ToCidr(address);
+            result[0] = tmp;
+            return result;
         }
 
         public static byte[] calcEmptySubnetMaskFields(int first, int second, int third, int forth)
         {
-            throw new NotImplementedException();
-            return null;
+            byte[] result = new byte[1];
+            byte []ip = new byte[4] { (byte)first, (byte) second, (byte)third, (byte)forth };
+            IPAddress address = new IPAddress(ip);
+            byte tmp = IPNetwork.ToCidr(address);
+            result[0] = tmp;
+            return result;
         }
-
 
         #endregion
 
