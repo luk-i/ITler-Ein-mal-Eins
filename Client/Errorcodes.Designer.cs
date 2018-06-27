@@ -106,12 +106,9 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Bitte füllen Sie ein einzelnes Feld mit einem numerischen Wert.
-        ///Seperatoren zwischen den Vorstellen werden nicht akzeptiert.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bitte füllen Sie ein einzelnes Feld mit einem zulässigen, numerischen Wert.
         ///
-        ///Beispiele: 
-        ///-42.481516
-        ///2364,001 ähnelt.
+        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
         /// </summary>
         public static string UNITC_BITS_NO_VALID_INPUT {
             get {
@@ -121,7 +118,7 @@ namespace ITler_Ein_mal_Eins {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Der Einheiten-Rechner kann den eingegebenen Wertebereich leider nicht verarbeiten. 
-        ///Bitte wählen Sie den Wertebereich kleiner. ähnelt.
+        ///Bitte wählen Sie den Wert kleiner. ähnelt.
         /// </summary>
         public static string UNITC_BITS_RANGE_EXCEPTION {
             get {
@@ -130,7 +127,9 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabe ungültig ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bitte füllen Sie ein einzelnes Feld mit einem zulässigen, numerischen Wert.
+        ///
+        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
         /// </summary>
         public static string UNITC_SYSTEMS_NO_VALID_INPUT {
             get {
@@ -139,7 +138,8 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wertebereich ungültig ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der eingegebene Wert ist zu groß für für den gewählten Datentyp.
+        ///Bitte wählen Sie den Wert passend zu dem Datentyp. ähnelt.
         /// </summary>
         public static string UNITC_SYSTEMS_RANGE_EXCEPTION {
             get {
