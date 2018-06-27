@@ -81,19 +81,13 @@
         <!--#endregion-->
             
         <!--#region IPv6-->
-            
-        <!--#endregion-->
 
-
- 
-
-            
-            
-            
             <TabItem Header="IPv6">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-        </TabControl>
 
+        <!--#endregion-->
+
+        </TabControl>
     </Grid>
 </Window>
