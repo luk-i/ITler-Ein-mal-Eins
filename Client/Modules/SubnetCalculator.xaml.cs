@@ -48,9 +48,9 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         #region Control
-        /*
-         *  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
-         */
+        //
+        //  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
+        //
         private bool IPv4_calculateBits()
         {
             byte[] tmp;           
@@ -85,10 +85,10 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
-        /*
-         * Funktion zum Sperren des Kopfes, der Freigabe des Fußes (mit Startwerten)
-         * und Wurf eines ersten Berechnungsevents.
-         */
+        //
+        //  Funktion zum Sperren des Kopfes, der Freigabe des Fußes (mit Startwerten)
+        //  und Wurf eines ersten Berechnungsevents. 
+        //
         private void onValidIpV4Head()
         {
             Textboxes_LeftTop_Disabled();
@@ -181,10 +181,10 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Manipulation
 
-        /*
-         * Ausgabe der Fehlermeldungen erfolgt über Ressourcen!!!
-         * Funktion gib je nach Übergebenem Fehlercode eine Message aus.
-         */
+        //
+        //  Ausgabe der Fehlermeldungen erfolgt über Ressourcen!!!
+        //  Funktion gib je nach Übergebenem Fehlercode eine Message aus.
+        // 
         private void createErrorLabel(ErrorCodeNo _code)
         {
             switch (_code)
@@ -317,7 +317,6 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Initialisation
 
-
         private void InitializeTextboxes()
         {
             Textboxes_LeftBottom_Disabled();
@@ -327,18 +326,27 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void InitializeTags()
         {
-            Ip4_textBox1.Tag = Control.Control.digitTag.BYTE;
-            Ip4_textBox2.Tag = Control.Control.digitTag.BYTE;
-            Ip4_textBox3.Tag = Control.Control.digitTag.BYTE;
-            Ip4_textBox4.Tag = Control.Control.digitTag.BYTE;
-            Subnet_textBox1.Tag = Control.Control.digitTag.SUBNETMASK;
-            Subnet_textBox2.Tag = Control.Control.digitTag.SUBNETMASK;
-            Subnet_textBox3.Tag = Control.Control.digitTag.SUBNETMASK;
-            Subnet_textBox4.Tag = Control.Control.digitTag.SUBNETMASK;
+            Ip4_textBox1.Tag                    = Control.Control.digitTag.BYTE;
+            Ip4_textBox2.Tag                    = Control.Control.digitTag.BYTE;
+            Ip4_textBox3.Tag                    = Control.Control.digitTag.BYTE;
+            Ip4_textBox4.Tag                    = Control.Control.digitTag.BYTE;
+            Subnet_textBox1.Tag                 = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox2.Tag                 = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox3.Tag                 = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox4.Tag                 = Control.Control.digitTag.SUBNETMASK;           
+            Subnet_textBox1_new.Tag             = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox2_new.Tag             = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox3_new.Tag             = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox4_new.Tag             = Control.Control.digitTag.SUBNETMASK;
+            Subnet_textBox_ShortWritten.Tag     = Control.Control.digitTag.UNSIGNEDINTEGER;
+            Subnet_textBox_ShortWritten_new.Tag = Control.Control.digitTag.UNSIGNEDINTEGER;
         }
 
         private void InitializeEvents()
         {
+            //
+            // TextBox_LeftTop, alle losen ein Event aus.
+            // 
             Ip4_textBox1.TextChanged += Ip4_textBox_TextChanged;
             Ip4_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Ip4_textBox3.TextChanged += Ip4_textBox_TextChanged;
@@ -347,22 +355,30 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
+            //
+            //  TextBox_LeftBotton, jeder Block wirft ein eigenes Event!
+            //
+            Subnet_desired.TextChanged += Subnet_desired_TextChanged;
+            Hosts_desired.TextChanged += Hosts_desired_TextChanged;
+            Subnet_textBox1_new.TextChanged += Subnet_textBox_new_TextChanged;
+            Subnet_textBox2_new.TextChanged += Subnet_textBox_new_TextChanged;
+            Subnet_textBox3_new.TextChanged += Subnet_textBox_new_TextChanged;
+            Subnet_textBox4_new.TextChanged += Subnet_textBox_new_TextChanged;
         }
 
         #endregion
 
-        #region Events
-        /*
-         * Button - Events
-         * 
-         * IN EVENTS WIRD NIX PROGRAMMIERT!!! DAS IST SCHNELLER WIEDER WEG
-         * ALS EINEM LIEB IST,
-         * 
-         * nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
-         * "Enter" und "Verlassen" aufgerufen wird
-         */
 
-        //Modul über eigenen Button schließen.
+        #region Events
+        //
+        // Button - Events
+        // 
+        // IN EVENTS WIRD NIX PROGRAMMIERT!!! DAS IST SCHNELLER WIEDER WEG
+        // ALS EINEM LIEB IST,
+        // 
+        // nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
+        // "Enter" und "Verlassen" aufgerufen wird
+        //
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
         private void Window_Closed(object sender, EventArgs e)
@@ -387,6 +403,20 @@ namespace ITler_Ein_mal_Eins.Modules
             control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
 
+        private void Subnet_desired_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Hosts_desired_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Subnet_textBox_new_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
 
