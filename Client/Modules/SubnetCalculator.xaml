@@ -42,24 +42,24 @@
                                 
                                 <!--#region Left Top-->
                                 
-                                <Label Content="IP-Adresse"             HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
-                                <Label Content="Subnetzmaske"           HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
-                                <Label x:Name="label_AdressGrid_IsDataCorrect" Content="Bitte Werte eintragen"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontSize="14" FontWeight="Bold"/>
+                                <Label Content="IP-Adresse"             HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Subnetzmaske"           HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label x:Name="label_AdressGrid_IsDataCorrect" Content="Bitte Werte eintragen"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontSize="16" FontWeight="Bold"/>
 
                                 <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="165" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0">
-                                    <TextBox x:Name="Ip4_textBox1" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="Ip4_textBox2" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="Ip4_textBox3" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="Ip4_textBox4" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3"/>
+                                    <TextBox x:Name="Ip4_textBox1" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Ip4_textBox2" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Ip4_textBox3" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Ip4_textBox4" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" FontSize="16"/>
                                 </StackPanel>
 
                                 <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="215" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="0">
-                                    <TextBox x:Name="Subnet_textBox1" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="Subnet_textBox2" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="Subnet_textBox3" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center"/>
-                                    <TextBox x:Name="Subnet_textBox4" Height="22" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3"/>
-                                    <Label   x:Name="SubnetMask_Slash" Content="/" Height="Auto" Width="Auto" Margin="5,0,0,0" VerticalAlignment="Top" />
-                                    <TextBox x:Name="Subnet_textBox_ShortWritten" Height="22" Width="26" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3"/>
+                                    <TextBox x:Name="Subnet_textBox1" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_textBox2" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_textBox3" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_textBox4" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" FontSize="16"/>
+                                    <TextBlock   x:Name="SubnetMask_Slash" Text="/" Height="Auto" Width="Auto" Margin="15,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
+                                    <TextBox x:Name="Subnet_textBox_ShortWritten" Height="Auto" Width="26" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" FontSize="16"/>
                                 </StackPanel>
                                 
                                 <!--#endregion-->
@@ -70,8 +70,34 @@
                                 <Grid.Background>
                                     <SolidColorBrush Color="Black" Opacity="0.3"/>
                                 </Grid.Background>
-                                
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="10*"/>
+                                </Grid.RowDefinitions>
+
                                 <!--#region Left Bottom-->
+
+                                <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0">
+                                    <TextBox x:Name="Subnet_desired" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="1" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBlock Text="Subnetzanzahl" Height="Auto" Width="Auto" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0">
+                                    <TextBox x:Name="Hosts_desired" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="1" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBlock Text="Hostanzahl" Height="Auto" Width="Auto" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
+                                </StackPanel>
+                                <Label Content="Neue Subnetzmaske"             HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="0">
+                                    <TextBox x:Name="Subnet_textBox1_new" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_textBox2_new" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_textBox3_new" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_textBox4_new" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" FontSize="16"/>
+                                    <TextBlock   x:Name="SubnetMask_Slash_new" Text="/" Height="Auto" Width="Auto" Margin="15,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
+                                    <TextBox x:Name="Subnet_textBox_ShortWritten_new" Height="Auto" Width="26" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" FontSize="16"/>
+
+                                </StackPanel>
 
                                 <!--#endregion-->
                                 

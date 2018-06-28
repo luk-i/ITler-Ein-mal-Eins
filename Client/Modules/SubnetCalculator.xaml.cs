@@ -198,6 +198,11 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Initialisation
 
+        private void InitializeTextboxes()
+        {
+
+        }
+
         private void InitializeTags()
         {
             Ip4_textBox1.Tag = Control.Control.digitTag.BYTE;
