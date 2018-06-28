@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace ITler_Ein_mal_Eins
 {
-    /// <summary>
-    /// Interaktionslogik für Main.xaml
-    /// </summary>
     public partial class Main : Window
     {
         Control.Control control;

@@ -158,9 +158,6 @@
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\processor.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\switch-lan.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
