@@ -212,7 +212,6 @@ namespace ITler_Ein_mal_Eins.Modules
             foreach (UIElement element in Subnet_ipv4_Left_Bottom.Children)
                 Textboxes_Clear_Grid(element);
         }
-
         private void Textboxes_Clear_Grid(UIElement element)
         {
             if (element is StackPanel stackpanel)
@@ -234,22 +233,58 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox1.IsReadOnly = false;
             Subnet_textBox2.IsReadOnly = false;
             Subnet_textBox3.IsReadOnly = false;
-            Subnet_textBox4.IsReadOnly = false;            
+            Subnet_textBox4.IsReadOnly = false;
+            Subnet_textBox_ShortWritten.IsReadOnly = false;
         }
 
         private void Textboxes_LeftBottom_Enabled()
         {
-
+            Subnet_textBox1_new.IsReadOnly = false;
+            Subnet_textBox2_new.IsReadOnly = false;
+            Subnet_textBox3_new.IsReadOnly = false;
+            Subnet_textBox4_new.IsReadOnly = false;
+            Subnet_desired.IsReadOnly = false;
+            Hosts_desired.IsReadOnly = false;
+            Subnet_textBox_ShortWritten_new.IsReadOnly = false;
+            Textboxes_LeftBottom_Brush("#FFFFFFFF");
         }
 
         private void Textboxes_LeftTop_Disbled()
         {
-
+            Ip4_textBox1.IsReadOnly = true;
+            Ip4_textBox2.IsReadOnly = true;
+            Ip4_textBox3.IsReadOnly = true;
+            Ip4_textBox4.IsReadOnly = true;
+            Subnet_textBox1.IsReadOnly = true;
+            Subnet_textBox2.IsReadOnly = true;
+            Subnet_textBox3.IsReadOnly = true;
+            Subnet_textBox4.IsReadOnly = true;
+            Subnet_textBox_ShortWritten.IsReadOnly = true;
         }
 
         private void Textboxes_LeftBottom_Disabled()
         {
+            Subnet_textBox1_new.IsReadOnly = true;
+            Subnet_textBox2_new.IsReadOnly = true;
+            Subnet_textBox3_new.IsReadOnly = true;
+            Subnet_textBox4_new.IsReadOnly = true;
+            Subnet_desired.IsReadOnly = true;
+            Hosts_desired.IsReadOnly = true;
+            Subnet_textBox_ShortWritten_new.IsReadOnly = true;
+            Textboxes_LeftBottom_Brush("#DDDDDDDD");
+        }
 
+        private void Textboxes_LeftBottom_Brush(string brush_string)
+        {
+            var converter = new BrushConverter();
+            var brush = (Brush)converter.ConvertFromString(brush_string);
+            Subnet_textBox1_new.Background = brush;
+            Subnet_textBox2_new.Background = brush;
+            Subnet_textBox3_new.Background = brush;
+            Subnet_textBox4_new.Background = brush;
+            Subnet_desired.Background = brush;
+            Hosts_desired.Background = brush;
+            Subnet_textBox_ShortWritten_new.Background = brush;
         }
 
         #endregion
