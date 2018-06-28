@@ -200,10 +200,6 @@ namespace ITler_Ein_mal_Eins.Modules
         #region Initialisation
 
         #region TextboxInitialisiation
-        private void InitializeTextboxes()
-        {
-            Textboxes_LeftBottom_Disabled();
-        }
 
         private void TextBoxes_Clear()
         {
@@ -288,6 +284,14 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         #endregion
+
+        private void InitializeTextboxes()
+        {
+            Textboxes_LeftBottom_Disabled();
+            Textboxes_LeftBottom_Enabled();
+            TextBoxes_Clear();
+        }
+
         private void InitializeTags()
         {
             Ip4_textBox1.Tag = Control.Control.digitTag.BYTE;
