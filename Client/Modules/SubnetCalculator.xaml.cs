@@ -240,6 +240,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox3.IsReadOnly = false;
             Subnet_textBox4.IsReadOnly = false;
             Subnet_textBox_ShortWritten.IsReadOnly = false;
+            Textboxes_LeftTop_Brush("#FFFFFFFF");
         }
 
         private void Textboxes_LeftBottom_Enabled()
@@ -292,6 +293,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox2.Background = brush;
             Subnet_textBox3.Background = brush;
             Subnet_textBox4.Background = brush;
+            Subnet_textBox_ShortWritten.Background = brush;
         }
 
         private void Textboxes_LeftBottom_Brush(string brush_string)
@@ -319,7 +321,7 @@ namespace ITler_Ein_mal_Eins.Modules
         private void InitializeTextboxes()
         {
             Textboxes_LeftBottom_Disabled();
-            Textboxes_LeftBottom_Enabled();
+            Textboxes_LeftTop_Enabled();
             TextBoxes_Clear();
         }
 
