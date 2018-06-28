@@ -25,6 +25,8 @@ namespace ITler_Ein_mal_Eins.Modules
         IpCalculator ipControl;
         Control.Control control;
 
+        private bool TextChanged_Event_isLocked = false;
+
         #endregion
 
         public SubnetCalculator(Window _origin, Control.Control _control)
@@ -93,6 +95,38 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             Textboxes_LeftTop_Disabled();
             Textboxes_LeftBottom_Enabled();
+            int i = 0;
+            Subnet_desired.Text = i.ToString();
+        }
+
+        //
+        //  Funktion wird jedesmal ausgeführt, wenn sich eine Eingabe in den Textfeldern ändert
+        //  Dabei wird zunächst geprüft, ob die jeweilige Eingabe stimmt. Fehler werden rot markiert
+        //  und ein Label weist den Nutzer darauf hin, dass die Eingabe so nicht übernommen werden kann.
+        //  Stimmt die Eingabe, so wird auf die fehlenden Felder umgerechnet.
+        // 
+        //  Als Letztes wird dann eine Berechnung der Ausgabe ausgelöst. Insgesamt ist somit das
+        //  Auslesen der Ergebnisse in Echtzeit möglich.
+        // 
+        private void TextBox_BottomLeft_onTextChanged(Textbox_FieldType fieldType)
+        {
+            //
+            //  Das Berechnen der Fehlenden Felder würde eine Entlosschleife auslösen
+            //  (Jedes Eintragen in eine Textbox führt wieder rekursiv in diese Fuktion)
+            //
+            //  Daher muss geprüft werden, ob bereits eine Berechnung der Felder erfolgt, was
+            //  durch die Flag TextChanged_Event_isLocked erfolgt.
+            //
+            if (!TextChanged_Event_isLocked)
+            {
+
+            }
+            else
+            {
+                //
+                //  Berechnung wurde bereits durch ein Textchanged Event ausgelöst.
+                //
+            }
         }
 
         #endregion
@@ -364,6 +398,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox2_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox3_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox4_new.TextChanged += Subnet_textBox_new_TextChanged;
+            Subnet_textBox_ShortWritten_new.TextChanged += Subnet_textBox_ShortWritten_new_TextChanged;
         }
 
         #endregion
@@ -405,17 +440,22 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Subnet_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_SUBNETNO);
         }
 
         private void Hosts_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_HOSTNO);
         }
 
         private void Subnet_textBox_new_TextChanged(object sender, TextChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.SUBNETMASK_LONG);
+        }
+
+        private void Subnet_textBox_ShortWritten_new_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.SUBNETMASK_SHORT);
         }
 
         #endregion

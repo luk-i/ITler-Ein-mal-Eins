@@ -24,6 +24,14 @@ namespace ITler_Ein_mal_Eins.Model
         BOTHFILLED
     }
 
+    public enum Textbox_FieldType
+    {
+        DESIRED_SUBNETNO,
+        DESIRED_HOSTNO,
+        SUBNETMASK_LONG,
+        SUBNETMASK_SHORT
+    }
+
     #endregion
     class SubnetCalculatorModel
     {
