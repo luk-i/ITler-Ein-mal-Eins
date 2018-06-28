@@ -406,7 +406,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Events
         //
-        // Button - Events
+        // Events: Button und TextChanged
         // 
         // IN EVENTS WIRD NIX PROGRAMMIERT!!! DAS IST SCHNELLER WIEDER WEG
         // ALS EINEM LIEB IST,
