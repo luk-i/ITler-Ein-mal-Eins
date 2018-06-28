@@ -325,7 +325,7 @@ namespace ITler_Ein_mal_Eins.Modules
          * "Enter" und "Verlassen" aufgerufen wird
          */
 
-        //Modul über eigenen Button schließen
+        //Modul über eigenen Button schließen.
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
         private void Window_Closed(object sender, EventArgs e)
