@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace ITler_Ein_mal_Eins.Control
 {
-    class PerformanceControl
+    class InterfaceIdentifier
     {
         //Erstellen einer Instanz
         PerformanceCounter performanceCPU; 

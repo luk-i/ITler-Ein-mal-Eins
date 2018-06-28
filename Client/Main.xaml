@@ -23,10 +23,10 @@
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Calculator_button"          Content="Einheiten Umrechner"   Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="Calculator_button_Click"        Style="{DynamicResource Home_Button}"/>
-            <Button x:Name="button_SubnetCalculator"    Content="Subnet Berechner"      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="SubnetCalculator_Button_Click"  Style="{DynamicResource Home_Button}"/>
-            <Button x:Name="button_Performance"         Content="System- auslastung"    Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="Performance_Button_Click"       Style="{DynamicResource Home_Button}"/>
-            <Button x:Name="Exit_Button"                Content="Exit"                  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="Exit_Button_Click"              Style="{DynamicResource Home_Button_Exit}"/>
+            <Button x:Name="Calculator_button"          Content="Einheiten Umrechner"       Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="Calculator_button_Click"        Style="{DynamicResource Home_Button}"/>
+            <Button x:Name="button_SubnetCalculator"    Content="Subnet Berechner"          Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="SubnetCalculator_Button_Click"  Style="{DynamicResource Home_Button}"/>
+            <Button x:Name="button_InterfaceIdentifier" Content="IPv6 Interface Identifier" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="Performance_Button_Click"       Style="{DynamicResource Home_Button}"/>
+            <Button x:Name="Exit_Button"                Content="Exit"                      Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="240" Margin="0,0,0,0" Click="Exit_Button_Click"              Style="{DynamicResource Home_Button_Exit}"/>
         </Grid>
     </Grid>
 </Window>

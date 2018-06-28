@@ -64,7 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Control\PerformanceControl.cs" />
+    <Compile Include="Control\InterfaceIdentifier.cs" />
     <Compile Include="Control\UnitCalculatorControl.cs" />
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.resx</DependentUpon>
@@ -77,8 +77,8 @@
       <DependentUpon>Errorcodes.resx</DependentUpon>
     </Compile>
     <Compile Include="Model\SubnetCalculatorModel.cs" />
-    <Compile Include="Modules\Performance.xaml.cs">
-      <DependentUpon>Performance.xaml</DependentUpon>
+    <Compile Include="Modules\InterfaceIdentifier.xaml.cs">
+      <DependentUpon>InterfaceIdentifier.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
@@ -100,7 +100,7 @@
       <DependentUpon>Main.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Modules\Performance.xaml">
+    <Page Include="Modules\InterfaceIdentifier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

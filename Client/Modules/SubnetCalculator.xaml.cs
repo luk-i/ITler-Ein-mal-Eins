@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using ITler_Ein_mal_Eins.Control;
 using ITler_Ein_mal_Eins.Model;
 using System.Net;
-using System.Text;
 
 namespace ITler_Ein_mal_Eins.Modules
 {

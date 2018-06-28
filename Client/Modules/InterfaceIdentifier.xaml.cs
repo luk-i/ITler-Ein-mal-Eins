@@ -20,8 +20,8 @@ namespace ITler_Ein_mal_Eins.Modules
         //Attributes
         Window origin;
         Control.Control control;
-        PerformanceControl performanceControl;
-        PerformanceControl.Struct_performanceCPU struct_performanceCPU;
+        InterfaceIdentifier performanceControl;
+        InterfaceIdentifier.Struct_performanceCPU struct_performanceCPU;
 
         public Performance(Window _origin, Control.Control _control)
         {
@@ -36,7 +36,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             while (1 == 1)
             {
-                performanceControl = new PerformanceControl();
+                performanceControl = new InterfaceIdentifier();
                 struct_performanceCPU = performanceControl.PerformanceControl_CPU();
                 float tmp = struct_performanceCPU.cpu_total;
                 System.Threading.Thread.Sleep(1000); // 1 Sekunde warten
