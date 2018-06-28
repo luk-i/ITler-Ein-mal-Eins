@@ -42,11 +42,16 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Functions
 
+        private void startCalculation()
+        {
+            if (IPv4_calculateBits()) onValidIpV4Head();
+        }
+
         #region Control
         /*
          *  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
          */
-        private void IPv4_calculateBits()
+        private bool IPv4_calculateBits()
         {
             byte[] tmp;           
             if(IsValidInput_IpV4() && isValidInput_IpV4SubnetMask())
@@ -72,12 +77,22 @@ namespace ITler_Ein_mal_Eins.Modules
                     default:
                         throw new NotImplementedException();
                 }
-
-                // Lock all fields
-                
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
 
-
+        /*
+         * Funktion zum Sperren des Kopfes, der Freigabe des Fußes (mit Startwerten)
+         * und Wurf eines ersten Berechnungsevents.
+         */
+        private void onValidIpV4Head()
+        {
+            Textboxes_LeftTop_Disabled();
+            Textboxes_LeftBottom_Enabled();
         }
 
         #endregion
@@ -193,13 +208,7 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
-        #endregion
-
-        #endregion
-
-        #region Initialisation
-
-        #region TextboxInitialisiation
+        #region Textboxes
 
         private void TextBoxes_Clear()
         {
@@ -245,7 +254,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Textboxes_LeftBottom_Brush("#FFFFFFFF");
         }
 
-        private void Textboxes_LeftTop_Disbled()
+        private void Textboxes_LeftTop_Disabled()
         {
             Ip4_textBox1.IsReadOnly = true;
             Ip4_textBox2.IsReadOnly = true;
@@ -256,6 +265,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox3.IsReadOnly = true;
             Subnet_textBox4.IsReadOnly = true;
             Subnet_textBox_ShortWritten.IsReadOnly = true;
+            Textboxes_LeftTop_Brush("#DDDDDDDD");
         }
 
         private void Textboxes_LeftBottom_Disabled()
@@ -268,6 +278,20 @@ namespace ITler_Ein_mal_Eins.Modules
             Hosts_desired.IsReadOnly = true;
             Subnet_textBox_ShortWritten_new.IsReadOnly = true;
             Textboxes_LeftBottom_Brush("#DDDDDDDD");
+        }
+
+        private void Textboxes_LeftTop_Brush(string brush_string)
+        {
+            var converter = new BrushConverter();
+            var brush = (Brush)converter.ConvertFromString(brush_string);
+            Ip4_textBox1.Background = brush;
+            Ip4_textBox2.Background = brush;
+            Ip4_textBox3.Background = brush;
+            Ip4_textBox4.Background = brush;
+            Subnet_textBox1.Background = brush;
+            Subnet_textBox2.Background = brush;
+            Subnet_textBox3.Background = brush;
+            Subnet_textBox4.Background = brush;
         }
 
         private void Textboxes_LeftBottom_Brush(string brush_string)
@@ -284,6 +308,13 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Initialisation
+
 
         private void InitializeTextboxes()
         {
@@ -341,12 +372,12 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void button_Submit_Click(object sender, RoutedEventArgs e)
         {
-            IPv4_calculateBits();
+            startCalculation();
         }
 
         private void Button_Refresh_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxes_Clear();
+            InitializeTextboxes();
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
