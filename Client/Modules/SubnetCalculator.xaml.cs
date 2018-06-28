@@ -36,6 +36,7 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeComponent();
             InitializeTags();
             InitializeEvents();
+            InitializeTextboxes();
         }
 
 
@@ -198,11 +199,60 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #region Initialisation
 
+        #region TextboxInitialisiation
         private void InitializeTextboxes()
+        {
+            Textboxes_LeftBottom_Disabled();
+        }
+
+        private void TextBoxes_Clear()
+        {
+            foreach (UIElement element in Subnet_ipv4_Left_Top.Children)
+                Textboxes_Clear_Grid(element);
+            foreach (UIElement element in Subnet_ipv4_Left_Bottom.Children)
+                Textboxes_Clear_Grid(element);
+        }
+
+        private void Textboxes_Clear_Grid(UIElement element)
+        {
+            if (element is StackPanel stackpanel)
+            {
+                foreach (UIElement element_panel in stackpanel.Children)
+                    if (element_panel is TextBox textbox)
+                        textbox.Clear();
+            }
+            else if (element is TextBox textbox)
+                textbox.Clear();
+        }
+
+        private void Textboxes_LeftTop_Enabled()
+        {
+            Ip4_textBox1.IsReadOnly = false;
+            Ip4_textBox2.IsReadOnly = false;
+            Ip4_textBox3.IsReadOnly = false;
+            Ip4_textBox4.IsReadOnly = false;
+            Subnet_textBox1.IsReadOnly = false;
+            Subnet_textBox2.IsReadOnly = false;
+            Subnet_textBox3.IsReadOnly = false;
+            Subnet_textBox4.IsReadOnly = false;            
+        }
+
+        private void Textboxes_LeftBottom_Enabled()
         {
 
         }
 
+        private void Textboxes_LeftTop_Disbled()
+        {
+
+        }
+
+        private void Textboxes_LeftBottom_Disabled()
+        {
+
+        }
+
+        #endregion
         private void InitializeTags()
         {
             Ip4_textBox1.Tag = Control.Control.digitTag.BYTE;
@@ -255,10 +305,16 @@ namespace ITler_Ein_mal_Eins.Modules
             IPv4_calculateBits();
         }
 
+        private void Button_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxes_Clear();
+        }
+
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
+
 
         #endregion
 
