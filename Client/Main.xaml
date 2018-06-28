@@ -5,18 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITler_Ein_mal_Eins"
         mc:Ignorable="d"
-        Title="Hauptmenü" Height="450" Width="800">
-    <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="413" Margin="-4,0,0,0" VerticalAlignment="Top" Width="790">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="Calculator_button" Content="Umrechner" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="23,100,0,0" VerticalAlignment="Top" Width="169" Click="Calculator_button_Click" Style="{DynamicResource Home_Button}"/>
-        <Menu x:Name="menu" Height="33" Margin="0" VerticalAlignment="Top" Background="#FF878787" HorizontalAlignment="Left" Width="303" Grid.ColumnSpan="2">
-            <Button x:Name="Exit_Button" Height="30" Width="60" Content="Exit" Click="Exit_Button_Click"/>
-            <Button Height="30" Width="60"/>
-        </Menu>
-        <Button x:Name="button_SubnetCalculator" Content="Subnet Berechner" Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="228,100,0,0" VerticalAlignment="Top" Width="169" Click="SubnetCalculator_Button_Click" Style="{DynamicResource Home_Button}"/>
+        Title="Hauptmenü" 
+        Height="450"    MinHeight="350"
+        Width="800"     MinWidth="550">
+
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/abstract-art.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid x:Name="MainGrid" Margin="5,5,5,5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Calculator_button"          Content="Einheiten Umrechner"       Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="250" Margin="0,0,0,0" Click="Calculator_button_Click"        Style="{DynamicResource Home_Button}"/>
+            <Button x:Name="button_SubnetCalculator"    Content="Subnet Berechner"          Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="250" Margin="0,0,0,0" Click="SubnetCalculator_Button_Click"  Style="{DynamicResource Home_Button}"/>
+            <Button x:Name="button_UselessButton"       Content="Useless  Button"           Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="250" Margin="0,0,0,0" Click="Useless_Button_Click"           Style="{DynamicResource Home_Button}"/>
+            <Button x:Name="Exit_Button"                Content="Exit"                      Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="250" Margin="0,0,0,0" Click="Exit_Button_Click"              Style="{DynamicResource Home_Button_Exit}"/>
+        </Grid>
     </Grid>
 </Window>
-

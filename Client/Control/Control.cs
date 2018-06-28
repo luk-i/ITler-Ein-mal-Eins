@@ -13,16 +13,16 @@ namespace ITler_Ein_mal_Eins.Control
         {
 
         }
-
+        #region Prüfen ob legitime Eingabe ############################################################################################################################
         public enum digitTag
         {
             UNSIGNEDINTEGER,
             SIGNEDFLOAT,
             BYTE,
-            BINARY,
-            OCTAL,
+            UNSIGNEDBINARY,
+            UNSIGNEDOCTAL,
             DECIMAL,
-            HEX,
+            UNSIGNEDHEX,
             SUBNETMASK
         };
 
@@ -85,18 +85,10 @@ namespace ITler_Ein_mal_Eins.Control
                                 noDigit++;
                         }
                         break;
-                    case digitTag.BINARY:
+                    case digitTag.UNSIGNEDBINARY:
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '-' || x == '+') 
-                            {
-                                if (place != 0)
-                                noDigit++;
-                            }
-                            else
-                            {
-                                noDigit++;
-                            }
+                            noDigit++;
                         }
                         else if (x != '0' && x != '1')
                         {
@@ -104,20 +96,12 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case digitTag.OCTAL:
+                    case digitTag.UNSIGNEDOCTAL:
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '-' || x == '+')
-                            {
-                                if (place != 0)
-                                    noDigit++;
-                            }
-                            else
-                            {
-                                noDigit++;
-                            }
+                            noDigit++;
                         }               
-                        if (x == '8' || x == '9')
+                        else if (x == '8' || x == '9')
                         {
                             noDigit++;
                         }
@@ -138,15 +122,10 @@ namespace ITler_Ein_mal_Eins.Control
                         }
                         place++;
                         break;
-                    case digitTag.HEX:
+                    case digitTag.UNSIGNEDHEX:
                         if (!Char.IsDigit(x))
                         {
-                            if (x == '-' || x == '+')
-                            {
-                                if (place != 0)
-                                    noDigit++;
-                            }
-                            else if (x != 'A' && x != 'B' && x != 'C' && x != 'D' && x != 'E' && x != 'F' && x != 'a' && x != 'b' && x != 'c' && x != 'd' && x != 'e' && x != 'f')
+                            if (x != 'A' && x != 'B' && x != 'C' && x != 'D' && x != 'E' && x != 'F' && x != 'a' && x != 'b' && x != 'c' && x != 'd' && x != 'e' && x != 'f')
                             {
                                 noDigit++;
                             }
@@ -189,27 +168,7 @@ namespace ITler_Ein_mal_Eins.Control
                 return false;
             }
         }
+        #endregion ####################################################################################################################################################
 
-// Hier gab es Probleme mit dem Parsen! So ab zehn bis fünzehn Stellen war Schluss und es wurde false zurückgeliefert, trotz int64!
-// Darum obige Version, ich lass es aber hier auskommentiert stehen, bis ich das mit dir besprochen habe.
-
-        /*        public void checkTextboxIfNumeric(System.Windows.Controls.TextBox box)
-        {
-            Int64 tmp;
-            if(Int64.TryParse(box.Text, out tmp) || String.IsNullOrEmpty(box.Text)){
-                var converter = new BrushConverter();
-                var brush = (Brush)converter.ConvertFromString("#FFFFFFFF");
-                box.Background = brush;
-                //#FFFF0000 red
-                //#FFFFFFFF white
-            }
-            else
-            {
-                var converter = new BrushConverter();
-                var brush = (Brush)converter.ConvertFromString("#FFFF0000");
-                box.Background = brush;
-            }
-        }
-*/
     }
 }

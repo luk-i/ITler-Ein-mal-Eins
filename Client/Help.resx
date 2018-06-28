@@ -117,37 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ERROR_INVALIDINPUT" xml:space="preserve">
-    <value>Eingabe ungültig.</value>
-  </data>
-  <data name="ERROR_IPV4DIGITISNOTVALID" xml:space="preserve">
-    <value>Die angegebene IPv4 - Adresse ist ungültig.</value>
-  </data>
-  <data name="ERROR_MULTIPLEFIELDSFILLED" xml:space="preserve">
-    <value>Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt.</value>
-  </data>
-  <data name="ERROR_SUBNETMASKISNOTVALID" xml:space="preserve">
-    <value>Die angegebene Subnetzmaske ist ungültig.</value>
-  </data>
-  <data name="NOERROR" xml:space="preserve">
-    <value>Alle Eingaben korrekt.</value>
-  </data>
-  <data name="UNITC_BITS_NO_VALID_INPUT" xml:space="preserve">
-    <value>Bitte füllen Sie ein einzelnes Feld mit einem zulässigen, numerischen Wert.
+  <data name="HELP_UNITC_BITS" xml:space="preserve">
+    <value>Erlaubt sind Gleitkommazahlen mit und ohne Vorzeichen. Als Dezimaltrennzeichen kann '.' oder ',' benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
 
-Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
-  </data>
-  <data name="UNITC_BITS_RANGE_EXCEPTION" xml:space="preserve">
-    <value>Der Einheiten-Rechner kann den eingegebenen Wertebereich leider nicht verarbeiten. 
-Bitte wählen Sie den Wert kleiner.</value>
-  </data>
-  <data name="UNITC_SYSTEMS_NO_VALID_INPUT" xml:space="preserve">
-    <value>Bitte füllen Sie ein einzelnes Feld mit einem zulässigen, numerischen Wert.
+Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder drücken Sie die Enter-Taste.
+Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder erneut die Enter-Taste.
 
-Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
+Hinweis: Es handelt sich um Einheiten im Hauptspeicherbereich, der Faktor zwischen den Tausender-Schritten beträgt daher 1024. 
+
+Beispiele:
+-123.4567
++8901
+00034,56000
+</value>
   </data>
-  <data name="UNITC_SYSTEMS_RANGE_EXCEPTION" xml:space="preserve">
-    <value>Der eingegebene Wert ist zu groß für für den gewählten Datentyp.
-Bitte wählen Sie den Wert passend zu dem Datentyp.</value>
+  <data name="HELP_UNITC_SYSTEMS" xml:space="preserve">
+    <value>Im kompletten Bereich sind nur Ganzzahlen erlaubt. Vorzeichen sind nur im Feld "Dezimal" erlaubt. 
+
+Erlaubt in "Binär" sind die Zahlen 0 und 1.
+Erlaubt in "Oktal" sind die Zahlen 0 bis 7.
+Erlaubt in "Dezimal" sind die Zahlen 0 bis 9 mit oder ohne Vorzeichen '-'.
+Erlaubt in "Hexadezimal" sind die Zahlen 0 bis 9 und die Zeichen A bis F (Groß- und Kleinschreibung akzeptiert).
+
+Wählen Sie den gewünschten Datentyp aus dem Dropdown-Feld im oberen Bereich. Dies ist notwendig, da negative Zahlen in "Binär", "Oktal" und "Hexadezimal" je nach Datentyp unterschiedlich dargestellt werden, da das MSB (most significant bit) immer links steht.
+
+Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder drücken Sie die Enter-Taste.
+Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder erneut die Enter-Taste.
+
+Beispiel (von oben nach unten):
+Int16
+1111111111110110
+177766
+-10
+FFF6
+
+
+</value>
   </data>
 </root>

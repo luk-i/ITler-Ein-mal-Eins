@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace ITler_Ein_mal_Eins
 {
-    /// <summary>
-    /// Interaktionslogik für Main.xaml
-    /// </summary>
     public partial class Main : Window
     {
         Control.Control control;
@@ -31,26 +28,26 @@ namespace ITler_Ein_mal_Eins
 
 
         #region Events
-        // Mit #region kann man im Editor einzelne Codebereiche Auf und Zuklappen...
 
-        /*
-         * Button - Events
-         */
         private void Calculator_button_Click(object sender, RoutedEventArgs e)
         {
             Modules.UnitCalculator calculator = new Modules.UnitCalculator(this, control);
             this.Hide();
             calculator.Show();
-            calculator.Left = this.Left;
-            calculator.Top = this.Top;
+            calculator.Left         = this.Left;
+            calculator.Top          = this.Top;
         }
         private void SubnetCalculator_Button_Click(object sender, RoutedEventArgs e)
         {
             Modules.SubnetCalculator sCalculator = new Modules.SubnetCalculator(this, control);
             this.Hide();
             sCalculator.Show();
-            sCalculator.Left = this.Left;
-            sCalculator.Top = this.Top;
+            sCalculator.Left            = this.Left;
+            sCalculator.Top             = this.Top;
+        }
+        private void Useless_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)

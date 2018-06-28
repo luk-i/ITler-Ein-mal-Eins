@@ -59,7 +59,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
-        #region isLegitIpV4SubnetMask - Funktionen
+        #region isLegitIpV4SubnetMask
         public static bool isLegitIpV4SubnetMask(TextBox first_txt, TextBox second_txt,
             TextBox third_txt, TextBox forth_txt)
         {
@@ -168,21 +168,52 @@ namespace ITler_Ein_mal_Eins.Control
 
         #region calcEmptySubnetMaskFields
 
-        public static int[] calcEmptySubnetMaskFields(int first, int second, 
-            int third, int forth, int shortField, IpV4_FieldStatus fieldStatus)
+        /*
+         * Funktion Berechnet die noch Fehlenden Felder der Subnetzmaske...
+         * 
+         * VALIDATION VORHER ABGESCHLOSSEN!!!
+         * InterNetwork = IpV4 (Laut Google :D)
+         */ 
+        public static byte[] calcEmptySubnetMaskFields(int shortField)
         {
-            switch (fieldStatus)
-            {
-                case IpV4_FieldStatus.SHORTFILLED:
-                    
-                    break;
-                case IpV4_FieldStatus.LONGFILLED:
+            IPAddress address = IPNetwork.ToNetmask((byte)shortField, System.Net.Sockets.AddressFamily.InterNetwork);
+            return address.GetAddressBytes();
+        }
 
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-            return null;
+        public static byte[] calcEmptySubnetMaskFields(TextBox shortField)
+        {
+            byte tmp;
+            byte.TryParse(shortField.Text, out tmp);
+            IPAddress address = IPNetwork.ToNetmask(tmp, System.Net.Sockets.AddressFamily.InterNetwork);
+            return address.GetAddressBytes();
+        }
+
+        public static byte[] calcEmptySubnetMaskFields(TextBox b_first, TextBox b_second, TextBox b_third, TextBox b_forth)
+        {
+            byte first = 0;
+            byte second = 0;
+            byte third = 0;
+            byte forth = 0;
+            byte.TryParse(b_first.Text, out first);
+            byte.TryParse(b_second.Text, out second);
+            byte.TryParse(b_third.Text, out third);
+            byte.TryParse(b_forth.Text, out forth);
+            byte[] result = new byte[1];
+            byte[] ip = new byte[4] { first, second, third, forth };
+            IPAddress address = new IPAddress(ip);
+            byte tmp = IPNetwork.ToCidr(address);
+            result[0] = tmp;
+            return result;
+        }
+
+        public static byte[] calcEmptySubnetMaskFields(int first, int second, int third, int forth)
+        {
+            byte[] result = new byte[1];
+            byte []ip = new byte[4] { (byte)first, (byte) second, (byte)third, (byte)forth };
+            IPAddress address = new IPAddress(ip);
+            byte tmp = IPNetwork.ToCidr(address);
+            result[0] = tmp;
+            return result;
         }
 
         #endregion
@@ -200,6 +231,13 @@ namespace ITler_Ein_mal_Eins.Control
                 }
             }
             return false;
+        }
+
+        public static int tryParseTextboxToInt(TextBox box)
+        {
+            int tmp = 0;
+            int.TryParse(box.Text, out tmp);
+            return tmp;
         }
 
         #endregion
