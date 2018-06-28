@@ -234,6 +234,10 @@ namespace ITler_Ein_mal_Eins.Modules
          * nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
          * "Enter" und "Verlassen" aufgerufen wird
          */
+
+        //Modul über eigenen Button schließen
+        private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
+
         private void Window_Closed(object sender, EventArgs e)
         {
             origin.Show();
