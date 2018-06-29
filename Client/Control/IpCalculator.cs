@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using ITler_Ein_mal_Eins.Modules;
 using ITler_Ein_mal_Eins.Model;
 using System.Net;
+using System.Windows.Media;
 
 namespace ITler_Ein_mal_Eins.Control
 {
@@ -24,7 +20,7 @@ namespace ITler_Ein_mal_Eins.Control
         {
             byte tmp = 0;
             // TryParse: Versucht, string in int zu wandeln und gibt aus, ob dies geklappt hat
-            if(byte.TryParse(box.Text, out tmp))
+            if (byte.TryParse(box.Text, out tmp))
             {
                 if (isSubnet)
                 {
@@ -33,7 +29,7 @@ namespace ITler_Ein_mal_Eins.Control
                 else
                 {
                     return true;
-                }         
+                }
             }
             else
             {
@@ -43,7 +39,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static bool isIpV4Digit(int number, bool isSubnet)
         {
-            if(number < 0 || number > (int)((Math.Pow(2, 8) - 1)))
+            if (number < 0 || number > (int)((Math.Pow(2, 8) - 1)))
             {
                 return false;
             }
@@ -106,14 +102,14 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static bool isLegitIpV4SubnetMask(int first, int second, int third, int forth)
         {
-            if(isIpV4Digit(first, true) && isIpV4Digit(second, true) &&
+            if (isIpV4Digit(first, true) && isIpV4Digit(second, true) &&
                 isIpV4Digit(third, true) && isIpV4Digit(forth, true))
             {
-                if(first == 255)
+                if (first == 255)
                 {
-                    if(second == 255)
+                    if (second == 255)
                     {
-                        if(third == 255)
+                        if (third == 255)
                         {
                             return true;
                         }
@@ -147,7 +143,8 @@ namespace ITler_Ein_mal_Eins.Control
         public static bool isLegitIpV4SubnetMask(TextBox box)
         {
             int shortDigit = 0;
-            if(int.TryParse(box.Text, out shortDigit)) {
+            if (int.TryParse(box.Text, out shortDigit))
+            {
                 if (shortDigit >= 1 && shortDigit <= 32) { return true; }
                 return false;
             }
@@ -159,7 +156,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static bool isLegitIpV4SubnetMask(int shortDigit)
         {
-            if(shortDigit >= 1 && shortDigit <= 32) { return true; }
+            if (shortDigit >= 1 && shortDigit <= 32) { return true; }
             return false;
         }
 
@@ -172,7 +169,7 @@ namespace ITler_Ein_mal_Eins.Control
          * 
          * VALIDATION VORHER ABGESCHLOSSEN!!!
          * InterNetwork = IpV4 (Laut Google :D)
-         */ 
+         */
         public static byte[] calcEmptySubnetMaskFields(int shortField)
         {
             IPAddress address = IPNetwork.ToNetmask((byte)shortField, System.Net.Sockets.AddressFamily.InterNetwork);
@@ -208,7 +205,7 @@ namespace ITler_Ein_mal_Eins.Control
         public static byte[] calcEmptySubnetMaskFields(int first, int second, int third, int forth)
         {
             byte[] result = new byte[1];
-            byte []ip = new byte[4] { (byte)first, (byte) second, (byte)third, (byte)forth };
+            byte[] ip = new byte[4] { (byte)first, (byte)second, (byte)third, (byte)forth };
             IPAddress address = new IPAddress(ip);
             byte tmp = IPNetwork.ToCidr(address);
             result[0] = tmp;
@@ -224,10 +221,10 @@ namespace ITler_Ein_mal_Eins.Control
             bool longFieldFilled = false;
 
             if (subnet_shortwritten.first.Text != "") { shortFieldFilled = true; }
-            if (subnet_long.first.Text  != "" ||
+            if (subnet_long.first.Text != "" ||
                 subnet_long.second.Text != "" ||
-                subnet_long.third.Text  != "" ||
-                subnet_long.forth.Text  != "") { longFieldFilled = true; }
+                subnet_long.third.Text != "" ||
+                subnet_long.forth.Text != "") { longFieldFilled = true; }
 
             if (shortFieldFilled == true && longFieldFilled == false) { return IpV4_FieldStatus.SHORTFILLED; }
             if (shortFieldFilled == false && longFieldFilled == true) { return IpV4_FieldStatus.LONGFILLED; }
@@ -242,9 +239,9 @@ namespace ITler_Ein_mal_Eins.Control
             byte[] subnetDigits = new byte[9] {0, 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
                 , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
                 (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
-            for(int i = 0; i < subnetDigits.Length; i++)
+            for (int i = 0; i < subnetDigits.Length; i++)
             {
-                if(digit == subnetDigits[i])
+                if (digit == subnetDigits[i])
                 {
                     return true;
                 }
@@ -261,5 +258,83 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
+        #region Textbox Control
+
+        public static IPAddressTextboxes Textboxes_Enabled(IPAddressTextboxes textboxes)
+        {
+            IPAddressTextboxes tmp = textboxes;
+            if (tmp.type == Textbox_FieldType.IP_ADDRESSBLOCK || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_LONG ||
+                tmp.type == Textbox_FieldType.SUBNETMASK_LONG)
+            {
+                tmp.first.IsReadOnly = false;
+                tmp.second.IsReadOnly = false;
+                tmp.third.IsReadOnly = false;
+                tmp.forth.IsReadOnly = false;
+                return tmp;
+            }else if(tmp.type == Textbox_FieldType.DESIRED_HOSTNO || tmp.type == Textbox_FieldType.DESIRED_SUBNETNO
+                || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || tmp.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            {
+                tmp.first.IsReadOnly = false;
+                return tmp;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+        public static IPAddressTextboxes Textboxes_Disabled(IPAddressTextboxes textboxes)
+        {
+            IPAddressTextboxes tmp = textboxes;
+            if (tmp.type == Textbox_FieldType.IP_ADDRESSBLOCK || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_LONG ||
+                tmp.type == Textbox_FieldType.SUBNETMASK_LONG)
+            {
+                tmp.first.IsReadOnly = true;
+                tmp.second.IsReadOnly = true;
+                tmp.third.IsReadOnly = true;
+                tmp.forth.IsReadOnly = true;
+                return tmp;
+            }
+            else if (tmp.type == Textbox_FieldType.DESIRED_HOSTNO || tmp.type == Textbox_FieldType.DESIRED_SUBNETNO
+               || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || tmp.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            {
+                tmp.first.IsReadOnly = true;
+                return tmp;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+        public static IPAddressTextboxes brushTextboxes(string brush_string, IPAddressTextboxes textboxes)
+        {
+            var converter = new BrushConverter();
+            var brush = (Brush)converter.ConvertFromString(brush_string);
+            IPAddressTextboxes tmp = textboxes;
+            if (tmp.type == Textbox_FieldType.IP_ADDRESSBLOCK || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_LONG ||
+                tmp.type == Textbox_FieldType.SUBNETMASK_LONG)
+            {
+                tmp.first.Background = brush;
+                tmp.second.Background = brush;
+                tmp.third.Background = brush;
+                tmp.forth.Background = brush;
+                return tmp;
+            }
+            else if (tmp.type == Textbox_FieldType.DESIRED_HOSTNO || tmp.type == Textbox_FieldType.DESIRED_SUBNETNO
+               || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || tmp.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            {
+                tmp.first.Background = brush;
+                return tmp;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
     }
 }

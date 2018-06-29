@@ -33,7 +33,8 @@ namespace ITler_Ein_mal_Eins.Model
         SUBNETMASK_LONG,
         SUBNETMASK_SHORT,
         NEW_SUBNETMASK_LONG,
-        NEW_SUBNETMASK_SHORT
+        NEW_SUBNETMASK_SHORT,
+        SINGLEBOX
     }
 
     #endregion

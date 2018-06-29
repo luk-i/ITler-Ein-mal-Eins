@@ -237,82 +237,51 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Textboxes_LeftTop_Enabled()
         {
-            Ip4_textBox1.IsReadOnly = false;
-            Ip4_textBox2.IsReadOnly = false;
-            Ip4_textBox3.IsReadOnly = false;
-            Ip4_textBox4.IsReadOnly = false;
-            Subnet_textBox1.IsReadOnly = false;
-            Subnet_textBox2.IsReadOnly = false;
-            Subnet_textBox3.IsReadOnly = false;
-            Subnet_textBox4.IsReadOnly = false;
-            Subnet_textBox_ShortWritten.IsReadOnly = false;
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.IP_ADDRESSBLOCK)));
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
             Textboxes_LeftTop_Brush("#FFFFFFFF");
         }
 
         private void Textboxes_LeftBottom_Enabled()
         {
-            Subnet_textBox1_new.IsReadOnly = false;
-            Subnet_textBox2_new.IsReadOnly = false;
-            Subnet_textBox3_new.IsReadOnly = false;
-            Subnet_textBox4_new.IsReadOnly = false;
-            Subnet_desired.IsReadOnly = false;
-            Hosts_desired.IsReadOnly = false;
-            Subnet_textBox_ShortWritten_new.IsReadOnly = false;
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+            readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
             Textboxes_LeftBottom_Brush("#FFFFFFFF");
         }
 
         private void Textboxes_LeftTop_Disabled()
         {
-            Ip4_textBox1.IsReadOnly = true;
-            Ip4_textBox2.IsReadOnly = true;
-            Ip4_textBox3.IsReadOnly = true;
-            Ip4_textBox4.IsReadOnly = true;
-            Subnet_textBox1.IsReadOnly = true;
-            Subnet_textBox2.IsReadOnly = true;
-            Subnet_textBox3.IsReadOnly = true;
-            Subnet_textBox4.IsReadOnly = true;
-            Subnet_textBox_ShortWritten.IsReadOnly = true;
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.IP_ADDRESSBLOCK)));
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
             Textboxes_LeftTop_Brush("#DDDDDDDD");
         }
 
         private void Textboxes_LeftBottom_Disabled()
         {
-            Subnet_textBox1_new.IsReadOnly = true;
-            Subnet_textBox2_new.IsReadOnly = true;
-            Subnet_textBox3_new.IsReadOnly = true;
-            Subnet_textBox4_new.IsReadOnly = true;
-            Subnet_desired.IsReadOnly = true;
-            Hosts_desired.IsReadOnly = true;
-            Subnet_textBox_ShortWritten_new.IsReadOnly = true;
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+            readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
             Textboxes_LeftBottom_Brush("#DDDDDDDD");
         }
 
         private void Textboxes_LeftTop_Brush(string brush_string)
         {
-            var converter = new BrushConverter();
-            var brush = (Brush)converter.ConvertFromString(brush_string);
-            Ip4_textBox1.Background = brush;
-            Ip4_textBox2.Background = brush;
-            Ip4_textBox3.Background = brush;
-            Ip4_textBox4.Background = brush;
-            Subnet_textBox1.Background = brush;
-            Subnet_textBox2.Background = brush;
-            Subnet_textBox3.Background = brush;
-            Subnet_textBox4.Background = brush;
-            Subnet_textBox_ShortWritten.Background = brush;
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.IP_ADDRESSBLOCK)));
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
         }
 
         private void Textboxes_LeftBottom_Brush(string brush_string)
         {
-            var converter = new BrushConverter();
-            var brush = (Brush)converter.ConvertFromString(brush_string);
-            Subnet_textBox1_new.Background = brush;
-            Subnet_textBox2_new.Background = brush;
-            Subnet_textBox3_new.Background = brush;
-            Subnet_textBox4_new.Background = brush;
-            Subnet_desired.Background = brush;
-            Hosts_desired.Background = brush;
-            Subnet_textBox_ShortWritten_new.Background = brush;
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+            readStruct(IpCalculator.brushTextboxes(brush_string, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
         }
 
         #endregion
