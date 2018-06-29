@@ -234,26 +234,12 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
-        private static bool isLegitSubnetDigit(byte digit)
-        {
-            byte[] subnetDigits = new byte[9] {0, 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
-                , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
-                (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
-            for (int i = 0; i < subnetDigits.Length; i++)
-            {
-                if (digit == subnetDigits[i])
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        #region getMaxSubnetNo
 
-        public static int tryParseTextboxToInt(TextBox box)
+        public static int getMaxSubnetNo(int subnet_short)
         {
-            int tmp = 0;
-            int.TryParse(box.Text, out tmp);
-            return tmp;
+
+            return 0;
         }
 
         #endregion
@@ -271,8 +257,9 @@ namespace ITler_Ein_mal_Eins.Control
                 tmp.third.IsReadOnly = false;
                 tmp.forth.IsReadOnly = false;
                 return tmp;
-            }else if(tmp.type == Textbox_FieldType.DESIRED_HOSTNO || tmp.type == Textbox_FieldType.DESIRED_SUBNETNO
-                || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || tmp.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            }
+            else if (tmp.type == Textbox_FieldType.DESIRED_HOSTNO || tmp.type == Textbox_FieldType.DESIRED_SUBNETNO
+               || tmp.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || tmp.type == Textbox_FieldType.SUBNETMASK_SHORT)
             {
                 tmp.first.IsReadOnly = false;
                 return tmp;
@@ -336,5 +323,30 @@ namespace ITler_Ein_mal_Eins.Control
         }
 
         #endregion
+
+        private static bool isLegitSubnetDigit(byte digit)
+        {
+            byte[] subnetDigits = new byte[9] {0, 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
+                , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
+                (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
+            for (int i = 0; i < subnetDigits.Length; i++)
+            {
+                if (digit == subnetDigits[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static int tryParseTextboxToInt(TextBox box)
+        {
+            int tmp = 0;
+            int.TryParse(box.Text, out tmp);
+            return tmp;
+        }
+
+        #endregion
+
     }
 }

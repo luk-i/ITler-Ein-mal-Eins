@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ITler_Ein_mal_Eins.Control;
 using ITler_Ein_mal_Eins.Model;
-using System.Net;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -119,7 +108,26 @@ namespace ITler_Ein_mal_Eins.Modules
             //
             if (!TextChanged_Event_isLocked)
             {
+                TextChanged_Event_isLocked = true;
+                switch (fieldType)
+                {
+                    case Textbox_FieldType.DESIRED_SUBNETNO:
+                        // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
 
+                        break;
+                    case Textbox_FieldType.DESIRED_HOSTNO:
+
+                        break;
+                    case Textbox_FieldType.NEW_SUBNETMASK_LONG:
+
+                        break;
+                    case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
+
+                        break;
+                    default:
+                        throw new NotImplementedException();
+
+                }
             }
             else
             {
@@ -214,6 +222,8 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
+        #endregion
+
         #region Textboxes
 
         private void TextBoxes_Clear()
@@ -288,8 +298,6 @@ namespace ITler_Ein_mal_Eins.Modules
 
         #endregion
 
-        #endregion
-
         #region Initialisation
 
         private void InitializeTextboxes()
@@ -340,6 +348,18 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox3_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox4_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox_ShortWritten_new.TextChanged += Subnet_textBox_ShortWritten_new_TextChanged;
+            //
+            //  Entereingabe Berechnet Felder
+            //
+            Ip4_textBox1.KeyDown += Enterpressed;
+            Ip4_textBox2.KeyDown += Enterpressed;
+            Ip4_textBox3.KeyDown += Enterpressed;
+            Ip4_textBox4.KeyDown += Enterpressed;
+            Subnet_textBox1.KeyDown += Enterpressed;
+            Subnet_textBox2.KeyDown += Enterpressed;
+            Subnet_textBox3.KeyDown += Enterpressed;
+            Subnet_textBox4.KeyDown += Enterpressed;
+            Subnet_textBox_ShortWritten.KeyDown += Enterpressed;
         }
 
         private IPAddressTextboxes writeStruct(Textbox_FieldType type)
@@ -433,6 +453,14 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Button_Refresh_Click(object sender, RoutedEventArgs e)
         {
             InitializeTextboxes();
+        }
+
+        private void Enterpressed(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Return)
+            {
+                startCalculation();
+            }
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
