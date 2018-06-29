@@ -24,6 +24,7 @@ namespace ITler_Ein_mal_Eins.Modules
         Control.Control control;
         TextBox txbox_active;
         UnitCalculatorControl unitCalculatorControl;
+        
         //Struct
         UnitCalculatorControl.BitByteStrings bitByteStrings;
         UnitCalculatorControl.Systems systems;
@@ -90,32 +91,20 @@ namespace ITler_Ein_mal_Eins.Modules
         #endregion ##########################################################################################################################################################################################
 
         #region Methods Bits ################################################################################################################################################################################
+        
         //Textboxen zurücksetzen Bits
         private void Clear_Txbox_UnitC_Bits()
         {
-            txbox_bit.Clear();
-            txbox_kilobit.Clear();
-            txbox_megabit.Clear();
-            txbox_gigabit.Clear();
-            txbox_terabit.Clear();
-            txbox_byte.Clear();
-            txbox_kilobyte.Clear();
-            txbox_megabyte.Clear();
-            txbox_gigabyte.Clear();
-            txbox_terabyte.Clear();
-            txbox_bit.IsReadOnly            = false;
-            txbox_kilobit.IsReadOnly        = false;
-            txbox_megabit.IsReadOnly        = false;
-            txbox_gigabit.IsReadOnly        = false;
-            txbox_terabit.IsReadOnly        = false;
-            txbox_byte.IsReadOnly           = false;
-            txbox_kilobyte.IsReadOnly       = false;
-            txbox_megabyte.IsReadOnly       = false;
-            txbox_gigabyte.IsReadOnly       = false;
-            txbox_terabyte.IsReadOnly       = false;
-            btn_bits_calculate.IsEnabled    = true;
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                tx_box.Clear();
+                tx_box.IsReadOnly = false;
+            }
+            btn_bits_calculate.IsEnabled = true;
         }
 
+ 
+    
         //Abfragen, ob die Eingaben korrekt sind.
         private bool CanWeStart_bits()
         {

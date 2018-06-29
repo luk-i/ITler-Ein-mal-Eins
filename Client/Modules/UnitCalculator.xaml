@@ -20,7 +20,7 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
-                    <Grid Margin="2.5,2.5,2.5,27.5">
+                    <Grid x:Name="grid_unitCalculator_bits" Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" MinHeight="30" />
