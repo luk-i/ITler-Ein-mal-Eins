@@ -19,7 +19,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         #region IPv4 Digit Kontrolle
 
-        #region IsIPv4Digit - Funktionen
+        #region IsIPv4Digit
         public static bool isIpV4Digit(System.Windows.Controls.TextBox box, bool isSubnet)
         {
             byte tmp = 0;
@@ -60,16 +60,15 @@ namespace ITler_Ein_mal_Eins.Control
         #endregion
 
         #region isLegitIpV4SubnetMask
-        public static bool isLegitIpV4SubnetMask(TextBox first_txt, TextBox second_txt,
-            TextBox third_txt, TextBox forth_txt)
+        public static bool isLegitIpV4SubnetMask(IPAddressTextboxes subnetMask)
         {
-            if (isIpV4Digit(first_txt, true) && isIpV4Digit(second_txt, true) &&
-                isIpV4Digit(third_txt, true) && isIpV4Digit(forth_txt, true))
+            if (isIpV4Digit(subnetMask.first, true) && isIpV4Digit(subnetMask.second, true) &&
+                isIpV4Digit(subnetMask.third, true) && isIpV4Digit(subnetMask.forth, true))
             {
-                byte first = byte.Parse(first_txt.Text);
-                byte second = byte.Parse(second_txt.Text);
-                byte third = byte.Parse(third_txt.Text);
-                byte forth = byte.Parse(forth_txt.Text);
+                byte first = byte.Parse(subnetMask.first.Text);
+                byte second = byte.Parse(subnetMask.second.Text);
+                byte third = byte.Parse(subnetMask.third.Text);
+                byte forth = byte.Parse(subnetMask.forth.Text);
                 if (first == 255)
                 {
                     if (second == 255)
@@ -214,6 +213,26 @@ namespace ITler_Ein_mal_Eins.Control
             byte tmp = IPNetwork.ToCidr(address);
             result[0] = tmp;
             return result;
+        }
+
+        #endregion
+
+        #region getFieldStatus
+        public static IpV4_FieldStatus getFieldStatus(IPAddressTextboxes subnet_long, IPAddressTextboxes subnet_shortwritten)
+        {
+            bool shortFieldFilled = false;
+            bool longFieldFilled = false;
+
+            if (subnet_shortwritten.first.Text != "") { shortFieldFilled = true; }
+            if (subnet_long.first.Text  != "" ||
+                subnet_long.second.Text != "" ||
+                subnet_long.third.Text  != "" ||
+                subnet_long.forth.Text  != "") { longFieldFilled = true; }
+
+            if (shortFieldFilled == true && longFieldFilled == false) { return IpV4_FieldStatus.SHORTFILLED; }
+            if (shortFieldFilled == false && longFieldFilled == true) { return IpV4_FieldStatus.LONGFILLED; }
+            if (shortFieldFilled == false && longFieldFilled == false) { return IpV4_FieldStatus.NOFIELDSFILLED; };
+            return IpV4_FieldStatus.BOTHFILLED;
         }
 
         #endregion

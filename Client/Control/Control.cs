@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using ITler_Ein_mal_Eins.Model;
+using System.Windows.Forms;
 
 namespace ITler_Ein_mal_Eins.Control
 {
@@ -169,6 +171,27 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
         #endregion ####################################################################################################################################################
+
+        #region getErrorMessage
+
+        public static void getErrorMessage(ErrorCodeNo _code)
+        {
+            switch (_code)
+            {
+                case ErrorCodeNo.WRONGIPV4:
+                    MessageBox.Show(Errorcodes.ERROR_IPV4DIGITISNOTVALID);
+                    break;
+                case ErrorCodeNo.WRONGSUBNETCODE:
+                    MessageBox.Show(Errorcodes.ERROR_SUBNETMASKISNOTVALID);
+                    break;
+                case ErrorCodeNo.MULTIPLEFIELDSFILLED:
+                    MessageBox.Show(Errorcodes.ERROR_MULTIPLEFIELDSFILLED);
+                    break;
+                    // Endoftheline
+            }
+        }
+
+        #endregion
 
     }
 }
