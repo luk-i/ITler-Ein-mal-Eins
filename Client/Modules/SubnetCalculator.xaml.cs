@@ -57,15 +57,22 @@ namespace ITler_Ein_mal_Eins.Modules
         private void FillRightContent()
         {
             string ipv4;
-            int subnetmask;
+            string subnetmask_new;
+            int netmask;
 
             ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox2.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox3.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox4.Text);
-            subnetmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
+            subnetmask_new = IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
+            subnetmask_new = subnetmask_new + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
+            subnetmask_new = subnetmask_new + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
+            subnetmask_new = subnetmask_new + IpCalculator.InputToBinary(Subnet_textBox1_new.Text);
 
-            txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(subnetmask, ipv4);
+            netmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
+
+            txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, ipv4);
+            txblock_subnet_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask_new);
         }
 
         #region Control
@@ -131,7 +138,7 @@ namespace ITler_Ein_mal_Eins.Modules
         private void TextBox_BottomLeft_onTextChanged(Textbox_FieldType fieldType)
         {
             //
-            //  Das Berechnen der Fehlenden Felder würde eine Entlosschleife auslösen
+            //  Das Berechnen der Fehlenden Felder würde eine Endlosschleife auslösen
             //  (Jedes Eintragen in eine Textbox führt wieder rekursiv in diese Fuktion)
             //
             //  Daher muss geprüft werden, ob bereits eine Berechnung der Felder erfolgt, was

@@ -108,11 +108,20 @@
 
                         </Grid>
                         <Grid Grid.Column="1" Opacity="0" x:Name="Subnet_ipv4_Right">
-                        
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
                             <!--#region Right-->
-
-                            <TextBlock x:Name="txblock_ip_binaer" Width="Auto" Height="Auto" Margin="7.5,5,5,5" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
-
+                            
+                            <Label Content="IP in Binär" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock x:Name="txblock_ip_binaer" Width="Auto" Height="Auto" Margin="7.5,5,5,5" Grid.Row="1" Grid.Column="0"  FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+                            <Label Content="Neue Netzmaske" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock x:Name="txblock_subnet_binaer" Width="Auto" Height="Auto" Margin="7.5,5,5,5" Grid.Row="3" Grid.Column="0"  FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+                            
                             <!--#endregion-->
                             
                         </Grid>
