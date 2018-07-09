@@ -264,9 +264,38 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
+        #region calcSubnetShort
+        //
+        //  Wird als erstes Feld berechnet, da alle anderen Felder darauf aufbauen.
+        //  Werte sind zuvor bereits Validiert worden.
+        //  Ceiling: Aufrundung
+        //
+        public static int calcSubnetShort(int subnetNo)
+        {
+            double short_written = Math.Log(subnetNo, 2);
+            return (int) Math.Ceiling(short_written); ;
+        }
+
+        public static int calcSubnetShort(TextBox subnetNo)
+        {
+            double short_written = Math.Log(tryParseTextboxToInt(subnetNo), 2);
+            return (int)Math.Ceiling(short_written); ;
+        }
+        #endregion
+
+        #region calcSubnetNo
+
+        public static int calcSubnetNo(int short_written)
+        {
+
+            return 0;
+        }
+
+        #endregion
+
         #region calcHostNo
-        
-        public static int calcHostNo()
+
+        public static int calcHostNo(int subnet_short)
         {
 
             return 0;
