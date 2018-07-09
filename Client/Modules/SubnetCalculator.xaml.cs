@@ -11,7 +11,6 @@ namespace ITler_Ein_mal_Eins.Modules
     {
         #region Variables
         Window origin;
-        IpCalculator ipControl;
         Control.Control control;
 
         private bool TextChanged_Event_isLocked = false;
@@ -23,7 +22,6 @@ namespace ITler_Ein_mal_Eins.Modules
             origin = _origin;
             control = _control;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            ipControl = new Control.IpCalculator();
             InitializeComponent();
             InitializeTags();
             InitializeEvents();
@@ -113,7 +111,10 @@ namespace ITler_Ein_mal_Eins.Modules
                 {
                     case Textbox_FieldType.DESIRED_SUBNETNO:
                         // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
+                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten))
+                        {
 
+                        }
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
 
@@ -323,6 +324,8 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox4_new.Tag             = Control.Control.digitTag.SUBNETMASK;
             Subnet_textBox_ShortWritten.Tag     = Control.Control.digitTag.UNSIGNEDINTEGER;
             Subnet_textBox_ShortWritten_new.Tag = Control.Control.digitTag.UNSIGNEDINTEGER;
+            Subnet_desired.Tag                  = Control.Control.digitTag.UNSIGNEDINTEGER;
+            Hosts_desired.Tag                   = Control.Control.digitTag.UNSIGNEDINTEGER;
         }
 
         private void InitializeEvents()
@@ -470,21 +473,25 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Subnet_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_SUBNETNO);
         }
 
         private void Hosts_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_HOSTNO);
         }
 
         private void Subnet_textBox_new_TextChanged(object sender, TextChangedEventArgs e)
         {
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_LONG);
         }
 
         private void Subnet_textBox_ShortWritten_new_TextChanged(object sender, TextChangedEventArgs e)
         {
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_SHORT);
         }
 

@@ -8,12 +8,14 @@ namespace ITler_Ein_mal_Eins.Control
 {
     class IpCalculator
     {
-        public IpCalculator()
+        Control control;
+        public IpCalculator(Control _control)
         {
-
+            control = _control;
         }
 
-        #region IPv4 Digit Kontrolle
+
+        #region Validation
 
         #region IsIPv4Digit
         public static bool isIpV4Digit(System.Windows.Controls.TextBox box, bool isSubnet)
@@ -162,6 +164,54 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
+        #region isLegitSubnetNo
+        //
+        //  Prüfung als eigene Funktion... Spart Platz in einer Klasse, die eigentlich
+        //  nur ein Model ist... :D
+        //  Auch hier: Felder Sind Valide. PS: "pfff...Laufzeitoptimierung ist für die,
+        //  die nen Scheiß PC haben..."
+        //
+        public static bool isLegitSubnetNo(TextBox subnetNo, TextBox subnet_short)
+        {
+            if (tryParseTextboxToInt(subnetNo) >= 0 || tryParseTextboxToInt(subnetNo) <= 
+                getMaxSubnetNo(subnet_short))
+            {
+                Control.brushTextBoxByBool(0, subnetNo);
+                return true;
+            }
+            Control.brushTextBoxByBool(99, subnetNo);
+            return false;
+        }
+
+        public static bool isLegitSubnetNo(int subnetNo, int subnet_short)
+        {
+            if(subnetNo >= 0 || subnetNo <= getMaxSubnetNo(subnet_short))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+        private static bool isLegitSubnetDigit(byte digit)
+        {
+            byte[] subnetDigits = new byte[9] {0, 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
+                , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
+                (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
+            for (int i = 0; i < subnetDigits.Length; i++)
+            {
+                if (digit == subnetDigits[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        #endregion
+
         #region calcEmptySubnetMaskFields
 
         /*
@@ -214,6 +264,16 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
+        #region calcHostNo
+        
+        public static int calcHostNo()
+        {
+
+            return 0;
+        }
+
+        #endregion
+
         #region getFieldStatus
         public static IpV4_FieldStatus getFieldStatus(IPAddressTextboxes subnet_long, IPAddressTextboxes subnet_shortwritten)
         {
@@ -236,7 +296,31 @@ namespace ITler_Ein_mal_Eins.Control
 
         #region getMaxSubnetNo
 
+        //
+        //  Berechnung der Maximalen Subnetzzahl, /31 als maximaler Netzanteil
+        //  MaxSubnetNo = 2^(31-subnet_short)
+        //  Übernimmt Validierten Wert. Prüfung ist damit Hinfällig
+        //
+        public static int getMaxSubnetNo(TextBox subnet_short)
+        {
+            int txt_b = int.Parse(subnet_short.Text);
+            int tmp = (int)Math.Pow((double)2, (double)(31 - txt_b));
+            return tmp;
+        }
+
         public static int getMaxSubnetNo(int subnet_short)
+        {
+            int tmp = (int) Math.Pow((double)2, (double)(31 - subnet_short));
+            return tmp;
+        }
+
+        #endregion
+
+        #region getMaxHostNo
+        //
+        //  Wie es auf der Verpackung steht...
+        //
+        public static int getMaxHostNo()
         {
 
             return 0;
@@ -324,21 +408,6 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
-        private static bool isLegitSubnetDigit(byte digit)
-        {
-            byte[] subnetDigits = new byte[9] {0, 128, (128 + 64), (128 + 64 + 32), (128 + 64 + 32 + 16)
-                , (128 + 64 + 32 + 16 + 8), (128 + 64 + 32 + 16 + 8 + 4), (128 + 64 + 32 + 16 + 8 + 4 + 2),
-                (128 + 64 + 32 + 16 + 8 + 4 + 2 + 1) };
-            for (int i = 0; i < subnetDigits.Length; i++)
-            {
-                if (digit == subnetDigits[i])
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public static int tryParseTextboxToInt(TextBox box)
         {
             int tmp = 0;
@@ -346,7 +415,6 @@ namespace ITler_Ein_mal_Eins.Control
             return tmp;
         }
 
-        #endregion
 
     }
 }
