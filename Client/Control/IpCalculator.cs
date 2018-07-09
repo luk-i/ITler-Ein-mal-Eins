@@ -357,7 +357,7 @@ namespace ITler_Ein_mal_Eins.Control
             return output;
         }
 
-        public string FormatIPv4String (int subnetMask, string ipv4)
+        public string FormatIPv4String_Netmask (int subnetMask, string ipv4)
         {
             string output;
             string netzanteil = "";

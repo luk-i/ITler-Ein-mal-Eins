@@ -65,7 +65,7 @@ namespace ITler_Ein_mal_Eins.Modules
             ipv4 = ipv4 + ipControl.InputToBinary(Ip4_textBox4.Text);
             subnetmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
 
-            txblock_ip_binaer.Text = ipControl.FormatIPv4String(subnetmask, ipv4);
+            txblock_ip_binaer.Text = ipControl.FormatIPv4String_Netmask(subnetmask, ipv4);
         }
 
         #region Control

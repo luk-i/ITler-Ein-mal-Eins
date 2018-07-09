@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SubnetCalculator" 
         Height="450" MinHeight="400"
-        Width="800" MinWidth="285"
+        Width="800" MinWidth="385"
         Closed="Window_Closed">
 
     <Grid>
@@ -111,7 +111,7 @@
                         
                             <!--#region Right-->
 
-                            <TextBlock x:Name="txblock_ip_binaer" Text="Test" Width="Auto" Height="Auto" Margin="7.5,5,5,5"/>
+                            <TextBlock x:Name="txblock_ip_binaer" Text="Test" Width="Auto" Height="Auto" Margin="7.5,5,5,5" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
 
                             <!--#endregion-->
                             
