@@ -25,13 +25,13 @@
                             <ColumnDefinition Width="10*" MinWidth="230" />
                             <ColumnDefinition Width="10*" />
                         </Grid.ColumnDefinitions>
-                        <Border BorderBrush="#EE646464" BorderThickness="2.5" Grid.Column="0" HorizontalAlignment="Right" Margin="0,1.5,-2.5,0" Width="4" Grid.Row="2"/>
+                        <Border BorderBrush="#EE646464" BorderThickness="2.5" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,-2.5,0" Width="4" Grid.Row="2"/>
                         <Grid x:Name="Adress_Grid" Grid.Column="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="10*" MinHeight="50" />
                                 <RowDefinition Height="10*" />
                             </Grid.RowDefinitions>
-                            <Grid x:Name="Subnet_ipv4_Left_Top" Grid.Row="0">
+                            <Grid x:Name="Subnet_ipv4_Left_Top" Grid.Row="0" Margin="0,0,1.5,0">
                                 <Grid.Background>
                                     <SolidColorBrush Color="Black" Opacity="0"/>
                                 </Grid.Background>
@@ -109,9 +109,11 @@
                         </Grid>
                         <Grid Grid.Column="1">
                         
-                        <!--#region Right-->
-  
-                        <!--#endregion-->
+                            <!--#region Right-->
+
+                            <TextBlock x:Name="txblock_ip_binaer" Text="Test" Width="Auto" Height="Auto" Margin="7.5,5,5,5"/>
+
+                            <!--#endregion-->
                             
                         </Grid>
                     </Grid>

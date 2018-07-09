@@ -348,5 +348,40 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
+        #region Ip zu Binär
+
+        public string InputToBinary(string input)
+        {
+            string output = Convert.ToString(Convert.ToInt32(input), 2);
+            output = output.PadLeft(8, '0');
+            return output;
+        }
+
+        public string FormatIPv4String (int subnetMask, string ipv4)
+        {
+            string output;
+            string netzanteil = "";
+            string hostanteil = "";
+
+            foreach (char x in ipv4)
+            {
+                if (subnetMask > 0)
+                {
+                        netzanteil = netzanteil + x;
+                }
+                else
+                {
+                    hostanteil = hostanteil + x;
+                }
+                if (x != ' ')
+                {
+                    subnetMask--;
+                }
+            }
+            output = netzanteil + " | " + hostanteil.TrimStart(new char[] { ' ' }); ;
+            return output;
+        }
+        #endregion
+
     }
 }
