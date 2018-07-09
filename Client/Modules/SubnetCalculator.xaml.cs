@@ -39,6 +39,7 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 onValidIpV4Head();
                 FillRightContent();
+                Subnet_ipv4_Right.Opacity = 1;
             }
         }
 
@@ -341,6 +342,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Textboxes_LeftTop_Enabled();
             TextBoxes_Clear();
             btn_ipv4_calculate.IsEnabled = true;
+            Subnet_ipv4_Right.Opacity = 0;
         }
 
         private void InitializeTags()
