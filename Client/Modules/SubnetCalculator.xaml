@@ -32,6 +32,9 @@
                                 <RowDefinition Height="10*" />
                             </Grid.RowDefinitions>
                             <Grid x:Name="Subnet_ipv4_Left_Top" Grid.Row="0">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0"/>
+                                </Grid.Background>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
