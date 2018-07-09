@@ -34,8 +34,20 @@ namespace ITler_Ein_mal_Eins.Modules
         #region Functions
 
         private void startCalculation()
+        {          
+            if (IPv4_calculateBits()) onValidIpV4Head();           
+        }
+
+        private void EnterPressPerformed()
         {
-            if (IPv4_calculateBits()) onValidIpV4Head();
+            if (btn_ipv4_calculate.IsEnabled == true)
+            {
+                startCalculation();
+            }
+            else
+            {
+                InitializeTextboxes();
+            }
         }
 
         #region Control
@@ -84,6 +96,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             Textboxes_LeftTop_Disabled();
             Textboxes_LeftBottom_Enabled();
+            btn_ipv4_calculate.IsEnabled = false;
             int i = 0;
             Subnet_desired.Text = i.ToString();
         }
@@ -305,6 +318,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Textboxes_LeftBottom_Disabled();
             Textboxes_LeftTop_Enabled();
             TextBoxes_Clear();
+            btn_ipv4_calculate.IsEnabled = true;
         }
 
         private void InitializeTags()
@@ -459,7 +473,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             if (e.Key == System.Windows.Input.Key.Return)
             {
-                startCalculation();
+                EnterPressPerformed();
             }
         }
 
