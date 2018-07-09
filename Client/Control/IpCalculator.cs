@@ -418,14 +418,14 @@ namespace ITler_Ein_mal_Eins.Control
 
         #region Ip zu Binär
 
-        public string InputToBinary(string input)
+        public static string InputToBinary(string input)
         {
             string output = Convert.ToString(Convert.ToInt32(input), 2);
             output = output.PadLeft(8, '0');
             return output;
         }
 
-        public string FormatIPv4String_Netmask (int subnetMask, string ipv4)
+        public static string FormatIPv4String_Netmask (int subnetMask, string ipv4)
         {
             string output;
             string netzanteil = "";

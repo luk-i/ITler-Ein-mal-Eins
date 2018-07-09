@@ -13,6 +13,7 @@ namespace ITler_Ein_mal_Eins.Modules
         Window origin;
         Control.Control control;
 
+
         private bool TextChanged_Event_isLocked = false;
 
         #endregion
@@ -58,13 +59,13 @@ namespace ITler_Ein_mal_Eins.Modules
             string ipv4;
             int subnetmask;
 
-            ipv4 = ipControl.InputToBinary(Ip4_textBox1.Text) + ' ';
-            ipv4 = ipv4 + ipControl.InputToBinary(Ip4_textBox2.Text) + ' ';
-            ipv4 = ipv4 + ipControl.InputToBinary(Ip4_textBox3.Text) + ' ';
-            ipv4 = ipv4 + ipControl.InputToBinary(Ip4_textBox4.Text);
+            ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text) + ' ';
+            ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox2.Text) + ' ';
+            ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox3.Text) + ' ';
+            ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox4.Text);
             subnetmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
 
-            txblock_ip_binaer.Text = ipControl.FormatIPv4String_Netmask(subnetmask, ipv4);
+            txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(subnetmask, ipv4);
         }
 
         #region Control
