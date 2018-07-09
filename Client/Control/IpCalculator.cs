@@ -276,18 +276,42 @@ namespace ITler_Ein_mal_Eins.Control
             int tmp;
             double short_written = Math.Log(subnetNo, 2);
             tmp = (int) Math.Ceiling(short_written);
+            if (tmp == 0) tmp++;
             return subnet_shortwritten_old + tmp;
         }
 
-        public static int calcSubnetShort(TextBox subnetNo, TextBox subnet_shortwritten_old)
+        public static int calcSubnetShort(IPAddressTextboxes subnetNo, IPAddressTextboxes subnet_shortwritten_old)
         {
-
-            if (tryParseTextboxToInt(subnetNo) == 0) return tryParseTextboxToInt(subnet_shortwritten_old);
-            int tmp;
-            double short_written = Math.Log(tryParseTextboxToInt(subnetNo), 2);
-            tmp = (int)Math.Ceiling(short_written);
-            return (tryParseTextboxToInt(subnet_shortwritten_old) + tmp);
+            if (subnetNo.type == Textbox_FieldType.DESIRED_SUBNETNO || subnet_shortwritten_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            {
+                if (tryParseTextboxToInt(subnetNo.first) == 0) return tryParseTextboxToInt(subnet_shortwritten_old.first);
+                int tmp;
+                double short_written = Math.Log(tryParseTextboxToInt(subnetNo.first), 2);
+                tmp = (int)Math.Ceiling(short_written);
+                if (tmp == 0) tmp++;
+                return (tryParseTextboxToInt(subnet_shortwritten_old.first) + tmp);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
+        #endregion
+
+        #region calcNewSubnetMask
+
+        public static IPAddressTextboxes calcNewSubnetMask(IPAddressTextboxes boxes)
+        {
+            if(boxes.type == Textbox_FieldType.NEW_SUBNETMASK_LONG)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         #endregion
 
         #region calcSubnetNo
@@ -299,11 +323,21 @@ namespace ITler_Ein_mal_Eins.Control
             return tmp;
         }
 
-        public static int calcSubnetNo(TextBox shortWritten, TextBox shortWritten_old)
+        public static IPAddressTextboxes calcSubnetNo(IPAddressTextboxes shortWritten, IPAddressTextboxes shortWritten_old)
         {
-            int tmp;
-            tmp = (int)Math.Pow(2, tryParseTextboxToInt(shortWritten_old) - tryParseTextboxToInt(shortWritten));
-            return tmp;
+            if (shortWritten.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || shortWritten_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            {
+                int tmp;
+                tmp = (int)Math.Pow(2, tryParseTextboxToInt(shortWritten_old.first) - tryParseTextboxToInt(shortWritten.first));
+                TextBox txt = new TextBox();
+                txt.Text = tmp.ToString();
+                txt.Tag = Control.digitTag.UNSIGNEDINTEGER;
+                return new IPAddressTextboxes(txt, Textbox_FieldType.DESIRED_SUBNETNO);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         #endregion

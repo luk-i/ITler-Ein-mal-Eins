@@ -154,6 +154,8 @@ namespace ITler_Ein_mal_Eins.Modules
                         if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten))
                         {
                             Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(Subnet_desired, Subnet_textBox_ShortWritten).ToString();
+
+
                         }
                         TextChanged_Event_isLocked = false;
                         break;
