@@ -153,7 +153,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
                         if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten))
                         {
-
+                            Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(Subnet_desired, Subnet_textBox_ShortWritten).ToString();
                         }
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:

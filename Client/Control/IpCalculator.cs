@@ -270,33 +270,51 @@ namespace ITler_Ein_mal_Eins.Control
         //  Werte sind zuvor bereits Validiert worden.
         //  Ceiling: Aufrundung
         //
-        public static int calcSubnetShort(int subnetNo)
+        public static int calcSubnetShort(int subnetNo, int subnet_shortwritten_old)
         {
+            if (subnetNo == 0) return subnet_shortwritten_old;
+            int tmp;
             double short_written = Math.Log(subnetNo, 2);
-            return (int) Math.Ceiling(short_written); ;
+            tmp = (int) Math.Ceiling(short_written);
+            return subnet_shortwritten_old + tmp;
         }
 
-        public static int calcSubnetShort(TextBox subnetNo)
+        public static int calcSubnetShort(TextBox subnetNo, TextBox subnet_shortwritten_old)
         {
+
+            if (tryParseTextboxToInt(subnetNo) == 0) return tryParseTextboxToInt(subnet_shortwritten_old);
+            int tmp;
             double short_written = Math.Log(tryParseTextboxToInt(subnetNo), 2);
-            return (int)Math.Ceiling(short_written); ;
+            tmp = (int)Math.Ceiling(short_written);
+            return (tryParseTextboxToInt(subnet_shortwritten_old) + tmp);
         }
         #endregion
 
         #region calcSubnetNo
 
-        public static int calcSubnetNo(int short_written)
+        public static int calcSubnetNo(int shortWritten, int shortWritten_old)
         {
+            int tmp; 
+            tmp = (int) Math.Pow(2, shortWritten_old - shortWritten);
+            return tmp;
+        }
 
-            return 0;
+        public static int calcSubnetNo(TextBox shortWritten, TextBox shortWritten_old)
+        {
+            int tmp;
+            tmp = (int)Math.Pow(2, tryParseTextboxToInt(shortWritten_old) - tryParseTextboxToInt(shortWritten));
+            return tmp;
         }
 
         #endregion
 
         #region calcHostNo
-
-        public static int calcHostNo(int subnet_short)
+        //
+        // Hostzahl: (2 ^ Hostanteil) - 2
+        //
+        public static int calcHostNo(int subnet_short, int subnet_short_old)
         {
+            int tmp = subnet_short_old - subnet_short;
 
             return 0;
         }
