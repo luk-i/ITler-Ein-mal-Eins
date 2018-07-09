@@ -153,7 +153,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         }
 
-        public bool brushTextBoxByBool(int _noDigit, System.Windows.Controls.TextBox _box)
+        public static bool brushTextBoxByBool(int _noDigit, System.Windows.Controls.TextBox _box)
         {
             if (_noDigit == 0)
             {
