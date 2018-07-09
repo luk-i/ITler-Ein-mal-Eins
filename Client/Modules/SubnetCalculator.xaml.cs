@@ -32,8 +32,20 @@ namespace ITler_Ein_mal_Eins.Modules
         #region Functions
 
         private void startCalculation()
+        {          
+            if (IPv4_calculateBits()) onValidIpV4Head();           
+        }
+
+        private void EnterPressPerformed()
         {
-            if (IPv4_calculateBits()) onValidIpV4Head();
+            if (btn_ipv4_calculate.IsEnabled == true)
+            {
+                startCalculation();
+            }
+            else
+            {
+                InitializeTextboxes();
+            }
         }
 
         #region Control
@@ -82,6 +94,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             Textboxes_LeftTop_Disabled();
             Textboxes_LeftBottom_Enabled();
+            btn_ipv4_calculate.IsEnabled = false;
             int i = 0;
             Subnet_desired.Text = i.ToString();
         }
@@ -252,6 +265,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
             Textboxes_LeftTop_Brush("#FFFFFFFF");
+            Subnet_ipv4_Left_Top.Background.Opacity = 0;
         }
 
         private void Textboxes_LeftBottom_Enabled()
@@ -261,6 +275,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
             Textboxes_LeftBottom_Brush("#FFFFFFFF");
+            Subnet_ipv4_Left_Bottom.Background.Opacity = 0;
         }
 
         private void Textboxes_LeftTop_Disabled()
@@ -269,6 +284,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
             Textboxes_LeftTop_Brush("#DDDDDDDD");
+            Subnet_ipv4_Left_Top.Background.Opacity = 0.3;
         }
 
         private void Textboxes_LeftBottom_Disabled()
@@ -278,6 +294,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
             Textboxes_LeftBottom_Brush("#DDDDDDDD");
+            Subnet_ipv4_Left_Bottom.Background.Opacity = 0.3;
         }
 
         private void Textboxes_LeftTop_Brush(string brush_string)
@@ -306,6 +323,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Textboxes_LeftBottom_Disabled();
             Textboxes_LeftTop_Enabled();
             TextBoxes_Clear();
+            btn_ipv4_calculate.IsEnabled = true;
         }
 
         private void InitializeTags()
@@ -462,7 +480,7 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             if (e.Key == System.Windows.Input.Key.Return)
             {
-                startCalculation();
+                EnterPressPerformed();
             }
         }
 
