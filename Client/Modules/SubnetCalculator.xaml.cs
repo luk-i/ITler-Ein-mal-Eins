@@ -338,16 +338,10 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             int netmask;
             int subnetmask;
-            try
-            {
-                netmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
-                subnetmask = Convert.ToInt32(Subnet_textBox_ShortWritten_new.Text);
-            }
-            catch
-            {
-                netmask = 0;
-                subnetmask = 0;
-            }
+            try { netmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text); }
+            catch { netmask = 0; };
+            try { subnetmask = Convert.ToInt32(Subnet_textBox_ShortWritten_new.Text); }
+            catch { subnetmask = 0;}
 
             string ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox2.Text) + ' ';
