@@ -262,42 +262,7 @@ namespace ITler_Ein_mal_Eins.Control
             result[0] = tmp;
             return result;
         }
-        /*
-        public static IPAddressTextboxes calcEmptySubnetMaskFields(IPAddressTextboxes boxes, Textbox_FieldType type)
-        {
-            switch (type)
-            {
-                case Textbox_FieldType.NEW_SUBNETMASK_LONG:
-                    if (boxes.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT)
-                    {
-                        IPAddressTextboxes tmp_boxes = fillAddressBoxByByte(calcEmptySubnetMaskFields(boxes.first),
-                            Textbox_FieldType.NEW_SUBNETMASK_LONG);
-                        return boxes;
-                    }
-                    else
-                    {
-                        throw new WrongTypeException(boxes, Textbox_FieldType.NEW_SUBNETMASK_SHORT);
-                    }
-                case Textbox_FieldType.SUBNETMASK_LONG:
-                    if (boxes.type == Textbox_FieldType.SUBNETMASK_SHORT)
-                    {
-                        IPAddressTextboxes tmp_boxes = fillAddressBoxByByte(calcEmptySubnetMaskFields(boxes.first),
-                            Textbox_FieldType.SUBNETMASK_LONG);
-                        return tmp_boxes;
-                    }
-                    else
-                    {
-                        throw new WrongTypeException(boxes, Textbox_FieldType.SUBNETMASK_SHORT);
-                    }
-                case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
-                    throw new NotImplementedException();
-                case Textbox_FieldType.SUBNETMASK_SHORT:
-                    throw new NotImplementedException();
-                default:
-                    throw new WrongTypeException();
-            }
-        }
-        */
+     
         #endregion
 
         #region calcSubnetShort
@@ -621,26 +586,17 @@ namespace ITler_Ein_mal_Eins.Control
             return tmp;
         }
 
-        private static IPAddressTextboxes fillAddressBoxByByte(byte[] byte_array, Textbox_FieldType type)
+        public static IPAddressTextboxes fillAddressBoxByByte(byte[] byte_array, IPAddressTextboxes to_overwrite)
         {
             int a = byte_array[0];
             int b = byte_array[1];
             int c = byte_array[2];
             int d = byte_array[3];
-            TextBox box1 = new TextBox();
-            TextBox box2 = new TextBox();
-            TextBox box3 = new TextBox();
-            TextBox box4 = new TextBox();
-            box1.Tag = Control.digitTag.SUBNETMASK;
-            box2.Tag = Control.digitTag.SUBNETMASK;
-            box3.Tag = Control.digitTag.SUBNETMASK;
-            box4.Tag = Control.digitTag.SUBNETMASK;
-            box1.Text = a.ToString();
-            box2.Text = b.ToString();
-            box3.Text = c.ToString();
-            box4.Text = d.ToString();
-            IPAddressTextboxes result = new IPAddressTextboxes(box1, box2, box3, box4, type);
-            return result;
+            to_overwrite.first.Text = a.ToString();
+            to_overwrite.second.Text = b.ToString();
+            to_overwrite.third.Text = c.ToString();
+            to_overwrite.forth.Text = d.ToString();
+            return to_overwrite;
         }
 
 

@@ -143,14 +143,7 @@ namespace ITler_Ein_mal_Eins.Modules
                             //
                             byte[] tmp;
                             tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox_ShortWritten_new);
-                            int a = tmp[0];
-                            int b = tmp[1];
-                            int c = tmp[2];
-                            int d = tmp[3];
-                            Subnet_textBox1_new.Text = a.ToString();
-                            Subnet_textBox2_new.Text = b.ToString();
-                            Subnet_textBox3_new.Text = c.ToString();
-                            Subnet_textBox4_new.Text = d.ToString();
+                            readStruct(IpCalculator.fillAddressBoxByByte(tmp, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
                             FillRightContent();
                         }
                         else
