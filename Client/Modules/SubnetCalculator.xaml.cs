@@ -30,7 +30,7 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
 
-        #region Functions
+        #region Methods
 
         private void startCalculation()
         {
@@ -148,21 +148,24 @@ namespace ITler_Ein_mal_Eins.Modules
                         }
                         else
                         {
-                            //
-                            //  Falsche Eingabe Abfangen
-                            //
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.RED, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                         }
                         TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
+                        //Legitimationsprüfung!!!
 
+                        Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
+
+                        TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.NEW_SUBNETMASK_LONG:
 
+                        TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
 
+                        TextChanged_Event_isLocked = false;
                         break;
                     default:
                         throw new NotImplementedException();

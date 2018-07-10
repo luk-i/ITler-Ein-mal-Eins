@@ -271,6 +271,9 @@ namespace ITler_Ein_mal_Eins.Control
         //  Werte sind zuvor bereits Validiert worden.
         //  Ceiling: Aufrundung
         //
+        //  Berechnung aus HostNo:
+        //  Netzmaske Neu = 32 - Ceiling(ln(hostno)/ln(2))
+        //
         public static int calcSubnetShort(int subnetNo, int subnet_shortwritten_old)
         {
             if (subnetNo == 0) return subnet_shortwritten_old;
@@ -295,6 +298,27 @@ namespace ITler_Ein_mal_Eins.Control
             else
             {
                 throw new NotImplementedException();
+            }
+        }
+
+        public static int calcSubnetShort(int desired_hostNo)
+        {
+            double z = Math.Log(desired_hostNo) / Math.Log(2);
+            double n = Math.Ceiling(z);
+            return (32 - (int)n);
+        }
+
+        public static int calcSubnetShort(IPAddressTextboxes desired_hostNo)
+        {
+            if(desired_hostNo.type == Textbox_FieldType.DESIRED_HOSTNO)
+            {
+                double z = Math.Log(tryParseTextboxToInt(desired_hostNo.first)) / Math.Log(2);
+                double n = Math.Ceiling(z);
+                return (32 - (int)n);
+            }
+            else
+            {
+                throw new WrongTypeException(desired_hostNo, Textbox_FieldType.DESIRED_HOSTNO);
             }
         }
         #endregion
