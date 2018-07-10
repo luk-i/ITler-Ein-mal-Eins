@@ -364,7 +364,7 @@ namespace ITler_Ein_mal_Eins.Modules
             catch { txblock_subnet_number.Text      = "-"; }
 
             txblock_first_adress.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
-            txblock_first_adress_dez.Text = IpCalculator.FirstSubnetIPAdress_Dez(ipv4, netmask);
+            txblock_first_adress_dez.Text = IpCalculator.IP_BinaryToDottedDecimal(ipv4, netmask);
         }
 
         #endregion

@@ -608,7 +608,7 @@ namespace ITler_Ein_mal_Eins.Control
             return output;
         }
 
-        public static string FirstSubnetIPAdress_Dez (string inputIP, int netmask)
+        public static string IP_BinaryToDottedDecimal (string inputIP, int netmask)
         {
             string workstring = FirstSubnetIPAdress(inputIP, netmask);
             int eightDigits = 0;
