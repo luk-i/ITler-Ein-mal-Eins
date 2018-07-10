@@ -25,7 +25,8 @@ namespace ITler_Ein_mal_Eins.Control
             UNSIGNEDOCTAL,
             DECIMAL,
             UNSIGNEDHEX,
-            SUBNETMASK
+            SUBNETMASK,
+            SUBNETMASK_SHORT
         };
 
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
@@ -143,6 +144,21 @@ namespace ITler_Ein_mal_Eins.Control
                         {
                             if (!IpCalculator.isIpV4Digit(box, true))
                                 noDigit++;
+                        }
+                        break;
+                    case digitTag.SUBNETMASK_SHORT:
+                        try
+                        {
+                            int input =Convert.ToInt32(box.Text);
+                            if (input > 32)
+                            {
+                                noDigit++;
+                            }
+                        }
+                        catch { };
+                        if (!Char.IsDigit(x))
+                        {
+                            noDigit++;
                         }
                         break;
 

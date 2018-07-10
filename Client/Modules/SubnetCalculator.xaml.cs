@@ -389,8 +389,8 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox2_new.Tag             = Control.Control.digitTag.SUBNETMASK;
             Subnet_textBox3_new.Tag             = Control.Control.digitTag.SUBNETMASK;
             Subnet_textBox4_new.Tag             = Control.Control.digitTag.SUBNETMASK;
-            Subnet_textBox_ShortWritten.Tag     = Control.Control.digitTag.UNSIGNEDINTEGER;
-            Subnet_textBox_ShortWritten_new.Tag = Control.Control.digitTag.UNSIGNEDINTEGER;
+            Subnet_textBox_ShortWritten.Tag     = Control.Control.digitTag.SUBNETMASK_SHORT;
+            Subnet_textBox_ShortWritten_new.Tag = Control.Control.digitTag.SUBNETMASK_SHORT;
             Subnet_desired.Tag                  = Control.Control.digitTag.UNSIGNEDINTEGER;
             Hosts_desired.Tag                   = Control.Control.digitTag.UNSIGNEDINTEGER;
         }
@@ -398,7 +398,7 @@ namespace ITler_Ein_mal_Eins.Modules
         private void InitializeEvents()
         {
             //
-            // TextBox_LeftTop, alle losen ein Event aus.
+            // TextBox_LeftTop, alle loesen ein Event aus.
             // 
             Ip4_textBox1.TextChanged += Ip4_textBox_TextChanged;
             Ip4_textBox2.TextChanged += Ip4_textBox_TextChanged;
@@ -408,8 +408,9 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox2.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
+            Subnet_textBox_ShortWritten.TextChanged += Ip4_textBox_TextChanged;
             //
-            //  TextBox_LeftBotton, jeder Block wirft ein eigenes Event!
+            //  TextBox_LeftBottom, jeder Block wirft ein eigenes Event!
             //
             Subnet_desired.TextChanged += Subnet_desired_TextChanged;
             Hosts_desired.TextChanged += Hosts_desired_TextChanged;
