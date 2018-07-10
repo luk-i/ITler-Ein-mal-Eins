@@ -608,9 +608,8 @@ namespace ITler_Ein_mal_Eins.Control
             return output;
         }
 
-        public static string IP_BinaryToDottedDecimal (string inputIP, int netmask)
+        public static string IP_BinaryToDottedDecimal (string inputIP)
         {
-            string workstring = FirstSubnetIPAdress(inputIP, netmask);
             int eightDigits = 0;
             int numberofByte = 1;
             string byte1 = "";
@@ -618,7 +617,7 @@ namespace ITler_Ein_mal_Eins.Control
             string byte3 = "";
             string byte4 = "";
             string output = "";
-            foreach (char x in workstring)
+            foreach (char x in inputIP)
             {
                 switch (numberofByte)
                 {
