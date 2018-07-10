@@ -497,7 +497,7 @@ namespace ITler_Ein_mal_Eins.Control
         }
 
 
-        #region Ip zu Binär
+        #region Ip zu Binär und Hostanzahl (rechter Bereich)
 
         public static string InputToBinary(string input)
         {
@@ -543,6 +543,17 @@ namespace ITler_Ein_mal_Eins.Control
             {
                 return "";
             }
+        }
+
+        public static int MaxBinaryBase(decimal input)
+        {
+            int potenz = 0;
+            while (input > 1)
+            {
+                input = input / 2;
+                potenz++;
+            }
+            return ( 2 ^ potenz );
         }
         #endregion
 
