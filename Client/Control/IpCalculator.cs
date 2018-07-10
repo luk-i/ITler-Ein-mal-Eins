@@ -553,7 +553,14 @@ namespace ITler_Ein_mal_Eins.Control
                 input = input / 2;
                 potenz++;
             }
-            return ( 2 ^ potenz );
+            if (potenz == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(Math.Pow(2, potenz));
+            }
         }
         #endregion
 
