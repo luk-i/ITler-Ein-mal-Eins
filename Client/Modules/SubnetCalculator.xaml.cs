@@ -62,8 +62,8 @@ namespace ITler_Ein_mal_Eins.Modules
         //
         private bool IPv4_calculateBits()
         {
-            byte[] tmp;           
-            if(IsValidInput_IpV4() && isValidInput_IpV4SubnetMask())
+            byte[] tmp;
+            if (IsValidInput_IpV4() && isValidInput_IpV4SubnetMask())
             {
                 switch (IpCalculator.getFieldStatus(writeStruct(Textbox_FieldType.SUBNETMASK_LONG), writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)))
                 {
@@ -138,8 +138,19 @@ namespace ITler_Ein_mal_Eins.Modules
                             Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)).ToString();
                             Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
-                            //Netzmaske berechnen!!!
-
+                            //
+                            //UMBAU IN READSTRUCT AUSSTEHEND
+                            //
+                            byte[] tmp;
+                            tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox_ShortWritten_new);
+                            int a = tmp[0];
+                            int b = tmp[1];
+                            int c = tmp[2];
+                            int d = tmp[3];
+                            Subnet_textBox1_new.Text = a.ToString();
+                            Subnet_textBox2_new.Text = b.ToString();
+                            Subnet_textBox3_new.Text = c.ToString();
+                            Subnet_textBox4_new.Text = d.ToString();
                             FillRightContent();
                         }
                         else
@@ -376,7 +387,8 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             TextBoxes_Clear();
             Textboxes_LeftBottom_Disabled();
-            Textboxes_LeftTop_Enabled();           
+            Textboxes_LeftTop_Enabled();
+            TextChanged_Event_isLocked = false;
             btn_ipv4_calculate.IsEnabled = true;
             Subnet_ipv4_Right.Opacity = 0;
         }
