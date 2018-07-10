@@ -174,7 +174,7 @@ namespace ITler_Ein_mal_Eins.Control
         //
         public static bool isLegitSubnetNo(TextBox subnetNo, TextBox subnet_short)
         {
-            if (tryParseTextboxToInt(subnetNo) >= 0 || tryParseTextboxToInt(subnetNo) <= 
+            if (tryParseTextboxToInt(subnetNo) >= 0 && tryParseTextboxToInt(subnetNo) <= 
                 getMaxSubnetNo(subnet_short))
             {
                 Control.brushTextBoxByBool(0, subnetNo);
@@ -497,19 +497,11 @@ namespace ITler_Ein_mal_Eins.Control
             }
             else
             {
-                throw new NotImplementedException();
+                throw new WrongTypeException();
             }
         }
 
         #endregion
-
-        public static int tryParseTextboxToInt(TextBox box)
-        {
-            int tmp = 0;
-            int.TryParse(box.Text, out tmp);
-            return tmp;
-        }
-
 
         #region Ip zu Binär und Hostanzahl (rechter Bereich)
 
@@ -576,6 +568,18 @@ namespace ITler_Ein_mal_Eins.Control
                 return Convert.ToInt32(Math.Pow(2, potenz));
             }
         }
+        #endregion
+
+        #region Supportcalculations
+
+        public static int tryParseTextboxToInt(TextBox box)
+        {
+            int tmp = 0;
+            int.TryParse(box.Text, out tmp);
+            return tmp;
+        }
+
+
         #endregion
 
     }

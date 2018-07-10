@@ -14,7 +14,7 @@ namespace ITler_Ein_mal_Eins.Exceptions
     {
         public WrongTypeException()
         {
-            throw new NotImplementedException();
+            MessageBox.Show(Errorcodes.WRONGTYPE_SINGLE, Errorcodes.WRONGTYPE_HEADER);
         }
         public WrongTypeException(IPAddressTextboxes exp_object, Textbox_FieldType expected)
         {

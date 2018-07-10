@@ -164,5 +164,14 @@ namespace ITler_Ein_mal_Eins {
                 return ResourceManager.GetString("WRONGTYPE_HEADER", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Falscher Typ Übergeben. Abbruch. ähnelt.
+        /// </summary>
+        public static string WRONGTYPE_SINGLE {
+            get {
+                return ResourceManager.GetString("WRONGTYPE_SINGLE", resourceCulture);
+            }
+        }
     }
 }

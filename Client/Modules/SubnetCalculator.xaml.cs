@@ -141,6 +141,13 @@ namespace ITler_Ein_mal_Eins.Modules
 
                             FillRightContent();
                         }
+                        else
+                        {
+                            //
+                            //  Falsche Eingabe Abfangen
+                            //
+                            throw new NotImplementedException();
+                        }
                         TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
@@ -278,7 +285,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.IP_ADDRESSBLOCK)));
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
-            Textboxes_LeftTop_Brush("#FFFFFFFF");
+            Textboxes_LeftTop_Brush(ColourCodes.WHITE);
             Subnet_ipv4_Left_Top.Background.Opacity = 0;
         }
 
@@ -288,7 +295,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
             readStruct(IpCalculator.Textboxes_Enabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
-            Textboxes_LeftBottom_Brush("#FFFFFFFF");
+            Textboxes_LeftBottom_Brush(ColourCodes.WHITE);
             Subnet_ipv4_Left_Bottom.Background.Opacity = 0;
         }
 
@@ -297,7 +304,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.IP_ADDRESSBLOCK)));
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.SUBNETMASK_LONG)));
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
-            Textboxes_LeftTop_Brush("#DDDDDDDD");
+            Textboxes_LeftTop_Brush(ColourCodes.GRAY);
             Subnet_ipv4_Left_Top.Background.Opacity = 0.3;
         }
 
@@ -307,7 +314,7 @@ namespace ITler_Ein_mal_Eins.Modules
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
             readStruct(IpCalculator.Textboxes_Disabled(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
-            Textboxes_LeftBottom_Brush("#DDDDDDDD");
+            Textboxes_LeftBottom_Brush(ColourCodes.GRAY);
             Subnet_ipv4_Left_Bottom.Background.Opacity = 0.3;
         }
 
