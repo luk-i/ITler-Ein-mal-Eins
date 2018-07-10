@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="SubnetCalculator" 
         Height="450" MinHeight="400"
-        Width="800" MinWidth="385"
+        Width="800" MinWidth="450"
         Closed="Window_Closed">
 
     <Grid>
-        <TabControl x:Name="tabControl" Margin="0,0,0,0" KeyDown="Enterpressed">
+        <TabControl x:Name="tabControl" Margin="0,0,0,0" >
 
             <!--#region IPv4-->
 
             <TabItem Header="IPv4">
-                <Grid Margin="0,0,0,0">
+                <Grid Margin="0,0,0,0" KeyDown="Enterpressed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/switch-lan.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
