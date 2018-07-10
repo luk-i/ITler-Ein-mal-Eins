@@ -341,7 +341,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
             txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, ipv4);
             txblock_subnet_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask_new);
-            try { txblock_subnet_max_hosts.Text = Convert.ToString((IpCalculator.MaxBinaryBase(Convert.ToDecimal(Hosts_desired.Text))) - 2 ); }
+            try { txblock_subnet_max_hosts.Text = Convert.ToString((IpCalculator.MaxBinaryBase(Convert.ToDecimal(Hosts_desired.Text) + 2 )) - 2 ); }
             catch { txblock_subnet_max_hosts.Text = "-"; }
             try { txblock_subnet_number.Text = Convert.ToString(IpCalculator.MaxBinaryBase(Convert.ToDecimal(Subnet_desired.Text))); }
             catch { txblock_subnet_number.Text = "-"; }
