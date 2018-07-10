@@ -503,7 +503,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string FormatIPv4String_Netmask (int netmask, int subnetmask, string ipv4)
+        public static string FormatIPv4String (int netmask, int subnetmask, string ipv4)
         {
             if (ipv4 != "")
             {
@@ -574,19 +574,26 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static int MaxBinaryBase(decimal input)
         {
-            int potenz = 0;
-            while (input > 1)
+            if (input != 1)
             {
-                input = input / 2;
-                potenz++;
-            }
-            if (potenz == 0)
-            {
-                return 0;
+                int potenz = 0;
+                while (input > 1)
+                {
+                    input = input / 2;
+                    potenz++;
+                }
+                if (potenz == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(Math.Pow(2, potenz));
+                }
             }
             else
             {
-                return Convert.ToInt32(Math.Pow(2, potenz));
+                return 2;
             }
         }
 
@@ -603,6 +610,87 @@ namespace ITler_Ein_mal_Eins.Control
                 else
                 {
                     output = output + "0";
+                }
+            }
+            return output;
+        }
+
+        public static string FirstBroadcastIPAdress (string inputIP, int netmask, int subnetmask)
+        {
+            string output = "";
+            foreach (char x in inputIP)
+            {
+                if (netmask > 0)
+                {
+                    output = output + x;
+                    netmask--;
+                    subnetmask--;
+                }
+                else
+                {
+                    if (subnetmask > 0)
+                    {
+                        output = output + '0';
+                        subnetmask--;
+                    }
+                    else
+                    {
+                        output = output + "1";
+                    }
+                }
+            }
+            return output;
+        }
+
+        public static string LastSubnetIPAdress(string inputIP, int netmask, int subnetmask)
+        {
+            string output = "";
+            foreach (char x in inputIP)
+            {
+                if (netmask > 0)
+                {
+                    output = output + x;
+                    netmask--;
+                    subnetmask--;
+                }
+                else
+                {
+                    if (subnetmask > 0)
+                    {
+                        output = output + '1';
+                        subnetmask--;
+                    }
+                    else
+                    {
+                        output = output + "0";
+                    }
+                }
+            }
+            return output;
+        }
+
+        public static string LastBroadcastIPAdress(string inputIP, int netmask, int subnetmask)
+        {
+            string output = "";
+            foreach (char x in inputIP)
+            {
+                if (netmask > 0)
+                {
+                    output = output + x;
+                    netmask--;
+                    subnetmask--;
+                }
+                else
+                {
+                    if (subnetmask > 0)
+                    {
+                        output = output + '1';
+                        subnetmask--;
+                    }
+                    else
+                    {
+                        output = output + "1";
+                    }
                 }
             }
             return output;
