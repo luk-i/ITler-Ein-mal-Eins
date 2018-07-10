@@ -11,7 +11,7 @@
         Closed="Window_Closed">
 
     <Grid>
-        <TabControl x:Name="tabControl" Margin="0,0,0,0">
+        <TabControl x:Name="tabControl" Margin="0,0,0,0" KeyDown="Enterpressed">
 
             <!--#region IPv4-->
 

@@ -48,7 +48,7 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 startCalculation();
             }
-            else
+            else if (btn_ipv4_calculate.IsEnabled == false)
             {
                 InitializeTextboxes();
             }
@@ -351,9 +351,9 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void InitializeTextboxes()
         {
-            Textboxes_LeftBottom_Disabled();
-            Textboxes_LeftTop_Enabled();
             TextBoxes_Clear();
+            Textboxes_LeftBottom_Disabled();
+            Textboxes_LeftTop_Enabled();           
             btn_ipv4_calculate.IsEnabled = true;
             Subnet_ipv4_Right.Opacity = 0;
         }
@@ -401,18 +401,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox3_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox4_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox_ShortWritten_new.TextChanged += Subnet_textBox_ShortWritten_new_TextChanged;
-            //
-            //  Entereingabe Berechnet Felder
-            //
-            Ip4_textBox1.KeyDown += Enterpressed;
-            Ip4_textBox2.KeyDown += Enterpressed;
-            Ip4_textBox3.KeyDown += Enterpressed;
-            Ip4_textBox4.KeyDown += Enterpressed;
-            Subnet_textBox1.KeyDown += Enterpressed;
-            Subnet_textBox2.KeyDown += Enterpressed;
-            Subnet_textBox3.KeyDown += Enterpressed;
-            Subnet_textBox4.KeyDown += Enterpressed;
-            Subnet_textBox_ShortWritten.KeyDown += Enterpressed;
+
         }
 
         private IPAddressTextboxes writeStruct(Textbox_FieldType type)

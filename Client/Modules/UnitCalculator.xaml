@@ -11,12 +11,12 @@
         Closed="Window_Closed">
 
     <Grid>
-        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" SelectionChanged="TabControl_SelectionChanged">
 
             <!--#region bits-bites-->
 
             <TabItem x:Name="tab_bits" Header="Bits - Bytes">
-                <Grid Margin="0,0,0,0">
+                <Grid Margin="0,0,0,0" KeyDown="Enterpressed">
                     <Grid.Background>
                         <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
