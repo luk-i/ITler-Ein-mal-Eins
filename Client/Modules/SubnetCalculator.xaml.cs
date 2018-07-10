@@ -336,20 +336,31 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void FillRightContent()
         {
-            int netmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
+            int netmask;
+            int subnetmask;
+            try
+            {
+                netmask = Convert.ToInt32(Subnet_textBox_ShortWritten.Text);
+                subnetmask = Convert.ToInt32(Subnet_textBox_ShortWritten_new.Text);
+            }
+            catch
+            {
+                netmask = 0;
+                subnetmask = 0;
+            }
 
             string ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox2.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox3.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox4.Text);
-            string subnetmask_new           = IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
-            subnetmask_new = subnetmask_new + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
-            subnetmask_new = subnetmask_new + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
-            subnetmask_new = subnetmask_new + IpCalculator.InputToBinary(Subnet_textBox1_new.Text);
+            string subnetmask_string           = IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
+            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
+            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
+            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox1_new.Text);
 
-            txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, ipv4);
-            txblock_subnet_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask_new);
-            try { txblock_subnet_max_hosts.Text = Convert.ToString((IpCalculator.MaxBinaryBase(Convert.ToDecimal(Hosts_desired.Text))) - 2 ); }
+            txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask, ipv4);
+            txblock_subnet_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask, subnetmask_string);
+            try { txblock_subnet_max_hosts.Text = Convert.ToString((IpCalculator.MaxBinaryBase(Convert.ToDecimal(Hosts_desired.Text) + 2 )) - 2 ); }
             catch { txblock_subnet_max_hosts.Text = "-"; }
             try { txblock_subnet_number.Text = Convert.ToString(IpCalculator.MaxBinaryBase(Convert.ToDecimal(Subnet_desired.Text))); }
             catch { txblock_subnet_number.Text = "-"; }
