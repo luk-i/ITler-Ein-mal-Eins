@@ -108,28 +108,35 @@
 
                         </Grid>
                         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1">
-                            <Grid Grid.Column="1" Opacity="0" x:Name="Subnet_ipv4_Right">
+                            <Grid Grid.Column="1" Opacity="1" x:Name="Subnet_ipv4_Right">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
                                 <!--#region Right-->
 
-                                <Label Content="IP in Binär" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock x:Name="txblock_ip_binaer" Text="-" Width="Auto" Height="Auto" Margin="7.5,5,5,5" Grid.Row="1" Grid.Column="0"  FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
-                                <Label Content="Neue Netzmaske" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock x:Name="txblock_subnet_binaer" Text="-" Width="Auto" Height="Auto" Margin="7.5,5,5,5" Grid.Row="3" Grid.Column="0"  FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
-                                <Label Content="Max. Subnetze" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock x:Name="txblock_subnet_number" Text="-" Width="Auto" Height="Auto" Margin="7.5,5,5,5" Grid.Row="5" Grid.Column="0"  FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_subnet_max_hosts" Text="-" Width="Auto" Height="Auto" Margin="7.5,5,5,5" Grid.Row="7" Grid.Column="0"  FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
-                                <Label Content="Max. Hostanzahl" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="IP in Binär"        HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Neue Netzmaske"     HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Max. Subnetze"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Max. Hostanzahl"    HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Erste Netzadresse"  HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+
+                                <TextBlock x:Name="txblock_ip_binaer"           Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="1" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_subnet_binaer"       Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="3" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_subnet_number"       Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="5" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_subnet_max_hosts"    Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="7" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_first_adress"        Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="9" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_first_adress_dez"    Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="10" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
 
                                 <!--#endregion-->
 

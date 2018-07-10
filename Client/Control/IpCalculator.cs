@@ -505,18 +505,34 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static string FormatIPv4String_Netmask (int netmask, int subnetmask, string ipv4)
         {
-            if (ipv4 != "   ")
+            if (ipv4 != "")
             {
                 string output;
                 string netzanteil = "";
                 string hostanteil = "";
                 string hostanteil_subnezt = "";
                 bool maskengleich;
+                string workstring = "";
+                int eightDigits = 0;
+
+                foreach (char x in ipv4)
+                {
+                    workstring = workstring + x;
+                    if (eightDigits < 7)
+                    {
+                        eightDigits++;
+                    }
+                    else
+                    {
+                        workstring = workstring + ' ';
+                        eightDigits = 0;
+                    }
+                }
 
                 if (netmask == subnetmask || netmask > subnetmask) maskengleich = true;
                 else maskengleich = false;
 
-                foreach (char x in ipv4)
+                foreach (char x in workstring)
                 {
                     if (netmask > 0)
                     {
@@ -539,7 +555,6 @@ namespace ITler_Ein_mal_Eins.Control
                         subnetmask--;
                     }
                 }
-
                 if (maskengleich == false)
                 {
                     output = netzanteil + " | " + hostanteil.TrimStart(new char[] { ' ' }).TrimEnd(new char[] { ' ' }) + " | " + hostanteil_subnezt.TrimStart(new char[] { ' ' });
@@ -550,7 +565,6 @@ namespace ITler_Ein_mal_Eins.Control
                     output = netzanteil + " | " + hostanteil_subnezt.TrimStart(new char[] { ' ' });
                     return output;
                 }
-
             }
             else
             {
@@ -575,6 +589,62 @@ namespace ITler_Ein_mal_Eins.Control
                 return Convert.ToInt32(Math.Pow(2, potenz));
             }
         }
+
+        public static string FirstSubnetIPAdress (string inputIP, int netmask)
+        {
+            string output = "";
+            foreach (char x in inputIP)
+            {
+                if (netmask > 0)
+                {
+                    output = output + x;
+                    netmask--;
+                }
+                else
+                {
+                    output = output + "0";
+                }
+            }
+            return output;
+        }
+
+        public static string FirstSubnetIPAdress_Dez (string inputIP, int netmask)
+        {
+            string workstring = FirstSubnetIPAdress(inputIP, netmask);
+            int eightDigits = 0;
+            int numberofByte = 1;
+            string byte1 = "";
+            string byte2 = "";
+            string byte3 = "";
+            string byte4 = "";
+            string output = "";
+            foreach (char x in workstring)
+            {
+                switch (numberofByte)
+                {
+                    case 1: byte1 = byte1 + x; break;
+                    case 2: byte2 = byte2 + x; break;
+                    case 3: byte3 = byte3 + x; break;
+                    case 4: byte4 = byte4 + x; break;
+                }
+                if (eightDigits < 7)
+                {
+                    eightDigits++;
+                }
+                else
+                {
+                    eightDigits = 0;
+                    numberofByte++;
+                }
+            }
+            output = 
+                Convert.ToString(Convert.ToInt32(byte1,2)) + '.' +
+                Convert.ToString(Convert.ToInt32(byte2,2)) + '.' +
+                Convert.ToString(Convert.ToInt32(byte3,2)) + '.' +
+                Convert.ToString(Convert.ToInt32(byte4,2));
+            return output;
+        }
+
         #endregion
 
         #region Supportcalculations
