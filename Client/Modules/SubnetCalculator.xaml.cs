@@ -352,9 +352,9 @@ namespace ITler_Ein_mal_Eins.Modules
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox3.Text) + ' ';
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox4.Text);
             string subnetmask_string           = IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
-            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
-            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox1_new.Text) + ' ';
-            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox1_new.Text);
+            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox2_new.Text) + ' ';
+            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox3_new.Text) + ' ';
+            subnetmask_string = subnetmask_string + IpCalculator.InputToBinary(Subnet_textBox4_new.Text);
 
             txblock_ip_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask, ipv4);
             txblock_subnet_binaer.Text = IpCalculator.FormatIPv4String_Netmask(netmask, subnetmask, subnetmask_string);
