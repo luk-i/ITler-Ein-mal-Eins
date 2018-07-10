@@ -511,7 +511,7 @@ namespace ITler_Ein_mal_Eins.Control
         }
 
 
-        #region Ip zu Binär
+        #region Ip zu Binär und Hostanzahl (rechter Bereich)
 
         public static string InputToBinary(string input)
         {
@@ -556,6 +556,24 @@ namespace ITler_Ein_mal_Eins.Control
             else
             {
                 return "";
+            }
+        }
+
+        public static int MaxBinaryBase(decimal input)
+        {
+            int potenz = 0;
+            while (input > 1)
+            {
+                input = input / 2;
+                potenz++;
+            }
+            if (potenz == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(Math.Pow(2, potenz));
             }
         }
         #endregion
