@@ -146,5 +146,23 @@ namespace ITler_Ein_mal_Eins {
                 return ResourceManager.GetString("UNITC_SYSTEMS_RANGE_EXCEPTION", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Falscher Typ angegeben. Erwartet wird {0}, gesetzt war {1}. ähnelt.
+        /// </summary>
+        public static string WRONGTYPE_ERRORMESSAGE {
+            get {
+                return ResourceManager.GetString("WRONGTYPE_ERRORMESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fehler: Falscher Datentyp übergeben. ähnelt.
+        /// </summary>
+        public static string WRONGTYPE_HEADER {
+            get {
+                return ResourceManager.GetString("WRONGTYPE_HEADER", resourceCulture);
+            }
+        }
     }
 }

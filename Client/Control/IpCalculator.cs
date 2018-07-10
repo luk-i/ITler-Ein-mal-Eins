@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using ITler_Ein_mal_Eins.Model;
 using System.Net;
 using System.Windows.Media;
+using ITler_Ein_mal_Eins.Exceptions;
 
 namespace ITler_Ein_mal_Eins.Control
 {
@@ -346,11 +347,24 @@ namespace ITler_Ein_mal_Eins.Control
         //
         // Hostzahl: (2 ^ Hostanteil) - 2
         //
-        public static int calcHostNo(int subnet_short, int subnet_short_old)
+        public static int calcHostNo(int subnet_short_new)
         {
-            int tmp = subnet_short_old - subnet_short;
-
+            int tmp = 32 - subnet_short_new;
+            tmp = ((int) Math.Pow(2, tmp)) - 2;
             return 0;
+        }
+        public static int calcHostNo(IPAddressTextboxes subnet_short_new)
+        {
+            if (subnet_short_new.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT)
+            {
+                int tmp = 32 - tryParseTextboxToInt(subnet_short_new.first);
+                tmp = ((int)Math.Pow(2, tmp)) - 2;
+                return tmp;
+            }
+            else
+            {
+                throw new WrongTypeException(subnet_short_new, Textbox_FieldType.NEW_SUBNETMASK_SHORT);
+            }
         }
 
         #endregion

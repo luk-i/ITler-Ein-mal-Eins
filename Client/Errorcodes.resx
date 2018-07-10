@@ -150,4 +150,10 @@ Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
     <value>Der eingegebene Wert ist zu groß für für den gewählten Datentyp.
 Bitte wählen Sie den Wert passend zu dem Datentyp.</value>
   </data>
+  <data name="WRONGTYPE_ERRORMESSAGE" xml:space="preserve">
+    <value>Falscher Typ angegeben. Erwartet wird {0}, gesetzt war {1}.</value>
+  </data>
+  <data name="WRONGTYPE_HEADER" xml:space="preserve">
+    <value>Fehler: Falscher Datentyp übergeben.</value>
+  </data>
 </root>

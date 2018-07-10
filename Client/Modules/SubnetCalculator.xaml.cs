@@ -136,8 +136,10 @@ namespace ITler_Ein_mal_Eins.Modules
                         {
                             Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)).ToString();
+                            Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
+                            //Netzmaske berechnen!!!
 
-
+                            FillRightContent();
                         }
                         TextChanged_Event_isLocked = false;
                         break;
