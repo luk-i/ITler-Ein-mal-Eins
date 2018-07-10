@@ -527,31 +527,54 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string FormatIPv4String_Netmask (int subnetMask, string ipv4)
+        public static string FormatIPv4String_Netmask (int netmask, int subnetmask, string ipv4)
         {
             if (ipv4 != "   ")
             {
                 string output;
                 string netzanteil = "";
                 string hostanteil = "";
+                string hostanteil_subnezt = "";
+                bool maskengleich;
+
+                if (netmask == subnetmask) maskengleich = true;
+                else maskengleich = false;
 
                 foreach (char x in ipv4)
                 {
-                    if (subnetMask > 0)
+                    if (netmask > 0)
                     {
                         netzanteil = netzanteil + x;
                     }
                     else
                     {
-                        hostanteil = hostanteil + x;
+                        if (subnetmask > 0)
+                        {
+                            hostanteil = hostanteil + x;
+                        }
+                        else
+                        {
+                            hostanteil_subnezt = hostanteil_subnezt + x;
+                        }
                     }
                     if (x != ' ')
                     {
-                        subnetMask--;
+                        netmask--;
+                        subnetmask--;
                     }
                 }
-                output = netzanteil + " | " + hostanteil.TrimStart(new char[] { ' ' }); ;
-                return output;
+
+                if (maskengleich == false)
+                {
+                    output = netzanteil + " | " + hostanteil.TrimStart(new char[] { ' ' }).TrimEnd(new char[] { ' ' }) + " | " + hostanteil_subnezt.TrimStart(new char[] { ' ' });
+                    return output;
+                }
+                else
+                {
+                    output = netzanteil + " | " + hostanteil_subnezt.TrimStart(new char[] { ' ' });
+                    return output;
+                }
+
             }
             else
             {
