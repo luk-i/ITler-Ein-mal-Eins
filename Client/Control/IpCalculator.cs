@@ -548,7 +548,7 @@ namespace ITler_Ein_mal_Eins.Control
                 string hostanteil_subnezt = "";
                 bool maskengleich;
 
-                if (netmask == subnetmask) maskengleich = true;
+                if (netmask == subnetmask || netmask > subnetmask) maskengleich = true;
                 else maskengleich = false;
 
                 foreach (char x in ipv4)
