@@ -134,6 +134,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
                         if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten))
                         {
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)).ToString();
                             Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
@@ -146,7 +147,7 @@ namespace ITler_Ein_mal_Eins.Modules
                             //
                             //  Falsche Eingabe Abfangen
                             //
-                            throw new NotImplementedException();
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.RED, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                         }
                         TextChanged_Event_isLocked = false;
                         break;

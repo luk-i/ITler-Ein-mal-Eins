@@ -398,8 +398,8 @@ namespace ITler_Ein_mal_Eins.Control
         //
         public static int getMaxSubnetNo(TextBox subnet_short)
         {
-            int txt_b = int.Parse(subnet_short.Text);
-            int tmp = (int)Math.Pow((double)2, (double)(31 - txt_b));
+            int txt_b = tryParseTextboxToInt(subnet_short);
+            int tmp = (int)Math.Pow(2, (31 - txt_b));
             return tmp;
         }
 
