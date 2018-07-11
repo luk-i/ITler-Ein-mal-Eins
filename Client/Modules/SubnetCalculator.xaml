@@ -107,27 +107,27 @@
                             </Grid>
 
                         </Grid>
-                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1">
-                            <Grid Grid.Column="1" Opacity="1" x:Name="Subnet_ipv4_Right">
+                <ScrollViewer x:Name="Subnet_ipv4_Right_Scroll" Opacity="0"  ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1">
+                            <Grid Grid.Column="1" x:Name="Subnet_ipv4_Right">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
