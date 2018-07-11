@@ -136,8 +136,9 @@ namespace ITler_Ein_mal_Eins.Modules
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             //Falsche Nummer ?
-                            Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
+                            string st = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)).ToString();
+                            Subnet_textBox_ShortWritten_new.Text = st;
                             Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
                             //
                             //UMBAU IN READSTRUCT AUSSTEHEND
@@ -158,8 +159,10 @@ namespace ITler_Ein_mal_Eins.Modules
                             writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
-                            Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
-                            readStruct(IpCalculator.calcSubnetNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT),
+                            string st = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
+                            Subnet_textBox_ShortWritten_new.Text = st;
+                            readStruct(IpCalculator.calcSubnetNo(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)
+                                ,writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
                             byte[] tmp;
                             tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox_ShortWritten_new);

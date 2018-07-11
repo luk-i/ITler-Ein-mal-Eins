@@ -371,16 +371,23 @@ namespace ITler_Ein_mal_Eins.Control
             return tmp;
         }
 
-        public static IPAddressTextboxes calcSubnetNo(IPAddressTextboxes shortWritten, IPAddressTextboxes shortWritten_old)
+        public static IPAddressTextboxes calcSubnetNo(IPAddressTextboxes SubnetNo, IPAddressTextboxes shortWritten, IPAddressTextboxes shortWritten_old)
         {
             if (shortWritten.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT || shortWritten_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
             {
-                int tmp;
-                tmp = (int)Math.Pow(2, tryParseTextboxToInt(shortWritten_old.first) - tryParseTextboxToInt(shortWritten.first));
-                TextBox txt = new TextBox();
-                txt.Text = tmp.ToString();
-                txt.Tag = Control.digitTag.UNSIGNEDINTEGER;
-                return new IPAddressTextboxes(txt, Textbox_FieldType.DESIRED_SUBNETNO);
+                if (SubnetNo.type == Textbox_FieldType.DESIRED_SUBNETNO)
+                {
+                    int tmp;
+                    int i_shortWritten = tryParseTextboxToInt(shortWritten.first);
+                    int i_shortWritten_old = tryParseTextboxToInt(shortWritten_old.first);
+                    tmp = (int)Math.Pow(2, i_shortWritten - i_shortWritten_old);
+                    SubnetNo.first.Text = tmp.ToString();
+                    return SubnetNo;
+                }
+                else
+                {
+                    throw new WrongTypeException(SubnetNo, Textbox_FieldType.DESIRED_SUBNETNO);
+                }
             }
             else
             {
