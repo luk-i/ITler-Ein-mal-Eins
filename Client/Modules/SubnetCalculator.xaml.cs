@@ -25,7 +25,8 @@ namespace ITler_Ein_mal_Eins.Modules
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             InitializeTags();
-            InitializeEvents();
+            InitializeEvents_LeftTop();
+            InitializeEvents_LeftBottom();
             InitializeTextboxes();
         }
 
@@ -421,12 +422,14 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void InitializeTextboxes()
         {
+            DeactivateEvents_LeftBottom();
             TextBoxes_Clear();
             Textboxes_LeftBottom_Disabled();
             Textboxes_LeftTop_Enabled();
             TextChanged_Event_isLocked = false;
             btn_ipv4_calculate.IsEnabled = true;
             Subnet_ipv4_Right_Scroll.Opacity = 0;
+            InitializeEvents_LeftBottom();
         }
 
         private void InitializeTags()
@@ -449,7 +452,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Hosts_desired.Tag                   = Control.Control.digitTag.UNSIGNEDINTEGER;
         }
 
-        private void InitializeEvents()
+        private void InitializeEvents_LeftTop()
         {
             //
             // TextBox_LeftTop, alle loesen ein Event aus.
@@ -463,6 +466,10 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox3.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox4.TextChanged += Ip4_textBox_TextChanged;
             Subnet_textBox_ShortWritten.TextChanged += Ip4_textBox_TextChanged;
+        }
+
+        private void InitializeEvents_LeftBottom()
+        {
             //
             //  TextBox_LeftBottom, jeder Block wirft ein eigenes Event!
             //
@@ -473,7 +480,20 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox3_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox4_new.TextChanged += Subnet_textBox_new_TextChanged;
             Subnet_textBox_ShortWritten_new.TextChanged += Subnet_textBox_ShortWritten_new_TextChanged;
+        }
 
+        private void DeactivateEvents_LeftBottom()
+        {
+            //
+            //  TextBox_LeftBottom, jeder Block wirft ein eigenes Event!
+            //
+            Subnet_desired.TextChanged -= Subnet_desired_TextChanged;
+            Hosts_desired.TextChanged -= Hosts_desired_TextChanged;
+            Subnet_textBox1_new.TextChanged -= Subnet_textBox_new_TextChanged;
+            Subnet_textBox2_new.TextChanged -= Subnet_textBox_new_TextChanged;
+            Subnet_textBox3_new.TextChanged -= Subnet_textBox_new_TextChanged;
+            Subnet_textBox4_new.TextChanged -= Subnet_textBox_new_TextChanged;
+            Subnet_textBox_ShortWritten_new.TextChanged -= Subnet_textBox_ShortWritten_new_TextChanged;
         }
 
         private IPAddressTextboxes writeStruct(Textbox_FieldType type)
