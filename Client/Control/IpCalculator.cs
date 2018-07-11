@@ -177,20 +177,59 @@ namespace ITler_Ein_mal_Eins.Control
             if (tryParseTextboxToInt(subnetNo) >= 0 && tryParseTextboxToInt(subnetNo) <= 
                 getMaxSubnetNo(subnet_short))
             {
-                Control.brushTextBoxByBool(0, subnetNo);
                 return true;
             }
-            Control.brushTextBoxByBool(99, subnetNo);
             return false;
         }
 
         public static bool isLegitSubnetNo(int subnetNo, int subnet_short)
         {
-            if(subnetNo >= 0 || subnetNo <= getMaxSubnetNo(subnet_short))
+            if(subnetNo >= 0 && subnetNo <= getMaxSubnetNo(subnet_short))
             {
                 return true;
             }
             return false;
+        }
+
+        #endregion
+
+        #region isLegitHostNo
+
+        public static bool isLegitHostNo(int HostNo, int subnet_short_old)
+        {
+            if(HostNo >= 0 && HostNo <= getMaxHostNo(subnet_short_old))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool isLegitHostNo(IPAddressTextboxes HostNo, IPAddressTextboxes subnet_short_old)
+        {
+            if(HostNo.type == Textbox_FieldType.DESIRED_HOSTNO)
+            {
+                if(subnet_short_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
+                {
+                    int maxHostNo = getMaxHostNo(subnet_short_old);
+                    int this_HostNo = tryParseTextboxToInt(HostNo.first);
+                    if (this_HostNo >= 0 &&this_HostNo <= maxHostNo)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    throw new WrongTypeException(subnet_short_old, Textbox_FieldType.SUBNETMASK_SHORT);
+                }
+            }
+            else
+            {
+                throw new WrongTypeException(HostNo, Textbox_FieldType.DESIRED_HOSTNO);
+            }
         }
 
         #endregion
@@ -359,7 +398,7 @@ namespace ITler_Ein_mal_Eins.Control
         {
             int tmp = 32 - subnet_short_new;
             tmp = ((int) Math.Pow(2, tmp)) - 2;
-            return 0;
+            return tmp;
         }
         public static int calcHostNo(IPAddressTextboxes subnet_short_new)
         {
@@ -423,10 +462,21 @@ namespace ITler_Ein_mal_Eins.Control
         //
         //  Wie es auf der Verpackung steht...
         //
-        public static int getMaxHostNo()
+        public static int getMaxHostNo(int subnet_short_old)
         {
+            return calcHostNo(subnet_short_old);
+        }
 
-            return 0;
+        public static int getMaxHostNo(IPAddressTextboxes subnet_short_old)
+        {
+            if (subnet_short_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
+            {
+                return calcHostNo(tryParseTextboxToInt(subnet_short_old.first));
+            }
+            else
+            {
+                throw new WrongTypeException(subnet_short_old, Textbox_FieldType.SUBNETMASK_SHORT);
+            }
         }
 
         #endregion

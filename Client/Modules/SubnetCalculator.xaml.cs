@@ -135,6 +135,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+                            //Falsche Nummer ?
                             Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)).ToString();
                             Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
@@ -153,10 +154,22 @@ namespace ITler_Ein_mal_Eins.Modules
                         TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
-                        //Legitimationsprüfung!!!
-
-                        Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
-
+                        if (IpCalculator.isLegitHostNo(writeStruct(Textbox_FieldType.DESIRED_HOSTNO),
+                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)))
+                        {
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+                            Subnet_textBox_ShortWritten_new.Text = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
+                            readStruct(IpCalculator.calcSubnetNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT),
+                                writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
+                            byte[] tmp;
+                            tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox_ShortWritten_new);
+                            readStruct(IpCalculator.fillAddressBoxByByte(tmp, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
+                            FillRightContent();
+                        }
+                        else
+                        {
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.RED, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+                        }
                         TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.NEW_SUBNETMASK_LONG:
