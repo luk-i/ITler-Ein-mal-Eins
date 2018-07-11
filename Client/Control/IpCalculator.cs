@@ -673,7 +673,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
             else
             {
-                return "";
+                return "-";
             }
         }
 
@@ -722,56 +722,70 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static string FirstBroadcastIPAdress (string inputIP, int netmask, int subnetmask)
         {
-            string output = "";
-            foreach (char x in inputIP)
+            if (netmask == subnetmask)
             {
-                if (netmask > 0)
+                return "";
+            }
+            else
+            {
+                string output = "";
+                foreach (char x in inputIP)
                 {
-                    output = output + x;
-                    netmask--;
-                    subnetmask--;
-                }
-                else
-                {
-                    if (subnetmask > 0)
+                    if (netmask > 0)
                     {
-                        output = output + '0';
+                        output = output + x;
+                        netmask--;
                         subnetmask--;
                     }
                     else
                     {
-                        output = output + "1";
+                        if (subnetmask > 0)
+                        {
+                            output = output + '0';
+                            subnetmask--;
+                        }
+                        else
+                        {
+                            output = output + "1";
+                        }
                     }
                 }
+                return output;
             }
-            return output;
         }
 
         public static string LastSubnetIPAdress(string inputIP, int netmask, int subnetmask)
         {
-            string output = "";
-            foreach (char x in inputIP)
+            if (netmask == subnetmask)
             {
-                if (netmask > 0)
+                return "";
+            }
+            else
+            {
+                string output = "";
+                foreach (char x in inputIP)
                 {
-                    output = output + x;
-                    netmask--;
-                    subnetmask--;
-                }
-                else
-                {
-                    if (subnetmask > 0)
+                    if (netmask > 0)
                     {
-                        output = output + '1';
+                        output = output + x;
+                        netmask--;
                         subnetmask--;
                     }
                     else
                     {
-                        output = output + "0";
+                        if (subnetmask > 0)
+                        {
+                            output = output + '1';
+                            subnetmask--;
+                        }
+                        else
+                        {
+                            output = output + "0";
+                        }
                     }
                 }
+                return output;
             }
-            return output;
         }
 
         public static string LastBroadcastIPAdress(string inputIP, int netmask, int subnetmask)
