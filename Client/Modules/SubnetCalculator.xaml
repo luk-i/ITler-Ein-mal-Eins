@@ -84,11 +84,11 @@
                                 <!--#region Left Bottom-->
 
                                 <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0">
-                                    <TextBox x:Name="Subnet_desired" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="1" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Subnet_desired" Height="Auto" Width="Auto" MinWidth="35" MaxWidth="90" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="1" VerticalContentAlignment="Center" FontSize="16"/>
                                     <TextBlock Text="Subnetzanzahl" Height="Auto" Width="Auto" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Orientation="Horizontal" Height="Auto" Width="Auto" MinWidth="0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0">
-                                    <TextBox x:Name="Hosts_desired" Height="Auto" Width="35" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="1" VerticalContentAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="Hosts_desired" Height="Auto" Width="Auto" MinWidth="35" MaxWidth="120" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="1" VerticalContentAlignment="Center" FontSize="16"/>
                                     <TextBlock Text="Hostanzahl" Height="Auto" Width="Auto" Margin="10,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" />
                                 </StackPanel>
                                 <Label Content="Neue Netzmaske"             HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
