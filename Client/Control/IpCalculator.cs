@@ -163,6 +163,30 @@ namespace ITler_Ein_mal_Eins.Control
             return false;
         }
 
+        public static bool isLegitIpV4SubnetMask(IPAddressTextboxes newSubnetMask, IPAddressTextboxes oldSubnetMask)
+        {
+            if (oldSubnetMask.type == Textbox_FieldType.SUBNETMASK_SHORT) {
+                if (newSubnetMask.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT)
+                {
+                    int shortDigit = tryParseTextboxToInt(newSubnetMask.first);
+                    int shortDigit_old = tryParseTextboxToInt(oldSubnetMask.first);
+                    if(shortDigit >= shortDigit_old && shortDigit <= 31)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                else
+                {
+                    throw new WrongTypeException(newSubnetMask, Textbox_FieldType.NEW_SUBNETMASK_SHORT);
+                }
+            }
+            else
+            {
+                throw new WrongTypeException(oldSubnetMask, Textbox_FieldType.SUBNETMASK_SHORT);
+            }
+        }
+
         #endregion
 
         #region isLegitSubnetNo
