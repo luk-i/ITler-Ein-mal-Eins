@@ -116,7 +116,7 @@ namespace ITler_Ein_mal_Eins.Modules
         //  Als Letztes wird dann eine Berechnung der Ausgabe ausgelöst. Insgesamt ist somit das
         //  Auslesen der Ergebnisse in Echtzeit möglich.
         // 
-        private void TextBox_BottomLeft_onTextChanged(Textbox_FieldType fieldType)
+        private void TextBox_BottomLeft_onTextChanged(Textbox_FieldType fieldType, TextBox txbox)
         {
             //
             //  Das Berechnen der Fehlenden Felder würde eine Endlosschleife auslösen
@@ -132,7 +132,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 {
                     case Textbox_FieldType.DESIRED_SUBNETNO:
                         // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
-                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten))
+                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten) && control.CheckTextboxIfNumeric(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             //Falsche Nummer ?
@@ -584,26 +584,22 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Subnet_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
-            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_SUBNETNO);
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_SUBNETNO, (TextBox)e.Source);           
         }
 
         private void Hosts_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
-            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_HOSTNO);
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_HOSTNO, (TextBox)e.Source);
         }
 
         private void Subnet_textBox_new_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
-            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_LONG);
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_LONG, (TextBox)e.Source);
         }
 
         private void Subnet_textBox_ShortWritten_new_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
-            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_SHORT);
+            TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_SHORT, (TextBox)e.Source);
         }
 
         #endregion
