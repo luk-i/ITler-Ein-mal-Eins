@@ -380,7 +380,7 @@ namespace ITler_Ein_mal_Eins.Control
                     int tmp;
                     int i_shortWritten = tryParseTextboxToInt(shortWritten.first);
                     int i_shortWritten_old = tryParseTextboxToInt(shortWritten_old.first);
-                    tmp = (int)Math.Pow(2, i_shortWritten_old - i_shortWritten);
+                    tmp = (int)Math.Pow(2, i_shortWritten - i_shortWritten_old);
                     SubnetNo.first.Text = tmp.ToString();
                     return SubnetNo;
                 }
