@@ -156,7 +156,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
                         if (IpCalculator.isLegitHostNo(writeStruct(Textbox_FieldType.DESIRED_HOSTNO),
-                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)))
+                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && control.CheckTextboxIfNumeric(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
                             string st = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
