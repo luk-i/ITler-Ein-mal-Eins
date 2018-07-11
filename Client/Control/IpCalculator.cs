@@ -662,7 +662,8 @@ namespace ITler_Ein_mal_Eins.Control
                 }
                 else
                 {
-                    return Convert.ToInt32(Math.Pow(2, potenz));
+
+                        return Convert.ToInt32(Math.Pow(2, potenz));
                 }
             }
             else
@@ -798,12 +799,20 @@ namespace ITler_Ein_mal_Eins.Control
                     numberofByte++;
                 }
             }
-            output = 
-                Convert.ToString(Convert.ToInt32(byte1,2)) + '.' +
-                Convert.ToString(Convert.ToInt32(byte2,2)) + '.' +
-                Convert.ToString(Convert.ToInt32(byte3,2)) + '.' +
-                Convert.ToString(Convert.ToInt32(byte4,2));
-            return output;
+            try
+            {
+                output =
+                    Convert.ToString(Convert.ToInt32(byte1, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt32(byte2, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt32(byte3, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt32(byte4, 2));
+                return output;
+            }
+            catch
+            {
+                return "-";
+            }
+
         }
 
         #endregion
