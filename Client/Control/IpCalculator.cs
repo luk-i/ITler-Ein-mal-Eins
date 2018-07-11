@@ -662,7 +662,6 @@ namespace ITler_Ein_mal_Eins.Control
                 }
                 else
                 {
-
                         return Convert.ToInt32(Math.Pow(2, potenz));
                 }
             }

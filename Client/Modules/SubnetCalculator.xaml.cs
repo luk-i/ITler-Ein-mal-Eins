@@ -561,26 +561,26 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Subnet_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_SUBNETNO);
+            control.CheckTextboxIfNumeric((TextBox)e.Source);            
         }
 
         private void Hosts_desired_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.DESIRED_HOSTNO);
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
 
         private void Subnet_textBox_new_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_LONG);
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
 
         private void Subnet_textBox_ShortWritten_new_TextChanged(object sender, TextChangedEventArgs e)
         {
-            control.CheckTextboxIfNumeric((TextBox)e.Source);
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_SHORT);
+            control.CheckTextboxIfNumeric((TextBox)e.Source);
         }
 
         #endregion
