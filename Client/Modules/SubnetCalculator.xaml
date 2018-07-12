@@ -127,10 +127,6 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
                                 <!--#region Right-->
@@ -139,25 +135,28 @@
                                 <Label Content="Neue Netzmaske"         HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
                                 <Label Content="Max. Subnetze"          HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
                                 <Label Content="Max. Hostanzahl"        HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <Label Content="Erste Netzadresse"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <Label Content="Erste Broadcast-Adresse" x:Name="label_first_broadcast" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="11" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <Label Content="Letzte Netzadresse"      x:Name="label_last_net_adress" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="14" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <Label Content="Letzte Broadcast-Adresse" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="17" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-
+                                <Label Content="Subnetz wählen"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="9" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                               
                                 <TextBlock x:Name="txblock_ip_binaer"           Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="1" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txblock_subnet_binaer"       Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="3" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txblock_subnet_number"       Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="5" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txblock_subnet_max_hosts"    Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="7" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_first_adress"        Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="9" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_first_adress_dez"    Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="10" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_first_bc_adress"     Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="12" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_first_bc_adress_dez" Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="13" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_last_adress"        Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="15" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_last_adress_dez"    Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="16" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_last_bc_adress"     Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="18" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
-                                <TextBlock x:Name="txblock_last_bc_adress_dez" Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="19" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
 
-                                <Slider x:Name="Selected_subnet" Height="18" Width="131" Grid.Row="8" Grid.Column="0" />
+                                <Border Grid.Column="0" Grid.Row="8" BorderBrush="#EE646464" BorderThickness="1" Margin="2.5,0,0,0"/>
+
+                                <StackPanel Margin="5,0,0,0"  Height="Auto" Width="Auto" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="10" Grid.Column="0" Orientation="Horizontal">
+                                    <Slider x:Name="Selected_subnet" Margin="5,0,0,0" Height="20" Width="160"/>
+                                    <TextBox x:Name="Selected_subnet_txbox" Height="Auto" Width="Auto" MinWidth="30" MaxWidth="180" Margin="5,0,0,0" TextWrapping="NoWrap" Tag="3" FontSize="16"/>
+                                </StackPanel>
+
+                                <Label Content="Netzaderesse"        HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="11" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Broadcastadresse"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="14" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+
+                                <TextBlock x:Name="txblock_subnet_adress"        Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="12" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_subnet_adress_dez"    Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="13" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_broadcast_adress"     Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="15" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txblock_broadcast_adress_dez" Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="16" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
+                               
                                 <!--#endregion-->
 
                             </Grid>

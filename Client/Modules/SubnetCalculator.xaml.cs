@@ -433,6 +433,7 @@ namespace ITler_Ein_mal_Eins.Modules
             try { txblock_subnet_number.Text        = Convert.ToString(IpCalculator.MaxBinaryBase(Convert.ToDecimal(Subnet_desired.Text))); }
             catch { txblock_subnet_number.Text      = "-"; }
 
+            /* Umstrukturierung der Funktion in Arbeit ###############################################
             txblock_first_adress.Text           = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
             txblock_first_adress_dez.Text       = IpCalculator.IP_BinaryToDottedDecimal(IpCalculator.FirstSubnetIPAdress(ipv4, netmask));
             txblock_first_bc_adress.Text        = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstBroadcastIPAdress(ipv4, netmask, subnetmask)));
@@ -442,6 +443,7 @@ namespace ITler_Ein_mal_Eins.Modules
             txblock_last_adress_dez.Text        = IpCalculator.IP_BinaryToDottedDecimal(IpCalculator.LastSubnetIPAdress(ipv4, netmask, subnetmask));
             txblock_last_bc_adress.Text         = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.LastBroadcastIPAdress(ipv4, netmask, subnetmask)));
             txblock_last_bc_adress_dez.Text     = IpCalculator.IP_BinaryToDottedDecimal(IpCalculator.LastBroadcastIPAdress(ipv4, netmask, subnetmask));
+            */
         }
 
         #endregion
