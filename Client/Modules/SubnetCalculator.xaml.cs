@@ -133,7 +133,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 {
                     case Textbox_FieldType.DESIRED_SUBNETNO:
                         // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
-                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten) && control.CheckTextboxIfNumeric(txbox))
+                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten) && control.CheckTextboxIfNumeric(txbox) && IpCalculator.IsTextboxFilled(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
@@ -160,7 +160,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
                         if (IpCalculator.isLegitHostNo(writeStruct(Textbox_FieldType.DESIRED_HOSTNO),
-                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && control.CheckTextboxIfNumeric(txbox))
+                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && control.CheckTextboxIfNumeric(txbox) && IpCalculator.IsTextboxFilled(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
@@ -188,7 +188,8 @@ namespace ITler_Ein_mal_Eins.Modules
                            IpCalculator.isIpV4Digit(Subnet_textBox3_new, true) &&
                            IpCalculator.isIpV4Digit(Subnet_textBox4_new, true) &&
                            IpCalculator.tryParseTextboxToInt(Subnet_textBox4_new) != 255 &&
-                           IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG))) {
+                           IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)) && IpCalculator.IsTextboxFilled(txbox))
+                        {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
@@ -212,7 +213,8 @@ namespace ITler_Ein_mal_Eins.Modules
                         //SubnetNo wird eins zu Hoch gesetzt!
                         //
                         if (IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)
-                            , writeStruct(Textbox_FieldType.SUBNETMASK_SHORT))){
+                            , writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && IpCalculator.IsTextboxFilled(txbox))
+                        {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));

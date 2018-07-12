@@ -273,7 +273,7 @@ namespace ITler_Ein_mal_Eins.Control
             return false;
         }
 
-        private static bool IsTextboxFilled (TextBox txbox)
+        public static bool IsTextboxFilled (TextBox txbox)
         {
             if (txbox.Text != "")
                 return true;
