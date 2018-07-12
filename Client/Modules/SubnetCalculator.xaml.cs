@@ -294,7 +294,9 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private string calculateFocusedBroadcastAddress(Int64 numberOfSubnet, Int64 netmask, Int64 subnetmask, string ipv4)
         {
+            string tmp = calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4);
 
+            return tmp;
         }
 
             #endregion
