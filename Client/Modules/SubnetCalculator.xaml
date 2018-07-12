@@ -107,9 +107,10 @@
                             </Grid>
 
                         </Grid>
-                        <ScrollViewer x:Name="Subnet_ipv4_Right_Scroll" Opacity="0"  ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1">
+                        <ScrollViewer x:Name="Subnet_ipv4_Right_Scroll" Opacity="1"  ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="1">
                             <Grid Grid.Column="1" x:Name="Subnet_ipv4_Right">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -156,6 +157,7 @@
                                 <TextBlock x:Name="txblock_last_bc_adress"     Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="18" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txblock_last_bc_adress_dez" Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="19" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
 
+                                <Slider x:Name="Selected_subnet" Height="18" Width="131" Grid.Row="8" Grid.Column="0" />
                                 <!--#endregion-->
 
                             </Grid>
