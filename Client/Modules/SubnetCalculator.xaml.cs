@@ -28,6 +28,7 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeEvents_LeftTop();
             InitializeEvents_LeftBottom();
             InitializeTextboxes();
+            InitializeContent();
         }
 
 
@@ -528,7 +529,12 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox_ShortWritten_new.TextChanged -= Subnet_textBox_ShortWritten_new_TextChanged;
         }
 
-        private IPAddressTextboxes writeStruct(Textbox_FieldType type)
+        private void InitializeContent()
+        {
+            help_subnet.Text = Help.HELP_SUBNET_CALCULATOR;
+        }
+
+            private IPAddressTextboxes writeStruct(Textbox_FieldType type)
         {
             switch (type)
             {
