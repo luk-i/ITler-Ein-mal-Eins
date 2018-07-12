@@ -267,11 +267,11 @@ namespace ITler_Ein_mal_Eins.Modules
                 }
                 try
                 {
-                    Int64 middlePart_int = Convert.ToInt32(part[1], 2);
+                    Int64 middlePart_int = Convert.ToInt64(part[1], 2);
                     middlePart_int = numberOfSubnet - 1;
                     string middlePart_string = Convert.ToString(middlePart_int, 2);
 
-                    Int64 endPart_int = Convert.ToInt32(part[2], 2);
+                    Int64 endPart_int = Convert.ToInt64(part[2], 2);
                     Int64 anzahl = subnetmask - netmask;
                     Int64 wert = Convert.ToInt64(Math.Pow(2, anzahl));
                     Int64 schritt = wert / anzahl;
@@ -413,26 +413,36 @@ namespace ITler_Ein_mal_Eins.Modules
                 Selected_subnet.Minimum = 0;
                 Selected_subnet.Maximum = 0;
             }
-            Selected_subnet.Value = 0.0;
+            //Selected_subnet.Value = 0.0;
         }
 
         private void setTextboxValuebySlider(TextBox box, Slider slider)
         {
-            int i = (int)slider.Value;
-            string st = i.ToString();
-            box.Text = st;
+            if (!TextChanged_Event_isLocked)
+            {
+                TextChanged_Event_isLocked = true;
+                int i = (int)slider.Value;
+                string st = i.ToString();
+                box.Text = st;
+                TextChanged_Event_isLocked = false;
+            }
         }
 
         private void setSliderByTextbox(TextBox box, Slider slider)
         {
-            int i = IpCalculator.tryParseTextboxToInt(box);
-            if(i >= 0 && i <= slider.Maximum)
+            if (!TextChanged_Event_isLocked)
             {
-                slider.Value = i;
-            }
-            else
-            {
+                TextChanged_Event_isLocked = true;
+                int i = IpCalculator.tryParseTextboxToInt(box);
+                if (i >= 0 && i <= slider.Maximum)
+                {
+                    slider.Value = i;
+                }
+                else
+                {
 
+                }
+                TextChanged_Event_isLocked = false;
             }
 
         }
@@ -585,7 +595,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Selected_subnet.TickPlacement = System.Windows.Controls.Primitives.TickPlacement.BottomRight;
             Selected_subnet.TickFrequency = 1;
             Selected_subnet.IsSnapToTickEnabled = true;
-            Selected_subnet_txbox.TextChanged += Selected_subnet_txbox_TextChanged;
+            Selected_subnet_txbox.IsReadOnly = true;
         }
 
         private void InitializeTags()
@@ -796,11 +806,11 @@ namespace ITler_Ein_mal_Eins.Modules
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_SHORT, (TextBox)e.Source);
         }
         
-        private void Selected_subnet_txbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            setSliderByTextbox(Selected_subnet_txbox, Selected_subnet);
-            FillRightContent();
-        }
+        //private void Selected_subnet_txbox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    setSliderByTextbox(Selected_subnet_txbox, Selected_subnet);
+        //    FillRightContent();
+        //}
 
         #endregion
 
