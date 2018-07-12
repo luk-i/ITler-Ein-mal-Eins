@@ -313,7 +313,13 @@ namespace ITler_Ein_mal_Eins.Control
             return false;
         }
 
-
+        public static bool IsTextboxFilled (TextBox txbox)
+        {
+            if (txbox.Text != "")
+                return true;
+            else
+                return false;
+        }
 
         #endregion
 
@@ -639,7 +645,7 @@ namespace ITler_Ein_mal_Eins.Control
         {
             try
             {
-                string output = Convert.ToString(Convert.ToInt32(input), 2);
+                string output = Convert.ToString(Convert.ToInt64(input), 2);
                 output = output.PadLeft(8, '0');
                 return output;
             }
@@ -649,7 +655,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string FormatIPv4String (int netmask, int subnetmask, string ipv4)
+        public static string FormatIPv4String (Int64 netmask, Int64 subnetmask, string ipv4)
         {
             if (ipv4 != "")
             {
@@ -718,7 +724,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static int MaxBinaryBase(decimal input)
+        public static Int64 MaxBinaryBase(decimal input)
         {
             if (input != 1)
             {
@@ -734,7 +740,7 @@ namespace ITler_Ein_mal_Eins.Control
                 }
                 else
                 {
-                        return Convert.ToInt32(Math.Pow(2, potenz));
+                        return Convert.ToInt64(Math.Pow(2, potenz));
                 }
             }
             else
@@ -743,7 +749,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string FirstSubnetIPAdress (string inputIP, int netmask)
+        public static string FirstSubnetIPAdress (string inputIP, Int64 netmask)
         {
             string output = "";
             foreach (char x in inputIP)
@@ -761,7 +767,7 @@ namespace ITler_Ein_mal_Eins.Control
             return output;
         }
 
-        public static string FirstBroadcastIPAdress (string inputIP, int netmask, int subnetmask)
+        public static string FirstBroadcastIPAdress (string inputIP, Int64 netmask, Int64 subnetmask)
         {
             if (netmask == subnetmask)
             {
@@ -795,7 +801,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string LastSubnetIPAdress(string inputIP, int netmask, int subnetmask)
+        public static string LastSubnetIPAdress(string inputIP, Int64 netmask, Int64 subnetmask)
         {
             if (netmask == subnetmask)
             {
@@ -829,7 +835,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string LastBroadcastIPAdress(string inputIP, int netmask, int subnetmask)
+        public static string LastBroadcastIPAdress(string inputIP, Int64 netmask, Int64 subnetmask)
         {
             string output = "";
             foreach (char x in inputIP)
@@ -887,10 +893,10 @@ namespace ITler_Ein_mal_Eins.Control
             try
             {
                 output =
-                    Convert.ToString(Convert.ToInt32(byte1, 2)) + '.' +
-                    Convert.ToString(Convert.ToInt32(byte2, 2)) + '.' +
-                    Convert.ToString(Convert.ToInt32(byte3, 2)) + '.' +
-                    Convert.ToString(Convert.ToInt32(byte4, 2));
+                    Convert.ToString(Convert.ToInt64(byte1, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt64(byte2, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt64(byte3, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt64(byte4, 2));
                 return output;
             }
             catch
