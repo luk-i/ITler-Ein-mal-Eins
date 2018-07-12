@@ -118,22 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ERROR_INVALIDINPUT" xml:space="preserve">
-    <value>Die Eingabe ist ungültig.
-
-Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
+    <value>Die Eingabe ist ungültig.</value>
   </data>
   <data name="ERROR_IPV4DIGITISNOTVALID" xml:space="preserve">
-    <value>Die angegebene IPv4-Adresse ist ungültig.
-
-Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
+    <value>Die angegebene IPv4-Adresse ist ungültig.</value>
   </data>
   <data name="ERROR_MULTIPLEFIELDSFILLED" xml:space="preserve">
     <value>Es wurden mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen Sie nur ein Feld. Die restlichen Felder werden automatisch befüllt.</value>
   </data>
   <data name="ERROR_SUBNETMASKISNOTVALID" xml:space="preserve">
-    <value>Die angegebene Subnetzmaske ist ungültig.
-
-Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
+    <value>Die angegebene Subnetzmaske ist ungültig.</value>
   </data>
   <data name="NOERROR" xml:space="preserve">
     <value>Alle Eingaben korrekt.</value>

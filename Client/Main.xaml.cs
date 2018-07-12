@@ -48,10 +48,6 @@ namespace ITler_Ein_mal_Eins
             sCalculator.Left            = this.Left;
             sCalculator.Top             = this.Top;
         }
-        private void Useless_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {

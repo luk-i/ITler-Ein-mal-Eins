@@ -61,9 +61,7 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die Eingabe ist ungültig.
-        ///
-        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Eingabe ist ungültig. ähnelt.
         /// </summary>
         public static string ERROR_INVALIDINPUT {
             get {
@@ -72,9 +70,7 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene IPv4-Adresse ist ungültig.
-        ///
-        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene IPv4-Adresse ist ungültig. ähnelt.
         /// </summary>
         public static string ERROR_IPV4DIGITISNOTVALID {
             get {
@@ -92,9 +88,7 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene Subnetzmaske ist ungültig.
-        ///
-        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene Subnetzmaske ist ungültig. ähnelt.
         /// </summary>
         public static string ERROR_SUBNETMASKISNOTVALID {
             get {
