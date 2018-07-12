@@ -550,40 +550,47 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
-        private void readStruct(IPAddressTextboxes boxes)
+        private bool readStruct(IPAddressTextboxes boxes)
         {
-            switch (boxes.type)
+            try
             {
-                case Textbox_FieldType.IP_ADDRESSBLOCK:
-                    Ip4_textBox1                      = boxes.first;
-                    Ip4_textBox2                      = boxes.second;
-                    Ip4_textBox3                      = boxes.third;
-                    Ip4_textBox4                      = boxes.forth;
-                    break;
-                case Textbox_FieldType.SUBNETMASK_LONG:
-                    Subnet_textBox1                   = boxes.first;
-                    Subnet_textBox2                   = boxes.second;
-                    Subnet_textBox3                   = boxes.third;
-                    Subnet_textBox4                   = boxes.forth;
-                    break;
-                case Textbox_FieldType.NEW_SUBNETMASK_LONG:
-                    Subnet_textBox1_new               = boxes.first;
-                    Subnet_textBox2_new               = boxes.second;
-                    Subnet_textBox3_new               = boxes.third;
-                    Subnet_textBox4_new               = boxes.forth;
-                    break;
-                case Textbox_FieldType.SUBNETMASK_SHORT:
-                    Subnet_textBox_ShortWritten       = boxes.first;
-                    break;
-                case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
-                    Subnet_textBox_ShortWritten_new   = boxes.first;
-                    break;
-                case Textbox_FieldType.DESIRED_SUBNETNO:
-                    Subnet_desired                    = boxes.first;
-                    break;
-                case Textbox_FieldType.DESIRED_HOSTNO:
-                    Hosts_desired                     = boxes.first;
-                    break;
+                switch (boxes.type)
+                {
+                    case Textbox_FieldType.IP_ADDRESSBLOCK:
+                        Ip4_textBox1 = checked(boxes.first);
+                        Ip4_textBox2 = checked(boxes.second);
+                        Ip4_textBox3 = checked(boxes.third);
+                        Ip4_textBox4 = checked(boxes.forth);
+                        break;
+                    case Textbox_FieldType.SUBNETMASK_LONG:
+                        Subnet_textBox1 = checked(boxes.first);
+                        Subnet_textBox2 = checked(boxes.second);
+                        Subnet_textBox3 = checked(boxes.third);
+                        Subnet_textBox4 = checked(boxes.forth);
+                        break;
+                    case Textbox_FieldType.NEW_SUBNETMASK_LONG:
+                        Subnet_textBox1_new = checked(boxes.first);
+                        Subnet_textBox2_new = checked(boxes.second);
+                        Subnet_textBox3_new = checked(boxes.third);
+                        Subnet_textBox4_new = checked(boxes.forth);
+                        break;
+                    case Textbox_FieldType.SUBNETMASK_SHORT:
+                        Subnet_textBox_ShortWritten = checked(boxes.first);
+                        break;
+                    case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
+                        Subnet_textBox_ShortWritten_new = checked(boxes.first);
+                        break;
+                    case Textbox_FieldType.DESIRED_SUBNETNO:
+                        Subnet_desired = checked(boxes.first);
+                        break;
+                    case Textbox_FieldType.DESIRED_HOSTNO:
+                        Hosts_desired = checked(boxes.first);
+                        break;               
+                }
+                return true;
+            }catch(System.OverflowException)
+            {
+                return false;
             }
         }
 
