@@ -9,6 +9,9 @@ namespace ITler_Ein_mal_Eins.Modules
 
     public partial class SubnetCalculator : Window
     {
+        Window origin;
+        Control.Control control;
+
         public SubnetCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
@@ -22,9 +25,6 @@ namespace ITler_Ein_mal_Eins.Modules
         }
 
         #region Variables
-        Window origin;
-        Control.Control control;
-
 
         private bool TextChanged_Event_isLocked = false;
 
@@ -616,9 +616,9 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            origin.Show();
             origin.Left         = this.Left;
             origin.Top          = this.Top;
+            origin.Show();
         }
 
         private void button_Submit_Click(object sender, RoutedEventArgs e)
