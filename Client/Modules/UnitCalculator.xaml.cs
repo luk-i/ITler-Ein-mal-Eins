@@ -17,16 +17,6 @@ namespace ITler_Ein_mal_Eins.Modules
 {
     public partial class UnitCalculator : Window
     {
-        //Attributes
-        Window origin;
-        Control.Control control;
-        TextBox txbox_active;
-        UnitCalculatorControl unitCalculatorControl;
-        
-        //Struct
-        UnitCalculatorControl.BitByteStrings bitByteStrings;
-        UnitCalculatorControl.Systems systems;
-
         public UnitCalculator(Window _origin, Control.Control _control)
         {
             origin  = _origin;
@@ -36,6 +26,17 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeContent();
             InitializeEvents();
         }
+
+        //Attributes
+        Window origin;
+        Control.Control control;
+        TextBox txbox_active;
+        UnitCalculatorControl unitCalculatorControl;
+
+        //Struct
+        UnitCalculatorControl.BitByteStrings bitByteStrings;
+        UnitCalculatorControl.Systems systems;
+
 
         #region Allgemein ################################################################################################################################################################################### 
 

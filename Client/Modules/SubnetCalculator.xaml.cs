@@ -9,6 +9,18 @@ namespace ITler_Ein_mal_Eins.Modules
 
     public partial class SubnetCalculator : Window
     {
+        public SubnetCalculator(Window _origin, Control.Control _control)
+        {
+            origin = _origin;
+            control = _control;
+            InitializeComponent();
+            InitializeTags();
+            InitializeEvents_LeftTop();
+            InitializeEvents_LeftBottom();
+            InitializeTextboxes();
+            InitializeContent();
+        }
+
         #region Variables
         Window origin;
         Control.Control control;
@@ -17,19 +29,6 @@ namespace ITler_Ein_mal_Eins.Modules
         private bool TextChanged_Event_isLocked = false;
 
         #endregion
-
-        public SubnetCalculator(Window _origin, Control.Control _control)
-        {
-            origin = _origin;
-            control = _control;
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            InitializeComponent();
-            InitializeTags();
-            InitializeEvents_LeftTop();
-            InitializeEvents_LeftBottom();
-            InitializeTextboxes();
-            InitializeContent();
-        }
 
 
         #region Methods
