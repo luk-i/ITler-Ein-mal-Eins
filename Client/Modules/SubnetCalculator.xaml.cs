@@ -254,7 +254,7 @@ namespace ITler_Ein_mal_Eins.Modules
             if (subnetmask > netmask)
             {
                 string firstSubnetAdress = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
-                firstSubnetAdress.Replace(" ", "");
+                firstSubnetAdress = firstSubnetAdress.Replace(" ", "");
                 Char delimiter = '|';
                 String[] substrings = firstSubnetAdress.Split(delimiter);
                 String[] part;
@@ -265,8 +265,8 @@ namespace ITler_Ein_mal_Eins.Modules
                     part[i] = substring;
                     i++;
                 }
-                try
-                {
+                //try
+                //{
                     Int64 middlePart_int = Convert.ToInt64(part[1], 2);
                     middlePart_int = numberOfSubnet - 1;
                     string middlePart_string = Convert.ToString(middlePart_int, 2);
@@ -279,11 +279,11 @@ namespace ITler_Ein_mal_Eins.Modules
                     string endPart_string = Convert.ToString(endPart_int, 2);
 
                     return part[0] + part[1] + part[2];
-                }
-                catch
-                {
-                    return "-";
-                }
+              //  }
+               // catch
+                //{
+                //    return "-";
+                //}
             }
 
             else
