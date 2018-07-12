@@ -22,6 +22,7 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeEvents_LeftBottom();
             InitializeTextboxes();
             InitializeContent();
+            InitializeSlider();
         }
 
         #region Variables
@@ -238,6 +239,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         throw new NotImplementedException();
 
                 }
+                setTextboxValuebySlider(Selected_subnet_txbox, Selected_subnet);
             }
             else
             {
@@ -374,7 +376,10 @@ namespace ITler_Ein_mal_Eins.Modules
             if(tmp > 0)
             {
                 Selected_subnet.Minimum = 0;
-                Selected_subnet.Maximum = tmp;
+                int subnet_short = IpCalculator.tryParseTextboxToInt(Subnet_textBox_ShortWritten_new);
+                int subnet_short_old = IpCalculator.tryParseTextboxToInt(Subnet_textBox_ShortWritten);
+                int maxSNO = IpCalculator.calcSubnetNo(subnet_short_old, subnet_short);
+                Selected_subnet.Maximum = maxSNO;
             }
             else
             {
@@ -382,6 +387,13 @@ namespace ITler_Ein_mal_Eins.Modules
                 Selected_subnet.Maximum = 0;
             }
             Selected_subnet.Value = 0.0;
+        }
+
+        private void setTextboxValuebySlider(TextBox box, Slider slider)
+        {
+            int i = (int)slider.Value;
+            string st = i.ToString();
+            box.Text = st;
         }
 
         #endregion
@@ -526,6 +538,9 @@ namespace ITler_Ein_mal_Eins.Modules
         private void InitializeSlider()
         {
             Selected_subnet.ValueChanged += Selected_subnet_ValueChanged;
+            Selected_subnet.TickPlacement = System.Windows.Controls.Primitives.TickPlacement.BottomRight;
+            Selected_subnet.TickFrequency = 1;
+            Selected_subnet.IsSnapToTickEnabled = true;
         }
 
         private void InitializeTags()
@@ -708,6 +723,7 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Selected_subnet_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             FillRightContent();
+            setTextboxValuebySlider(Selected_subnet_txbox, Selected_subnet);
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
