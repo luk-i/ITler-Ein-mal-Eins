@@ -247,6 +247,12 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
+        private void calculateFocusedAddress()
+        {
+
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Validation
@@ -330,6 +336,22 @@ namespace ITler_Ein_mal_Eins.Modules
                 label_AdressGrid_IsDataCorrect.Content = Errorcodes.ERROR_INVALIDINPUT;
                 Control.Control.getErrorMessage(_code);
             }
+        }
+
+        private void redrawSlideBar(IPAddressTextboxes subnet_No)
+        {
+            int tmp = IpCalculator.tryParseTextboxToInt(subnet_No.first);
+            if(tmp > 0)
+            {
+                Selected_subnet.Minimum = 0;
+                Selected_subnet.Maximum = tmp;
+            }
+            else
+            {
+                Selected_subnet.Minimum = 0;
+                Selected_subnet.Maximum = 0;
+            }
+            Selected_subnet.Value = 0.0;
         }
 
         #endregion
@@ -442,6 +464,8 @@ namespace ITler_Ein_mal_Eins.Modules
             txblock_last_adress_dez.Text        = IpCalculator.IP_BinaryToDottedDecimal(IpCalculator.LastSubnetIPAdress(ipv4, netmask, subnetmask));
             txblock_last_bc_adress.Text         = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.LastBroadcastIPAdress(ipv4, netmask, subnetmask)));
             txblock_last_bc_adress_dez.Text     = IpCalculator.IP_BinaryToDottedDecimal(IpCalculator.LastBroadcastIPAdress(ipv4, netmask, subnetmask));
+
+            redrawSlideBar(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO));
         }
 
         #endregion
@@ -460,6 +484,11 @@ namespace ITler_Ein_mal_Eins.Modules
             btn_ipv4_calculate.IsEnabled = true;
             Subnet_ipv4_Right_Scroll.Opacity = 0;
             InitializeEvents_LeftBottom();
+        }
+
+        private void InitializeSlider()
+        {
+            Selected_subnet.ValueChanged += Selected_subnet_ValueChanged;
         }
 
         private void InitializeTags()
@@ -637,6 +666,11 @@ namespace ITler_Ein_mal_Eins.Modules
             {
                 EnterPressPerformed();
             }
+        }
+
+        private void Selected_subnet_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            calculateFocusedAddress();
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
