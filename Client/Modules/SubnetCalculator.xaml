@@ -139,8 +139,8 @@
                                 <Label Content="Max. Subnetze"          HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
                                 <Label Content="Max. Hostanzahl"        HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
                                 <Label Content="Erste Netzadresse"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="8" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <Label Content="Erste Broadcast-Adresse" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="11" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
-                                <Label Content="Letzte Netzadresse"      HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="14" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Erste Broadcast-Adresse" x:Name="label_first_broadcast" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="11" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
+                                <Label Content="Letzte Netzadresse"      x:Name="label_last_net_adress" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="14" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
                                 <Label Content="Letzte Broadcast-Adresse" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Grid.Row="17" Grid.Column="0" FontWeight="Bold" FontSize="16"/>
 
                                 <TextBlock x:Name="txblock_ip_binaer"           Text="-" Width="Auto" Height="Auto" Margin="7.5,0,5,5" Grid.Row="1" Grid.Column="0"  FontSize="16" TextWrapping="Wrap"/>
