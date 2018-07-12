@@ -396,6 +396,20 @@ namespace ITler_Ein_mal_Eins.Modules
             box.Text = st;
         }
 
+        private void setSliderByTextbox(TextBox box, Slider slider)
+        {
+            int i = IpCalculator.tryParseTextboxToInt(box);
+            if(i >= 0 && i <= slider.Maximum)
+            {
+                slider.Value = i;
+            }
+            else
+            {
+
+            }
+
+        }
+
         #endregion
 
         #region Textboxes
@@ -541,6 +555,7 @@ namespace ITler_Ein_mal_Eins.Modules
             Selected_subnet.TickPlacement = System.Windows.Controls.Primitives.TickPlacement.BottomRight;
             Selected_subnet.TickFrequency = 1;
             Selected_subnet.IsSnapToTickEnabled = true;
+            Selected_subnet_txbox.TextChanged += Selected_subnet_txbox_TextChanged;
         }
 
         private void InitializeTags()
@@ -749,6 +764,12 @@ namespace ITler_Ein_mal_Eins.Modules
         private void Subnet_textBox_ShortWritten_new_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox_BottomLeft_onTextChanged(Textbox_FieldType.NEW_SUBNETMASK_SHORT, (TextBox)e.Source);
+        }
+        
+        private void Selected_subnet_txbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            setSliderByTextbox(Selected_subnet_txbox, Selected_subnet);
+            FillRightContent();
         }
 
         #endregion
