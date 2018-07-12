@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using ITler_Ein_mal_Eins.Model;
+using System.Windows.Forms;
 
 namespace ITler_Ein_mal_Eins.Control
 {
@@ -23,7 +25,8 @@ namespace ITler_Ein_mal_Eins.Control
             UNSIGNEDOCTAL,
             DECIMAL,
             UNSIGNEDHEX,
-            SUBNETMASK
+            SUBNETMASK,
+            SUBNETMASK_SHORT
         };
 
         // Funktion sieht nach, ob sich eine Eingabe in einem Textfeld um eine legitime Zahl handelt.
@@ -143,6 +146,21 @@ namespace ITler_Ein_mal_Eins.Control
                                 noDigit++;
                         }
                         break;
+                    case digitTag.SUBNETMASK_SHORT:
+                        try
+                        {
+                            int input =Convert.ToInt32(box.Text);
+                            if (input > 32)
+                            {
+                                noDigit++;
+                            }
+                        }
+                        catch { };
+                        if (!Char.IsDigit(x))
+                        {
+                            noDigit++;
+                        }
+                        break;
 
                 }
                 
@@ -151,7 +169,7 @@ namespace ITler_Ein_mal_Eins.Control
 
         }
 
-        public bool brushTextBoxByBool(int _noDigit, System.Windows.Controls.TextBox _box)
+        public static bool brushTextBoxByBool(int _noDigit, System.Windows.Controls.TextBox _box)
         {
             if (_noDigit == 0)
             {
@@ -169,6 +187,27 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
         #endregion ####################################################################################################################################################
+
+        #region getErrorMessage
+
+        public static void getErrorMessage(ErrorCodeNo _code)
+        {
+            switch (_code)
+            {
+                case ErrorCodeNo.WRONGIPV4:
+                    MessageBox.Show(Errorcodes.ERROR_IPV4DIGITISNOTVALID);
+                    break;
+                case ErrorCodeNo.WRONGSUBNETCODE:
+                    MessageBox.Show(Errorcodes.ERROR_SUBNETMASKISNOTVALID);
+                    break;
+                case ErrorCodeNo.MULTIPLEFIELDSFILLED:
+                    MessageBox.Show(Errorcodes.ERROR_MULTIPLEFIELDSFILLED);
+                    break;
+                    // Endoftheline
+            }
+        }
+
+        #endregion
 
     }
 }

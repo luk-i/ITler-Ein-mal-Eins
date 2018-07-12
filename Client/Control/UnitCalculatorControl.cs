@@ -55,7 +55,7 @@ namespace ITler_Ein_mal_Eins.Control
                 noError     = noErrors;
             }
         }
-        //Instanz der Struktur erstellen
+        //Erstellen eine Struktur zum Abspeichern der Ergebnisse
         BitByteStrings bitByteStrings;
 
         //Grundgerüst für das Aufrufen der Funktion zum Rechnen von Bits zu Bytes
@@ -161,7 +161,7 @@ namespace ITler_Ein_mal_Eins.Control
                 comboBox_dataType   = cb_data;
             }
         }
-        //Erstellen eine Instanz zum Abspeichern der Ergebnisse
+        //Erstellen eine Struktur zum Abspeichern der Ergebnisse
         Systems systems;
 
         //Grundgerüst für das Aufrufen der Funktion zum Umrechnen von Zahlensystemen

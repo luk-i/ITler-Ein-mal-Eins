@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="HELP_UNITC_BITS" xml:space="preserve">
-    <value>Erlaubt sind Gleitkommazahlen mit und ohne Vorzeichen. Als Dezimaltrennzeichen kann '.' oder ',' benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
+  <data name="HELP_SUBNET_CALCULATOR" xml:space="preserve">
+    <value>Bitte geben Sie eine gültige IPv4-Adresse in Dezimal-Schreibweise ein.
+Beispiel: 192 168 2 21
+Die Netzmaske können Sie im selben Format, oder in der Kurzschreibweise eingeben (Bitte nur eine Variante).
+Beispiel: 255 255 255 0  oder  24 (im "/"-Feld)
 
-Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder drücken Sie die Enter-Taste.
-Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder erneut die Enter-Taste.
+Nach der korrekten Eingabe drücken Sie "Berechnen", oder betätigenn Sie die Enter-Taste. Daraufhin werden die Eingaben gesperrt und der untere Bereich freigegeben.
+
+Geben Sie die gewünschte Subnetz- oder Host-Anzahl an, oder füllen Sie die Subnetzmaske in Dezimal- oder Kurzschreibweise.
+Nach einer korrekten Eingabe werden die anderen Ergebnisse automatisch berechnet.
+
+Der rechte Bereich gibt Ihnen weitere Informationen, basierend auf Ihren Eingaben wieder.
+
+Um eine neue IP-Adresse, oder eine neue Netzmaske einzugeben, drücken Sie bitte "Zurücksetzen", oder betätigen Sie erneut die Enter-Taste.</value>
+  </data>
+  <data name="HELP_UNITC_BITS" xml:space="preserve">
+    <value>Erlaubt sind Gleitkommazahlen mit, oder ohne Vorzeichen. Als Dezimaltrennzeichen kann '.' oder ',' benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
+
+Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder betätigen Sie die Enter-Taste.
+Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder betätigen erneut die Enter-Taste.
 
 Hinweis: Es handelt sich um Einheiten im Hauptspeicherbereich, der Faktor zwischen den Tausender-Schritten beträgt daher 1024. 
 
@@ -141,8 +156,8 @@ Erlaubt in "Hexadezimal" sind die Zahlen 0 bis 9 und die Zeichen A bis F (Groß-
 
 Wählen Sie den gewünschten Datentyp aus dem Dropdown-Feld im oberen Bereich. Dies ist notwendig, da negative Zahlen in "Binär", "Oktal" und "Hexadezimal" je nach Datentyp unterschiedlich dargestellt werden, da das MSB (most significant bit) immer links steht.
 
-Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder drücken Sie die Enter-Taste.
-Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder erneut die Enter-Taste.
+Füllen Sie genau ein Feld aus und drücken Sie "Berechnen", oder betätigen Sie die Enter-Taste.
+Für eine erneute Eingabe drücken Sie bitte "Zurücksetzen", oder betätigen erneut die Enter-Taste.
 
 Beispiel (von oben nach unten):
 Int16

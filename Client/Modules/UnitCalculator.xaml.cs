@@ -13,10 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ITler_Ein_mal_Eins.Control;
 
-
 namespace ITler_Ein_mal_Eins.Modules
 {
-
     public partial class UnitCalculator : Window
     {
         //Attributes
@@ -24,6 +22,7 @@ namespace ITler_Ein_mal_Eins.Modules
         Control.Control control;
         TextBox txbox_active;
         UnitCalculatorControl unitCalculatorControl;
+        
         //Struct
         UnitCalculatorControl.BitByteStrings bitByteStrings;
         UnitCalculatorControl.Systems systems;
@@ -43,20 +42,16 @@ namespace ITler_Ein_mal_Eins.Modules
         //Welche Box wurde gefüllt und wird übergeben?
         private TextBox Active_TextBox()
         {
-            if (txbox_bit.Text          != "") { txbox_active = txbox_bit; }
-            if (txbox_kilobit.Text      != "") { txbox_active = txbox_kilobit; }
-            if (txbox_megabit.Text      != "") { txbox_active = txbox_megabit; }
-            if (txbox_gigabit.Text      != "") { txbox_active = txbox_gigabit; }
-            if (txbox_terabit.Text      != "") { txbox_active = txbox_terabit; }
-            if (txbox_byte.Text         != "") { txbox_active = txbox_byte; }
-            if (txbox_kilobyte.Text     != "") { txbox_active = txbox_kilobyte; }
-            if (txbox_megabyte.Text     != "") { txbox_active = txbox_megabyte; }
-            if (txbox_gigabyte.Text     != "") { txbox_active = txbox_gigabyte; }
-            if (txbox_terabyte.Text     != "") { txbox_active = txbox_terabyte; }
-            if (txbox_binaer.Text       != "") { txbox_active = txbox_binaer; }
-            if (txbox_oktal.Text        != "") { txbox_active = txbox_oktal; }
-            if (txbox_dezimal.Text      != "") { txbox_active = txbox_dezimal; }
-            if (txbox_hexadezimal.Text  != "") { txbox_active = txbox_hexadezimal; }
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                if (tx_box.Text != "")
+                    txbox_active = tx_box;
+            }
+            foreach (TextBox tx_box in grid_unitCalculator_systems.Children.OfType<TextBox>())
+            {
+                if (tx_box.Text != "")
+                    txbox_active = tx_box;
+            }
             return txbox_active;
         }
 
@@ -87,103 +82,16 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
+        private void TextBoxBrush(string string_brush, TextBox textBox)
+        {
+            var converter = new BrushConverter();
+            var brush = (Brush)converter.ConvertFromString(string_brush);
+            textBox.Background = brush;
+        }
+
         #endregion ##########################################################################################################################################################################################
 
         #region Methods Bits ################################################################################################################################################################################
-        //Textboxen zurücksetzen Bits
-        private void Clear_Txbox_UnitC_Bits()
-        {
-            txbox_bit.Clear();
-            txbox_kilobit.Clear();
-            txbox_megabit.Clear();
-            txbox_gigabit.Clear();
-            txbox_terabit.Clear();
-            txbox_byte.Clear();
-            txbox_kilobyte.Clear();
-            txbox_megabyte.Clear();
-            txbox_gigabyte.Clear();
-            txbox_terabyte.Clear();
-            txbox_bit.IsReadOnly            = false;
-            txbox_kilobit.IsReadOnly        = false;
-            txbox_megabit.IsReadOnly        = false;
-            txbox_gigabit.IsReadOnly        = false;
-            txbox_terabit.IsReadOnly        = false;
-            txbox_byte.IsReadOnly           = false;
-            txbox_kilobyte.IsReadOnly       = false;
-            txbox_megabyte.IsReadOnly       = false;
-            txbox_gigabyte.IsReadOnly       = false;
-            txbox_terabyte.IsReadOnly       = false;
-            btn_bits_calculate.IsEnabled    = true;
-        }
-
-        //Abfragen, ob die Eingaben korrekt sind.
-        private bool CanWeStart_bits()
-        {
-            bool letUsStart = false;
-            int i = 0;
-            //Wenn Textbox ausgefüllt, dann erhöhe i
-            if (txbox_bit.Text      != "") { i++; }
-            if (txbox_kilobit.Text  != "") { i++; }
-            if (txbox_megabit.Text  != "") { i++; }
-            if (txbox_gigabit.Text  != "") { i++; }
-            if (txbox_terabit.Text  != "") { i++; }
-            if (txbox_byte.Text     != "") { i++; }
-            if (txbox_kilobyte.Text != "") { i++; }
-            if (txbox_megabyte.Text != "") { i++; }
-            if (txbox_gigabyte.Text != "") { i++; }
-            if (txbox_terabyte.Text != "") { i++; }
-            //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
-            txbox_active = Active_TextBox();
-            if (i == 1 && control.CheckTextboxIfNumeric(txbox_active) == true)
-            {
-                letUsStart = true;
-            }
-            else
-            {
-                //Fehlermeldung
-                System.Windows.Forms.MessageBox.Show
-                (Errorcodes.UNITC_BITS_NO_VALID_INPUT);
-            }
-            return letUsStart;
-        }
-
-        public void DisplayUnitCalculator_BitsBytes()
-        {
-            txbox_bit.Text                  = bitByteStrings._bit;
-            txbox_bit.IsReadOnly            = true;
-            txbox_kilobit.Text              = bitByteStrings.kiloBit;
-            txbox_kilobit.IsReadOnly        = true;
-            txbox_megabit.Text              = bitByteStrings.megaBit;
-            txbox_megabit.IsReadOnly        = true;
-            txbox_gigabit.Text              = bitByteStrings.gigaBit;
-            txbox_gigabit.IsReadOnly        = true;
-            txbox_terabit.Text              = bitByteStrings.teraBit;
-            txbox_terabit.IsReadOnly        = true;
-            txbox_byte.Text                 = bitByteStrings._byte;
-            txbox_byte.IsReadOnly           = true;
-            txbox_kilobyte.Text             = bitByteStrings.kiloByte;
-            txbox_kilobyte.IsReadOnly       = true;
-            txbox_megabyte.Text             = bitByteStrings.megaByte;
-            txbox_megabyte.IsReadOnly       = true;
-            txbox_gigabyte.Text             = bitByteStrings.gigaByte;
-            txbox_gigabyte.IsReadOnly       = true;
-            txbox_terabyte.Text             = bitByteStrings.teraByte;
-            txbox_terabyte.IsReadOnly       = true;
-            btn_bits_calculate.IsEnabled    = false;
-
-            var converter   = new BrushConverter();
-            var brush       = (Brush)converter.ConvertFromString("#CCCCCCCC");
-            txbox_bit.Background = brush;
-            txbox_kilobit.Background    = brush;
-            txbox_megabit.Background    = brush;
-            txbox_gigabit.Background    = brush;
-            txbox_terabit.Background    = brush;
-            txbox_byte.Background       = brush;
-            txbox_kilobyte.Background   = brush;
-            txbox_megabyte.Background   = brush;
-            txbox_gigabyte.Background   = brush;
-            txbox_terabyte.Background   = brush;
-        }
 
         public void Event_Btn_Click_Calculate_Bits()
         {
@@ -202,25 +110,68 @@ namespace ITler_Ein_mal_Eins.Modules
                 }
             }
         }
+
+        //Abfragen, ob die Eingaben korrekt sind.
+        private bool CanWeStart_bits()
+        {
+            bool letUsStart = false;
+            int i = 0;
+            //Wenn Textbox ausgefüllt, dann erhöhe i
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                if (tx_box.Text != "")
+                    i++;
+            }
+            //Es darf nur genau eine Box ausgefüllt sein und es muss ein numerischer Wert sein
+            txbox_active = Active_TextBox();
+            if (i == 1 && control.CheckTextboxIfNumeric(txbox_active) == true)
+            {
+                letUsStart = true;
+            }
+            else
+            {
+                //Fehlermeldung
+                System.Windows.Forms.MessageBox.Show(Errorcodes.UNITC_BITS_NO_VALID_INPUT);
+            }
+            return letUsStart;
+        }
+
+
+        public void DisplayUnitCalculator_BitsBytes()
+        {
+            txbox_bit.Text                  = bitByteStrings._bit;
+            txbox_kilobit.Text              = bitByteStrings.kiloBit;
+            txbox_megabit.Text              = bitByteStrings.megaBit;
+            txbox_gigabit.Text              = bitByteStrings.gigaBit;
+            txbox_terabit.Text              = bitByteStrings.teraBit;
+            txbox_byte.Text                 = bitByteStrings._byte;
+            txbox_kilobyte.Text             = bitByteStrings.kiloByte;
+            txbox_megabyte.Text             = bitByteStrings.megaByte;
+            txbox_gigabyte.Text             = bitByteStrings.gigaByte;
+            txbox_terabyte.Text             = bitByteStrings.teraByte;
+            btn_bits_calculate.IsEnabled    = false;
+
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                tx_box.IsReadOnly = true;
+                TextBoxBrush("#CCCCCCCC", tx_box);
+            }
+        }
+
+        //Textboxen zurücksetzen Bits
+        private void Clear_Txbox_UnitC_Bits()
+        {
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                tx_box.Clear();
+                tx_box.IsReadOnly = false;
+            }
+            btn_bits_calculate.IsEnabled = true;
+        }
+
         #endregion ##########################################################################################################################################################################################
 
         #region Methods Systems #############################################################################################################################################################################
-
-        //Textboxen zurücksetzen Bits
-        private void Clear_Txbox_UnitC_Systems()
-        {
-            txbox_binaer.Clear();
-            txbox_oktal.Clear();
-            txbox_dezimal.Clear();
-            txbox_hexadezimal.Clear();
-
-            txbox_binaer.IsReadOnly             = false;
-            txbox_oktal.IsReadOnly              = false;
-            txbox_dezimal.IsReadOnly            = false;
-            txbox_hexadezimal.IsReadOnly        = false;
-            btn_systems_calculate.IsEnabled     = true;
-            combobox_system.IsEnabled           = true;
-        }
 
         public void Event_Btn_Click_Calculate_Systems()
         {
@@ -248,10 +199,11 @@ namespace ITler_Ein_mal_Eins.Modules
             bool letUsStart = false;
             int i = 0;
             //Wenn Textbox ausgefüllt, dann erhöhe i
-            if (txbox_binaer.Text       != "") { i++; }
-            if (txbox_oktal.Text        != "") { i++; }
-            if (txbox_dezimal.Text      != "") { i++; }
-            if (txbox_hexadezimal.Text  != "") { i++; }
+            foreach (TextBox tx_box in grid_unitCalculator_systems.Children.OfType<TextBox>())
+            {
+                if (tx_box.Text != "")
+                    i++;
+            }
             //Es darf nur genau eine Box ausgefüllt sein und es muss ein erlaubter Wert sein
             txbox_active = Active_TextBox();
             if (i == 1 && control.CheckTextboxIfNumeric(txbox_active) == true)
@@ -267,27 +219,6 @@ namespace ITler_Ein_mal_Eins.Modules
             return letUsStart;
         }
 
-        public void DisplayUnitCalculator_Systems()
-        {
-            txbox_binaer.Text                   = systems.binaer;
-            txbox_binaer.IsReadOnly             = true;
-            txbox_oktal.Text                    = systems.oktal;
-            txbox_oktal.IsReadOnly              = true;
-            txbox_dezimal.Text                  = systems.dezimal;
-            txbox_dezimal.IsReadOnly            = true;
-            txbox_hexadezimal.Text              = systems.hexadezimal;
-            txbox_hexadezimal.IsReadOnly        = true;
-            btn_systems_calculate.IsEnabled     = false;
-            combobox_system.IsEnabled           = false;
-
-            var converter   = new BrushConverter();
-            var brush       = (Brush)converter.ConvertFromString("#CCCCCCCC");
-            txbox_binaer.Background      = brush;
-            txbox_oktal.Background       = brush;
-            txbox_dezimal.Background     = brush;
-            txbox_hexadezimal.Background = brush;
-        }
-
         public string WhichDataType()
         {
             string dataType = combobox_system.SelectedItem.ToString();
@@ -301,6 +232,34 @@ namespace ITler_Ein_mal_Eins.Modules
             return output;
         }
 
+        public void DisplayUnitCalculator_Systems()
+        {
+            txbox_binaer.Text                   = systems.binaer;
+            txbox_oktal.Text                    = systems.oktal;
+            txbox_dezimal.Text                  = systems.dezimal;
+            txbox_hexadezimal.Text              = systems.hexadezimal;
+            btn_systems_calculate.IsEnabled     = false;
+            combobox_system.IsEnabled           = false;
+
+            foreach (TextBox tx_box in grid_unitCalculator_systems.Children.OfType<TextBox>())
+            {
+                tx_box.IsReadOnly = true;
+                TextBoxBrush("#CCCCCCCC", tx_box);
+            }
+        }
+
+        //Textboxen zurücksetzen Systeme
+        private void Clear_Txbox_UnitC_Systems()
+        {
+            foreach (TextBox tx_box in grid_unitCalculator_systems.Children.OfType<TextBox>())
+            {
+                tx_box.Clear();
+                tx_box.IsReadOnly = false;
+            }
+            btn_systems_calculate.IsEnabled = true;
+            combobox_system.IsEnabled = true;
+        }
+
         #endregion ##########################################################################################################################################################################################
 
         #region Initialisiation #############################################################################################################################################################################
@@ -308,17 +267,10 @@ namespace ITler_Ein_mal_Eins.Modules
         //Initialsieren der TextBox Tags. Für die Prüfung, welcher Wert als Eingabe erlaubt wird
         private void InitializeTags()
         {
-            txbox_bit.Tag       = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_kilobit.Tag   = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_megabit.Tag   = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_gigabit.Tag   = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_terabit.Tag   = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_byte.Tag      = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_kilobyte.Tag  = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_megabyte.Tag  = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_gigabyte.Tag  = Control.Control.digitTag.SIGNEDFLOAT;
-            txbox_terabyte.Tag  = Control.Control.digitTag.SIGNEDFLOAT;
-
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                tx_box.Tag = Control.Control.digitTag.SIGNEDFLOAT;
+            }
             txbox_binaer.Tag        = Control.Control.digitTag.UNSIGNEDBINARY;
             txbox_oktal.Tag         = Control.Control.digitTag.UNSIGNEDOCTAL;
             txbox_dezimal.Tag       = Control.Control.digitTag.DECIMAL;
@@ -334,21 +286,14 @@ namespace ITler_Ein_mal_Eins.Modules
         private void InitializeEvents()
         {
             //Abfrage Textbox geändert für die Färbung bei Falshceingabe
-            txbox_bit.TextChanged           += Txbox_UnitCalculator_TextChanged;
-            txbox_byte.TextChanged          += Txbox_UnitCalculator_TextChanged;
-            txbox_kilobit.TextChanged       += Txbox_UnitCalculator_TextChanged;
-            txbox_kilobyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
-            txbox_megabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
-            txbox_megabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
-            txbox_gigabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
-            txbox_gigabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
-            txbox_terabit.TextChanged       += Txbox_UnitCalculator_TextChanged;
-            txbox_terabyte.TextChanged      += Txbox_UnitCalculator_TextChanged;
-
-            txbox_binaer.TextChanged        += Txbox_UnitCalculator_TextChanged;
-            txbox_oktal.TextChanged         += Txbox_UnitCalculator_TextChanged;
-            txbox_dezimal.TextChanged       += Txbox_UnitCalculator_TextChanged;
-            txbox_hexadezimal.TextChanged   += Txbox_UnitCalculator_TextChanged;
+            foreach (TextBox tx_box in grid_unitCalculator_bits.Children.OfType<TextBox>())
+            {
+                tx_box.TextChanged += Txbox_UnitCalculator_TextChanged;
+            }
+            foreach (TextBox tx_box in grid_unitCalculator_systems.Children.OfType<TextBox>())
+            {
+                tx_box.TextChanged += Txbox_UnitCalculator_TextChanged;
+            }
         }
 
         #endregion ##########################################################################################################################################################################################

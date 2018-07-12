@@ -11,7 +11,7 @@
         Closed="Window_Closed">
 
     <Grid>
-        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" KeyDown="Enterpressed" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl x:Name="tabControl_unitCalculator" Margin="0,0,0,0" SelectionChanged="TabControl_SelectionChanged" KeyDown="Enterpressed">
 
             <!--#region bits-bites-->
 
@@ -20,7 +20,7 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
-                    <Grid Margin="2.5,2.5,2.5,27.5">
+                    <Grid x:Name="grid_unitCalculator_bits" Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" MinHeight="30" />
@@ -76,7 +76,7 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="/ITler-Ein-mal-Eins;component/Resources/binary-code.jpg" Stretch="UniformToFill" Opacity="0.3"/>
                     </Grid.Background>
-                    <Grid Margin="2.5,2.5,2.5,27.5">
+                    <Grid x:Name="grid_unitCalculator_systems" Margin="2.5,2.5,2.5,27.5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" MinHeight="30"/>
                             <RowDefinition Height="Auto" />

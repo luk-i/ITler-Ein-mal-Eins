@@ -61,7 +61,9 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabe ungültig. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Eingabe ist ungültig.
+        ///
+        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
         /// </summary>
         public static string ERROR_INVALIDINPUT {
             get {
@@ -70,7 +72,9 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene IPv4 - Adresse ist ungültig. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene IPv4-Adresse ist ungültig.
+        ///
+        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
         /// </summary>
         public static string ERROR_IPV4DIGITISNOTVALID {
             get {
@@ -79,7 +83,7 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Es wurden mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen Sie nur ein Feld. Die restlichen Felder werden automatisch befüllt. ähnelt.
         /// </summary>
         public static string ERROR_MULTIPLEFIELDSFILLED {
             get {
@@ -88,7 +92,9 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene Subnetzmaske ist ungültig. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die angegebene Subnetzmaske ist ungültig.
+        ///
+        ///Weitere Informationen finden Sie unter dem Tab &quot;Eingabehilfe&quot;. ähnelt.
         /// </summary>
         public static string ERROR_SUBNETMASKISNOTVALID {
             get {
@@ -144,6 +150,33 @@ namespace ITler_Ein_mal_Eins {
         public static string UNITC_SYSTEMS_RANGE_EXCEPTION {
             get {
                 return ResourceManager.GetString("UNITC_SYSTEMS_RANGE_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die System-Fehler: Es wurde ein falscher Datentyp angegeben. Erwartet wird {0}, gesetzt wurde {1}. ähnelt.
+        /// </summary>
+        public static string WRONGTYPE_ERRORMESSAGE {
+            get {
+                return ResourceManager.GetString("WRONGTYPE_ERRORMESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die System-Fehler: Es wurde ein falscher Datentyp übergeben. ähnelt.
+        /// </summary>
+        public static string WRONGTYPE_HEADER {
+            get {
+                return ResourceManager.GetString("WRONGTYPE_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die System-Fehler: Es wurde ein falscher Datentyp übergeben. ähnelt.
+        /// </summary>
+        public static string WRONGTYPE_SINGLE {
+            get {
+                return ResourceManager.GetString("WRONGTYPE_SINGLE", resourceCulture);
             }
         }
     }

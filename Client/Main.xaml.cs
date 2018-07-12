@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ITler_Ein_mal_Eins.Control;
 
 
 namespace ITler_Ein_mal_Eins
@@ -19,9 +20,11 @@ namespace ITler_Ein_mal_Eins
     public partial class Main : Window
     {
         Control.Control control;
+        IpCalculator ipCalculator;
         public Main()
         {
             control = new Control.Control();
+            ipCalculator = new IpCalculator(control);
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
