@@ -412,11 +412,11 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void FillRightContent()
         {
-            int netmask;
-            int subnetmask;
-            try     { netmask       = Convert.ToInt32(Subnet_textBox_ShortWritten.Text); }
+            Int64 netmask;
+            Int64 subnetmask;
+            try     { netmask       = Convert.ToInt64(Subnet_textBox_ShortWritten.Text); }
             catch   { netmask       = 0; };
-            try     { subnetmask    = Convert.ToInt32(Subnet_textBox_ShortWritten_new.Text); }
+            try     { subnetmask    = Convert.ToInt64(Subnet_textBox_ShortWritten_new.Text); }
             catch   { subnetmask    = 0;}
 
             string ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text);
