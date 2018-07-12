@@ -11,7 +11,7 @@ namespace ITler_Ein_mal_Eins.Modules
     {
         Window origin;
         Control.Control control;
-
+        //
         public SubnetCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
