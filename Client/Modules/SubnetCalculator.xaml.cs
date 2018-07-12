@@ -275,7 +275,7 @@ namespace ITler_Ein_mal_Eins.Modules
                     Int64 anzahl = subnetmask - netmask;
                     Int64 wert = Convert.ToInt64(Math.Pow(2, anzahl));
                     Int64 schritt = wert / anzahl;
-                    endPart_int = (schritt * numberOfSubnet) - 1;
+                    endPart_int = (schritt * (numberOfSubnet - 1)) - 1;
                     string endPart_string = Convert.ToString(endPart_int, 2);
 
                     return part[0] + part[1] + part[2];
@@ -292,10 +292,15 @@ namespace ITler_Ein_mal_Eins.Modules
             }               
         }
 
-        #endregion
+        private string calculateFocusedBroadcastAddress(Int64 numberOfSubnet, Int64 netmask, Int64 subnetmask, string ipv4)
+        {
 
-        #region Validation
-        private bool IsValidInput_IpV4()
+        }
+
+            #endregion
+
+            #region Validation
+            private bool IsValidInput_IpV4()
         {
             if (IpCalculator.isIpV4Digit(Ip4_textBox1, false) && IpCalculator.isIpV4Digit(Ip4_textBox2, false) &&
                 IpCalculator.isIpV4Digit(Ip4_textBox3, false) && IpCalculator.isIpV4Digit(Ip4_textBox4, false))
@@ -508,6 +513,7 @@ namespace ITler_Ein_mal_Eins.Modules
             catch { txblock_subnet_number.Text      = "-"; }
 
             txblock_subnet_adress.Text = calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4);
+            txblock_broadcast_adress.Text = calculateFocusedBroadcastAddress(numberOfSubnet, netmask, subnetmask, ipv4);
 
             /* Umstrukturierung der Funktion in Arbeit ###############################################
             txblock_first_adress.Text           = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
