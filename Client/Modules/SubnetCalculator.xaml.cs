@@ -247,10 +247,40 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
-        private void calculateFocusedAddress()
+        private string calculateFocusedSubnetAddress(Int64 numberOfSubnet, Int64 netmask, Int64 subnetmask, string ipv4)
         {
+            if (subnetmask > netmask && numberOfSubnet != 0)
+            {
+                string firstSubnetAdress = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
+                firstSubnetAdress.Replace(" ", "");
+                Char delimiter = '|';
+                String[] substrings = firstSubnetAdress.Split(delimiter);
+                String[] part;
+                part = new String[3];
+                int i = 0;
+                foreach (var substring in substrings)
+                {
+                    part[i] = substring;
+                    i++;
+                }
+                Int64 middlePart_int = Convert.ToInt32(part[1], 2);
+                middlePart_int = numberOfSubnet - 1;
+                string middlePart_string = Convert.ToString(middlePart_int, 2);
 
-            throw new NotImplementedException();
+                Int64 endPart_int = Convert.ToInt32(part[2], 2);
+                Int64 anzahl = subnetmask - netmask;
+                Int64 wert = Convert.ToInt64(Math.Pow(2, anzahl));
+                Int64 schritt = wert / anzahl;
+                endPart_int = (schritt * numberOfSubnet) - 1;
+                string endPart_string = Convert.ToString(endPart_int, 2);
+
+                return part[0] + part[1] + part[2];
+            }
+
+            else
+            {
+                return IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask))); ;
+            }               
         }
 
         #endregion
@@ -434,10 +464,13 @@ namespace ITler_Ein_mal_Eins.Modules
         {
             Int64 netmask;
             Int64 subnetmask;
+            Int64 numberOfSubnet;
             try     { netmask       = Convert.ToInt64(Subnet_textBox_ShortWritten.Text); }
             catch   { netmask       = 0; };
             try     { subnetmask    = Convert.ToInt64(Subnet_textBox_ShortWritten_new.Text); }
             catch   { subnetmask    = 0;}
+            try     { numberOfSubnet   = Convert.ToInt64(Selected_subnet_txbox.Text); }
+            catch   { numberOfSubnet    = 0; }
 
             string ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text);
             ipv4 = ipv4 + IpCalculator.InputToBinary(Ip4_textBox2.Text);
@@ -454,6 +487,8 @@ namespace ITler_Ein_mal_Eins.Modules
             catch { txblock_subnet_max_hosts.Text   = "-"; }
             try { txblock_subnet_number.Text        = Convert.ToString(IpCalculator.MaxBinaryBase(Convert.ToDecimal(Subnet_desired.Text))); }
             catch { txblock_subnet_number.Text      = "-"; }
+
+            txblock_subnet_adress.Text = calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4);
 
             /* Umstrukturierung der Funktion in Arbeit ###############################################
             txblock_first_adress.Text           = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
@@ -672,7 +707,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Selected_subnet_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            calculateFocusedAddress();
+            FillRightContent();
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)

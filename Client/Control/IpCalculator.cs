@@ -763,7 +763,7 @@ namespace ITler_Ein_mal_Eins.Control
                 return 2;
             }
         }
-
+        
         public static string FirstSubnetIPAdress (string inputIP, Int64 netmask)
         {
             string output = "";
@@ -781,7 +781,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
             return output;
         }
-
+        /* Nicht löschen!!! wird evtl. noch gebraucht.
         public static string FirstBroadcastIPAdress (string inputIP, Int64 netmask, Int64 subnetmask)
         {
             if (netmask == subnetmask)
@@ -876,7 +876,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
             return output;
         }
-
+        */
         public static string IP_BinaryToDottedDecimal (string inputIP)
         {
             int eightDigits = 0;
