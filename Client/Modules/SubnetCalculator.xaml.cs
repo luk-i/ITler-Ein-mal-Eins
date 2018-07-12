@@ -251,7 +251,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private string calculateFocusedSubnetAddress(Int64 numberOfSubnet, Int64 netmask, Int64 subnetmask, string ipv4)
         {
-            if (subnetmask > netmask && numberOfSubnet != 0)
+            if (subnetmask > netmask)
             {
                 string firstSubnetAdress = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
                 firstSubnetAdress.Replace(" ", "");
@@ -265,18 +265,25 @@ namespace ITler_Ein_mal_Eins.Modules
                     part[i] = substring;
                     i++;
                 }
-                Int64 middlePart_int = Convert.ToInt32(part[1], 2);
-                middlePart_int = numberOfSubnet - 1;
-                string middlePart_string = Convert.ToString(middlePart_int, 2);
+                try
+                {
+                    Int64 middlePart_int = Convert.ToInt32(part[1], 2);
+                    middlePart_int = numberOfSubnet - 1;
+                    string middlePart_string = Convert.ToString(middlePart_int, 2);
 
-                Int64 endPart_int = Convert.ToInt32(part[2], 2);
-                Int64 anzahl = subnetmask - netmask;
-                Int64 wert = Convert.ToInt64(Math.Pow(2, anzahl));
-                Int64 schritt = wert / anzahl;
-                endPart_int = (schritt * numberOfSubnet) - 1;
-                string endPart_string = Convert.ToString(endPart_int, 2);
+                    Int64 endPart_int = Convert.ToInt32(part[2], 2);
+                    Int64 anzahl = subnetmask - netmask;
+                    Int64 wert = Convert.ToInt64(Math.Pow(2, anzahl));
+                    Int64 schritt = wert / anzahl;
+                    endPart_int = (schritt * numberOfSubnet) - 1;
+                    string endPart_string = Convert.ToString(endPart_int, 2);
 
-                return part[0] + part[1] + part[2];
+                    return part[0] + part[1] + part[2];
+                }
+                catch
+                {
+                    return "-";
+                }
             }
 
             else
