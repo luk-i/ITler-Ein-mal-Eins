@@ -541,8 +541,10 @@ namespace ITler_Ein_mal_Eins.Modules
             try { txblock_subnet_number.Text        = Convert.ToString(IpCalculator.MaxBinaryBase(Convert.ToDecimal(Subnet_desired.Text))); }
             catch { txblock_subnet_number.Text      = "-"; }
 
-            txblock_subnet_adress.Text = calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4);
-            txblock_broadcast_adress.Text = calculateFocusedBroadcastAddress(numberOfSubnet, netmask, subnetmask, ipv4);
+            txblock_subnet_adress.Text = IpCalculator.FormatIPv4String(netmask, subnetmask, (calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4)));
+            txblock_broadcast_adress.Text = IpCalculator.FormatIPv4String(netmask, subnetmask, (calculateFocusedBroadcastAddress(numberOfSubnet, netmask, subnetmask, ipv4)));
+            txblock_subnet_adress_dez.Text = IpCalculator.IP_BinaryToDottedDecimal(calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4));
+            txblock_broadcast_adress.Text = IpCalculator.IP_BinaryToDottedDecimal(calculateFocusedBroadcastAddress(numberOfSubnet, netmask, subnetmask, ipv4));
 
             /* Umstrukturierung der Funktion in Arbeit ###############################################
             txblock_first_adress.Text           = IpCalculator.FormatIPv4String(netmask, subnetmask, (IpCalculator.FirstSubnetIPAdress(ipv4, netmask)));
