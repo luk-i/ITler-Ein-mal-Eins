@@ -413,18 +413,33 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static int calcSubnetShort(int desired_hostNo)
         {
-            double z = Math.Log(desired_hostNo) / Math.Log(2);
-            double n = Math.Ceiling(z);
-            return (32 - (int)n);
+            if (desired_hostNo > 0)
+            {
+                double z = Math.Log(desired_hostNo + 2) / Math.Log(2);
+                double n = Math.Ceiling(z);
+                return (32 - (int)n);
+            }
+            else
+            {
+                return 31;
+            }
         }
 
         public static int calcSubnetShort(IPAddressTextboxes desired_hostNo)
         {
             if(desired_hostNo.type == Textbox_FieldType.DESIRED_HOSTNO)
             {
-                double z = Math.Log(tryParseTextboxToInt(desired_hostNo.first)) / Math.Log(2);
-                double n = Math.Ceiling(z);
-                return (32 - (int)n);
+                int x = tryParseTextboxToInt(desired_hostNo.first) + 2;
+                if (x > 0)
+                {
+                    double z = Math.Log(x) / Math.Log(2);
+                    double n = Math.Ceiling(z);
+                    return (32 - (int)n);
+                }
+                else
+                {
+                    return 31;
+                }
             }
             else
             {
