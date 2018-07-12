@@ -136,6 +136,9 @@ namespace ITler_Ein_mal_Eins.Modules
                         if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten) && control.CheckTextboxIfNumeric(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
                             //Falsche Nummer ?
                             string st = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO),
                                 writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)).ToString();
@@ -159,7 +162,10 @@ namespace ITler_Ein_mal_Eins.Modules
                         if (IpCalculator.isLegitHostNo(writeStruct(Textbox_FieldType.DESIRED_HOSTNO),
                             writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && control.CheckTextboxIfNumeric(txbox))
                         {
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
                             string st = IpCalculator.calcSubnetShort(writeStruct(Textbox_FieldType.DESIRED_HOSTNO)).ToString();
                             Subnet_textBox_ShortWritten_new.Text = st;
                             readStruct(IpCalculator.calcSubnetNo(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)
@@ -177,7 +183,28 @@ namespace ITler_Ein_mal_Eins.Modules
                         TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.NEW_SUBNETMASK_LONG:
-
+                        if(IpCalculator.isIpV4Digit(Subnet_textBox1_new,true) &&
+                           IpCalculator.isIpV4Digit(Subnet_textBox2_new, true) &&
+                           IpCalculator.isIpV4Digit(Subnet_textBox3_new, true) &&
+                           IpCalculator.isIpV4Digit(Subnet_textBox4_new, true) &&
+                           IpCalculator.tryParseTextboxToInt(Subnet_textBox4_new) != 255 &&
+                           IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG))) {
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
+                            byte[] tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox1_new, Subnet_textBox2_new, Subnet_textBox3_new, Subnet_textBox4_new);
+                            Subnet_textBox_ShortWritten_new.Text = tmp[0].ToString();
+                            readStruct(IpCalculator.calcSubnetNo(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)
+                             , writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT),
+                             writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
+                            Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
+                            FillRightContent();
+                        }
+                        else
+                        {
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.RED, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
+                        }
                         TextChanged_Event_isLocked = false;
                         break;
                     case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
@@ -186,10 +213,13 @@ namespace ITler_Ein_mal_Eins.Modules
                         //
                         if (IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)
                             , writeStruct(Textbox_FieldType.SUBNETMASK_SHORT))){
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
+                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)));
                             readStruct(IpCalculator.calcSubnetNo(writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)
                               , writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT),
-                              writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));
-                            readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
+                              writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)));                            
                             Hosts_desired.Text = IpCalculator.calcHostNo(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)).ToString();
                             byte[] tmp;
                             tmp = IpCalculator.calcEmptySubnetMaskFields(Subnet_textBox_ShortWritten_new);
