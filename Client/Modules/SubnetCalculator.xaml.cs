@@ -722,8 +722,8 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Selected_subnet_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            FillRightContent();
             setTextboxValuebySlider(Selected_subnet_txbox, Selected_subnet);
+            FillRightContent();
         }
 
         private void Ip4_textBox_TextChanged(object sender, TextChangedEventArgs e)
