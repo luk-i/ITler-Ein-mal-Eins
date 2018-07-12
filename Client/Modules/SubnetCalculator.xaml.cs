@@ -294,9 +294,22 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private string calculateFocusedBroadcastAddress(Int64 numberOfSubnet, Int64 netmask, Int64 subnetmask, string ipv4)
         {
-            string tmp = calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4);
+            string firstSubnetAdress = IpCalculator.FormatIPv4String(netmask, subnetmask, calculateFocusedSubnetAddress(numberOfSubnet, netmask, subnetmask, ipv4));
 
-            return tmp;
+            firstSubnetAdress.Replace(" ", "");
+            Char delimiter = '|';
+            String[] substrings = firstSubnetAdress.Split(delimiter);
+            String[] part;
+            part = new String[3];
+            int i = 0;
+            foreach (var substring in substrings)
+            {
+                part[i] = substring;
+                i++;
+            }
+            part[2].Replace("0", "1");
+
+            return part[0] + part[1] + part[2];
         }
 
             #endregion
