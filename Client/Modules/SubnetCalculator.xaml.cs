@@ -59,9 +59,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
 
         #region Control
-        //
-        //  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
-        //
+
         private bool IPv4_calculateBits()
         {
             byte[] tmp;
