@@ -9,20 +9,13 @@ namespace ITler_Ein_mal_Eins.Modules
 
     public partial class SubnetCalculator : Window
     {
-        #region Variables
         Window origin;
         Control.Control control;
-
-
-        private bool TextChanged_Event_isLocked = false;
-
-        #endregion
 
         public SubnetCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
             control = _control;
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             InitializeTags();
             InitializeEvents_LeftTop();
@@ -30,6 +23,12 @@ namespace ITler_Ein_mal_Eins.Modules
             InitializeTextboxes();
             InitializeContent();
         }
+
+        #region Variables
+
+        private bool TextChanged_Event_isLocked = false;
+
+        #endregion
 
 
         #region Methods
@@ -59,9 +58,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
 
         #region Control
-        //
-        //  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
-        //
+
         private bool IPv4_calculateBits()
         {
             byte[] tmp;
@@ -619,9 +616,9 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            origin.Show();
             origin.Left         = this.Left;
             origin.Top          = this.Top;
+            origin.Show();
         }
 
         private void button_Submit_Click(object sender, RoutedEventArgs e)
