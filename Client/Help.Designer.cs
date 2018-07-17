@@ -61,16 +61,30 @@ namespace ITler_Ein_mal_Eins {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Erlaubt sind Gleitkommazahlen mit und ohne Vorzeichen. Als Dezimaltrennzeichen kann &apos;.&apos; oder &apos;,&apos; benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Bitte geben Sie eine gültige IPv4-Adresse in Dezimal-Schreibweise ein.
+        ///Beispiel: 192 168 2 21
+        ///Die Netzmaske können Sie im selben Format, oder in der Kurzschreibweise eingeben (Bitte nur eine Variante).
+        ///Beispiel: 255 255 255 0  oder  24 (im &quot;/&quot;-Feld)
         ///
-        ///Füllen Sie genau ein Feld aus und drücken Sie &quot;Berechnen&quot;, oder drücken Sie die Enter-Taste.
-        ///Für eine erneute Eingabe drücken Sie bitte &quot;Zurücksetzen&quot;, oder erneut die Enter-Taste.
+        ///Nach der korrekten Eingabe drücken Sie &quot;Berechnen&quot;, oder betätigenn Sie die Enter-Taste. Daraufhin werden die Eingaben gesperrt und der untere Bereich freigegeben.
+        ///
+        ///Geben Sie die gewünschte Subnetz- oder Host-Anzahl an, oder füllen Sie die Subnetzmaske i [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        public static string HELP_SUBNET_CALCULATOR {
+            get {
+                return ResourceManager.GetString("HELP_SUBNET_CALCULATOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Erlaubt sind Gleitkommazahlen mit, oder ohne Vorzeichen. Als Dezimaltrennzeichen kann &apos;.&apos; oder &apos;,&apos; benutzt werden. Seperatoren im Vorkommabereich werden nicht akzeptiert.
+        ///
+        ///Füllen Sie genau ein Feld aus und drücken Sie &quot;Berechnen&quot;, oder betätigen Sie die Enter-Taste.
+        ///Für eine erneute Eingabe drücken Sie bitte &quot;Zurücksetzen&quot;, oder betätigen erneut die Enter-Taste.
         ///
         ///Hinweis: Es handelt sich um Einheiten im Hauptspeicherbereich, der Faktor zwischen den Tausender-Schritten beträgt daher 1024. 
         ///
-        ///Beispiele:
-        ///-123.4567
-        ///+ [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///Beispiele: [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string HELP_UNITC_BITS {
             get {

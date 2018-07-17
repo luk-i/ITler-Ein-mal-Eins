@@ -35,22 +35,18 @@ namespace ITler_Ein_mal_Eins
         private void Calculator_button_Click(object sender, RoutedEventArgs e)
         {
             Modules.UnitCalculator calculator = new Modules.UnitCalculator(this, control);
-            this.Hide();
+            calculator.Left = this.Left;
+            calculator.Top = this.Top;
             calculator.Show();
-            calculator.Left         = this.Left;
-            calculator.Top          = this.Top;
+            this.Hide();
         }
         private void SubnetCalculator_Button_Click(object sender, RoutedEventArgs e)
         {
             Modules.SubnetCalculator sCalculator = new Modules.SubnetCalculator(this, control);
-            this.Hide();
+            sCalculator.Left = this.Left;
+            sCalculator.Top = this.Top;            
             sCalculator.Show();
-            sCalculator.Left            = this.Left;
-            sCalculator.Top             = this.Top;
-        }
-        private void Useless_Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            this.Hide();
         }
 
         private void Exit_Button_Click(object sender, RoutedEventArgs e)

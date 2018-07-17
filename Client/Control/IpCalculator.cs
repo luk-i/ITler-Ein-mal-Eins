@@ -145,13 +145,12 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static bool isLegitIpV4SubnetMask(TextBox box)
         {
-            int shortDigit = 0;
-            if (int.TryParse(box.Text, out shortDigit))
+            try
             {
+                int shortDigit = tryParseTextboxToInt(box);
                 if (shortDigit >= 1 && shortDigit <= 32) { return true; }
                 return false;
-            }
-            else
+            }catch(System.OverflowException)
             {
                 return false;
             }
@@ -159,31 +158,45 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static bool isLegitIpV4SubnetMask(int shortDigit)
         {
-            if (shortDigit >= 1 && shortDigit <= 32) { return true; }
-            return false;
+            try
+            {
+                int checked_shortDigit = checked(shortDigit);
+            if (checked_shortDigit >= 1 && checked_shortDigit <= 32) { return true; }
+                return false;
+            }catch (System.OverflowException)
+            {
+                return false;
+            }
         }
 
         public static bool isLegitIpV4SubnetMask(IPAddressTextboxes newSubnetMask, IPAddressTextboxes oldSubnetMask)
         {
-            if (oldSubnetMask.type == Textbox_FieldType.SUBNETMASK_SHORT) {
-                if (newSubnetMask.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT)
+            try
+            {
+                if (oldSubnetMask.type == Textbox_FieldType.SUBNETMASK_SHORT)
                 {
-                    int shortDigit = tryParseTextboxToInt(newSubnetMask.first);
-                    int shortDigit_old = tryParseTextboxToInt(oldSubnetMask.first);
-                    if(shortDigit >= shortDigit_old && shortDigit <= 31)
+                    if (newSubnetMask.type == Textbox_FieldType.NEW_SUBNETMASK_SHORT)
                     {
-                        return true;
+                        int shortDigit = tryParseTextboxToInt(newSubnetMask.first);
+                        int shortDigit_old = tryParseTextboxToInt(oldSubnetMask.first);
+                        if (shortDigit >= shortDigit_old && shortDigit <= 31)
+                        {
+                            return true;
+                        }
+                        return false;
                     }
-                    return false;
+                    else
+                    {
+                        throw new WrongTypeException(newSubnetMask, Textbox_FieldType.NEW_SUBNETMASK_SHORT);
+                    }
                 }
                 else
                 {
-                    throw new WrongTypeException(newSubnetMask, Textbox_FieldType.NEW_SUBNETMASK_SHORT);
+                    throw new WrongTypeException(oldSubnetMask, Textbox_FieldType.SUBNETMASK_SHORT);
                 }
-            }
-            else
+            }catch (System.OverflowException)
             {
-                throw new WrongTypeException(oldSubnetMask, Textbox_FieldType.SUBNETMASK_SHORT);
+                return false;
             }
         }
 
@@ -198,21 +211,34 @@ namespace ITler_Ein_mal_Eins.Control
         //
         public static bool isLegitSubnetNo(TextBox subnetNo, TextBox subnet_short)
         {
-            if (tryParseTextboxToInt(subnetNo) >= 0 && tryParseTextboxToInt(subnetNo) <= 
-                getMaxSubnetNo(subnet_short))
+            try
             {
-                return true;
+                if (tryParseTextboxToInt(subnetNo) >= 0 && tryParseTextboxToInt(subnetNo) <=
+                    getMaxSubnetNo(subnet_short))
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (System.OverflowException)
+            {
+                return false;
+            }
         }
 
         public static bool isLegitSubnetNo(int subnetNo, int subnet_short)
         {
-            if(subnetNo >= 0 && subnetNo <= getMaxSubnetNo(subnet_short))
+            try
             {
-                return true;
+                if (subnetNo >= 0 && subnetNo <= getMaxSubnetNo(subnet_short))
+                {
+                    return true;
+                }
+                return false;
+            }catch (System.OverflowException)
+            {
+                return false;
             }
-            return false;
         }
 
         #endregion
@@ -221,38 +247,52 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static bool isLegitHostNo(int HostNo, int subnet_short_old)
         {
-            if(HostNo >= 0 && HostNo <= getMaxHostNo(subnet_short_old))
+            try
             {
-                return true;
+                int z = checked(HostNo);
+                int ckecked_subnet_short_old = checked(subnet_short_old);
+                if (z >= 0 && z <= getMaxHostNo(subnet_short_old))
+                {
+                    return true;
+                }
+                return false;
+            }catch(System.OverflowException)
+            {
+                return false;
             }
-            return false;
         }
 
         public static bool isLegitHostNo(IPAddressTextboxes HostNo, IPAddressTextboxes subnet_short_old)
         {
-            if(HostNo.type == Textbox_FieldType.DESIRED_HOSTNO)
+            try
             {
-                if(subnet_short_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
+                if (HostNo.type == Textbox_FieldType.DESIRED_HOSTNO)
                 {
-                    int maxHostNo = getMaxHostNo(subnet_short_old);
-                    int this_HostNo = tryParseTextboxToInt(HostNo.first);
-                    if (this_HostNo >= 0 &&this_HostNo <= maxHostNo)
+                    if (subnet_short_old.type == Textbox_FieldType.SUBNETMASK_SHORT)
                     {
-                        return true;
+                        int maxHostNo = getMaxHostNo(subnet_short_old);
+                        int this_HostNo = tryParseTextboxToInt(HostNo.first);
+                        if (this_HostNo >= 0 && this_HostNo <= maxHostNo)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
-                        return false;
+                        throw new WrongTypeException(subnet_short_old, Textbox_FieldType.SUBNETMASK_SHORT);
                     }
                 }
                 else
                 {
-                    throw new WrongTypeException(subnet_short_old, Textbox_FieldType.SUBNETMASK_SHORT);
+                    throw new WrongTypeException(HostNo, Textbox_FieldType.DESIRED_HOSTNO);
                 }
-            }
-            else
+            }catch (System.OverflowException)
             {
-                throw new WrongTypeException(HostNo, Textbox_FieldType.DESIRED_HOSTNO);
+                return false;
             }
         }
 
@@ -273,7 +313,13 @@ namespace ITler_Ein_mal_Eins.Control
             return false;
         }
 
-
+        public static bool IsTextboxFilled (TextBox txbox)
+        {
+            if (txbox.Text != "")
+                return true;
+            else
+                return false;
+        }
 
         #endregion
 
@@ -367,18 +413,33 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static int calcSubnetShort(int desired_hostNo)
         {
-            double z = Math.Log(desired_hostNo) / Math.Log(2);
-            double n = Math.Ceiling(z);
-            return (32 - (int)n);
+            if (desired_hostNo > 0)
+            {
+                double z = Math.Log(desired_hostNo + 2) / Math.Log(2);
+                double n = Math.Ceiling(z);
+                return (32 - (int)n);
+            }
+            else
+            {
+                return 31;
+            }
         }
 
         public static int calcSubnetShort(IPAddressTextboxes desired_hostNo)
         {
             if(desired_hostNo.type == Textbox_FieldType.DESIRED_HOSTNO)
             {
-                double z = Math.Log(tryParseTextboxToInt(desired_hostNo.first)) / Math.Log(2);
-                double n = Math.Ceiling(z);
-                return (32 - (int)n);
+                int x = tryParseTextboxToInt(desired_hostNo.first) + 2;
+                if (x > 0)
+                {
+                    double z = Math.Log(x) / Math.Log(2);
+                    double n = Math.Ceiling(z);
+                    return (32 - (int)n);
+                }
+                else
+                {
+                    return 31;
+                }
             }
             else
             {
@@ -599,7 +660,7 @@ namespace ITler_Ein_mal_Eins.Control
         {
             try
             {
-                string output = Convert.ToString(Convert.ToInt32(input), 2);
+                string output = Convert.ToString(Convert.ToInt64(input), 2);
                 output = output.PadLeft(8, '0');
                 return output;
             }
@@ -609,7 +670,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string FormatIPv4String (int netmask, int subnetmask, string ipv4)
+        public static string FormatIPv4String (Int64 netmask, Int64 subnetmask, string ipv4)
         {
             if (ipv4 != "")
             {
@@ -678,7 +739,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static int MaxBinaryBase(decimal input)
+        public static Int64 MaxBinaryBase(decimal input)
         {
             if (input != 1)
             {
@@ -694,7 +755,7 @@ namespace ITler_Ein_mal_Eins.Control
                 }
                 else
                 {
-                        return Convert.ToInt32(Math.Pow(2, potenz));
+                        return Convert.ToInt64(Math.Pow(2, potenz));
                 }
             }
             else
@@ -703,7 +764,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string FirstSubnetIPAdress (string inputIP, int netmask)
+        public static string FirstSubnetIPAdress (string inputIP, Int64 netmask)
         {
             string output = "";
             foreach (char x in inputIP)
@@ -721,7 +782,7 @@ namespace ITler_Ein_mal_Eins.Control
             return output;
         }
 
-        public static string FirstBroadcastIPAdress (string inputIP, int netmask, int subnetmask)
+        public static string FirstBroadcastIPAdress (string inputIP, Int64 netmask, Int64 subnetmask)
         {
             if (netmask == subnetmask)
             {
@@ -755,7 +816,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string LastSubnetIPAdress(string inputIP, int netmask, int subnetmask)
+        public static string LastSubnetIPAdress(string inputIP, Int64 netmask, Int64 subnetmask)
         {
             if (netmask == subnetmask)
             {
@@ -789,7 +850,7 @@ namespace ITler_Ein_mal_Eins.Control
             }
         }
 
-        public static string LastBroadcastIPAdress(string inputIP, int netmask, int subnetmask)
+        public static string LastBroadcastIPAdress(string inputIP, Int64 netmask, Int64 subnetmask)
         {
             string output = "";
             foreach (char x in inputIP)
@@ -847,10 +908,10 @@ namespace ITler_Ein_mal_Eins.Control
             try
             {
                 output =
-                    Convert.ToString(Convert.ToInt32(byte1, 2)) + '.' +
-                    Convert.ToString(Convert.ToInt32(byte2, 2)) + '.' +
-                    Convert.ToString(Convert.ToInt32(byte3, 2)) + '.' +
-                    Convert.ToString(Convert.ToInt32(byte4, 2));
+                    Convert.ToString(Convert.ToInt64(byte1, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt64(byte2, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt64(byte3, 2)) + '.' +
+                    Convert.ToString(Convert.ToInt64(byte4, 2));
                 return output;
             }
             catch
@@ -866,9 +927,15 @@ namespace ITler_Ein_mal_Eins.Control
 
         public static int tryParseTextboxToInt(TextBox box)
         {
-            int tmp = 0;
-            int.TryParse(box.Text, out tmp);
-            return tmp;
+            int tmp = -1;
+            if(int.TryParse(box.Text, out tmp))
+            {
+                return tmp;
+            }
+            else
+            {
+                throw new System.OverflowException();
+            }
         }
 
         public static IPAddressTextboxes fillAddressBoxByByte(byte[] byte_array, IPAddressTextboxes to_overwrite)

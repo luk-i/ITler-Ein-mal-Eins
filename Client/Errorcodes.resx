@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ERROR_INVALIDINPUT" xml:space="preserve">
-    <value>Eingabe ungültig.</value>
+    <value>Die Eingabe ist ungültig.</value>
   </data>
   <data name="ERROR_IPV4DIGITISNOTVALID" xml:space="preserve">
-    <value>Die angegebene IPv4 - Adresse ist ungültig.</value>
+    <value>Die angegebene IPv4-Adresse ist ungültig.</value>
   </data>
   <data name="ERROR_MULTIPLEFIELDSFILLED" xml:space="preserve">
-    <value>Es wurden zu mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen sie nur ein Feld; die restlichen werden automatisch befüllt.</value>
+    <value>Es wurden mehrere Felder bei einer Einzelfeldauswahl befüllt. Bitte befüllen Sie nur ein Feld. Die restlichen Felder werden automatisch befüllt.</value>
   </data>
   <data name="ERROR_SUBNETMASKISNOTVALID" xml:space="preserve">
     <value>Die angegebene Subnetzmaske ist ungültig.</value>
@@ -151,12 +151,12 @@ Weitere Informationen finden Sie unter dem Tab "Eingabehilfe".</value>
 Bitte wählen Sie den Wert passend zu dem Datentyp.</value>
   </data>
   <data name="WRONGTYPE_ERRORMESSAGE" xml:space="preserve">
-    <value>Falscher Typ angegeben. Erwartet wird {0}, gesetzt war {1}.</value>
+    <value>System-Fehler: Es wurde ein falscher Datentyp angegeben. Erwartet wird {0}, gesetzt wurde {1}.</value>
   </data>
   <data name="WRONGTYPE_HEADER" xml:space="preserve">
-    <value>Fehler: Falscher Datentyp übergeben.</value>
+    <value>System-Fehler: Es wurde ein falscher Datentyp übergeben.</value>
   </data>
   <data name="WRONGTYPE_SINGLE" xml:space="preserve">
-    <value>Falscher Typ Übergeben. Abbruch.</value>
+    <value>System-Fehler: Es wurde ein falscher Datentyp übergeben.</value>
   </data>
 </root>

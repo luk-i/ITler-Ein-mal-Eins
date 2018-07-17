@@ -9,26 +9,26 @@ namespace ITler_Ein_mal_Eins.Modules
 
     public partial class SubnetCalculator : Window
     {
-        #region Variables
         Window origin;
         Control.Control control;
-
-
-        private bool TextChanged_Event_isLocked = false;
-
-        #endregion
-
+        //
         public SubnetCalculator(Window _origin, Control.Control _control)
         {
             origin = _origin;
             control = _control;
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             InitializeTags();
             InitializeEvents_LeftTop();
             InitializeEvents_LeftBottom();
             InitializeTextboxes();
+            InitializeContent();
         }
+
+        #region Variables
+
+        private bool TextChanged_Event_isLocked = false;
+
+        #endregion
 
 
         #region Methods
@@ -58,9 +58,7 @@ namespace ITler_Ein_mal_Eins.Modules
 
 
         #region Control
-        //
-        //  Umwandlung der Ip-Adresse und der Subnetzmaske in Bits
-        //
+
         private bool IPv4_calculateBits()
         {
             byte[] tmp;
@@ -133,7 +131,7 @@ namespace ITler_Ein_mal_Eins.Modules
                 {
                     case Textbox_FieldType.DESIRED_SUBNETNO:
                         // Validation + Calc restliche Felder, eine FKT in CONTROL welche von hier mehrmals aufgerufen wird.
-                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten) && control.CheckTextboxIfNumeric(txbox))
+                        if (IpCalculator.isLegitSubnetNo(Subnet_desired, Subnet_textBox_ShortWritten) && control.CheckTextboxIfNumeric(txbox) && IpCalculator.IsTextboxFilled(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
@@ -160,7 +158,7 @@ namespace ITler_Ein_mal_Eins.Modules
                         break;
                     case Textbox_FieldType.DESIRED_HOSTNO:
                         if (IpCalculator.isLegitHostNo(writeStruct(Textbox_FieldType.DESIRED_HOSTNO),
-                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && control.CheckTextboxIfNumeric(txbox))
+                            writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && control.CheckTextboxIfNumeric(txbox) && IpCalculator.IsTextboxFilled(txbox))
                         {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
@@ -188,7 +186,8 @@ namespace ITler_Ein_mal_Eins.Modules
                            IpCalculator.isIpV4Digit(Subnet_textBox3_new, true) &&
                            IpCalculator.isIpV4Digit(Subnet_textBox4_new, true) &&
                            IpCalculator.tryParseTextboxToInt(Subnet_textBox4_new) != 255 &&
-                           IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG))) {
+                           IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_LONG)) && IpCalculator.IsTextboxFilled(txbox))
+                        {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
@@ -212,7 +211,8 @@ namespace ITler_Ein_mal_Eins.Modules
                         //SubnetNo wird eins zu Hoch gesetzt!
                         //
                         if (IpCalculator.isLegitIpV4SubnetMask(writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)
-                            , writeStruct(Textbox_FieldType.SUBNETMASK_SHORT))){
+                            , writeStruct(Textbox_FieldType.SUBNETMASK_SHORT)) && IpCalculator.IsTextboxFilled(txbox))
+                        {
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_SUBNETNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.DESIRED_HOSTNO)));
                             readStruct(IpCalculator.brushTextboxes(ColourCodes.WHITE, writeStruct(Textbox_FieldType.NEW_SUBNETMASK_SHORT)));
@@ -410,11 +410,11 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void FillRightContent()
         {
-            int netmask;
-            int subnetmask;
-            try     { netmask       = Convert.ToInt32(Subnet_textBox_ShortWritten.Text); }
+            Int64 netmask;
+            Int64 subnetmask;
+            try     { netmask       = Convert.ToInt64(Subnet_textBox_ShortWritten.Text); }
             catch   { netmask       = 0; };
-            try     { subnetmask    = Convert.ToInt32(Subnet_textBox_ShortWritten_new.Text); }
+            try     { subnetmask    = Convert.ToInt64(Subnet_textBox_ShortWritten_new.Text); }
             catch   { subnetmask    = 0;}
 
             string ipv4 = IpCalculator.InputToBinary(Ip4_textBox1.Text);
@@ -526,7 +526,12 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox_ShortWritten_new.TextChanged -= Subnet_textBox_ShortWritten_new_TextChanged;
         }
 
-        private IPAddressTextboxes writeStruct(Textbox_FieldType type)
+        private void InitializeContent()
+        {
+            help_subnet.Text = Help.HELP_SUBNET_CALCULATOR;
+        }
+
+            private IPAddressTextboxes writeStruct(Textbox_FieldType type)
         {
             switch (type)
             {
@@ -550,40 +555,47 @@ namespace ITler_Ein_mal_Eins.Modules
             }
         }
 
-        private void readStruct(IPAddressTextboxes boxes)
+        private bool readStruct(IPAddressTextboxes boxes)
         {
-            switch (boxes.type)
+            try
             {
-                case Textbox_FieldType.IP_ADDRESSBLOCK:
-                    Ip4_textBox1                      = boxes.first;
-                    Ip4_textBox2                      = boxes.second;
-                    Ip4_textBox3                      = boxes.third;
-                    Ip4_textBox4                      = boxes.forth;
-                    break;
-                case Textbox_FieldType.SUBNETMASK_LONG:
-                    Subnet_textBox1                   = boxes.first;
-                    Subnet_textBox2                   = boxes.second;
-                    Subnet_textBox3                   = boxes.third;
-                    Subnet_textBox4                   = boxes.forth;
-                    break;
-                case Textbox_FieldType.NEW_SUBNETMASK_LONG:
-                    Subnet_textBox1_new               = boxes.first;
-                    Subnet_textBox2_new               = boxes.second;
-                    Subnet_textBox3_new               = boxes.third;
-                    Subnet_textBox4_new               = boxes.forth;
-                    break;
-                case Textbox_FieldType.SUBNETMASK_SHORT:
-                    Subnet_textBox_ShortWritten       = boxes.first;
-                    break;
-                case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
-                    Subnet_textBox_ShortWritten_new   = boxes.first;
-                    break;
-                case Textbox_FieldType.DESIRED_SUBNETNO:
-                    Subnet_desired                    = boxes.first;
-                    break;
-                case Textbox_FieldType.DESIRED_HOSTNO:
-                    Hosts_desired                     = boxes.first;
-                    break;
+                switch (boxes.type)
+                {
+                    case Textbox_FieldType.IP_ADDRESSBLOCK:
+                        Ip4_textBox1 = checked(boxes.first);
+                        Ip4_textBox2 = checked(boxes.second);
+                        Ip4_textBox3 = checked(boxes.third);
+                        Ip4_textBox4 = checked(boxes.forth);
+                        break;
+                    case Textbox_FieldType.SUBNETMASK_LONG:
+                        Subnet_textBox1 = checked(boxes.first);
+                        Subnet_textBox2 = checked(boxes.second);
+                        Subnet_textBox3 = checked(boxes.third);
+                        Subnet_textBox4 = checked(boxes.forth);
+                        break;
+                    case Textbox_FieldType.NEW_SUBNETMASK_LONG:
+                        Subnet_textBox1_new = checked(boxes.first);
+                        Subnet_textBox2_new = checked(boxes.second);
+                        Subnet_textBox3_new = checked(boxes.third);
+                        Subnet_textBox4_new = checked(boxes.forth);
+                        break;
+                    case Textbox_FieldType.SUBNETMASK_SHORT:
+                        Subnet_textBox_ShortWritten = checked(boxes.first);
+                        break;
+                    case Textbox_FieldType.NEW_SUBNETMASK_SHORT:
+                        Subnet_textBox_ShortWritten_new = checked(boxes.first);
+                        break;
+                    case Textbox_FieldType.DESIRED_SUBNETNO:
+                        Subnet_desired = checked(boxes.first);
+                        break;
+                    case Textbox_FieldType.DESIRED_HOSTNO:
+                        Hosts_desired = checked(boxes.first);
+                        break;               
+                }
+                return true;
+            }catch(System.OverflowException)
+            {
+                return false;
             }
         }
 
@@ -604,9 +616,9 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            origin.Show();
             origin.Left         = this.Left;
             origin.Top          = this.Top;
+            origin.Show();
         }
 
         private void button_Submit_Click(object sender, RoutedEventArgs e)
