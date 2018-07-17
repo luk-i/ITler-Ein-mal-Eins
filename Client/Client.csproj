@@ -79,7 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\IpValidator.cs" />
     <Compile Include="Control\UnitCalculatorControl.cs" />
+    <Compile Include="EventManager\EventManager.cs" />
     <Compile Include="Exceptions\WrongTypeException.cs" />
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.resx</DependentUpon>

@@ -509,6 +509,8 @@ namespace ITler_Ein_mal_Eins.Control
 
         #endregion
 
+
+
         #region getFieldStatus
         public static IpV4_FieldStatus getFieldStatus(IPAddressTextboxes subnet_long, IPAddressTextboxes subnet_shortwritten)
         {
