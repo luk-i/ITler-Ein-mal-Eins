@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using 
-using Android.App;'D:\Programmierung\Projekte\ITler-Ein-mal-Eins\Client';
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
