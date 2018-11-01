@@ -31,6 +31,7 @@ namespace ITler_Ein_mal_Eins.Exceptions
         //public void GetObjectData(SerializationInfo info, StreamingContext context)
         //{
         //    throw new NotImplementedException();
+        //
         //}
     }
 
