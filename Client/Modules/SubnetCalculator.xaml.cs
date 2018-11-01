@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ITler_Ein_mal_Eins.Control;
 using ITler_Ein_mal_Eins.Model;
+using ITler_Ein_mal_Eins.EventManager;
 
 namespace ITler_Ein_mal_Eins.Modules
 {
@@ -579,14 +580,13 @@ namespace ITler_Ein_mal_Eins.Modules
 
         private void InitializeTextboxes()
         {
-            DeactivateEvents_LeftBottom();
+            InitializeEvents_LeftBottom();
             TextBoxes_Clear();
             Textboxes_LeftBottom_Disabled();
             Textboxes_LeftTop_Enabled();
             TextChanged_Event_isLocked = false;
             btn_ipv4_calculate.IsEnabled = true;
             Subnet_ipv4_Right_Scroll.Opacity = 0;
-            InitializeEvents_LeftBottom();
         }
 
         private void InitializeSlider()
@@ -648,18 +648,9 @@ namespace ITler_Ein_mal_Eins.Modules
             Subnet_textBox_ShortWritten_new.TextChanged += Subnet_textBox_ShortWritten_new_TextChanged;
         }
 
-        private void DeactivateEvents_LeftBottom()
+        private void InitializeEvents_Right()
         {
-            //
-            //  TextBox_LeftBottom, jeder Block wirft ein eigenes Event!
-            //
-            Subnet_desired.TextChanged -= Subnet_desired_TextChanged;
-            Hosts_desired.TextChanged -= Hosts_desired_TextChanged;
-            Subnet_textBox1_new.TextChanged -= Subnet_textBox_new_TextChanged;
-            Subnet_textBox2_new.TextChanged -= Subnet_textBox_new_TextChanged;
-            Subnet_textBox3_new.TextChanged -= Subnet_textBox_new_TextChanged;
-            Subnet_textBox4_new.TextChanged -= Subnet_textBox_new_TextChanged;
-            Subnet_textBox_ShortWritten_new.TextChanged -= Subnet_textBox_ShortWritten_new_TextChanged;
+
         }
 
         private void InitializeContent()
@@ -748,6 +739,7 @@ namespace ITler_Ein_mal_Eins.Modules
         // nutze lieber Finktionsaufrufe, z.B. eine Funktion welche von 
         // "Enter" und "Verlassen" aufgerufen wird
         //
+
         private void Btn_Exit_Click(object sender, RoutedEventArgs e) => Close();
 
         private void Window_Closed(object sender, EventArgs e)
