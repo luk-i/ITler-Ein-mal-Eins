@@ -7,6 +7,8 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 
+
+
 namespace Android_Xamarin
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]

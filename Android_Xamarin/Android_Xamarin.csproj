@@ -56,6 +56,11 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binary_Calc_Module\BinaryCalc.cs" />
+    <Compile Include="Control\Control.cs" />
+    <Compile Include="Control\IpCalculator.cs" />
+    <Compile Include="Control\IpValidator.cs" />
+    <Compile Include="Control\UnitCalculatorControl.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,7 +75,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\content_main.axml">
-          <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
@@ -98,6 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\layout\binaryCalculator.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\Client.csproj">
+      <Project>{f525eb34-97b7-4244-96ba-61cc7a151851}</Project>
+      <Name>Client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
